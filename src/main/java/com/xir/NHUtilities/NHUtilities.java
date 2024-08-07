@@ -13,13 +13,13 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 @Mod(
     modid = NHUtilities.MODID,
     version = Tags.VERSION,
-    name = NHUtilities.MOD_Name,
+    name = NHUtilities.MOD_NAME,
     dependencies = "required-before:IC2; " + "required-before:gregtech; ",
     acceptedMinecraftVersions = "[1.7.10]")
 public class NHUtilities {
 
     public static final String MODID = "NHUtilities";
-    public static final String MOD_Name = "NH Utilities";
+    public static final String MOD_NAME = "NH Utilities";
     public static final Logger LOG = LogManager.getLogger(MODID);
 
     @Mod.Instance
