@@ -1,5 +1,6 @@
 package com.xir.NHUtilities.Mixins;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -31,7 +32,11 @@ public class MixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public List<String> getMixins() {
-        return List.of();
+        ArrayList<String> Mixins = new ArrayList<>();
+        Mixins.add("DE_TeleporterMKII_Mixin");
+        Mixins.add("DE_TeleporterPacket_Mixin");
+        Mixins.add("DE_GUITeleporter_Mixin");
+        return Mixins;
     }
 
     @Override
