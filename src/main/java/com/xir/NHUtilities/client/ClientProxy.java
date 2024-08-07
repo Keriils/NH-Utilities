@@ -1,7 +1,6 @@
-package com.xir.NHUtilities;
+package com.xir.NHUtilities.client;
 
-import com.xir.NHUtilities.client.KeyBindings;
-import com.xir.NHUtilities.client.KeyInputHandler;
+import com.xir.NHUtilities.common.CommonProxy;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;

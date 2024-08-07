@@ -1,4 +1,4 @@
-package com.xir.NHUtilities;
+package com.xir.NHUtilities.config;
 
 import java.io.File;
 

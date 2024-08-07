@@ -1,4 +1,8 @@
-package com.xir.NHUtilities;
+package com.xir.NHUtilities.common;
+
+import com.xir.NHUtilities.Tags;
+import com.xir.NHUtilities.config.Config;
+import com.xir.NHUtilities.main.NHUtilities;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;

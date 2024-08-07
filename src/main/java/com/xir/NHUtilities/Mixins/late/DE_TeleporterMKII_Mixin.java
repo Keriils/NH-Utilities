@@ -1,4 +1,4 @@
-package com.xir.NHUtilities.Mixins;
+package com.xir.NHUtilities.Mixins.late;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ import cpw.mods.fml.common.Optional;
 
 // Before modifying this code, please comment out the annotation below.
 @SuppressWarnings("all")
-@Mixin(value = TeleporterMKII.class, remap = false)
+@Mixin(value = TeleporterMKII.class, remap = true)
 @Optional.Interface(iface = "baubles.api.IBauble", modid = "Baubles")
 public class DE_TeleporterMKII_Mixin implements IBauble {
 

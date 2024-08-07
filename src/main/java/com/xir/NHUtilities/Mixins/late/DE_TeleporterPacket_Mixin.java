@@ -1,12 +1,12 @@
-package com.xir.NHUtilities.Mixins;
+package com.xir.NHUtilities.Mixins.late;
 
 import java.util.Optional;
 
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
@@ -17,10 +17,10 @@ import com.brandon3055.draconicevolution.common.utills.InventoryUtils;
 
 // Before modifying this code, please comment out the annotation below.
 @SuppressWarnings("all")
-@Mixin(value = TeleporterPacket.Handler.class, remap = false)
+@Mixin(value = TeleporterPacket.Handler.class, remap = true)
 public class DE_TeleporterPacket_Mixin {
 
-    @Nullable
+    @Unique
     private ItemStack getHandOrBaublesTeleporter(EntityPlayerMP instance) {
         Optional<ItemStack> playerBaublesInventory = InventoryUtils
             .getItemInPlayerBaublesInventory(instance, TeleporterMKII.class);

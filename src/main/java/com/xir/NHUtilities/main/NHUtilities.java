@@ -1,7 +1,10 @@
-package com.xir.NHUtilities;
+package com.xir.NHUtilities.main;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.xir.NHUtilities.Tags;
+import com.xir.NHUtilities.common.CommonProxy;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -14,7 +17,6 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
     modid = NHUtilities.MODID,
     version = Tags.VERSION,
     name = NHUtilities.MOD_NAME,
-    dependencies = "required-before:IC2; " + "required-before:gregtech; ",
     acceptedMinecraftVersions = "[1.7.10]")
 public class NHUtilities {
 
@@ -25,7 +27,9 @@ public class NHUtilities {
     @Mod.Instance
     public static NHUtilities instance;
 
-    @SidedProxy(clientSide = "com.xir.NHUtilities.ClientProxy", serverSide = "com.xir.NHUtilities.CommonProxy")
+    @SidedProxy(
+        clientSide = "com.xir.NHUtilities.client.ClientProxy",
+        serverSide = "com.xir.NHUtilities.common.CommonProxy")
     public static CommonProxy proxy;
 
     @Mod.EventHandler
