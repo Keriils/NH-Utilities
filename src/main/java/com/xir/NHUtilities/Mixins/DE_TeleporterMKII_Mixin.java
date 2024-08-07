@@ -1,24 +1,24 @@
 package com.xir.NHUtilities.Mixins;
 
-import com.brandon3055.brandonscore.common.utills.InfoHelper;
+import java.util.List;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
-import org.spongepowered.asm.mixin.Mixin;
 
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import com.brandon3055.brandonscore.common.utills.InfoHelper;
 import com.brandon3055.draconicevolution.common.items.tools.TeleporterMKII;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import cpw.mods.fml.common.Optional;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import java.util.List;
 
 // Before modifying this code, please comment out the annotation below.
 @SuppressWarnings("all")
@@ -28,10 +28,14 @@ public class DE_TeleporterMKII_Mixin implements IBauble {
 
     @Inject(
         method = "addInformation",
-        at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z",ordinal = 3,shift = At.Shift.AFTER)
-    )
-    private void addInfo(ItemStack teleporter, EntityPlayer player, List list2, boolean extraInformation, CallbackInfo ci) {
-        if (InfoHelper.holdShiftForDetails(list2)){
+        at = @At(
+            value = "INVOKE",
+            target = "Ljava/util/List;add(Ljava/lang/Object;)Z",
+            ordinal = 3,
+            shift = At.Shift.AFTER))
+    private void addInfo(ItemStack teleporter, EntityPlayer player, List list2, boolean extraInformation,
+        CallbackInfo ci) {
+        if (InfoHelper.holdShiftForDetails(list2)) {
             list2.add(
                 EnumChatFormatting.GOLD + ""
                     + EnumChatFormatting.ITALIC
