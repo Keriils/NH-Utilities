@@ -78,7 +78,7 @@ public abstract class DE_GUITeleporter_Mixin {
     }
 
     /**
-     * @author Keriils  ->  wo shi zhu bi
+     * @author Keriils -> wo shi zhu bi
      * @reason the simpler method
      */
     @Overwrite(remap = true)
