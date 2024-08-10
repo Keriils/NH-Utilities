@@ -1,9 +1,5 @@
 package com.xir.NHUtilities.common;
 
-import com.xir.NHUtilities.Tags;
-import com.xir.NHUtilities.config.Config;
-import com.xir.NHUtilities.main.NHUtilities;
-
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -11,12 +7,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
 public class CommonProxy {
 
-    public void preInit(FMLPreInitializationEvent event) {
-        Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
-
-        NHUtilities.LOG.info(Config.greeting);
-        NHUtilities.LOG.info("I am MyMod at version " + Tags.VERSION);
-    }
+    public void preInit(FMLPreInitializationEvent event) {}
 
     public void init(FMLInitializationEvent event) {}
 

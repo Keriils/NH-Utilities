@@ -1,4 +1,4 @@
-package com.xir.NHUtilities.mixin;
+package com.xir.NHUtilities.mixinPlugin;
 
 import java.util.ArrayList;
 import java.util.List;

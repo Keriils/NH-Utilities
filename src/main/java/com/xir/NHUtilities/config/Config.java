@@ -1,17 +1,37 @@
 package com.xir.NHUtilities.config;
 
-import java.io.File;
-
+import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.common.config.Configuration;
 
+import com.xir.NHUtilities.main.NHUtilities;
+
+/**
+ * Initialize with static to provide configuration for this mod and mixin before preInit
+ */
 public class Config {
 
-    public static String greeting = "Hello World";
+    // region register mixinModule key region
+    public static Boolean enableEnhancedTeleporterMKII = true;
+    // endregion
 
-    public static void synchronizeConfiguration(File configFile) {
-        Configuration configuration = new Configuration(configFile);
+    // region category
+    public static final String CATEGORY_MIXIN_CONFIG = "mixin_config";
+    // endregion
 
-        greeting = configuration.getString("greeting", Configuration.CATEGORY_GENERAL, greeting, "How shall I greet?");
+    static {
+        Configuration configuration = new Configuration(
+            Launch.minecraftHome.toPath()
+                .resolve("config")
+                .resolve(NHUtilities.MODID + ".cfg")
+                .toFile());
+
+        {
+            enableEnhancedTeleporterMKII = configuration.getBoolean(
+                "enableEnhancedTeleporterMKII",
+                CATEGORY_MIXIN_CONFIG,
+                enableEnhancedTeleporterMKII,
+                "enable Enhanced TeleporterMKII");
+        }
 
         if (configuration.hasChanged()) {
             configuration.save();

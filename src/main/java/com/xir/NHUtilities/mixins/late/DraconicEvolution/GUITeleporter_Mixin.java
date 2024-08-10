@@ -1,4 +1,4 @@
-package com.xir.NHUtilities.Mixins.late;
+package com.xir.NHUtilities.mixins.late.DraconicEvolution;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +22,8 @@ import com.brandon3055.draconicevolution.common.ModItems;
 import com.brandon3055.draconicevolution.common.items.tools.TeleporterMKII;
 import com.brandon3055.draconicevolution.common.utills.InventoryUtils;
 
-// Before modifying this code, please comment out the annotation below.
-@SuppressWarnings("all")
-@Mixin(value = GUITeleporter.class, remap = true)
-public abstract class DE_GUITeleporter_Mixin {
+@Mixin(value = GUITeleporter.class)
+public abstract class GUITeleporter_Mixin {
 
     @Shadow(remap = false)
     private ItemStack teleporterItem;
@@ -34,7 +32,7 @@ public abstract class DE_GUITeleporter_Mixin {
     private EntityPlayer player;
 
     @Shadow(remap = false)
-    protected List<Teleporter.TeleportLocation> locations = new ArrayList<Teleporter.TeleportLocation>(0);
+    protected List<Teleporter.TeleportLocation> locations = new ArrayList<>(0);
 
     @Shadow(remap = false)
     private int tick = 0;
@@ -49,31 +47,31 @@ public abstract class DE_GUITeleporter_Mixin {
     private boolean showFuelLight = true;
 
     @Unique
-    private final GUITeleporter theGUITeleporter = (GUITeleporter) ((Object) this);
+    private final GUITeleporter NHUtilities$theGUITeleporter = (GUITeleporter) (Object) this;
 
     @Unique
-    private boolean isBaubles = false;
+    private boolean NHUtilities$isBaubles = false;
 
     @Shadow(remap = false)
     protected abstract void readDataFromItem(ItemStack teleporter);
 
     @Unique
-    private Teleporter.TeleportLocation getLocationSafely(int index) {
+    private Teleporter.TeleportLocation NHUtilities$getLocationSafely(int index) {
         if (index < locations.size() && index >= 0) return locations.get(index);
         return new Teleporter.TeleportLocation(0, 0, 0, 0, 0, 0, EnumChatFormatting.DARK_RED + "[Index Error]");
     }
 
     @Inject(method = "<init>", at = @At("TAIL"))
-    private void setBaubles(EntityPlayer player, CallbackInfo ci) {
+    private void NHUtilities$setBaubles(EntityPlayer player, CallbackInfo ci) {
         Optional<ItemStack> playerBaublesInventory = InventoryUtils
             .getItemInPlayerBaublesInventory(player, TeleporterMKII.class);
         if (player.getHeldItem() != null && player.getHeldItem()
             .getItem() == ModItems.teleporterMKII) {
-            isBaubles = false;
+            NHUtilities$isBaubles = false;
         } else if (playerBaublesInventory.isPresent()) {
             teleporterItem = playerBaublesInventory.get();
             readDataFromItem(playerBaublesInventory.get());
-            isBaubles = true;
+            NHUtilities$isBaubles = true;
         }
     }
 
@@ -81,18 +79,18 @@ public abstract class DE_GUITeleporter_Mixin {
      * @author Keriils -> wo shi zhu bi
      * @reason the simpler method
      */
-    @Overwrite(remap = true)
+    @Overwrite
     public void updateScreen() {
-        if (handOrBaubles()) {
-            theGUITeleporter.mc.displayGuiScreen(null);
-            theGUITeleporter.mc.setIngameFocus();
+        if (NHUtilities$handOrBaubles()) {
+            NHUtilities$theGUITeleporter.mc.displayGuiScreen(null);
+            NHUtilities$theGUITeleporter.mc.setIngameFocus();
         }
 
         if (tick % 5 == 0 && !locations.isEmpty()
-            && getLocationSafely(selected + selectionOffset).getDimensionName()
+            && NHUtilities$getLocationSafely(selected + selectionOffset).getDimensionName()
                 .isEmpty()
-            && banHand()) {
-            if (isBaubles) {
+            && NHUtilities$banHand()) {
+            if (NHUtilities$isBaubles) {
                 Optional<ItemStack> playerBaublesInventory = InventoryUtils
                     .getItemInPlayerBaublesInventory(player, TeleporterMKII.class);
                 playerBaublesInventory.ifPresent(this::readDataFromItem);
@@ -109,9 +107,9 @@ public abstract class DE_GUITeleporter_Mixin {
     }
 
     @Unique
-    private boolean handOrBaubles() {
+    private boolean NHUtilities$handOrBaubles() {
         if (player.isDead) return true;
-        if (!isBaubles) {
+        if (!NHUtilities$isBaubles) {
             return player.getCurrentEquippedItem() == null || !player.getCurrentEquippedItem()
                 .isItemEqual(new ItemStack(ModItems.teleporterMKII));
         }
@@ -119,8 +117,8 @@ public abstract class DE_GUITeleporter_Mixin {
     }
 
     @Unique
-    private boolean banHand() {
-        if (isBaubles) return true;
+    private boolean NHUtilities$banHand() {
+        if (NHUtilities$isBaubles) return true;
         return player.getHeldItem() != null && player.getHeldItem()
             .getItem() == ModItems.teleporterMKII;
     }

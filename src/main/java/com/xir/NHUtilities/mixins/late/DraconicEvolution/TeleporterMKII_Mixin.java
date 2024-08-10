@@ -1,4 +1,4 @@
-package com.xir.NHUtilities.Mixins.late;
+package com.xir.NHUtilities.mixins.late.DraconicEvolution;
 
 import java.util.List;
 
@@ -20,11 +20,9 @@ import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import cpw.mods.fml.common.Optional;
 
-// Before modifying this code, please comment out the annotation below.
-@SuppressWarnings("all")
-@Mixin(value = TeleporterMKII.class, remap = true)
+@Mixin(value = TeleporterMKII.class)
 @Optional.Interface(iface = "baubles.api.IBauble", modid = "Baubles")
-public class DE_TeleporterMKII_Mixin implements IBauble {
+public class TeleporterMKII_Mixin implements IBauble {
 
     @Inject(
         method = "addInformation",
@@ -33,8 +31,8 @@ public class DE_TeleporterMKII_Mixin implements IBauble {
             target = "Ljava/util/List;add(Ljava/lang/Object;)Z",
             ordinal = 3,
             shift = At.Shift.AFTER))
-    private void addInfo(ItemStack teleporter, EntityPlayer player, List list2, boolean extraInformation,
-        CallbackInfo ci) {
+    private void NHUtilities$addInfo(ItemStack teleporter, EntityPlayer player, List<String> list2,
+        boolean extraInformation, CallbackInfo ci) {
         if (InfoHelper.holdShiftForDetails(list2)) {
             list2.add(
                 EnumChatFormatting.GOLD + ""
