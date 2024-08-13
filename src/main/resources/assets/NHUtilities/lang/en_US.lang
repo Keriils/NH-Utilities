@@ -1,3 +1,5 @@
 key.toggleTeleporterMKII=Toggle Enhanced Charm of Dislocation GUI
 info.teleporterInfBaubles.txt=Support putting in-any-baubles
 info.teleporterInfBaublesButton.txt=Support the use of - button - to open the baubles
+item.NHUtilities:GluttonyRing.name=GluttonyRing
+item.NHUtilities:HungerRing.name=HungerRing
