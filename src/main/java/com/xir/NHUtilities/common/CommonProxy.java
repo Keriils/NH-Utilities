@@ -4,6 +4,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 import com.xir.NHUtilities.common.nhutilies.events.GluttonyRingEvent;
 import com.xir.NHUtilities.loader.ItemLoader;
+import com.xir.NHUtilities.loader.NHUtilitiesRecipe;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -17,7 +18,9 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new GluttonyRingEvent());
     }
 
-    public void init(FMLInitializationEvent event) {}
+    public void init(FMLInitializationEvent event) {
+        NHUtilitiesRecipe.init();
+    }
 
     public void postInit(FMLPostInitializationEvent event) {}
 

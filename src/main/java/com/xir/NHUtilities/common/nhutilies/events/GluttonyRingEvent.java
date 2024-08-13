@@ -20,9 +20,7 @@ public class GluttonyRingEvent {
         if (entityPlayer.getHeldItem() == null) return;
         Optional<ItemStack> baublesItem = InventoryUtils
             .getItemInPlayerBaublesInventory(entityPlayer, GluttonyRing.class);
-        if (baublesItem.isPresent() && (event.item.getItemUseAction() == EnumAction.eat)
-            && entityPlayer.getFoodStats()
-                .getFoodLevel() < 20) {
+        if (baublesItem.isPresent() && (event.item.getItemUseAction() == EnumAction.eat)) {
             event.duration = 2;
         }
     }
