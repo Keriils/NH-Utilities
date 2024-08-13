@@ -3,6 +3,7 @@ package com.xir.NHUtilities.common;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.xir.NHUtilities.common.nhutilies.events.GluttonyRingEvent;
+import com.xir.NHUtilities.config.Config;
 import com.xir.NHUtilities.loader.ItemLoader;
 import com.xir.NHUtilities.loader.NHUtilitiesRecipe;
 
@@ -14,8 +15,10 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
-        ItemLoader.registerNHUtilitiesItems();
-        MinecraftForge.EVENT_BUS.register(new GluttonyRingEvent());
+        if (Config.enableGluttonyRingAndHungerRing) {
+            ItemLoader.registerNHUtilitiesItems();
+            MinecraftForge.EVENT_BUS.register(new GluttonyRingEvent());
+        }
     }
 
     public void init(FMLInitializationEvent event) {

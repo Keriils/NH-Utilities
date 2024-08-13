@@ -18,6 +18,10 @@ public class Config {
 
     static final Logger ConfigLog = LogManager.getLogger(NHUtilities.MODID + "_Config");
 
+    // region register massItems key !!!
+    public static boolean enableGluttonyRingAndHungerRing = true;
+    // endregion
+
     // region register mixinModule key region
     public static boolean enableEnhancedTeleporterMKII = true;
     public static String[] listeningMods = new String[] { "NHUtilities", "TwistSpaceTechnology", "boxplusplus",
@@ -27,6 +31,7 @@ public class Config {
     // region category
     private static final String CATEGORY_MIXIN_CONFIG = "Mixin_Config";
     private static final String CATEGORY_Manager = "Lang_Manger";
+    private static final String CATEGORY_MASS = "Mass_Config";
     // endregion
 
     // region cfgFile
@@ -52,6 +57,11 @@ public class Config {
                 CATEGORY_Manager,
                 listeningMods,
                 "List the mod IDs here to manage your GTNH language files");
+            enableGluttonyRingAndHungerRing = configuration.getBoolean(
+                "enableGluttonyRingAndHungerRing",
+                CATEGORY_MASS,
+                enableGluttonyRingAndHungerRing,
+                "enable GluttonyRing & AndHungerRing");
         }
 
         try {
@@ -71,5 +81,6 @@ public class Config {
         configuration.addCustomCategoryComment(
             CATEGORY_Manager,
             "List the mod IDs here to manage your GTNH language files.\nIf you don't know the mod ID, please write a different name instead.");
+        configuration.addCustomCategoryComment(CATEGORY_MASS, "A config region to Mass!./I need!!");
     }
 }
