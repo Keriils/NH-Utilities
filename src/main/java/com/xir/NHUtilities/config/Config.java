@@ -1,9 +1,9 @@
 package com.xir.NHUtilities.config;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
-import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.LogManager;
@@ -47,7 +47,7 @@ public class Config {
     // endregion
 
     // region cfgFile
-    static final Path cfgDirPath = Launch.minecraftHome.toPath()
+    static final Path cfgDirPath = minecraftHome().toPath()
         .resolve("config")
         .resolve(NHUtilities.MODID);
     static final Configuration configuration = new Configuration(
@@ -55,6 +55,10 @@ public class Config {
             .toFile(),
         true);
     // endregion
+
+    static File minecraftHome() {
+        return new File(System.getProperty("user.dir"));
+    }
 
     static {
         categoryInit();
