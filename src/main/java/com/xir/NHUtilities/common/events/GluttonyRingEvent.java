@@ -1,4 +1,4 @@
-package com.xir.NHUtilities.common.nhutilies.events;
+package com.xir.NHUtilities.common.events;
 
 import java.util.Optional;
 
@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerUseItemEvent;
 
 import com.brandon3055.draconicevolution.common.utills.InventoryUtils;
-import com.xir.NHUtilities.common.nhutilies.items.GluttonyRing;
+import com.xir.NHUtilities.common.items.baubles.GluttonyRing;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import vazkii.botania.common.item.ModItems;

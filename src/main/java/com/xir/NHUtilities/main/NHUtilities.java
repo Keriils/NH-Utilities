@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.xir.NHUtilities.Tags;
-import com.xir.NHUtilities.common.CommonProxy;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -24,12 +23,12 @@ public class NHUtilities {
     public static final String MOD_NAME = "NH Utilities";
     public static final Logger LOG = LogManager.getLogger(MODID);
 
-    @Mod.Instance
+    @Mod.Instance(NHUtilities.MODID)
     public static NHUtilities instance;
 
     @SidedProxy(
-        clientSide = "com.xir.NHUtilities.client.ClientProxy",
-        serverSide = "com.xir.NHUtilities.common.CommonProxy")
+        clientSide = "com.xir.NHUtilities.main.ClientProxy",
+        serverSide = "com.xir.NHUtilities.main.CommonProxy")
     public static CommonProxy proxy;
 
     @Mod.EventHandler

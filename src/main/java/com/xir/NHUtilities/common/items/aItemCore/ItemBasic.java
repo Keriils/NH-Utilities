@@ -1,4 +1,4 @@
-package com.xir.NHUtilities.common.nhutilies.items;
+package com.xir.NHUtilities.common.items.aItemCore;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

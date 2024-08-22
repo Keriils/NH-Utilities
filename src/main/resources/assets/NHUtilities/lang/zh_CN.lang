@@ -3,3 +3,5 @@ info.teleporterInfBaubles.txt=支持放入-任意-饰品栏目
 info.teleporterInfBaublesButton.txt=支持使用-按键-打开饰品
 item.NHUtilities:GluttonyRing.name=暴食指环
 item.NHUtilities:HungerRing.name=饥饿指环
+item.NHUtilities:TimeVial.name=时间之瓶
+text.NHUtilities.TimeVial.tips=§f时间: §6%d 小时 §d%d 分钟 §a%d 秒  

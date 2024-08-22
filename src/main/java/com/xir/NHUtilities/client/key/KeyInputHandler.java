@@ -1,4 +1,4 @@
-package com.xir.NHUtilities.client;
+package com.xir.NHUtilities.client.key;
 
 import java.util.Optional;
 

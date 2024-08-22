@@ -1,19 +1,19 @@
-package com.xir.NHUtilities.common.nhutilies.items;
+package com.xir.NHUtilities.common.items.baubles;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.FoodStats;
+
+import com.xir.NHUtilities.common.items.aItemCore.ItemBasic;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 
-public class HungerRing extends ItemBasic implements IBauble {
+public class GluttonyRing extends ItemBasic implements IBauble {
 
-    public HungerRing() {
+    public GluttonyRing() {
         setMaxStackSize(1);
-        setUnlocalizedName("HungerRing");
-        setTextureName("HungerRing");
+        setUnlocalizedName("GluttonyRing");
+        setTextureName("GluttonyRing");
 
     }
 
@@ -24,10 +24,7 @@ public class HungerRing extends ItemBasic implements IBauble {
 
     @Override
     public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-        FoodStats foodStats = ((EntityPlayer) player).getFoodStats();
-        if (foodStats.getFoodLevel() >= 1) {
-            foodStats.setFoodLevel(0);
-        }
+
     }
 
     @Override
