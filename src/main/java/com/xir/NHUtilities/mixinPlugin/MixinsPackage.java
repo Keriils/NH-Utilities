@@ -12,7 +12,8 @@ import com.xir.NHUtilities.config.Config;
 public enum MixinsPackage {
 
     EnhanceTeleporterMKII(Config.enableEnhancedTeleporterMKII, "DraconicEvolution", Mixins.DE_TeleporterMKII_Mixin,
-        Mixins.DE_GUITeleporter_Mixin, Mixins.DE_TeleporterPacket_Mixin);
+        Mixins.DE_GUITeleporter_Mixin, Mixins.DE_TeleporterPacket_Mixin),
+    Enable_MTEAcclerator(Config.enableAccelerateGregTechMachine, "GregTech", Mixins.GT_MTEAcclerator_Mixin);
 
     private final Boolean isEnabledModule;
     private final Set<String> targetMods = new HashSet<>();

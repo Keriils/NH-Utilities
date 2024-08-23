@@ -79,10 +79,9 @@ public class EntityTimeAccelerator extends Entity {
         long tMaxTime = System.nanoTime() + 1000000;
         if (shouldAccelerate(tileEntity)) {
             if (tileEntity instanceof ITileEntityTickAcceleration tileEntityITEA) {
-                tileEntityITEA.tickAcceleration(timeRate);
-            } else {
-                accelerateTileEntity(tileEntity, tMaxTime);
+                if (tileEntityITEA.tickAcceleration(timeRate)) return;
             }
+            accelerateTileEntity(tileEntity, tMaxTime);
         } else if (shouldAccelerate(block)) {
             accelerateBlock(block, tMaxTime);
         }
