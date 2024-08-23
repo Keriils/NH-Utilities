@@ -9,7 +9,8 @@ public enum Mixins {
 
     DE_TeleporterMKII_Mixin("TeleporterMKII_Mixin", TargetMods.DraconicEvolution, TargetMods.Baubles),
     DE_GUITeleporter_Mixin("GUITeleporter_Mixin", TargetMods.DraconicEvolution),
-    DE_TeleporterPacket_Mixin("TeleporterPacket_Mixin", TargetMods.DraconicEvolution);
+    DE_TeleporterPacket_Mixin("TeleporterPacket_Mixin", TargetMods.DraconicEvolution),
+    GT_MTEAcclerator_Mixin("BaseMetaTileEntity_Mixin", TargetMods.GregTech);
 
     private final String mixinClass;
     private final List<String> targetMod = new ArrayList<>();

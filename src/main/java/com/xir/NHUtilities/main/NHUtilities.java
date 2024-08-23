@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.xir.NHUtilities.Tags;
-import com.xir.NHUtilities.common.CommonProxy;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -17,6 +16,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
     modid = NHUtilities.MODID,
     version = Tags.VERSION,
     name = NHUtilities.MOD_NAME,
+    dependencies = " after:gregtech;" + " after:Avaritia;" + " after:DraconicEvolution;" + " after:Baubles",
     acceptedMinecraftVersions = "[1.7.10]")
 public class NHUtilities {
 
@@ -24,12 +24,12 @@ public class NHUtilities {
     public static final String MOD_NAME = "NH Utilities";
     public static final Logger LOG = LogManager.getLogger(MODID);
 
-    @Mod.Instance
+    @Mod.Instance(NHUtilities.MODID)
     public static NHUtilities instance;
 
     @SidedProxy(
-        clientSide = "com.xir.NHUtilities.client.ClientProxy",
-        serverSide = "com.xir.NHUtilities.common.CommonProxy")
+        clientSide = "com.xir.NHUtilities.main.ClientProxy",
+        serverSide = "com.xir.NHUtilities.main.CommonProxy")
     public static CommonProxy proxy;
 
     @Mod.EventHandler

@@ -1,9 +1,9 @@
 package com.xir.NHUtilities.config;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
-import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.LogManager;
@@ -22,6 +22,21 @@ public class Config {
     public static boolean enableGluttonyRingAndHungerRing = true;
     // endregion
 
+    // region TimeVial
+    public static boolean enableTimeVial = true;
+    public static boolean enableEternityVial = true;
+    public static boolean enableBlockMode = true;
+    public static int accelerateBlockInterval = 10;
+    public static boolean enableLogInfo = false;
+    public static boolean limitOneTimeVial = true;
+    public static float timeVialDiscountValue = 0.9965F; // e..
+    public static float defaultTimeVialVolumeValue = 0.5F;
+    public static boolean enableTimeAcceleratorBoost = false;
+    public static boolean enableAccelerateGregTechMachine = true;
+    public static float accelerateGregTechMachineDiscount = 0.8F;
+    public static boolean enableNumberMultiplierTexture = false;
+    // endregion
+
     // region register mixinModule key region
     public static boolean enableEnhancedTeleporterMKII = true;
     public static String[] listeningMods = new String[] { "NHUtilities", "TwistSpaceTechnology", "boxplusplus",
@@ -32,10 +47,11 @@ public class Config {
     private static final String CATEGORY_MIXIN_CONFIG = "Mixin_Config";
     private static final String CATEGORY_Manager = "Lang_Manger";
     private static final String CATEGORY_MASS = "Mass_Config";
+    private static final String CATEGORY_TIME_VIAL = "Time_Vial";
     // endregion
 
     // region cfgFile
-    static final Path cfgDirPath = Launch.minecraftHome.toPath()
+    static final Path cfgDirPath = minecraftHome().toPath()
         .resolve("config")
         .resolve(NHUtilities.MODID);
     static final Configuration configuration = new Configuration(
@@ -43,6 +59,10 @@ public class Config {
             .toFile(),
         true);
     // endregion
+
+    static File minecraftHome() {
+        return new File(System.getProperty("user.dir"));
+    }
 
     static {
         categoryInit();
@@ -62,6 +82,60 @@ public class Config {
                 CATEGORY_MASS,
                 enableGluttonyRingAndHungerRing,
                 "enable GluttonyRing & AndHungerRing");
+            enableTimeVial = configuration
+                .getBoolean("enableTimeVial", CATEGORY_TIME_VIAL, enableTimeVial, "enable Time Vial");
+            enableEternityVial = configuration
+                .getBoolean("enableEternityVial", CATEGORY_TIME_VIAL, enableEternityVial, "enable Eternity Vial");
+            enableBlockMode = configuration
+                .getBoolean("enableBlockMode", CATEGORY_TIME_VIAL, enableBlockMode, "enable Block Mode");
+            enableLogInfo = configuration
+                .getBoolean("enableLogInfo", CATEGORY_TIME_VIAL, enableLogInfo, "enable log info debug");
+            limitOneTimeVial = configuration
+                .getBoolean("limitOneTimeVial", CATEGORY_TIME_VIAL, limitOneTimeVial, "limit One TimeVial");
+            defaultTimeVialVolumeValue = configuration.getFloat(
+                "defaultTimeVialVolume",
+                CATEGORY_TIME_VIAL,
+                defaultTimeVialVolumeValue,
+                0.0F,
+                5.0F,
+                "set time vial volume");
+            timeVialDiscountValue = configuration.getFloat(
+                "timeVialDiscountValue",
+                CATEGORY_TIME_VIAL,
+                timeVialDiscountValue,
+                0.0F,
+                1.0F,
+                "set time vial discount value");
+            enableTimeAcceleratorBoost = configuration.getBoolean(
+                "enableTimeAcceleratorBoost",
+                CATEGORY_TIME_VIAL,
+                enableTimeAcceleratorBoost,
+                "enable Time Accelerator Boost, boost to 256X");
+            enableAccelerateGregTechMachine = configuration.getBoolean(
+                "enableAccelerateGregTechMachine",
+                CATEGORY_TIME_VIAL,
+                enableAccelerateGregTechMachine,
+                "enable Accelerate GregTech Machine");
+            accelerateGregTechMachineDiscount = configuration.getFloat(
+                "accelerateGregTechMachineDiscount",
+                CATEGORY_TIME_VIAL,
+                accelerateGregTechMachineDiscount,
+                0.0F,
+                1.0F,
+                "accelerate GregTech Machine Discount");
+            enableNumberMultiplierTexture = configuration.getBoolean(
+                "enableNumberMultiplierTexture",
+                CATEGORY_TIME_VIAL,
+                enableNumberMultiplierTexture,
+                "enable Number Multiplier Texture");
+            accelerateBlockInterval = configuration.getInt(
+                "accelerateBlockInterval",
+                CATEGORY_TIME_VIAL,
+                accelerateBlockInterval,
+                2,
+                200,
+                "accelerate Block Interval");
+
         }
 
         try {
@@ -82,5 +156,6 @@ public class Config {
             CATEGORY_Manager,
             "List the mod IDs here to manage your GTNH language files.\nIf you don't know the mod ID, please write a different name instead.");
         configuration.addCustomCategoryComment(CATEGORY_MASS, "A config region to Mass!./I need!!");
+        configuration.addCustomCategoryComment(CATEGORY_TIME_VIAL, "The TimeVial config setting");
     }
 }

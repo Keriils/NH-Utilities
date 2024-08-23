@@ -2,6 +2,7 @@ package com.xir.NHUtilities.config;
 
 import static com.xir.NHUtilities.config.Config.ConfigLog;
 import static com.xir.NHUtilities.config.Config.cfgDirPath;
+import static com.xir.NHUtilities.config.Config.minecraftHome;
 
 import java.io.File;
 import java.io.FileReader;
@@ -13,8 +14,6 @@ import java.nio.file.StandardCopyOption;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
-
-import net.minecraft.launchwrapper.Launch;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -29,7 +28,7 @@ public class ResetLangManager {
     private static final File LangManagerFile = cfgDirPath.resolve("LangManagerFile.json")
         .toFile();
 
-    private static final Path mcPath = Launch.minecraftHome.toPath();
+    private static final Path mcPath = minecraftHome().toPath();
 
     private static final File sourceLang_CN = mcPath.resolve("Lang_Backup")
         .resolve("GregTech_zh_CN.lang")
@@ -41,6 +40,20 @@ public class ResetLangManager {
         .toFile();
     private static final File targetLang_US = mcPath.resolve("GregTech.lang")
         .toFile();
+
+    //
+    // private static final Path mcPath = Launch.minecraftHome.toPath();
+    //
+    // private static final File sourceLang_CN = mcPath.resolve("Lang_Backup")
+    // .resolve("GregTech_zh_CN.lang")
+    // .toFile();
+    // private static final File sourceLang_US = mcPath.resolve("Lang_Backup")
+    // .resolve("GregTech.lang")
+    // .toFile();
+    // private static final File targetLang_CN = mcPath.resolve("GregTech_zh_CN.lang")
+    // .toFile();
+    // private static final File targetLang_US = mcPath.resolve("GregTech.lang")
+    // .toFile();
 
     public static void checkInit(String[] listeningMods) throws IOException {
 
@@ -95,7 +108,7 @@ public class ResetLangManager {
     private static void saveFileToJson(File file, LinkedHashMap<String, String> map) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting()
             .create();
-        try (FileWriter writer = new FileWriter(file);) {
+        try (FileWriter writer = new FileWriter(file)) {
             gson.toJson(map, writer);
         }
     }
