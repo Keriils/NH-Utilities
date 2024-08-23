@@ -17,12 +17,13 @@ text.NHUtilities.TimeVial.details_5=While setting the remaining time vials to:
 text.NHUtilities.TimeVial.details_6=Uh...114514.   -11 hours -45 minutes -14 seconds.
 text.NHUtilities.TimeVial.details_7=Can be modified without limits in the config file.
 text.NHUtilities.TimeVial.details_8=The rules for GT machine acceleration are as follows:
-text.NHUtilities.TimeVial.details_9=Machines require processing time time and time must be >= 2 ticks.
-text.NHUtilities.TimeVial.details_10=Executes time + acceleration multiplier * discount (default 0.8f), which is adjustable.
-text.NHUtilities.TimeVial.details_11=In simple terms, adds the corresponding time to the machine's working time.
-text.NHUtilities.TimeVial.details_12=Configuration file notes
-text.NHUtilities.TimeVial.details_13=Allows adjusting the volume of the vial sounds and whether to enable number textures, i.e., 8x or 16x patterns.
-text.NHUtilities.TimeVial.details_14=If unsure, do not modify. enableLogInfo = true
+text.NHUtilities.TimeVial.details_9=By default, the acceleration method is applied by accumulating ticks if Shift is not held down.
+text.NHUtilities.TimeVial.details_10=Machines require processing time time and time must be >= 2 ticks.
+text.NHUtilities.TimeVial.details_11=Executes time + acceleration multiplier * discount (default 0.8f), which is adjustable.
+text.NHUtilities.TimeVial.details_12=In simple terms, adds the corresponding time to the machine's working time.
+text.NHUtilities.TimeVial.details_13=Configuration file notes
+text.NHUtilities.TimeVial.details_14=Allows adjusting the volume of the vial sounds and whether to enable number textures, i.e., 8x or 16x patterns.
+text.NHUtilities.TimeVial.details_15=If unsure, do not modify. enableLogInfo = true
 
 # tooltips for time vial
 text.NHUtilities.EternityVial.details_0=Eternity
