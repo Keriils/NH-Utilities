@@ -24,12 +24,16 @@ public class Config {
 
     // region TimeVial
     public static boolean enableTimeVial = true;
+    public static boolean enableEternityVial = true;
+    public static boolean enableBlockMode = true;
+    public static int accelerateBlockInterval = 10;
     public static boolean enableLogInfo = false;
     public static boolean limitOneTimeVial = true;
     public static float timeVialDiscountValue = 0.9965F; // e..
     public static float defaultTimeVialVolumeValue = 0.5F;
     public static boolean enableTimeAcceleratorBoost = false;
     public static boolean enableAccelerateGregTechMachine = true;
+    public static float accelerateGregTechMachineDiscount = 0.8F;
     public static boolean enableNumberMultiplierTexture = false;
     // endregion
 
@@ -80,6 +84,10 @@ public class Config {
                 "enable GluttonyRing & AndHungerRing");
             enableTimeVial = configuration
                 .getBoolean("enableTimeVial", CATEGORY_TIME_VIAL, enableTimeVial, "enable Time Vial");
+            enableEternityVial = configuration
+                .getBoolean("enableEternityVial", CATEGORY_TIME_VIAL, enableEternityVial, "enable Eternity Vial");
+            enableBlockMode = configuration
+                .getBoolean("enableBlockMode", CATEGORY_TIME_VIAL, enableBlockMode, "enable Block Mode");
             enableLogInfo = configuration
                 .getBoolean("enableLogInfo", CATEGORY_TIME_VIAL, enableLogInfo, "enable log info debug");
             limitOneTimeVial = configuration
@@ -108,11 +116,25 @@ public class Config {
                 CATEGORY_TIME_VIAL,
                 enableAccelerateGregTechMachine,
                 "enable Accelerate GregTech Machine");
+            accelerateGregTechMachineDiscount = configuration.getFloat(
+                "accelerateGregTechMachineDiscount",
+                CATEGORY_TIME_VIAL,
+                accelerateGregTechMachineDiscount,
+                0.0F,
+                1.0F,
+                "accelerate GregTech Machine Discount");
             enableNumberMultiplierTexture = configuration.getBoolean(
                 "enableNumberMultiplierTexture",
                 CATEGORY_TIME_VIAL,
                 enableNumberMultiplierTexture,
                 "enable Number Multiplier Texture");
+            accelerateBlockInterval = configuration.getInt(
+                "accelerateBlockInterval",
+                CATEGORY_TIME_VIAL,
+                accelerateBlockInterval,
+                2,
+                200,
+                "accelerate Block Interval");
 
         }
 

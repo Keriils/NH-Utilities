@@ -16,6 +16,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
     modid = NHUtilities.MODID,
     version = Tags.VERSION,
     name = NHUtilities.MOD_NAME,
+    dependencies = " after:gregtech;" + " after:Avaritia;" + " after:DraconicEvolution;" + " after:Baubles",
     acceptedMinecraftVersions = "[1.7.10]")
 public class NHUtilities {
 

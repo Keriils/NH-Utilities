@@ -6,6 +6,8 @@ import static com.xir.NHUtilities.config.Config.enableTimeAcceleratorBoost;
 import static com.xir.NHUtilities.config.Config.limitOneTimeVial;
 import static com.xir.NHUtilities.config.Config.timeVialDiscountValue;
 import static com.xir.NHUtilities.main.NHUtilities.LOG;
+import static com.xir.NHUtilities.utils.InformationHelper.dividingLine;
+import static com.xir.NHUtilities.utils.InformationHelper.holdShiftForDetails;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +18,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 import org.jetbrains.annotations.NotNull;
@@ -35,6 +38,7 @@ public class TimeVial extends ItemBasic {
     protected static final int MAX_ACCELERATION = enableTimeAcceleratorBoost ? 256 : 128;
     protected static final int NUMBER_EER = -846280; // ha,.... 114514
     protected int storedTimeTick = 0;
+    protected final double tHalfSize = 0.01D; // 实体一半的大小
 
     public TimeVial() {
         setMaxStackSize(1);
@@ -46,6 +50,34 @@ public class TimeVial extends ItemBasic {
     @SideOnly(Side.CLIENT)
     public void addInformation(final @NotNull ItemStack stack, final EntityPlayer player, final List<String> list,
         final boolean extraInformation) {
+        getInfoFromNBT(stack, list);
+        if (holdShiftForDetails(list)) {
+            list.add(dividingLine);
+            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_0"));
+            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_1"));
+            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_2"));
+            list.add(dividingLine);
+            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_3"));
+            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_4"));
+            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_5"));
+            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_6"));
+            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_7"));
+            list.add(dividingLine);
+            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_7"));
+            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_8"));
+            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_9"));
+            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_10"));
+            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_11"));
+            list.add(dividingLine);
+            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_12"));
+            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_13"));
+            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_14"));
+            list.add(dividingLine);
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    protected void getInfoFromNBT(@NotNull ItemStack stack, List<String> list) {
         NBTTagCompound nbtTagCompound = stack.getTagCompound();
         if (nbtTagCompound == null) nbtTagCompound = new NBTTagCompound();
         int storedTimeSeconds = nbtTagCompound.getInteger("storedTimeTick") / 20;
@@ -64,9 +96,6 @@ public class TimeVial extends ItemBasic {
             double targetPosX = x + 0.5D;
             double targetPosY = y + 0.5D;
             double targetPosZ = z + 0.5D;
-
-            // 实体一半的大小
-            double tHalfSize = 0.05D;
 
             // 碰撞箱的最小坐标
             double minX = targetPosX - tHalfSize;
@@ -104,6 +133,7 @@ public class TimeVial extends ItemBasic {
                 }
             } else if (shouldAndConsumeTimeData(stack, TIME_INIT_RATE * 600)) {
                 EntityTimeAccelerator eta = new EntityTimeAccelerator(world, x, y, z);
+                if (player.isSneaking()) eta.setGregTechMachineMode(false);
                 eta.setPosition(targetPosX, targetPosY, targetPosZ);
                 world.spawnEntityInWorld(eta);
                 if (enableLogInfo) LOG.info(
@@ -124,7 +154,7 @@ public class TimeVial extends ItemBasic {
         return false;
     }
 
-    private boolean shouldAndConsumeTimeData(@NotNull ItemStack stack, int consumedTick) {
+    protected boolean shouldAndConsumeTimeData(@NotNull ItemStack stack, int consumedTick) {
         int timeTick = stack.getTagCompound()
             .getInteger("storedTimeTick");
         if (timeTick >= consumedTick) {
@@ -154,7 +184,7 @@ public class TimeVial extends ItemBasic {
         }
     }
 
-    private void mergeSameVialTime(@NotNull EntityPlayer player, ItemStack stack) {
+    protected void mergeSameVialTime(@NotNull EntityPlayer player, ItemStack stack) {
         for (ItemStack itemStack : player.inventory.mainInventory) {
             if (itemStack != null && itemStack.getItem() == this && itemStack != stack) {
                 int thisTimeTick = stack.getTagCompound()

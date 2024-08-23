@@ -1,5 +1,6 @@
 package com.xir.NHUtilities.mixins.late.GregTech;
 
+import static com.xir.NHUtilities.config.Config.accelerateGregTechMachineDiscount;
 import static com.xir.NHUtilities.config.Config.enableLogInfo;
 import static com.xir.NHUtilities.main.NHUtilities.LOG;
 
@@ -33,7 +34,9 @@ public abstract class BaseMetaTileEntity_Mixin implements ITileEntityTickAcceler
         int maxProgress = this.getMaxProgress();
 
         if (maxProgress >= 2) { // obviously
-            tickAcceleratedRate = (int) (tickAcceleratedRate * 0.8f); // discount for accelerating gregtech machines
+            tickAcceleratedRate = (int) (tickAcceleratedRate * accelerateGregTechMachineDiscount); // discount for
+                                                                                                   // accelerating
+                                                                                                   // gregtech machines
             int newProgress = currentProgress + tickAcceleratedRate;
             int NHUtilities$modify = Math.min(maxProgress, newProgress);
             if (enableLogInfo) LOG.info("modifyArg {}", NHUtilities$modify);

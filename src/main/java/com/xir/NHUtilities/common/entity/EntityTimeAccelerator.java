@@ -1,5 +1,7 @@
 package com.xir.NHUtilities.common.entity;
 
+import static com.xir.NHUtilities.config.Config.accelerateBlockInterval;
+import static com.xir.NHUtilities.config.Config.enableBlockMode;
 import static com.xir.NHUtilities.config.Config.enableTimeAcceleratorBoost;
 import static com.xir.NHUtilities.main.NHUtilities.LOG;
 
@@ -21,10 +23,15 @@ public class EntityTimeAccelerator extends Entity {
     // region Fields
     protected int timeRate = enableTimeAcceleratorBoost ? 8 : 4; // must be set in here for texture render init
     protected int remainingTime = 600;
+    protected boolean isGregTechMachineMode = true;
 
     protected int targetIntX;
     protected int targetIntY;
     protected int targetIntZ;
+
+    public void setGregTechMachineMode(boolean setMode) {
+        this.isGregTechMachineMode = setMode;
+    }
 
     public int getTimeRate() {
         return timeRate;
@@ -50,7 +57,8 @@ public class EntityTimeAccelerator extends Entity {
         super(worldIn);
         this.noClip = true;
         this.preventEntitySpawning = false;
-        this.setSize(0.1F, 0.1F);
+        // this entity setting must modify with TimeVial field double tHalfSize = 0.05D
+        this.setSize(0.02F, 0.02F);
         this.dataWatcher.addObject(2, timeRate);
     }
 
@@ -78,7 +86,7 @@ public class EntityTimeAccelerator extends Entity {
         // Referenced GTNH to control the performance in 1ms
         long tMaxTime = System.nanoTime() + 1000000;
         if (shouldAccelerate(tileEntity)) {
-            if (tileEntity instanceof ITileEntityTickAcceleration tileEntityITEA) {
+            if (isGregTechMachineMode && tileEntity instanceof ITileEntityTickAcceleration tileEntityITEA) {
                 if (tileEntityITEA.tickAcceleration(timeRate)) return;
             }
             accelerateTileEntity(tileEntity, tMaxTime);
@@ -120,7 +128,9 @@ public class EntityTimeAccelerator extends Entity {
     }
 
     private boolean shouldAccelerate(Block block) {
-        return block != null && block.getTickRandomly() && worldObj.getTotalWorldTime() % 10 == 0;
+        return enableBlockMode && block != null
+            && block.getTickRandomly()
+            && worldObj.getTotalWorldTime() % accelerateBlockInterval == 0;
     }
     // endregion
 
@@ -129,6 +139,7 @@ public class EntityTimeAccelerator extends Entity {
     public void readEntityFromNBT(@NotNull NBTTagCompound tagCompound) {
         timeRate = tagCompound.getInteger("timeRate");
         this.dataWatcher.updateObject(2, tagCompound.getInteger("timeRate"));
+        isGregTechMachineMode = tagCompound.getBoolean("isGregTechMachineMode");
         targetIntX = tagCompound.getInteger("targetIntX");
         targetIntY = tagCompound.getInteger("targetIntY");
         targetIntZ = tagCompound.getInteger("targetIntZ");
@@ -138,6 +149,7 @@ public class EntityTimeAccelerator extends Entity {
     @Override
     public void writeEntityToNBT(@NotNull NBTTagCompound tagCompound) {
         tagCompound.setInteger("timeRate", timeRate);
+        tagCompound.setBoolean("isGregTechMachineMode", isGregTechMachineMode);
         tagCompound.setInteger("targetIntX", targetIntX);
         tagCompound.setInteger("targetIntY", targetIntY);
         tagCompound.setInteger("targetIntZ", targetIntZ);
