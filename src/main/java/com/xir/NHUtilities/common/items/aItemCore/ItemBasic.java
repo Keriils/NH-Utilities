@@ -3,8 +3,6 @@ package com.xir.NHUtilities.common.items.aItemCore;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import com.xir.NHUtilities.main.NHUtilities;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -13,12 +11,12 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemBasic extends Item {
 
-    private static final String MODID = String.format("item.%s:", NHUtilities.MODID);
+    private static final String MODID = "item.NHUtilities:";
     private String unlocalizedName;
 
     @Override
     public Item setTextureName(String TextureName) {
-        this.iconString = NHUtilities.MODID + ":" + TextureName;
+        this.iconString = "nhutilities:" + TextureName;
         return this;
     }
 

@@ -2,7 +2,6 @@ package com.xir.NHUtilities.client.render;
 
 import static com.xir.NHUtilities.config.Config.enableNumberMultiplierTexture;
 import static com.xir.NHUtilities.config.Config.enableTimeAcceleratorBoost;
-import static com.xir.NHUtilities.main.NHUtilities.MODID;
 
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
@@ -23,7 +22,7 @@ public class RenderTimeAccelerator extends Render {
     private static final double OFFSET = 0.51d;
 
     static {
-        final String pathURL = MODID + ':' + "textures/entity/";
+        final String pathURL = "nhutilities:textures/entity/";
         if (!ENABLE_NUMBER_TEXTURE) {
             for (int i = 0; i < TEXTURE_ARRAY.length; i++) {
                 TEXTURE_ARRAY[i] = new ResourceLocation(String.format(pathURL + "Circle/time_%d.png", i));
@@ -57,7 +56,7 @@ public class RenderTimeAccelerator extends Render {
 
         drawAllSide(tessellator, x, y, z, angle);
 
-        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glDisable(GL11.GL_BLEND);
         GL11.glEnable(GL11.GL_LIGHTING);
         GL11.glEnable(GL11.GL_CULL_FACE);
     }

@@ -9,14 +9,12 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.xir.NHUtilities.main.NHUtilities;
-
 /**
  * Initialize with static to provide configuration for this mod and mixin before preInit
  */
 public class Config {
 
-    static final Logger ConfigLog = LogManager.getLogger(NHUtilities.MODID + "_Config");
+    static final Logger ConfigLog = LogManager.getLogger("NHUtilities_Config");
 
     // region register massItems key !!!
     public static boolean enableGluttonyRingAndHungerRing = true;
@@ -53,9 +51,9 @@ public class Config {
     // region cfgFile
     static final Path cfgDirPath = minecraftHome().toPath()
         .resolve("config")
-        .resolve(NHUtilities.MODID);
+        .resolve("NHUtilities");
     static final Configuration configuration = new Configuration(
-        cfgDirPath.resolve(NHUtilities.MODID + ".cfg")
+        cfgDirPath.resolve("NHUtilities.cfg")
             .toFile(),
         true);
     // endregion

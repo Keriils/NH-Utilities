@@ -230,5 +230,9 @@ public class EntityTimeAccelerator extends Entity {
         this.setPosition(x, y, z);
     }
 
+    @Override
+    public boolean isEntityInsideOpaqueBlock() {
+        return true;
+    }
     // endregion
 }
