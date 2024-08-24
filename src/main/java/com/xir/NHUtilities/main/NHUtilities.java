@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.xir.NHUtilities.Tags;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -23,6 +24,7 @@ public class NHUtilities {
     public static final String MODID = "NHUtilities";
     public static final String MOD_NAME = "NH Utilities";
     public static final Logger LOG = LogManager.getLogger(MODID);
+    public static final boolean BAUBLES_MOD_IS_LOADED = Loader.isModLoaded("Baubles");
 
     @Mod.Instance(NHUtilities.MODID)
     public static NHUtilities instance;

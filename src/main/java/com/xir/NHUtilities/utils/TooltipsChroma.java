@@ -13,6 +13,8 @@ import org.jetbrains.annotations.NotNull;
 @SuppressWarnings("unused")
 public final class TooltipsChroma {
 
+    private TooltipsChroma() {}
+
     private static final EnumChatFormatting[] CHROMA_FORMATTINGS = new EnumChatFormatting[] { RED, GOLD, YELLOW, GREEN,
         AQUA, BLUE, LIGHT_PURPLE };
 

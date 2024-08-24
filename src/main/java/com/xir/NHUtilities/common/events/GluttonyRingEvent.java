@@ -7,8 +7,8 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerUseItemEvent;
 
-import com.brandon3055.draconicevolution.common.utills.InventoryUtils;
 import com.xir.NHUtilities.common.items.baubles.GluttonyRing;
+import com.xir.NHUtilities.utils.InventoryUtils;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import vazkii.botania.common.item.ModItems;

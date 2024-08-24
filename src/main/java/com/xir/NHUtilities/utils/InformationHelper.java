@@ -13,6 +13,8 @@ import org.lwjgl.input.Keyboard;
 @SuppressWarnings("unused")
 public final class InformationHelper {
 
+    private InformationHelper() {};
+
     public static final String dividingLine = "=====================";
 
     public static boolean isShiftKeyDown() {
