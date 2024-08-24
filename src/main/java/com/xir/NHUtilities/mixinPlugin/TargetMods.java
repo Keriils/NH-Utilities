@@ -4,7 +4,8 @@ public enum TargetMods {
 
     DraconicEvolution("Draconic Evolution", "DraconicEvolution"),
     Baubles("Baubles", "Baubles"),
-    GregTech("GregTech", "gregtech");
+    GregTech("GregTech", "gregtech"),
+    EnderIO("Ender IO", "EnderIO");
 
     public final String modName;
     public final String modId;

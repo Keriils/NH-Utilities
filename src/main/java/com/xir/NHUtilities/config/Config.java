@@ -37,6 +37,7 @@ public class Config {
 
     // region register mixinModule key region
     public static boolean enableEnhancedTeleporterMKII = true;
+    public static boolean enableModifyEnderIoCapBankIO = true;
     public static String[] listeningMods = new String[] { "NHUtilities", "TwistSpaceTechnology", "boxplusplus",
         "programmablehatches" };
     // endregion
@@ -133,6 +134,11 @@ public class Config {
                 2,
                 200,
                 "accelerate Block Interval");
+            enableModifyEnderIoCapBankIO = configuration.getBoolean(
+                "enableModifyEnderIoCapBankIO",
+                CATEGORY_MIXIN_CONFIG,
+                enableModifyEnderIoCapBankIO,
+                "enable Modify EnderIo Cap Bank Max IO");
 
         }
 

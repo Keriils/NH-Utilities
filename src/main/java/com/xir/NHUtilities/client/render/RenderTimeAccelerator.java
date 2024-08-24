@@ -3,6 +3,7 @@ package com.xir.NHUtilities.client.render;
 import static com.xir.NHUtilities.config.Config.enableNumberMultiplierTexture;
 import static com.xir.NHUtilities.config.Config.enableTimeAcceleratorBoost;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
@@ -49,6 +50,7 @@ public class RenderTimeAccelerator extends Render {
 
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        Minecraft.getMinecraft().entityRenderer.disableLightmap(1);
 
         GL11.glDisable(GL11.GL_LIGHTING);
         GL11.glDisable(GL11.GL_CULL_FACE);
@@ -56,6 +58,7 @@ public class RenderTimeAccelerator extends Render {
 
         drawAllSide(tessellator, x, y, z, angle);
 
+        Minecraft.getMinecraft().entityRenderer.enableLightmap(1);
         GL11.glDisable(GL11.GL_BLEND);
         GL11.glEnable(GL11.GL_LIGHTING);
         GL11.glEnable(GL11.GL_CULL_FACE);
