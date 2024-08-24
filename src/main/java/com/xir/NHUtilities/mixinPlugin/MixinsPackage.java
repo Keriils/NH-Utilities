@@ -2,6 +2,7 @@ package com.xir.NHUtilities.mixinPlugin;
 
 import static com.xir.NHUtilities.config.Config.enableAccelerateGregTechMachine;
 import static com.xir.NHUtilities.config.Config.enableEnhancedTeleporterMKII;
+import static com.xir.NHUtilities.config.Config.enableModifyEnderIoCapBankIO;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,7 +15,8 @@ public enum MixinsPackage {
 
     EnhanceTeleporterMKII(enableEnhancedTeleporterMKII, "DraconicEvolution", Mixins.DE_TeleporterMKII_Mixin,
         Mixins.DE_GUITeleporter_Mixin, Mixins.DE_TeleporterPacket_Mixin),
-    Enable_MTEAcclerator(enableAccelerateGregTechMachine, "GregTech", Mixins.GT_MTEAcclerator_Mixin);
+    Enable_MTEAcclerator(enableAccelerateGregTechMachine, "GregTech", Mixins.GT_MTEAcclerator_Mixin),
+    EnderIO_Modify(enableModifyEnderIoCapBankIO, "EnderIO", Mixins.Modify_CapBankMaxIO_Mixin);
 
     private final Boolean isEnabledModule;
     private final Set<String> targetMods = new HashSet<>();
