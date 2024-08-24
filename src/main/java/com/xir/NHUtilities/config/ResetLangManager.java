@@ -25,10 +25,10 @@ import cpw.mods.fml.common.ModContainer;
 
 public class ResetLangManager {
 
+    private static final Path mcPath = minecraftHome().toPath();
+    private static final File Lang_Backup = mcPath.resolve("Lang_Backup").toFile();
     private static final File LangManagerFile = cfgDirPath.resolve("LangManagerFile.json")
         .toFile();
-
-    private static final Path mcPath = minecraftHome().toPath();
 
     private static final File sourceLang_CN = mcPath.resolve("Lang_Backup")
         .resolve("GregTech_zh_CN.lang")
@@ -41,23 +41,23 @@ public class ResetLangManager {
     private static final File targetLang_US = mcPath.resolve("GregTech.lang")
         .toFile();
 
-    //
-    // private static final Path mcPath = Launch.minecraftHome.toPath();
-    //
-    // private static final File sourceLang_CN = mcPath.resolve("Lang_Backup")
-    // .resolve("GregTech_zh_CN.lang")
-    // .toFile();
-    // private static final File sourceLang_US = mcPath.resolve("Lang_Backup")
-    // .resolve("GregTech.lang")
-    // .toFile();
-    // private static final File targetLang_CN = mcPath.resolve("GregTech_zh_CN.lang")
-    // .toFile();
-    // private static final File targetLang_US = mcPath.resolve("GregTech.lang")
-    // .toFile();
+    static  {
+        if (!Lang_Backup.exists()) {
+            boolean created = Lang_Backup.mkdirs();
+            if (created) {
+                ConfigLog.info("Lang_Backup created: {}", Lang_Backup.getAbsolutePath());
+            } else {
+                ConfigLog.warn("An error occurred on creating Lang_Backup dir: {}", Lang_Backup.getAbsolutePath());
+            }
+        }
+    }
 
     public static void checkInit(String[] listeningMods) throws IOException {
 
-        if (!sourceLang_CN.exists() || !sourceLang_US.exists()) return;
+        if (!sourceLang_CN.exists() || !sourceLang_US.exists()) {
+            ConfigLog.warn("lang files not found");
+            return;
+        }
 
         LinkedHashMap<String, String> loadedMods = getLoadedMods(listeningMods);
         // generate file
