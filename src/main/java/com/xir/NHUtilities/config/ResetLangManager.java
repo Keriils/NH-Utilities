@@ -26,7 +26,8 @@ import cpw.mods.fml.common.ModContainer;
 public class ResetLangManager {
 
     private static final Path mcPath = minecraftHome().toPath();
-    private static final File Lang_Backup = mcPath.resolve("Lang_Backup").toFile();
+    private static final File Lang_Backup = mcPath.resolve("Lang_Backup")
+        .toFile();
     private static final File LangManagerFile = cfgDirPath.resolve("LangManagerFile.json")
         .toFile();
 
@@ -41,7 +42,7 @@ public class ResetLangManager {
     private static final File targetLang_US = mcPath.resolve("GregTech.lang")
         .toFile();
 
-    static  {
+    static {
         if (!Lang_Backup.exists()) {
             boolean created = Lang_Backup.mkdirs();
             if (created) {
