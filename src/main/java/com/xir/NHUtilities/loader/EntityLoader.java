@@ -9,7 +9,7 @@ public class EntityLoader {
 
     public static void registerNHUtilitiesEntity() {
         EntityRegistry
-            .registerModEntity(EntityTimeAccelerator.class, "AcceleratorTest", 0, NHUtilities.instance, 64, 10, false);
+            .registerModEntity(EntityTimeAccelerator.class, "Accelerator", 0, NHUtilities.instance, 64, 10, false);
     }
 
 }

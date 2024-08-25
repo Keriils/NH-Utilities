@@ -23,6 +23,8 @@ public class Config {
     // region TimeVial
     public static boolean enableTimeVial = true;
     public static boolean enableEternityVial = true;
+    public static boolean enableEternityVialCosmicRender = true;
+    public static boolean enableEternityVialCosmicRenderDeepening = true;
     public static boolean enableBlockMode = true;
     public static int accelerateBlockInterval = 10;
     public static boolean enableLogInfo = false;
@@ -134,6 +136,16 @@ public class Config {
                 2,
                 200,
                 "accelerate Block Interval");
+            enableEternityVialCosmicRender = configuration.getBoolean(
+                "enableEternityVialCosmicRender",
+                CATEGORY_TIME_VIAL,
+                enableEternityVialCosmicRender,
+                "enable Eternity Vial Cosmic Render");
+            enableEternityVialCosmicRenderDeepening = configuration.getBoolean(
+                "enableEternityVialCosmicRenderDeepening",
+                CATEGORY_TIME_VIAL,
+                enableEternityVialCosmicRenderDeepening,
+                "enable Eternity Vial Cosmic Render Deepening");
             enableModifyEnderIoCapBankIO = configuration.getBoolean(
                 "enableModifyEnderIoCapBankIO",
                 CATEGORY_MIXIN_CONFIG,

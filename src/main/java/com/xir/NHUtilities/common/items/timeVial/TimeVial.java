@@ -28,6 +28,7 @@ import com.xir.NHUtilities.common.items.aItemCore.ItemBasic;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.avaritia.entity.EntityImmortalItem;
 
 public class TimeVial extends ItemBasic {
 
@@ -63,7 +64,6 @@ public class TimeVial extends ItemBasic {
             list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_6"));
             list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_7"));
             list.add(dividingLine);
-            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_7"));
             list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_8"));
             list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_9"));
             list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_10"));
@@ -199,5 +199,10 @@ public class TimeVial extends ItemBasic {
                 }
             }
         }
+    }
+
+    @Override
+    public Entity createEntity(World world, Entity location, ItemStack itemstack) {
+        return new EntityImmortalItem(world, location, itemstack); // make this item Immortal
     }
 }
