@@ -1,4 +1,4 @@
-package com.xir.NHUtilities.mixinPlugin;
+package com.xir.NHUtilities.mixins;
 
 import java.util.List;
 import java.util.Set;
@@ -16,6 +16,6 @@ public class LateMixinPlugin implements ILateMixinLoader {
 
     @Override
     public List<String> getMixins(Set<String> loadedMods) {
-        return MixinsPackage.getLateMixins(loadedMods);
+        return Mixins.getLateMixins(loadedMods);
     }
 }

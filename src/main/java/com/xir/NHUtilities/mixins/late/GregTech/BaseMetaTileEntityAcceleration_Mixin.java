@@ -16,7 +16,7 @@ import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_MultiBlockB
 import gregtech.common.tileentities.machines.multi.GT_MetaTileEntity_PrimitiveBlastFurnace;
 
 @Mixin(BaseMetaTileEntity.class)
-public abstract class BaseMetaTileEntity_Mixin implements ITileEntityTickAcceleration {
+public abstract class BaseMetaTileEntityAcceleration_Mixin implements ITileEntityTickAcceleration {
 
     @Shadow(remap = false)
     public abstract int getProgress();
