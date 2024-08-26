@@ -51,6 +51,5 @@ dependencies {
 //     libs files
 //    implementation files("libs/rawinput-1.4.2.jar")
     implementation files("libs/ProjectE-1.7.10-PE1.10.1.jar")  // DEBUG TEST
-//    implementation files("libs/Torcherino-1.7.10-2.2s.jar")    // DEBUG TEST
     implementation files("libs/ForgeNBTEdit.jar")
 }
