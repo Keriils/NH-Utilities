@@ -25,8 +25,8 @@ public enum Mixins {
         "DraconicEvolution.TeleporterPacket_Mixin", TargetMod.DraconicEvolution),
     GT_BaseMetaTileEntity_Acceleration_Mixin(Category.BaseMetaTileEntityAcceleration, Side.BOTH, Phase.LATE,
         "GregTech.BaseMetaTileEntityAcceleration_Mixin", TargetMod.GregTech),
-    EndrIO_Modify_CapBankMaxIO_Mixin(Category.ModifyCapBankMaxIO, Side.BOTH, Phase.LATE,
-        "EnderIO.Modify_CapBankMaxIO_Mixin", TargetMod.EnderIO),
+    //EndrIO_Modify_CapBankMaxIO_Mixin(Category.ModifyCapBankMaxIO, Side.BOTH, Phase.LATE,
+    //    "EnderIO.Modify_CapBankMaxIO_Mixin", TargetMod.EnderIO),
 
     ;
 
