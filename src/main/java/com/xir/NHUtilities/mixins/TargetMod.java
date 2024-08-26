@@ -1,6 +1,7 @@
-package com.xir.NHUtilities.mixinPlugin;
+package com.xir.NHUtilities.mixins;
 
-public enum TargetMods {
+@SuppressWarnings("unused")
+public enum TargetMod {
 
     DraconicEvolution("Draconic Evolution", "DraconicEvolution"),
     Baubles("Baubles", "Baubles"),
@@ -10,8 +11,16 @@ public enum TargetMods {
     public final String modName;
     public final String modId;
 
-    TargetMods(String modName, String modId) {
+    TargetMod(String modName, String modId) {
         this.modName = modName;
         this.modId = modId;
+    }
+
+    public String getModName() {
+        return modName;
+    }
+
+    public String getModId() {
+        return modId;
     }
 }
