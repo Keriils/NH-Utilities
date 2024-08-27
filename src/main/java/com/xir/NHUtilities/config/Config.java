@@ -37,9 +37,10 @@ public class Config {
     public static boolean enableNumberMultiplierTexture = false;
     // endregion
 
-    // region register mixinModule key region
+    // region register mixins category key region
     public static boolean enableEnhancedTeleporterMKII = true;
     public static boolean enableModifyEnderIoCapBankIO = true;
+    public static boolean enableWEToolWithExuHealingAxe = true;
     public static String[] listeningMods = new String[] { "NHUtilities", "TwistSpaceTechnology", "boxplusplus",
         "programmablehatches" };
     // endregion
@@ -151,6 +152,11 @@ public class Config {
                 CATEGORY_MIXIN_CONFIG,
                 enableModifyEnderIoCapBankIO,
                 "enable Modify EnderIo Cap Bank Max IO");
+            enableWEToolWithExuHealingAxe = configuration.getBoolean(
+                "enableWEToolWithExuHealingAxe",
+                CATEGORY_MIXIN_CONFIG,
+                enableWEToolWithExuHealingAxe,
+                "enable WE Tool With Exu Healing Axe");
 
         }
 
