@@ -13,6 +13,7 @@ import com.xir.NHUtilities.utils.InventoryUtils;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import vazkii.botania.common.item.ModItems;
 
+@SuppressWarnings("unused")
 public class GluttonyRingEvent {
 
     @SubscribeEvent
