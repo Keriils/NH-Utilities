@@ -6,7 +6,9 @@ public enum TargetMod {
     DraconicEvolution("Draconic Evolution", "DraconicEvolution"),
     Baubles("Baubles", "Baubles"),
     GregTech("GregTech", "gregtech"),
-    EnderIO("Ender IO", "EnderIO");
+    EnderIO("Ender IO", "EnderIO"),
+    WorldEdit("WorldEdit", "worldedit"),
+    ExtraUtilities("Extra Utilities", "ExtraUtilities"),;
 
     public final String modName;
     public final String modId;

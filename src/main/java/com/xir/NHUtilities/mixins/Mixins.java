@@ -3,6 +3,7 @@ package com.xir.NHUtilities.mixins;
 import static com.xir.NHUtilities.config.Config.enableAccelerateGregTechMachine;
 import static com.xir.NHUtilities.config.Config.enableEnhancedTeleporterMKII;
 import static com.xir.NHUtilities.config.Config.enableModifyEnderIoCapBankIO;
+import static com.xir.NHUtilities.config.Config.enableWEToolWithExuHealingAxe;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,6 +28,8 @@ public enum Mixins {
         "GregTech.BaseMetaTileEntityAcceleration_Mixin", TargetMod.GregTech),
     EndrIO_Modify_CapBankMaxIO_Mixin(Category.ModifyCapBankMaxIO, Side.BOTH, Phase.LATE,
         "EnderIO.Modify_CapBankMaxIO_Mixin", TargetMod.EnderIO),
+    WE_ModifyWithExuHealingAxe_Mixin(Category.WEToolWithExuHealingAxe, Side.BOTH, Phase.LATE,
+        "WorldEditGtnh.ModifyWEWithExU", TargetMod.WorldEdit, TargetMod.ExtraUtilities),
 
     ;
 
@@ -35,6 +38,7 @@ public enum Mixins {
         TeleporterMKII(enableEnhancedTeleporterMKII),
         BaseMetaTileEntityAcceleration(enableAccelerateGregTechMachine),
         ModifyCapBankMaxIO(enableModifyEnderIoCapBankIO),
+        WEToolWithExuHealingAxe(enableWEToolWithExuHealingAxe),
 
         ;
 
