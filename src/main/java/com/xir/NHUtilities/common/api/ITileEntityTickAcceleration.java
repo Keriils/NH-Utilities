@@ -13,4 +13,10 @@ public interface ITileEntityTickAcceleration {
      */
     boolean tickAcceleration(int tickAcceleratedRate);
 
+    /**
+     * adaptation to other aspects of the tileEntity
+     */
+    default int getTickAcceleratedRate() {
+        return 1;
+    }
 }
