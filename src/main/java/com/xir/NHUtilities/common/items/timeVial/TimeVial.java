@@ -68,8 +68,8 @@ public class TimeVial extends ItemBasic {
             list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_9"));
             list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_10"));
             list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_11"));
-            list.add(dividingLine);
             list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_12"));
+            list.add(dividingLine);
             list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_13"));
             list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_14"));
             list.add(dividingLine);
@@ -97,16 +97,15 @@ public class TimeVial extends ItemBasic {
             double targetPosY = y + 0.5D;
             double targetPosZ = z + 0.5D;
 
-            // 碰撞箱的最小坐标
+            // 计算碰撞箱大小
             double minX = targetPosX - tHalfSize;
             double minY = targetPosY - tHalfSize;
             double minZ = targetPosZ - tHalfSize;
-
-            // 碰撞箱的最大坐标
             double maxX = targetPosX + tHalfSize;
             double maxY = targetPosY + tHalfSize;
             double maxZ = targetPosZ + tHalfSize;
 
+            // 获取碰撞箱对应实体
             Optional<EntityTimeAccelerator> box = world
                 .getEntitiesWithinAABB(
                     EntityTimeAccelerator.class,
@@ -115,43 +114,62 @@ public class TimeVial extends ItemBasic {
                 .findFirst();
 
             if (box.isPresent()) {
+
                 EntityTimeAccelerator eta = box.get();
+
                 int currentRate = eta.getTimeRate();
-                int nextRateTimeRequired = (int) (currentRate * eta.getRemainingTime() * timeVialDiscountValue); // no
-                                                                                                                 // why
-                if (enableLogInfo) LOG.info("xxxxx {} xxxxx", nextRateTimeRequired);
+                int nextRateTimeRequired = (int) (currentRate * eta.getRemainingTime() * timeVialDiscountValue);
+
+                //// Invert the GregTechMachineMode
+                // if (player.isSneaking()) {
+                // eta.setGregTechMachineMode(!eta.getGregTechMachineMode());
+                // }
+
                 if (currentRate < MAX_ACCELERATION && shouldAndConsumeTimeData(stack, nextRateTimeRequired)) {
                     eta.setTimeRate(currentRate * 2);
-                    int i = (int) (Math.log(currentRate) / Math.log(2)) - (enableTimeAcceleratorBoost ? 2 : 1);
-                    world.playSoundEffect(
-                        targetPosX,
-                        targetPosY,
-                        targetPosZ,
-                        "note.harp",
-                        defaultTimeVialVolumeValue,
-                        SOUND_ARRAY_F[i]);
+                    etaInteract(eta, world, targetPosX, targetPosY, targetPosZ);
                 }
             } else if (shouldAndConsumeTimeData(stack, TIME_INIT_RATE * 600)) {
                 EntityTimeAccelerator eta = new EntityTimeAccelerator(world, x, y, z);
+
+                // set the GregTechMachineMode
                 if (player.isSneaking()) eta.setGregTechMachineMode(false);
-                eta.setPosition(targetPosX, targetPosY, targetPosZ);
+
                 world.spawnEntityInWorld(eta);
-                if (enableLogInfo) LOG.info(
-                    "An entity entityTimeAccelerator has been spawned ({}, {}, {}).",
-                    targetPosX,
-                    targetPosY,
-                    targetPosZ);
-                world.playSoundEffect(
-                    targetPosX,
-                    targetPosY,
-                    targetPosZ,
-                    "note.harp",
-                    defaultTimeVialVolumeValue,
-                    SOUND_ARRAY_F[0]);
+
+                etaInteract(eta, world, targetPosX, targetPosY, targetPosZ);
             }
             return true;
         }
         return false;
+    }
+
+    private void etaInteract(@NotNull EntityTimeAccelerator eta, World world, double targetPosX, double targetPosY,
+        double targetPosZ) {
+        this.playSoundForRateChange(world, targetPosX, targetPosY, targetPosZ, eta.getTimeRate());
+        if (enableLogInfo) {
+            this.debugInfo(targetPosX, targetPosY, targetPosZ, eta.getRemainingTime());
+        }
+    }
+
+    private void playSoundForRateChange(@NotNull World world, double targetPosX, double targetPosY, double targetPosZ,
+        int currentRate) {
+        int i = (int) (Math.log(currentRate) / Math.log(2)) - (enableTimeAcceleratorBoost ? 3 : 2);
+        // security considerations
+        if (i < 0 || i >= SOUND_ARRAY_F.length) i = 0;
+        world.playSoundEffect(
+            targetPosX,
+            targetPosY,
+            targetPosZ,
+            "note.harp",
+            defaultTimeVialVolumeValue,
+            SOUND_ARRAY_F[i]);
+    }
+
+    private void debugInfo(double targetPosX, double targetPosY, double targetPosZ, int remainingTime) {
+        LOG.info("xxxxx remainingTime: {} xxxxx", remainingTime);
+        LOG.info("An entity entityTimeAccelerator has been spawned ({}, {}, {}).", targetPosX, targetPosY, targetPosZ);
+
     }
 
     protected boolean shouldAndConsumeTimeData(@NotNull ItemStack stack, int consumedTick) {
