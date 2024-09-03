@@ -13,7 +13,7 @@ public abstract class AccelerateTileEntity_Mixin implements ITileEntityTickAccel
     @Shadow
     private long lastUpdate;
 
-    @Shadow
+    @Shadow(remap = true)
     public abstract void updateEntity();
 
     @Unique
