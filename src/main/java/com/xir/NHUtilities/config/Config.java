@@ -26,7 +26,7 @@ public class Config {
     public static boolean enableEternityVialCosmicRender = true;
     public static boolean enableEternityVialCosmicRenderDeepening = true;
     public static boolean enableBlockMode = true;
-    public static int accelerateBlockInterval = 10;
+    public static int accelerateBlockInterval = 2;
     public static boolean enableLogInfo = false;
     public static boolean limitOneTimeVial = true;
     public static float timeVialDiscountValue = 0.9965F; // e..

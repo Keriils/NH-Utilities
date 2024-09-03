@@ -21,24 +21,24 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class EntityTimeAccelerator extends Entity {
 
     // region Fields
-    protected int timeRate = enableTimeAcceleratorBoost ? 8 : 4; // must be set in here for texture render init
-    protected int remainingTime = 600;
-    protected boolean isGregTechMachineMode = true;
+    private int timeRate = enableTimeAcceleratorBoost ? 8 : 4; // must be set in here for texture render init
+    private int remainingTime = 600;
+    private boolean isGregTechMachineMode = true;
 
-    protected int targetIntX;
-    protected int targetIntY;
-    protected int targetIntZ;
+    private int targetIntX;
+    private int targetIntY;
+    private int targetIntZ;
 
-    public void setGregTechMachineMode(boolean setMode) {
-        this.isGregTechMachineMode = setMode;
+    public void setGregTechMachineMode(boolean mode) {
+        this.isGregTechMachineMode = mode;
+    }
+
+    public boolean getGregTechMachineMode() {
+        return this.isGregTechMachineMode;
     }
 
     public int getTimeRate() {
         return timeRate;
-    }
-
-    public int getTimeRateForRender() {
-        return this.dataWatcher.getWatchableObjectInt(2);
     }
 
     public void setTimeRate(int timeRate) {
@@ -46,10 +46,13 @@ public class EntityTimeAccelerator extends Entity {
         this.dataWatcher.updateObject(2, timeRate);
     }
 
+    public int getTimeRateForRender() {
+        return this.dataWatcher.getWatchableObjectInt(2);
+    }
+
     public int getRemainingTime() {
         return remainingTime;
     }
-
     // endregion
 
     // region Constructor
@@ -67,6 +70,7 @@ public class EntityTimeAccelerator extends Entity {
         this.targetIntX = targetIntX;
         this.targetIntY = targetIntY;
         this.targetIntZ = targetIntZ;
+        this.setPosition(targetIntX + 0.5D, targetIntY + 0.5D, targetIntZ + 0.5D);
     }
     // endregion
 
@@ -76,22 +80,67 @@ public class EntityTimeAccelerator extends Entity {
      */
     @Override
     public void onEntityUpdate() {
+        if (this.worldObj.isRemote) return;
         if (remainingTime-- > 0) this.tAccelerate();
-        if (remainingTime <= 0 && !this.worldObj.isRemote) this.setDead();
+        if (remainingTime <= 0) {
+            this.setDead();
+            this.resetTileEntity();
+        }
+    }
+
+    public void resetTileEntity() {
+        TileEntity tileEntity = this.worldObj.getTileEntity(targetIntX, targetIntY, targetIntZ);
+        if (shouldAccelerate(tileEntity)) {
+            this.worldObj.loadedTileEntityList.removeIf(k -> k == tileEntity);
+            this.worldObj.loadedTileEntityList.add(tileEntity);
+        }
     }
 
     private void tAccelerate() {
+
         Block block = this.worldObj.getBlock(targetIntX, targetIntY, targetIntZ);
         TileEntity tileEntity = this.worldObj.getTileEntity(targetIntX, targetIntY, targetIntZ);
+
         // Referenced GTNH to control the performance in 1ms
         long tMaxTime = System.nanoTime() + 1000000;
+
+        if (shouldAccelerate(block)) {
+            accelerateBlock(block, tMaxTime);
+        }
+
         if (shouldAccelerate(tileEntity)) {
             if (isGregTechMachineMode && tileEntity instanceof ITileEntityTickAcceleration tileEntityITEA) {
                 if (tileEntityITEA.tickAcceleration(timeRate)) return;
             }
             accelerateTileEntity(tileEntity, tMaxTime);
-        } else if (shouldAccelerate(block)) {
-            accelerateBlock(block, tMaxTime);
+        }
+    }
+
+    private boolean shouldAccelerate(TileEntity tileEntity) {
+        return tileEntity != null && !tileEntity.isInvalid() && tileEntity.canUpdate();
+    }
+
+    private boolean shouldAccelerate(Block block) {
+        return enableBlockMode && block != null
+            && block.getTickRandomly()
+            && worldObj.getTotalWorldTime() % accelerateBlockInterval == 0;
+    }
+
+    private void accelerateTileEntity(TileEntity tileEntity, long tMaxTime) {
+        try {
+            for (int i = 0; i < timeRate; i++) {
+                tileEntity.updateEntity();
+                if (System.nanoTime() > tMaxTime) {
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            LOG.warn(
+                "An error occurred accelerating TileEntity at ( {}, {}, {}, {})",
+                targetIntX,
+                targetIntY,
+                targetIntZ,
+                e.getMessage());
         }
     }
 
@@ -104,33 +153,13 @@ public class EntityTimeAccelerator extends Entity {
                 }
             }
         } catch (Exception e) {
-            LOG.warn("An error occurred accelerating block at ( {}, {}, {})", targetIntX, targetIntY, targetIntZ);
-            e.printStackTrace();
+            LOG.warn(
+                "An error occurred accelerating block at ( {}, {}, {}, {})",
+                targetIntX,
+                targetIntY,
+                targetIntZ,
+                e.getMessage());
         }
-    }
-
-    private void accelerateTileEntity(TileEntity tileEntity, long tMaxTime) {
-        try {
-            for (int i = 0; i < timeRate; i++) {
-                tileEntity.updateEntity();
-                if (System.nanoTime() > tMaxTime) {
-                    break;
-                }
-            }
-        } catch (Exception e) {
-            LOG.warn("An error occurred accelerating TileEntity at ( {}, {}, {})", targetIntX, targetIntY, targetIntZ);
-            e.printStackTrace();
-        }
-    }
-
-    private boolean shouldAccelerate(TileEntity tileEntity) {
-        return tileEntity != null && !tileEntity.isInvalid() && tileEntity.canUpdate();
-    }
-
-    private boolean shouldAccelerate(Block block) {
-        return enableBlockMode && block != null
-            && block.getTickRandomly()
-            && worldObj.getTotalWorldTime() % accelerateBlockInterval == 0;
     }
     // endregion
 
