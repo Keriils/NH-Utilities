@@ -1,12 +1,18 @@
 package com.xir.NHUtilities.main;
 
-import com.xir.NHUtilities.loader.*;
+import com.xir.NHUtilities.loader.EntityLoader;
+import com.xir.NHUtilities.loader.EventLoader;
+import com.xir.NHUtilities.loader.ItemsLoader;
+import com.xir.NHUtilities.loader.MachineLoader;
+import com.xir.NHUtilities.loader.RecipeLoader;
+import com.xir.NHUtilities.loader.ResearchLoader;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
+@SuppressWarnings("unused")
 public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {

@@ -14,6 +14,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import fox.spiteful.avaritia.render.CosmicItemRenderer;
 
+@SuppressWarnings("unused")
 public class ClientProxy extends CommonProxy {
 
     @Override
