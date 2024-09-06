@@ -33,3 +33,10 @@ infohelper.NHUtilities.txt_0=§6====§f[§dHold
 infohelper.NHUtilities.txt_1=§dfor Details§f]§6====
 infohelper.NHUtilities.key_ctrl=§bCtrl
 infohelper.NHUtilities.key_shift=§bShift
+
+# research
+tc.research_category.NHUTILITIES=GregThaumcality
+
+tc.research_name.THAUMICEBF=Thaumic Electric Blast Furnace
+tc.research_text.THAUMICEBF=Burning Fiercely
+nhu.research.thaumicebf_1=Thanks to your limited knowledge of Thaumcraft, you discover that elemental crystals can fuse corresponding GT Machines together. With a sense of anxious anticipation, you attempt to fuse the industrial blast furnace into a more advanced version. Obviously, you succeeded.
