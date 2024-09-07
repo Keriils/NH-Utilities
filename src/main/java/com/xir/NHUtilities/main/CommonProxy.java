@@ -16,18 +16,28 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
+        NHUtilities.LOG.info("Pre-initializing "+NHUtilities.MOD_NAME+"!");
         ItemsLoader.registerNHUtilitiesItems();
+        NHUtilities.LOG.info("Loaded Items.");
         EventLoader.registerNHUtilitiesEvents();
+        NHUtilities.LOG.info("Loaded Events.");
     }
 
     public void init(FMLInitializationEvent event) {
+        NHUtilities.LOG.info("Initializing "+NHUtilities.MOD_NAME+"!");
         new MachineLoader().run();
+        NHUtilities.LOG.info("Loaded TileEntities.");
         RecipeLoader.registerNHUtilitiesRecipes();
+        NHUtilities.LOG.info("Loaded Recipes.");
         EntityLoader.registerNHUtilitiesEntity();
+        NHUtilities.LOG.info("Loaded Entities.");
     }
 
     public void postInit(FMLPostInitializationEvent event) {
+        NHUtilities.LOG.info("Post-initializing "+NHUtilities.MOD_NAME+"!");
         ResearchLoader.registerNHUtilitiesResearch();
+        NHUtilities.LOG.info("Loaded Researches");
+        NHUtilities.LOG.info(NHUtilities.MOD_NAME+" loading complete!");
     }
 
     public void serverStarting(FMLServerStartingEvent event) {}
