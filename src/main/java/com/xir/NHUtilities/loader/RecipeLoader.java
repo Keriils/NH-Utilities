@@ -87,6 +87,6 @@ public class RecipeLoader {
                     EternalSingularityItem.instance);
             }
         }
-        AllTCRecipes.run();
+        AllTCRecipes.addAllNHUTCRecipes();
     }
 }

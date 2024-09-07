@@ -1,5 +1,7 @@
 package com.xir.NHUtilities.common.recipes.TCRecipes;
 
+import java.util.HashMap;
+
 import net.minecraft.item.ItemStack;
 
 import com.xir.NHUtilities.common.enumPackages.CustomItemList;
@@ -13,16 +15,16 @@ import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.ConfigBlocks;
-import thaumcraft.common.config.ConfigResearch;
 
 public class ArcaneCraftingRecipes {
 
+    public static HashMap<String, Object> ArcaneCraftingRecipes = new HashMap<>();
     private static final AspectList gtcthaumicebf = new AspectList().add(Aspect.FIRE, 25)
         .add(Aspect.ORDER, 25)
         .add(Aspect.ENTROPY, 25);
 
-    public static void add() {
-        ConfigResearch.recipes.put(
+    public static void run() {
+        ArcaneCraftingRecipes.put(
             "gtcthaumicebf",
             ThaumcraftApi.addArcaneCraftingRecipe(
                 ResearchLoader.ThaumicEBF.toUpperCase(),
