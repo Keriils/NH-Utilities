@@ -5,7 +5,6 @@ import net.minecraft.util.ResourceLocation;
 import com.xir.NHUtilities.common.enumPackages.CustomItemList;
 import com.xir.NHUtilities.main.NHUtilities;
 
-import gregtech.api.enums.ItemList;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
@@ -37,7 +36,8 @@ public class ResearchLoader {
                 .setPages(
                     new ResearchPage[] { new ResearchPage(prefixNHUResearchWithDotEnding + ThaumicEBF + "_1"),
                         new ResearchPage((ShapedArcaneRecipe) ConfigResearch.recipes.get("gtcthaumicebf")) })
-                .setItemTriggers(ItemList.Machine_Multi_BlastFurnace.get(1L))
+                .setHidden()
+                .setAspectTriggers(Aspect.MECHANISM)
                 .registerResearchItem();
     }
 }
