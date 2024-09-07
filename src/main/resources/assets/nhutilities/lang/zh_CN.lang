@@ -33,3 +33,10 @@ infohelper.NHUtilities.txt_0=§6====§f[§d按下
 infohelper.NHUtilities.txt_1=§d显示更多信息§f]§6====
 infohelper.NHUtilities.key_ctrl=§bCtrl
 infohelper.NHUtilities.key_shift=§bShift
+
+# research
+tc.research_category.NHUTILITIES=奥术格雷学
+
+tc.research_name.THAUMICEBF=奥术工业高炉
+tc.research_text.THAUMICEBF=熊熊燃烧
+nhu.research.thaumicebf_1=得益于你浅薄的奇术知识，你发现一些要素的魔晶能将对应的格雷机器融合在一起.你怀着忐忑不安的心情尝试将工业高炉融合为一个更高级的高炉.显然，你成功了.

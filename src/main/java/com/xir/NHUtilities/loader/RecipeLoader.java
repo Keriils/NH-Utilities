@@ -9,6 +9,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import com.xir.NHUtilities.common.items.ModsItemsList;
+import com.xir.NHUtilities.common.recipes.TCRecipes.AllTCRecipes;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -86,6 +87,6 @@ public class RecipeLoader {
                     EternalSingularityItem.instance);
             }
         }
-
+        AllTCRecipes.addAllNHUTCRecipes();
     }
 }

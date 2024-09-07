@@ -25,6 +25,8 @@ public class NHUtilities {
     public static final String MOD_NAME = "NH Utilities";
     public static final Logger LOG = LogManager.getLogger(MODID);
     public static final boolean BAUBLES_MOD_IS_LOADED = Loader.isModLoaded("Baubles");
+    public static final String MODIDUPPER = "NHUTILITIES";
+    public static final String MODIDLOWER = "nhutilities";
 
     @Mod.Instance(NHUtilities.MODID)
     public static NHUtilities instance;
