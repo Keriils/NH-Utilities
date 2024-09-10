@@ -40,3 +40,22 @@ tc.research_category.NHUTILITIES=GregThaumcality
 tc.research_name.THAUMICEBF=Thaumic Electric Blast Furnace
 tc.research_text.THAUMICEBF=Burning Fiercely
 nhu.research.thaumicebf_1=Thanks to your limited knowledge of Thaumcraft, you discover that elemental crystals can fuse corresponding GT Machines together. With a sense of anxious anticipation, you attempt to fuse the industrial blast furnace into a more advanced version. Obviously, you succeeded.
+
+# Tooltips for TCEBF
+nhu.tcebf.machine=Thaumic Electric Blast Furnace
+nhu.tcebf.machine.type=Blast Furnace
+nhu.tcebf.machine.info_1=Controller block for the Thaumic Electric Blast Furnace
+nhu.tcebf.machine.info_2=Provide up to 4 parallels || 95%EU required || +25% speed up
+nhu.tcebf.machine.build.helper_1=Front bottom
+nhu.tcebf.machine.build.helper_2=Heat Proof Machine Casing
+nhu.tcebf.machine.build.helper_3.1=Heating Coils
+nhu.tcebf.machine.build.helper_3.2=Two middle Layers
+nhu.tcebf.machine.build.helper_4=Any bottom layer casing
+nhu.tcebf.machine.build.helper_5=Any bottom layer casing
+nhu.tcebf.machine.build.helper_6=Top middle
+nhu.tcebf.machine.build.helper_7=Any bottom layer casing
+nhu.tcebf.machine.build.helper_8=Any bottom layer casing
+nhu.tcebf.machine.build.helper_9=Any bottom layer casing
+nhu.tcebf.machine.build.helper_10=Fluid outputs, Any bottom layer casing
+nhu.tcebf.machine.build.helper_11=Pollution gases (CO2/CO/SO2), Any top layer casing
+nhu.tcebf.machine.build.helper_12=Pollution gas output amount scales with Muffler Hatch tier

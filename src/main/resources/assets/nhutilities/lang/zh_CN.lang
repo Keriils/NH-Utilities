@@ -40,3 +40,22 @@ tc.research_category.NHUTILITIES=奥术格雷学
 tc.research_name.THAUMICEBF=奥术工业高炉
 tc.research_text.THAUMICEBF=熊熊燃烧
 nhu.research.thaumicebf_1=得益于你浅薄的奇术知识，你发现一些要素的魔晶能将对应的格雷机器融合在一起.你怀着忐忑不安的心情尝试将工业高炉融合为一个更高级的高炉.显然，你成功了.
+
+# Tooltips for TCEBF
+nhu.tcebf.machine=奥术工业高炉
+nhu.tcebf.machine.type=工业高炉
+nhu.tcebf.machine.info_1=奥术工业高炉的控制器方块
+nhu.tcebf.machine.info_2=提供最高4并行 || 5%EU 减免 || 加速25%
+nhu.tcebf.machine.build.helper_1=正面底中
+nhu.tcebf.machine.build.helper_2=隔热机械方块
+nhu.tcebf.machine.build.helper_3.1=加热线圈
+nhu.tcebf.machine.build.helper_3.2=中间两层
+nhu.tcebf.machine.build.helper_4=任意底层机械方块
+nhu.tcebf.machine.build.helper_5=任意底层机械方块
+nhu.tcebf.machine.build.helper_6=顶层中央
+nhu.tcebf.machine.build.helper_7=任意底层机械方块
+nhu.tcebf.machine.build.helper_8=任意底层机械方块
+nhu.tcebf.machine.build.helper_9=任意底层机械方块
+nhu.tcebf.machine.build.helper_10=液态流体，任意底层机械方块
+nhu.tcebf.machine.build.helper_11=气态流体，任意顶层机械方块
+nhu.tcebf.machine.build.helper_12=污染气体输出取决于消声仓等级

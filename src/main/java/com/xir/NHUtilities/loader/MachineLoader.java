@@ -1,5 +1,7 @@
 package com.xir.NHUtilities.loader;
 
+import net.minecraft.util.StatCollector;
+
 import com.xir.NHUtilities.common.enumPackages.CustomItemList;
 import com.xir.NHUtilities.common.enumPackages.MetaTileEntityID;
 import com.xir.NHUtilities.common.tileEntity.GT_TileEntity_TCElectricBlastFurnace;
@@ -12,6 +14,6 @@ public class MachineLoader implements Runnable {
             new GT_TileEntity_TCElectricBlastFurnace(
                 MetaTileEntityID.TCEBF_CONTROLLER.ID,
                 "multimachine.tcblastfurnace",
-                "Thaumic Electric Blast Furnace").getStackForm(1L));
+                StatCollector.translateToLocal("nhu.tcebf.machine")).getStackForm(1L));
     }
 }

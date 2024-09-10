@@ -147,29 +147,26 @@ public class GT_TileEntity_TCElectricBlastFurnace extends
     @Override
     protected GT_Multiblock_Tooltip_Builder createTooltip() {
         GT_Multiblock_Tooltip_Builder tt = new GT_Multiblock_Tooltip_Builder();
-        tt.addMachineType("Blast Furnace")
-            .addInfo("Controller block for the Thaumic Electric Blast Furnace")
-            .addInfo("You can use some fluids to reduce recipe time. Place the circuit in the Input Bus")
-            .addInfo("Each 900K over the min. Heat required reduces power consumption by 5% (multiplicatively)")
-            .addInfo("Each 1800K over the min. Heat allows for an overclock to be upgraded to a perfect overclock.")
-            .addInfo("That means the EBF will reduce recipe time by a factor 4 instead of 2 (giving 100% efficiency).")
-            .addInfo("Additionally gives +100K for every tier past MV")
-            .addInfo("Provide up to 4 parallels || 95%EU required || +25% speed up")
+        tt.addMachineType(StatCollector.translateToLocal("nhu.tcebf.machine.type"))
+            .addInfo(StatCollector.translateToLocal("nhu.tcebf.machine.info_1"))
+            .addInfo(StatCollector.translateToLocal("nhu.tcebf.machine.info_2"))
             .addPollutionAmount(getPollutionPerSecond(null))
             .addSeparator()
             .beginStructureBlock(3, 4, 3, true)
-            .addController("Front bottom")
-            .addCasingInfoRange("Heat Proof Machine Casing", 0, 15, false)
-            .addOtherStructurePart("Heating Coils", "Two middle Layers")
-            .addEnergyHatch("Any bottom layer casing", 3)
-            .addMaintenanceHatch("Any bottom layer casing", 3)
-            .addMufflerHatch("Top middle", 2)
-            .addInputBus("Any bottom layer casing", 3)
-            .addInputHatch("Any bottom layer casing", 3)
-            .addOutputBus("Any bottom layer casing", 3)
-            .addOutputHatch("Fluid outputs, Any bottom layer casing")
-            .addOutputHatch("Pollution gases (CO2/CO/SO2), Any top layer casing", 1)
-            .addStructureInfo("Pollution gas output amount scales with Muffler Hatch tier")
+            .addController(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_1"))
+            .addCasingInfoRange(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_2"), 0, 15, false)
+            .addOtherStructurePart(
+                StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_3.1"),
+                StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_3.2"))
+            .addEnergyHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_4"), 3)
+            .addMaintenanceHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_5"), 3)
+            .addMufflerHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_6"), 2)
+            .addInputBus(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_7"), 3)
+            .addInputHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_8"), 3)
+            .addOutputBus(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_9"), 3)
+            .addOutputHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_10"))
+            .addOutputHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_11"), 1)
+            .addStructureInfo(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_12"))
             .toolTipFinisher(NHUtilities.MOD_NAME);
         return tt;
     }
