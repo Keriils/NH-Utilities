@@ -11,5 +11,4 @@ public class EntityLoader {
         EntityRegistry
             .registerModEntity(EntityTimeAccelerator.class, "Accelerator", 0, NHUtilities.instance, 64, 10, false);
     }
-
 }
