@@ -231,9 +231,9 @@ public class GT_TileEntity_TCElectricBlastFurnace extends
                 return recipe.mSpecialValue <= mHeatingCapacity ? CheckRecipeResultRegistry.SUCCESSFUL
                     : CheckRecipeResultRegistry.insufficientHeat(recipe.mSpecialValue);
             }
-        }.setSpeedBonus(0.8F)
-            .setEuModifier(0.95F)
-            .setMaxParallel(maxParallel);// 注意后面加config
+        }.setSpeedBonus(0.50F)
+            .setEuModifier(0.80F)
+            .setMaxParallel(maxParallel);
     }
 
     @Override
