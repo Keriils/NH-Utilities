@@ -24,4 +24,8 @@ public class ItemsLoader {
 
     }
 
+    public static void registerNHUtilitiesFuelRod() {
+
+    }
+
 }

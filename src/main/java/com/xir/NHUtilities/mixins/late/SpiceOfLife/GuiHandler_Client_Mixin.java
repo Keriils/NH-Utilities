@@ -6,8 +6,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import com.xir.NHUtilities.common.items.LunchBoxPlus.GuiFoodContainerPlus;
-import com.xir.NHUtilities.common.items.LunchBoxPlus.LunchBoxPlus;
+import com.xir.NHUtilities.common.items.lunchBoxPlus.GuiFoodContainerPlus;
+import com.xir.NHUtilities.common.items.lunchBoxPlus.LunchBoxPlus;
 
 import squeek.spiceoflife.gui.GuiFoodContainer;
 import squeek.spiceoflife.helpers.GuiHelper;

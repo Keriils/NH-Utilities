@@ -1,4 +1,4 @@
-package com.xir.NHUtilities.common.items.LunchBoxPlus;
+package com.xir.NHUtilities.common.items.lunchBoxPlus;
 
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
