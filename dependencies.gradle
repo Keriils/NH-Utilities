@@ -1,3 +1,34 @@
+dependencies {
+    api("com.github.GTNewHorizons:GT5-Unofficial:5.09.48.66:dev")
+
+    implementation("com.github.GTNewHorizons:EnderIO:2.8.9:dev")
+    implementation("com.github.GTNewHorizons:ae2stuff:0.8.2-GTNH:dev")
+
+    // bauble things & extended things
+    implementation("com.github.GTNewHorizons:Baubles:1.0.4:dev")
+    implementation("com.github.GTNewHorizons:Draconic-Evolution:1.3.5-GTNH:dev")
+    implementation("com.github.GTNewHorizons:Botania:1.11.3-GTNH:dev")
+
+    // Avaritia things
+    implementation("com.github.GTNewHorizons:Avaritia:1.49:dev")
+    implementation("com.github.GTNewHorizons:Avaritiaddons:1.7.1-GTNH:dev")
+    implementation("com.github.GTNewHorizons:Eternal-Singularity:1.2.1:dev")
+    implementation("com.github.GTNewHorizons:Universal-Singularities:8.7.0:dev")
+
+    // worldedit modified
+    implementation("com.github.GTNewHorizons:worldedit-gtnh:v0.0.7:dev")
+
+    // lunch box plus
+    implementation("com.github.GTNewHorizons:SpiceOfLife:2.1.12-carrot:dev")
+
+    // debug info & nbtEdit
+    runtimeOnly("com.github.GTNewHorizons:ServerUtilities:2.0.66:dev")
+    runtimeOnly files("libs/ForgeNBTEdit.jar")
+}
+
+
+
+
 /*
  * Add your dependencies here. Supported configurations:
  *  - api("group:name:version:classifier"): if you use the types from this dependency in the public API of this mod
@@ -33,19 +64,3 @@
  *
  * For more details, see https://docs.gradle.org/8.0.1/userguide/java_library_plugin.html#sec:java_library_configurations_graph
  */
-dependencies {
-    api("com.github.GTNewHorizons:GT5-Unofficial:5.09.48.66:dev")
-    implementation("com.github.GTNewHorizons:Baubles:1.0.4:dev")
-    implementation("com.github.GTNewHorizons:Draconic-Evolution:1.3.5-GTNH:dev")
-    implementation("com.github.GTNewHorizons:EnderIO:2.8.9:dev")
-    implementation("com.github.GTNewHorizons:Botania:1.11.3-GTNH:dev")
-    implementation("com.github.GTNewHorizons:Avaritia:1.49:dev")
-    implementation("com.github.GTNewHorizons:Avaritiaddons:1.7.1-GTNH:dev")
-    implementation("com.github.GTNewHorizons:Eternal-Singularity:1.2.1:dev")
-    implementation("com.github.GTNewHorizons:Universal-Singularities:8.7.0:dev")
-    implementation("com.github.GTNewHorizons:ae2stuff:0.8.2-GTNH:dev")
-    implementation("com.github.GTNewHorizons:worldedit-gtnh:v0.0.7:dev")
-
-    runtimeOnly("com.github.GTNewHorizons:ServerUtilities:2.0.66:dev") // debug info & nbtEdit
-    runtimeOnly files("libs/ForgeNBTEdit.jar")
-}

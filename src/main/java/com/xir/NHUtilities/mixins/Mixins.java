@@ -3,6 +3,7 @@ package com.xir.NHUtilities.mixins;
 import static com.xir.NHUtilities.config.Config.enableAccelerateEnderIoMachine;
 import static com.xir.NHUtilities.config.Config.enableAccelerateGregTechMachine;
 import static com.xir.NHUtilities.config.Config.enableEnhancedTeleporterMKII;
+import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
 import static com.xir.NHUtilities.config.Config.enableModifyEnderIoCapBankIO;
 import static com.xir.NHUtilities.config.Config.enableWEToolWithExuHealingAxe;
 
@@ -35,8 +36,8 @@ public enum Mixins {
         "EnderIO.AccelerateTileEntity_Mixin", TargetMod.EnderIO),
     EnderIO_AccelerateEnergyRecive_Mixin(Category.ToAccelerateEnderIoMachine, Side.BOTH, Phase.LATE,
         "EnderIO.AccelerateEnergyRecive_Mixin", TargetMod.EnderIO),
-
-    ;
+    SpiceOfLife_LunchBoxGuiHandler(Category.LunchBoxPlus, Side.BOTH, Phase.LATE, "SpiceOfLife.GuiHandler_Mixin",
+        TargetMod.SpiceOfLife),;
 
     private enum Category {
 
@@ -45,6 +46,7 @@ public enum Mixins {
         ModifyCapBankMaxIO(enableModifyEnderIoCapBankIO),
         WEToolWithExuHealingAxe(enableWEToolWithExuHealingAxe),
         ToAccelerateEnderIoMachine(enableAccelerateEnderIoMachine),
+        LunchBoxPlus(enableLunchBoxPlus),
 
         ;
 

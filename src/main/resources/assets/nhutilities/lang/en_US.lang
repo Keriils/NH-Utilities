@@ -5,6 +5,7 @@ item.NHUtilities:GluttonyRing.name=GluttonyRing
 item.NHUtilities:HungerRing.name=HungerRing
 item.NHUtilities:TimeVial.name=TimeVial
 item.NHUtilities:EternityVial.name=EternityVial
+item.NHUtilities:LunchBoxPlus.name=Lunch Box Plus
 
 # tooltips for time vial
 text.NHUtilities.TimeVial.tips=§ftime: §6%d hours §d%d minutes §a%d seconds 
