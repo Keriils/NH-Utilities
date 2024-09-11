@@ -14,6 +14,9 @@ import org.lwjgl.opengl.GL11;
 
 import com.xir.NHUtilities.common.entity.EntityTimeAccelerator;
 
+/**
+ * this work for timeVial render
+ */
 public class RenderTimeAccelerator extends Render {
 
     private static final ResourceLocation[] TEXTURE_ARRAY = new ResourceLocation[6];

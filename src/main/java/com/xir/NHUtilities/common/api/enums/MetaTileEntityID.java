@@ -1,4 +1,4 @@
-package com.xir.NHUtilities.common.enumPackages;
+package com.xir.NHUtilities.common.api.enums;
 
 public enum MetaTileEntityID {
 
@@ -6,7 +6,7 @@ public enum MetaTileEntityID {
 
     public final int ID;
 
-    private MetaTileEntityID(int ID) {
+    MetaTileEntityID(int ID) {
         this.ID = ID;
     }
 }

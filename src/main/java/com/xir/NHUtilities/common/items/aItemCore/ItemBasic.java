@@ -11,8 +11,13 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemBasic extends Item {
 
-    private static final String MODID = "item.NHUtilities:";
-    private String unlocalizedName;
+    private static final String ITEM_LANG_KEY_STRING = "item.NHUtilities:";
+    private String name;
+
+    public ItemBasic(String name) {
+        this.name = name;
+        this.setTextureName(name);
+    }
 
     @Override
     public Item setTextureName(String TextureName) {
@@ -23,24 +28,27 @@ public class ItemBasic extends Item {
     @Override
     @SideOnly(Side.CLIENT)
     protected String getIconString() {
-        return this.iconString == null
-            ? "MISSING_ICON_ITEM_" + itemRegistry.getIDForObject(this) + "_" + this.unlocalizedName
+        return this.iconString == null ? "MISSING_ICON_ITEM_" + itemRegistry.getIDForObject(this) + "_" + this.name
             : this.iconString;
     }
 
     @Override
     public Item setUnlocalizedName(String unlocalizedName) {
-        this.unlocalizedName = unlocalizedName;
+        this.name = unlocalizedName;
         return this;
     }
 
     @Override
     public String getUnlocalizedName() {
-        return MODID + this.unlocalizedName;
+        return ITEM_LANG_KEY_STRING + this.name;
     }
 
     @Override
     public String getUnlocalizedName(ItemStack stack) {
         return getUnlocalizedName();
+    }
+
+    public String getItemName() {
+        return this.name;
     }
 }

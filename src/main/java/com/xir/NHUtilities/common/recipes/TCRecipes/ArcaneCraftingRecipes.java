@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import net.minecraft.item.ItemStack;
 
-import com.xir.NHUtilities.common.enumPackages.CustomItemList;
+import com.xir.NHUtilities.common.api.enums.CustomItemList;
 import com.xir.NHUtilities.loader.ResearchLoader;
 
 import gregtech.api.enums.ItemList;

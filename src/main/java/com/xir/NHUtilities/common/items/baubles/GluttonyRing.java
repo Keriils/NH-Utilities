@@ -13,10 +13,8 @@ import cpw.mods.fml.common.Optional;
 public class GluttonyRing extends ItemBasic implements IBauble {
 
     public GluttonyRing() {
+        super("GluttonyRing");
         setMaxStackSize(1);
-        setUnlocalizedName("GluttonyRing");
-        setTextureName("GluttonyRing");
-
     }
 
     @Override

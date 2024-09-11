@@ -1,4 +1,4 @@
-package com.xir.NHUtilities.common.enumPackages;
+package com.xir.NHUtilities.common.api.enums;
 
 import static gregtech.api.enums.GT_Values.NI;
 import static gregtech.api.enums.GT_Values.W;
@@ -16,6 +16,7 @@ import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
 
+@SuppressWarnings("deprecation")
 public enum CustomItemList implements IItemContainer {
 
     Machine_Multi_TCBlastFurnace;
