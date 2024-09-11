@@ -1,6 +1,7 @@
 package com.xir.NHUtilities.loader;
 
 import static com.xir.NHUtilities.config.Config.enableGluttonyRingAndHungerRing;
+import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
 import static com.xir.NHUtilities.config.Config.enableTimeVial;
 
 import com.xir.NHUtilities.common.items.ModsItemsList;
@@ -20,5 +21,9 @@ public class ItemsLoader {
         if (enableTimeVial) {
             GameRegistry.registerItem(ModsItemsList.eternityVial, "EternityVial");
         }
+        if (enableLunchBoxPlus) {
+            GameRegistry.registerItem(ModsItemsList.lunchBoxPlus, "LunchBoxPlus");
+        }
+
     }
 }

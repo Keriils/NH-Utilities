@@ -40,8 +40,9 @@ public class Config {
     // region register mixins category key region
     public static boolean enableEnhancedTeleporterMKII = true;
     public static boolean enableModifyEnderIoCapBankIO = true;
-    public static boolean enableWEToolWithExuHealingAxe = true;
+    public static boolean enableWEToolWithExuHealingAxe = false;
     public static boolean enableAccelerateEnderIoMachine = true;
+    public static boolean enableLunchBoxPlus = true;
     public static String[] listeningMods = new String[] { "NHUtilities", "TwistSpaceTechnology", "boxplusplus",
         "programmablehatches" };
     // endregion
@@ -163,6 +164,8 @@ public class Config {
                 CATEGORY_MIXIN_CONFIG,
                 enableAccelerateEnderIoMachine,
                 "enable Accelerate EnderIO Machine");
+            enableLunchBoxPlus = configuration
+                .getBoolean("enableLunchBoxPlus", CATEGORY_MIXIN_CONFIG, enableLunchBoxPlus, "enable Lunch Box Plus");
 
         }
 

@@ -8,7 +8,8 @@ public enum TargetMod {
     GregTech("GregTech", "gregtech"),
     EnderIO("Ender IO", "EnderIO"),
     WorldEdit("WorldEdit", "worldedit"),
-    ExtraUtilities("Extra Utilities", "ExtraUtilities"),;
+    ExtraUtilities("Extra Utilities", "ExtraUtilities"),
+    SpiceOfLife("SpiceOfLife", "SpiceOfLife"),;
 
     public final String modName;
     public final String modId;

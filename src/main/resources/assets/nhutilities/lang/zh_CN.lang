@@ -5,6 +5,7 @@ item.NHUtilities:GluttonyRing.name=暴食指环
 item.NHUtilities:HungerRing.name=饥饿指环
 item.NHUtilities:TimeVial.name=时间之瓶
 item.NHUtilities:EternityVial.name=永恒之瓶
+item.NHUtilities:LunchBoxPlus.name=超级午餐盒
 
 # tooltips for time vial
 text.NHUtilities.TimeVial.tips=§f时间: §6%d 小时 §d%d 分钟 §a%d 秒  
