@@ -36,10 +36,10 @@ public enum Mixins {
         "EnderIO.AccelerateTileEntity_Mixin", TargetMod.EnderIO),
     EnderIO_AccelerateEnergyRecive_Mixin(Category.ToAccelerateEnderIoMachine, Side.BOTH, Phase.LATE,
         "EnderIO.AccelerateEnergyRecive_Mixin", TargetMod.EnderIO),
-    SpiceOfLife_LunchBoxGuiHandlerServer(Category.LunchBoxPlus, Side.SERVER, Phase.LATE, "SpiceOfLife.GuiHandler_Server_Mixin",
-        TargetMod.SpiceOfLife),
-    SpiceOfLife_LunchBoxGuiHandlerClient(Category.LunchBoxPlus, Side.CLIENT, Phase.LATE, "SpiceOfLife.GuiHandler_Client_Mixin",
-        TargetMod.SpiceOfLife),
+    SpiceOfLife_LunchBoxGuiHandlerServer(Category.LunchBoxPlus, Side.SERVER, Phase.LATE,
+        "SpiceOfLife.GuiHandler_Server_Mixin", TargetMod.SpiceOfLife),
+    SpiceOfLife_LunchBoxGuiHandlerClient(Category.LunchBoxPlus, Side.CLIENT, Phase.LATE,
+        "SpiceOfLife.GuiHandler_Client_Mixin", TargetMod.SpiceOfLife),
 
     ;
 
