@@ -15,6 +15,4 @@ public class ModsItemsList {
     public static final ItemBasic timeVial = new TimeVial();
     public static final TimeVial eternityVial = new EternityVial();
     public static final LunchBoxPlus lunchBoxPlus = new LunchBoxPlus();
-
-    // For Fuel Rod
 }

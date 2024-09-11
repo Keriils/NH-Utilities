@@ -8,9 +8,9 @@ import ic2.api.item.IBoxable;
 import ic2.api.reactor.IReactor;
 import ic2.api.reactor.IReactorComponent;
 
-public class ItemDepletedFuelRod extends RadioactiveItem implements IReactorComponent, IBoxable {
+public class DepletedFuelRod extends RadioactiveItem implements IReactorComponent, IBoxable {
 
-    public ItemDepletedFuelRod(String name, int mRadio) {
+    public DepletedFuelRod(String name, int mRadio) {
         super(name, mRadio);
     }
 
