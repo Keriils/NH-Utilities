@@ -11,18 +11,19 @@ item.NHUtilities:EternityVial.name=永恒之瓶
 item.NHUtilities:LunchBoxPlus.name=超级午餐盒
 
 # tc fuel rod project
-item.NHUtilities:fuelRodRadianceUranium.name=燃料棒(激发态铀基闪耀之辉燃料棒)
-item.NHUtilities:fuelRodRadianceUranium_2.name=二联燃料棒(激发态铀基闪耀之辉燃料棒)
-item.NHUtilities:fuelRodRadianceUranium_4.name=四联燃料棒(激发态铀基闪耀之辉燃料棒)
-item.NHUtilities:depletedFuelRodRadianceUranium.name=枯竭燃料棒(激发态铀基闪耀之辉燃料棒)
-item.NHUtilities:depletedFuelRodRadianceUranium_2.name=枯竭二联燃料棒(激发态铀基闪耀之辉燃料棒)
-item.NHUtilities:depletedFuelRodRadianceUranium_4.name=枯竭四联燃料棒(激发态铀基闪耀之辉燃料棒)
-item.NHUtilities:fuelRodPrimordialPearlPlutonium.name=燃料棒(超激发态钚基原始珍珠燃料棒)
-item.NHUtilities:fuelRodPrimordialPearlPlutonium_2.name=二联燃料棒(超激发态钚基原始珍珠燃料棒)
-item.NHUtilities:fuelRodPrimordialPearlPlutonium_4.name=四联燃料棒(超激发态钚基原始珍珠燃料棒)
-item.NHUtilities:depletedFuelRodPrimordialPearlPlutonium.name=枯竭燃料棒(超激发态钚基原始珍珠燃料棒)
-item.NHUtilities:depletedFuelRodPrimordialPearlPlutonium_2.name=二联枯竭燃料棒(超激发态钚基原始珍珠燃料棒)
-item.NHUtilities:depletedFuelRodPrimordialPearlPlutonium_4.name=四联枯竭燃料棒(超激发态钚基原始珍珠燃料棒)
+text.NHUtilities.fuelRod.tooltip.0=耐久:%s/%s
+item.NHUtilities:fuelRodExcitedRadianceUranium.name=燃料棒(激发态铀基闪耀之辉燃料棒)
+item.NHUtilities:fuelRodExcitedRadianceUranium_2.name=二联燃料棒(激发态铀基闪耀之辉燃料棒)
+item.NHUtilities:fuelRodExcitedRadianceUranium_4.name=四联燃料棒(激发态铀基闪耀之辉燃料棒)
+item.NHUtilities:depletedFuelRodExcitedRadianceUranium.name=枯竭燃料棒(激发态铀基闪耀之辉燃料棒)
+item.NHUtilities:depletedFuelRodExcitedRadianceUranium_2.name=枯竭二联燃料棒(激发态铀基闪耀之辉燃料棒)
+item.NHUtilities:depletedFuelRodExcitedRadianceUranium_4.name=枯竭四联燃料棒(激发态铀基闪耀之辉燃料棒)
+item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium.name=燃料棒(超激发态钚基原始珍珠燃料棒)
+item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium_2.name=二联燃料棒(超激发态钚基原始珍珠燃料棒)
+item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium_4.name=四联燃料棒(超激发态钚基原始珍珠燃料棒)
+item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium.name=枯竭燃料棒(超激发态钚基原始珍珠燃料棒)
+item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2.name=二联枯竭燃料棒(超激发态钚基原始珍珠燃料棒)
+item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4.name=四联枯竭燃料棒(超激发态钚基原始珍珠燃料棒)
 
 # tooltips for time vial
 text.NHUtilities.TimeVial.tips=§f时间: §6%d 小时 §d%d 分钟 §a%d 秒  

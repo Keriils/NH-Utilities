@@ -1,14 +1,19 @@
 package com.xir.NHUtilities.common.items.itemFuelRod;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.StatCollector;
 
 import org.jetbrains.annotations.NotNull;
 
 import com.xir.NHUtilities.common.items.aItemCore.RadioactiveItem;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import gregtech.api.util.GT_Utility;
 import ic2.api.item.IBoxable;
 import ic2.api.reactor.IReactor;
@@ -33,7 +38,7 @@ public class FuelRod extends RadioactiveItem implements IReactorComponent, IBoxa
         super(aName, aRads);
         this.setMaxStackSize(64);
         this.numberOfCells = aCells;
-        this.Power = (float) aEUt;
+        this.Power = aEUt / 25.0F;
         this.Duration = aDuration;
         this.Heat = aHeat;
         this.HeatBonus = aHeatBonus;
@@ -186,6 +191,16 @@ public class FuelRod extends RadioactiveItem implements IReactorComponent, IBoxa
     @Override
     public float influenceExplosion(IReactor iReactor, ItemStack itemStack) {
         return this.numberOfCells * (HeatBonus + 2.7F);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean extraInformation) {
+        list.add(
+            String.format(
+                StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.0"),
+                getMaxCustomDamage(stack) - getCustomDamage(stack),
+                getMaxCustomDamage(stack)));
     }
     // endregion
 

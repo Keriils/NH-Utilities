@@ -1,17 +1,18 @@
 package com.xir.NHUtilities.loader;
 
-import static com.xir.NHUtilities.common.items.FuelFod.depletedFuelRodPrimordialPearlPlutonium;
-import static com.xir.NHUtilities.common.items.FuelFod.depletedFuelRodPrimordialPearlPlutonium_2;
-import static com.xir.NHUtilities.common.items.FuelFod.depletedFuelRodPrimordialPearlPlutonium_4;
-import static com.xir.NHUtilities.common.items.FuelFod.depletedFuelRodRadianceUranium;
-import static com.xir.NHUtilities.common.items.FuelFod.depletedFuelRodRadianceUranium_2;
-import static com.xir.NHUtilities.common.items.FuelFod.depletedFuelRodRadianceUranium_4;
-import static com.xir.NHUtilities.common.items.FuelFod.fuelRodPrimordialPearlPlutonium;
-import static com.xir.NHUtilities.common.items.FuelFod.fuelRodPrimordialPearlPlutonium_2;
-import static com.xir.NHUtilities.common.items.FuelFod.fuelRodPrimordialPearlPlutonium_4;
-import static com.xir.NHUtilities.common.items.FuelFod.fuelRodRadianceUranium;
-import static com.xir.NHUtilities.common.items.FuelFod.fuelRodRadianceUranium_2;
-import static com.xir.NHUtilities.common.items.FuelFod.fuelRodRadianceUranium_4;
+import static com.xir.NHUtilities.common.items.FuelFod.depletedFuelRodExcitedRadianceUranium;
+import static com.xir.NHUtilities.common.items.FuelFod.depletedFuelRodExcitedRadianceUranium_2;
+import static com.xir.NHUtilities.common.items.FuelFod.depletedFuelRodExcitedRadianceUranium_4;
+import static com.xir.NHUtilities.common.items.FuelFod.depletedFuelRodSuperExcitedPrimordialPearlPlutonium;
+import static com.xir.NHUtilities.common.items.FuelFod.depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2;
+import static com.xir.NHUtilities.common.items.FuelFod.depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4;
+import static com.xir.NHUtilities.common.items.FuelFod.fuelRodExcitedRadianceUranium;
+import static com.xir.NHUtilities.common.items.FuelFod.fuelRodExcitedRadianceUranium_2;
+import static com.xir.NHUtilities.common.items.FuelFod.fuelRodExcitedRadianceUranium_4;
+import static com.xir.NHUtilities.common.items.FuelFod.fuelRodInit;
+import static com.xir.NHUtilities.common.items.FuelFod.fuelRodSuperExcitedPrimordialPearlPlutonium;
+import static com.xir.NHUtilities.common.items.FuelFod.fuelRodSuperExcitedPrimordialPearlPlutonium_2;
+import static com.xir.NHUtilities.common.items.FuelFod.fuelRodSuperExcitedPrimordialPearlPlutonium_4;
 import static com.xir.NHUtilities.common.items.ModsItemsList.eternityVial;
 import static com.xir.NHUtilities.common.items.ModsItemsList.gluttonyRing;
 import static com.xir.NHUtilities.common.items.ModsItemsList.hungerRing;
@@ -38,21 +39,23 @@ public class ItemsLoader {
 
     public static void registerNHUtilitiesFuelRod() {
 
-        RegisterUtils.registerItem(depletedFuelRodRadianceUranium);
-        RegisterUtils.registerItem(depletedFuelRodRadianceUranium_2);
-        RegisterUtils.registerItem(depletedFuelRodRadianceUranium_4);
+        fuelRodInit();
 
-        RegisterUtils.registerItem(depletedFuelRodPrimordialPearlPlutonium);
-        RegisterUtils.registerItem(depletedFuelRodPrimordialPearlPlutonium_2);
-        RegisterUtils.registerItem(depletedFuelRodPrimordialPearlPlutonium_4);
+        RegisterUtils.registerItem(depletedFuelRodExcitedRadianceUranium);
+        RegisterUtils.registerItem(depletedFuelRodExcitedRadianceUranium_2);
+        RegisterUtils.registerItem(depletedFuelRodExcitedRadianceUranium_4);
 
-        RegisterUtils.registerItem(fuelRodRadianceUranium);
-        RegisterUtils.registerItem(fuelRodRadianceUranium_2);
-        RegisterUtils.registerItem(fuelRodRadianceUranium_4);
+        RegisterUtils.registerItem(depletedFuelRodSuperExcitedPrimordialPearlPlutonium);
+        RegisterUtils.registerItem(depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2);
+        RegisterUtils.registerItem(depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4);
 
-        RegisterUtils.registerItem(fuelRodPrimordialPearlPlutonium);
-        RegisterUtils.registerItem(fuelRodPrimordialPearlPlutonium_2);
-        RegisterUtils.registerItem(fuelRodPrimordialPearlPlutonium_4);
+        RegisterUtils.registerItem(fuelRodExcitedRadianceUranium);
+        RegisterUtils.registerItem(fuelRodExcitedRadianceUranium_2);
+        RegisterUtils.registerItem(fuelRodExcitedRadianceUranium_4);
+
+        RegisterUtils.registerItem(fuelRodSuperExcitedPrimordialPearlPlutonium);
+        RegisterUtils.registerItem(fuelRodSuperExcitedPrimordialPearlPlutonium_2);
+        RegisterUtils.registerItem(fuelRodSuperExcitedPrimordialPearlPlutonium_4);
     }
 
 }
