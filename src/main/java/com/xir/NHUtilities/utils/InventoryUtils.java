@@ -1,6 +1,6 @@
 package com.xir.NHUtilities.utils;
 
-import static com.xir.NHUtilities.main.NHUtilities.BAUBLES_MOD_IS_LOADED;
+import static com.xir.NHUtilities.main.ReferencedInfo.BAUBLES_MOD_IS_LOADED;
 
 import java.util.Optional;
 

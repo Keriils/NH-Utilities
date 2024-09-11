@@ -2,6 +2,7 @@ package com.xir.NHUtilities.main;
 
 import static com.xir.NHUtilities.config.Config.enableEnhancedTeleporterMKII;
 import static com.xir.NHUtilities.config.Config.enableEternityVialCosmicRender;
+import static com.xir.NHUtilities.config.Config.enableTimeVial;
 
 import net.minecraftforge.client.MinecraftForgeClient;
 
@@ -19,17 +20,24 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void init(FMLInitializationEvent event) {
+
         super.init(event);
-        RenderLoader.registerNHUtilitiesEntityRendering();
+
         if (enableEnhancedTeleporterMKII) {
             FMLCommonHandler.instance()
                 .bus()
                 .register(new KeyInputHandler());
             KeyBindings.init();
         }
+
         if (enableEternityVialCosmicRender) {
             CosmicItemRenderer cosmic = new CosmicItemRenderer();
             MinecraftForgeClient.registerItemRenderer(ModsItemsList.eternityVial, cosmic);
         }
+
+        if (enableTimeVial) {
+            RenderLoader.registerNHUtilitiesEntityRendering();
+        }
+
     }
 }

@@ -42,9 +42,8 @@ public class TimeVial extends ItemBasic {
     protected final double tHalfSize = 0.01D; // 实体一半的大小
 
     public TimeVial() {
+        super("TimeVial");
         setMaxStackSize(1);
-        setUnlocalizedName("TimeVial");
-        setTextureName("TimeVial");
     }
 
     @Override

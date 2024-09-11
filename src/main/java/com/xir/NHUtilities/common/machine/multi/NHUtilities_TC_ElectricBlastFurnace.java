@@ -1,6 +1,7 @@
-package com.xir.NHUtilities.common.tileEntity;
+package com.xir.NHUtilities.common.machine.multi;
 
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.transpose;
+import static com.xir.NHUtilities.main.ReferencedInfo.MOD_NAME;
 import static gregtech.api.enums.GT_HatchElement.Energy;
 import static gregtech.api.enums.GT_HatchElement.InputBus;
 import static gregtech.api.enums.GT_HatchElement.InputHatch;
@@ -37,7 +38,6 @@ import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructa
 import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
 import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
-import com.xir.NHUtilities.main.NHUtilities;
 
 import gregtech.GT_Mod;
 import gregtech.api.GregTech_API;
@@ -63,8 +63,8 @@ import gregtech.api.util.GT_Recipe;
 import gregtech.api.util.GT_Utility;
 import gregtech.common.tileentities.machines.multi.GT_MetaTileEntity_AbstractMultiFurnace;
 
-public class GT_TileEntity_TCElectricBlastFurnace extends
-    GT_MetaTileEntity_AbstractMultiFurnace<GT_TileEntity_TCElectricBlastFurnace> implements ISurvivalConstructable {
+public class NHUtilities_TC_ElectricBlastFurnace extends
+    GT_MetaTileEntity_AbstractMultiFurnace<NHUtilities_TC_ElectricBlastFurnace> implements ISurvivalConstructable {
 
     private int mHeatingCapacity = 0;
     protected final ArrayList<GT_MetaTileEntity_Hatch_Output> mPollutionOutputHatches = new ArrayList<>();
@@ -72,8 +72,8 @@ public class GT_TileEntity_TCElectricBlastFurnace extends
         Materials.CarbonMonoxide.getGas(1000), Materials.SulfurDioxide.getGas(1000) };
     protected static final int CASING_INDEX = 11;
     protected static final String STRUCTURE_PIECE_MAIN = "main";
-    private static final IStructureDefinition<GT_TileEntity_TCElectricBlastFurnace> STRUCTURE_DEFINITION = StructureDefinition
-        .<GT_TileEntity_TCElectricBlastFurnace>builder()
+    private static final IStructureDefinition<NHUtilities_TC_ElectricBlastFurnace> STRUCTURE_DEFINITION = StructureDefinition
+        .<NHUtilities_TC_ElectricBlastFurnace>builder()
         .addShape(
             STRUCTURE_PIECE_MAIN,
             transpose(
@@ -81,9 +81,9 @@ public class GT_TileEntity_TCElectricBlastFurnace extends
                     { "b~b", "bbb", "bbb" } }))
         .addElement(
             't',
-            buildHatchAdder(GT_TileEntity_TCElectricBlastFurnace.class)
+            buildHatchAdder(NHUtilities_TC_ElectricBlastFurnace.class)
                 .atLeast(
-                    OutputHatch.withAdder(GT_TileEntity_TCElectricBlastFurnace::addOutputHatchToTopList)
+                    OutputHatch.withAdder(NHUtilities_TC_ElectricBlastFurnace::addOutputHatchToTopList)
                         .withCount(t -> t.mPollutionOutputHatches.size()))
                 .casingIndex(CASING_INDEX)
                 .dot(1)
@@ -92,11 +92,11 @@ public class GT_TileEntity_TCElectricBlastFurnace extends
         .addElement(
             'C',
             ofCoil(
-                GT_TileEntity_TCElectricBlastFurnace::setCoilLevel,
-                GT_TileEntity_TCElectricBlastFurnace::getCoilLevel))
+                NHUtilities_TC_ElectricBlastFurnace::setCoilLevel,
+                NHUtilities_TC_ElectricBlastFurnace::getCoilLevel))
         .addElement(
             'b',
-            buildHatchAdder(GT_TileEntity_TCElectricBlastFurnace.class)
+            buildHatchAdder(NHUtilities_TC_ElectricBlastFurnace.class)
                 .atLeast(InputHatch, OutputHatch, InputBus, OutputBus, Maintenance, Energy)
                 .casingIndex(CASING_INDEX)
                 .dot(1)
@@ -114,11 +114,11 @@ public class GT_TileEntity_TCElectricBlastFurnace extends
         return false;
     }
 
-    public GT_TileEntity_TCElectricBlastFurnace(int aID, String aName, String aNameRegional) {
+    public NHUtilities_TC_ElectricBlastFurnace(int aID, String aName, String aNameRegional) {
         super(aID, aName, aNameRegional);
     }
 
-    public GT_TileEntity_TCElectricBlastFurnace(String aName) {
+    public NHUtilities_TC_ElectricBlastFurnace(String aName) {
         super(aName);
     }
 
@@ -140,7 +140,7 @@ public class GT_TileEntity_TCElectricBlastFurnace extends
     }
 
     @Override
-    public IStructureDefinition<GT_TileEntity_TCElectricBlastFurnace> getStructureDefinition() {
+    public IStructureDefinition<NHUtilities_TC_ElectricBlastFurnace> getStructureDefinition() {
         return STRUCTURE_DEFINITION;
     }
 
@@ -167,13 +167,13 @@ public class GT_TileEntity_TCElectricBlastFurnace extends
             .addOutputHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_10"))
             .addOutputHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_11"), 1)
             .addStructureInfo(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_12"))
-            .toolTipFinisher(NHUtilities.MOD_NAME);
+            .toolTipFinisher(MOD_NAME);
         return tt;
     }
 
     @Override
     public IMetaTileEntity newMetaEntity(IGregTechTileEntity aTileEntity) {
-        return new GT_TileEntity_TCElectricBlastFurnace(this.mName);
+        return new NHUtilities_TC_ElectricBlastFurnace(this.mName);
     }
 
     @Override

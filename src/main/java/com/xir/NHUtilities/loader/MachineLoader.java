@@ -2,16 +2,15 @@ package com.xir.NHUtilities.loader;
 
 import net.minecraft.util.StatCollector;
 
-import com.xir.NHUtilities.common.enumPackages.CustomItemList;
-import com.xir.NHUtilities.common.enumPackages.MetaTileEntityID;
-import com.xir.NHUtilities.common.tileEntity.GT_TileEntity_TCElectricBlastFurnace;
+import com.xir.NHUtilities.common.api.enums.CustomItemList;
+import com.xir.NHUtilities.common.api.enums.MetaTileEntityID;
+import com.xir.NHUtilities.common.machine.multi.NHUtilities_TC_ElectricBlastFurnace;
 
-public class MachineLoader implements Runnable {
+public class MachineLoader {
 
-    @Override
-    public void run() {
+    public static void registerNHUtilitiesMachine() {
         CustomItemList.Machine_Multi_TCBlastFurnace.set(
-            new GT_TileEntity_TCElectricBlastFurnace(
+            new NHUtilities_TC_ElectricBlastFurnace(
                 MetaTileEntityID.TCEBF_CONTROLLER.ID,
                 "multimachine.tcblastfurnace",
                 StatCollector.translateToLocal("nhu.tcebf.machine")).getStackForm(1L));

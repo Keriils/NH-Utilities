@@ -16,10 +16,8 @@ import cpw.mods.fml.common.Optional;
 public class HungerRing extends ItemBasic implements IBauble {
 
     public HungerRing() {
+        super("HungerRing");
         setMaxStackSize(1);
-        setUnlocalizedName("HungerRing");
-        setTextureName("HungerRing");
-
     }
 
     @Override

@@ -1,11 +1,16 @@
 package com.xir.NHUtilities.main;
 
+import static com.xir.NHUtilities.main.ReferencedInfo.CLIENT_SIDE;
+import static com.xir.NHUtilities.main.ReferencedInfo.DEPENDENCIES;
+import static com.xir.NHUtilities.main.ReferencedInfo.MOD_ID;
+import static com.xir.NHUtilities.main.ReferencedInfo.MOD_NAME;
+import static com.xir.NHUtilities.main.ReferencedInfo.SERVER_SIDE;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.xir.NHUtilities.Tags;
 
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -14,26 +19,19 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
 @Mod(
-    modid = NHUtilities.MODID,
+    modid = MOD_ID,
     version = Tags.VERSION,
-    name = NHUtilities.MOD_NAME,
-    dependencies = " after:gregtech;" + " after:Avaritia;" + " after:DraconicEvolution;" + " after:Baubles",
+    name = MOD_NAME,
+    dependencies = DEPENDENCIES,
     acceptedMinecraftVersions = "[1.7.10]")
 public class NHUtilities {
 
-    public static final String MODID = "NHUtilities";
-    public static final String MOD_NAME = "NH Utilities";
-    public static final Logger LOG = LogManager.getLogger(MODID);
-    public static final boolean BAUBLES_MOD_IS_LOADED = Loader.isModLoaded("Baubles");
-    public static final String MODIDUPPER = "NHUTILITIES";
-    public static final String MODIDLOWER = "nhutilities";
+    public static final Logger LOG = LogManager.getLogger(MOD_ID);
 
-    @Mod.Instance(NHUtilities.MODID)
+    @Mod.Instance(MOD_ID)
     public static NHUtilities instance;
 
-    @SidedProxy(
-        clientSide = "com.xir.NHUtilities.main.ClientProxy",
-        serverSide = "com.xir.NHUtilities.main.CommonProxy")
+    @SidedProxy(clientSide = CLIENT_SIDE, serverSide = SERVER_SIDE)
     public static CommonProxy proxy;
 
     @Mod.EventHandler

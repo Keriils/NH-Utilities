@@ -1,9 +1,11 @@
 package com.xir.NHUtilities.loader;
 
+import static com.xir.NHUtilities.main.ReferencedInfo.MOD_ID_LOWER;
+import static com.xir.NHUtilities.main.ReferencedInfo.MOD_ID_UPPER;
+
 import net.minecraft.util.ResourceLocation;
 
-import com.xir.NHUtilities.common.enumPackages.CustomItemList;
-import com.xir.NHUtilities.main.NHUtilities;
+import com.xir.NHUtilities.common.api.enums.CustomItemList;
 
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -20,12 +22,12 @@ public class ResearchLoader {
 
     public static void registerNHUtilitiesResearch() {
         ResearchCategories.registerCategory(
-            NHUtilities.MODIDUPPER,
-            new ResourceLocation(NHUtilities.MODIDLOWER, "textures/items/NHUInBookicon.png"),
-            new ResourceLocation(NHUtilities.MODIDLOWER, "textures/gui/gui_researchback.png"));
+            MOD_ID_UPPER,
+            new ResourceLocation(MOD_ID_LOWER, "textures/items/NHUInBookicon.png"),
+            new ResourceLocation(MOD_ID_LOWER, "textures/gui/gui_researchback.png"));
         (new ResearchItem(
             ThaumicEBF.toUpperCase(),
-            NHUtilities.MODIDUPPER,
+            MOD_ID_UPPER,
             new AspectList().add(Aspect.ENERGY, 4)
                 .add(Aspect.MECHANISM, 4)
                 .add(Aspect.FIRE, 4),
