@@ -23,7 +23,6 @@ public class CommonProxy {
         LOG.info("Pre-initializing " + MOD_NAME + "!");
 
         ItemsLoader.registerNHUtilitiesItems();
-        ItemsLoader.registerNHUtilitiesFuelRod();
         LOG.info("Loaded Items.");
 
         EventLoader.registerNHUtilitiesEvents();

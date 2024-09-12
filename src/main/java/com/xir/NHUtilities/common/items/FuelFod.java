@@ -4,6 +4,7 @@ import net.minecraft.item.ItemStack;
 
 import com.xir.NHUtilities.common.items.itemFuelRod.DepletedFuelRod;
 import com.xir.NHUtilities.common.items.itemFuelRod.FuelRod;
+import com.xir.NHUtilities.utils.RegisterUtils;
 
 public class FuelFod {
 
@@ -94,5 +95,22 @@ public class FuelFod {
             10000,
             1.3F,
             new ItemStack(depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4, 1));
+
+        RegisterUtils.registerItem(depletedFuelRodExcitedRadianceUranium);
+        RegisterUtils.registerItem(depletedFuelRodExcitedRadianceUranium_2);
+        RegisterUtils.registerItem(depletedFuelRodExcitedRadianceUranium_4);
+
+        RegisterUtils.registerItem(fuelRodExcitedRadianceUranium);
+        RegisterUtils.registerItem(fuelRodExcitedRadianceUranium_2);
+        RegisterUtils.registerItem(fuelRodExcitedRadianceUranium_4);
+
+        RegisterUtils.registerItem(depletedFuelRodSuperExcitedPrimordialPearlPlutonium);
+        RegisterUtils.registerItem(depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2);
+        RegisterUtils.registerItem(depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4);
+
+        RegisterUtils.registerItem(fuelRodSuperExcitedPrimordialPearlPlutonium);
+        RegisterUtils.registerItem(fuelRodSuperExcitedPrimordialPearlPlutonium_2);
+        RegisterUtils.registerItem(fuelRodSuperExcitedPrimordialPearlPlutonium_4);
+
     }
 }
