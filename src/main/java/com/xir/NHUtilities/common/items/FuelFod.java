@@ -9,13 +9,8 @@ import com.xir.NHUtilities.utils.RegisterUtils;
 
 public class FuelFod {
 
-    public static ItemBasic radianceFuelRod;
-    public static ItemBasic radianceFuelRod_2;
-    public static ItemBasic radianceFuelRod_4;
-
     public static ItemBasic ichorFuelRod;
-    public static ItemBasic ichorFuelRod_2;
-    public static ItemBasic ichorFuelRod_4;
+    public static ItemBasic radianceFuelRod;
 
     public static DepletedFuelRod depletedFuelRodExcitedRadianceUranium;
     public static DepletedFuelRod depletedFuelRodExcitedRadianceUranium_2;
@@ -35,13 +30,8 @@ public class FuelFod {
 
     public static void fuelRodInit() {
 
-        radianceFuelRod = new ItemBasic("radianceFuelRod");
-        radianceFuelRod_2 = new ItemBasic("radianceFuelRod_2");
-        radianceFuelRod_4 = new ItemBasic("radianceFuelRod_4");
-
         ichorFuelRod = new ItemBasic("ichorFuelRod");
-        ichorFuelRod_2 = new ItemBasic("ichorFuelRod_2");
-        ichorFuelRod_4 = new ItemBasic("ichorFuelRod_4");
+        radianceFuelRod = new ItemBasic("radianceFuelRod");
 
         depletedFuelRodExcitedRadianceUranium = new DepletedFuelRod("depletedFuelRodExcitedRadianceUranium", 100);
         depletedFuelRodExcitedRadianceUranium_2 = new DepletedFuelRod("depletedFuelRodExcitedRadianceUranium_2", 200);
@@ -113,13 +103,8 @@ public class FuelFod {
             1.3F,
             new ItemStack(depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4, 1));
 
-        RegisterUtils.registerItem(radianceFuelRod);
-        RegisterUtils.registerItem(radianceFuelRod_2);
-        RegisterUtils.registerItem(radianceFuelRod_4);
-
         RegisterUtils.registerItem(ichorFuelRod);
-        RegisterUtils.registerItem(ichorFuelRod_2);
-        RegisterUtils.registerItem(ichorFuelRod_4);
+        RegisterUtils.registerItem(radianceFuelRod);
 
         RegisterUtils.registerItem(depletedFuelRodExcitedRadianceUranium);
         RegisterUtils.registerItem(depletedFuelRodExcitedRadianceUranium_2);

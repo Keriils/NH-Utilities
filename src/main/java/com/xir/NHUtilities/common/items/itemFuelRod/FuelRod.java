@@ -201,6 +201,9 @@ public class FuelRod extends RadioactiveItem implements IReactorComponent, IBoxa
                 StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.0"),
                 getMaxCustomDamage(stack) - getCustomDamage(stack),
                 getMaxCustomDamage(stack)));
+        if (this.HeatBonus > 0F) StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.1");
+        list.add(String.format(StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.2"), this.Heat));
+        list.add(String.format(StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.3"), this.Power));
     }
     // endregion
 

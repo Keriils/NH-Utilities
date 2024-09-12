@@ -12,6 +12,11 @@ item.NHUtilities:LunchBoxPlus.name=Lunch Box Plus
 
 # tc fuel rod project
 text.NHUtilities.fuelRod.tooltip.0=Durability: %s/%s
+text.NHUtilities.fuelRod.tooltip.1=Has Mox Behaviour
+text.NHUtilities.fuelRod.tooltip.2=|base heat(heta/s): %d
+text.NHUtilities.fuelRod.tooltip.3=|base power(EU/t): %d
+item.NHUtilities:ichorFuelRod.name=Ichor Fuel Rod
+item.NHUtilities:radianceFuelRod.name=Radiance Fuel Rod
 item.NHUtilities:fuelRodExcitedRadianceUranium.name=Fuel Rod (Excited Radiance Uranium)
 item.NHUtilities:fuelRodExcitedRadianceUranium_2.name=Dual Rod (Excited Radiance Uranium)
 item.NHUtilities:fuelRodExcitedRadianceUranium_4.name=Quad Rod (Excited Radiance Uranium)
