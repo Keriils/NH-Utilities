@@ -13,10 +13,12 @@ item.NHUtilities:LunchBoxPlus.name=超级午餐盒
 # tc fuel rod project
 text.NHUtilities.fuelRod.tooltip.0=耐久:%d/%d
 text.NHUtilities.fuelRod.tooltip.1=具有MOX特性
-text.NHUtilities.fuelRod.tooltip.2=|基础产热(heta/s): %d
-text.NHUtilities.fuelRod.tooltip.3=|基础发电功率(EU/t): %d
+text.NHUtilities.fuelRod.tooltip.2=基础产热(heta/s): %d
+text.NHUtilities.fuelRod.tooltip.3=基础发电功率(EU/t): %d
 item.NHUtilities:ichorFuelRod.name=灵宝燃料棒(空)
 item.NHUtilities:radianceFuelRod.name=光辉燃料棒(空)
+item.NHUtilities:ichorDroplet.name=灵宝液滴
+item.NHUtilities:primordialPearlDust.name=元始尘埃
 item.NHUtilities:fuelRodExcitedRadianceUranium.name=燃料棒(激发态铀基闪耀之辉燃料棒)
 item.NHUtilities:fuelRodExcitedRadianceUranium_2.name=二联燃料棒(激发态铀基闪耀之辉燃料棒)
 item.NHUtilities:fuelRodExcitedRadianceUranium_4.name=四联燃料棒(激发态铀基闪耀之辉燃料棒)

@@ -7,10 +7,13 @@ import com.xir.NHUtilities.common.items.itemFuelRod.DepletedFuelRod;
 import com.xir.NHUtilities.common.items.itemFuelRod.FuelRod;
 import com.xir.NHUtilities.utils.RegisterUtils;
 
-public class FuelFod {
+public class FuelRodList {
 
     public static ItemBasic ichorFuelRod;
     public static ItemBasic radianceFuelRod;
+
+    public static ItemBasic ichorDroplet;
+    public static ItemBasic primordialPearlDust;
 
     public static DepletedFuelRod depletedFuelRodExcitedRadianceUranium;
     public static DepletedFuelRod depletedFuelRodExcitedRadianceUranium_2;
@@ -33,6 +36,9 @@ public class FuelFod {
         ichorFuelRod = new ItemBasic("ichorFuelRod");
         radianceFuelRod = new ItemBasic("radianceFuelRod");
 
+        ichorDroplet = new ItemBasic("ichorDroplet");
+        primordialPearlDust = new ItemBasic("primordialPearlDust");
+
         depletedFuelRodExcitedRadianceUranium = new DepletedFuelRod("depletedFuelRodExcitedRadianceUranium", 100);
         depletedFuelRodExcitedRadianceUranium_2 = new DepletedFuelRod("depletedFuelRodExcitedRadianceUranium_2", 200);
         depletedFuelRodExcitedRadianceUranium_4 = new DepletedFuelRod("depletedFuelRodExcitedRadianceUranium_4", 400);
@@ -53,7 +59,7 @@ public class FuelFod {
             150,
             6,
             800,
-            70000,
+            86400,
             0F,
             new ItemStack(depletedFuelRodExcitedRadianceUranium, 1));
         fuelRodExcitedRadianceUranium_2 = new FuelRod(
@@ -62,7 +68,7 @@ public class FuelFod {
             600,
             36,
             1600,
-            70000,
+            86400,
             0F,
             new ItemStack(depletedFuelRodExcitedRadianceUranium_2, 1));
         fuelRodExcitedRadianceUranium_4 = new FuelRod(
@@ -71,7 +77,7 @@ public class FuelFod {
             1800,
             144,
             3200,
-            70000,
+            86400,
             0F,
             new ItemStack(depletedFuelRodExcitedRadianceUranium_4, 1));
 
@@ -105,6 +111,8 @@ public class FuelFod {
 
         RegisterUtils.registerItem(ichorFuelRod);
         RegisterUtils.registerItem(radianceFuelRod);
+        RegisterUtils.registerItem(ichorDroplet);
+        RegisterUtils.registerItem(primordialPearlDust);
 
         RegisterUtils.registerItem(depletedFuelRodExcitedRadianceUranium);
         RegisterUtils.registerItem(depletedFuelRodExcitedRadianceUranium_2);

@@ -43,6 +43,7 @@ public class FuelRod extends RadioactiveItem implements IReactorComponent, IBoxa
         this.Heat = aHeat;
         this.HeatBonus = aHeatBonus;
         this.depletedResult = aDepletedResult;
+        this.setMaxDamage(100);
     }
     // endregion
 
@@ -92,7 +93,7 @@ public class FuelRod extends RadioactiveItem implements IReactorComponent, IBoxa
                     }
                 }
             }
-            if (this.getCustomDamage(stack) >= this.getMaxCustomDamage(stack) - 1) {
+            if (this.getCustomDamage(stack) >= this.getMaxCustomDamage() - 1) {
                 reactor.setItemAt(x, y, GT_Utility.copyAmount(1, depletedResult));
             } else if (heatRun) {
                 this.setCustomDamage(stack, this.getCustomDamage(stack) + 1);
@@ -148,7 +149,7 @@ public class FuelRod extends RadioactiveItem implements IReactorComponent, IBoxa
         return nbt.getInteger("advDmg");
     }
 
-    public int getMaxCustomDamage(ItemStack stack) {
+    public int getMaxCustomDamage() {
         return this.Duration;
     }
 
@@ -199,9 +200,9 @@ public class FuelRod extends RadioactiveItem implements IReactorComponent, IBoxa
         list.add(
             String.format(
                 StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.0"),
-                getMaxCustomDamage(stack) - getCustomDamage(stack),
-                getMaxCustomDamage(stack)));
-        if (this.HeatBonus > 0F) StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.1");
+                getMaxCustomDamage() - getCustomDamage(stack),
+                getMaxCustomDamage()));
+        if (this.HeatBonus > 0F) list.add(StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.1"));
         list.add(String.format(StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.2"), this.Heat));
         list.add(String.format(StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.3"), this.Power));
     }
