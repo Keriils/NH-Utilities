@@ -87,7 +87,7 @@ public class FuelRodList {
             2000,
             80,
             6400,
-            10000,
+            15000,
             1.3F,
             new ItemStack(depletedFuelRodSuperExcitedPrimordialPearlPlutonium, 1));
         fuelRodSuperExcitedPrimordialPearlPlutonium_2 = new FuelRod(
@@ -96,7 +96,7 @@ public class FuelRodList {
             8000,
             480,
             12800,
-            10000,
+            15000,
             3.3F,
             new ItemStack(depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2, 1));
         fuelRodSuperExcitedPrimordialPearlPlutonium_4 = new FuelRod(
@@ -105,7 +105,7 @@ public class FuelRodList {
             24000,
             1915,
             25600,
-            10000,
+            15000,
             1.3F,
             new ItemStack(depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4, 1));
 

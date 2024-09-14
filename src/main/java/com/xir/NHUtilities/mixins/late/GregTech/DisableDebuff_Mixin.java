@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import gregtech.common.blocks.GT_Item_Machines;
 
-@Mixin(value = GT_Item_Machines.class, remap = false)
+@Mixin(value = GT_Item_Machines.class)
 public class DisableDebuff_Mixin {
 
     @Redirect(
@@ -19,6 +19,5 @@ public class DisableDebuff_Mixin {
             target = "Lnet/minecraft/entity/EntityLivingBase;addPotionEffect(Lnet/minecraft/potion/PotionEffect;)V"))
     private void NHUtilities$disableDebuff(EntityLivingBase instance, PotionEffect potionEffect) {
         // Null method problem
-        instance.addPotionEffect(new PotionEffect(potionEffect.getPotionID(), 5, 1));
     }
 }

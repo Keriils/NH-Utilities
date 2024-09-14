@@ -4,6 +4,7 @@ import static com.github.technus.tectech.thing.CustomItemList.hatch_CreativeMain
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.recipe.RecipeMaps.centrifugeRecipes;
 import static gregtech.api.recipe.RecipeMaps.extractorRecipes;
+import static gregtech.api.recipe.RecipeMaps.maceratorRecipes;
 import static witchinggadgets.common.WGContent.ItemMaterial;
 
 import net.minecraft.item.ItemStack;
@@ -46,6 +47,7 @@ public class GTRecipes {
                 GT_Utility.getIntegratedCircuit(2))
             .itemOutputs(new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium_2, 1))
             .duration(10 * SECOND)
+            .noOptimize()
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
@@ -56,6 +58,7 @@ public class GTRecipes {
                 GT_Utility.getIntegratedCircuit(4))
             .itemOutputs(new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium_4, 1))
             .duration(10 * SECOND)
+            .noOptimize()
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
@@ -66,6 +69,7 @@ public class GTRecipes {
                 GT_Utility.getIntegratedCircuit(5))
             .itemOutputs(new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium_4, 1))
             .duration(10 * SECOND)
+            .noOptimize()
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
@@ -87,6 +91,7 @@ public class GTRecipes {
                 GT_Utility.getIntegratedCircuit(2))
             .itemOutputs(new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium_2, 1))
             .duration(10 * SECOND)
+            .noOptimize()
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
@@ -97,6 +102,7 @@ public class GTRecipes {
                 GT_Utility.getIntegratedCircuit(4))
             .itemOutputs(new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium_4, 1))
             .duration(10 * SECOND)
+            .noOptimize()
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
@@ -107,6 +113,7 @@ public class GTRecipes {
                 GT_Utility.getIntegratedCircuit(5))
             .itemOutputs(new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium_4, 1))
             .duration(10 * SECOND)
+            .noOptimize()
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
@@ -204,6 +211,6 @@ public class GTRecipes {
             .itemOutputs(hatch_CreativeMaintenance.get(1))
             .duration(25 * SECOND)
             .eut(TierEU.RECIPE_HV)
-            .addTo(assemblerRecipes);
+            .addTo(maceratorRecipes);
     }
 }
