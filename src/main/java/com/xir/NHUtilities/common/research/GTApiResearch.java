@@ -5,7 +5,6 @@ import static goodgenerator.items.MyMaterial.atomicSeparationCatalyst;
 import static goodgenerator.items.MyMaterial.plutoniumBasedLiquidFuelExcited;
 
 import java.util.Arrays;
-import java.util.Locale;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;

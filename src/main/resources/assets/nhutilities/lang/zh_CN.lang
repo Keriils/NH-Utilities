@@ -26,11 +26,11 @@ item.NHUtilities:depletedFuelRodExcitedRadianceUranium.name=枯竭燃料棒(激�
 item.NHUtilities:depletedFuelRodExcitedRadianceUranium_2.name=枯竭二联燃料棒(激发态铀基闪耀之辉燃料棒)
 item.NHUtilities:depletedFuelRodExcitedRadianceUranium_4.name=枯竭四联燃料棒(激发态铀基闪耀之辉燃料棒)
 item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium.name=燃料棒(超激发态钚基原始珍珠燃料棒)
-item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium_2.name=二联燃料棒(超激发态钚基原始珍珠燃料棒)
-item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium_4.name=四联燃料棒(超激发态钚基原始珍珠燃料棒)
-item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium.name=枯竭燃料棒(超激发态钚基原始珍珠燃料棒)
-item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2.name=二联枯竭燃料棒(超激发态钚基原始珍珠燃料棒)
-item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4.name=四联枯竭燃料棒(超激发态钚基原始珍珠燃料棒)
+item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium_2.name=二联燃料棒(超激发态钚基元始珍珠燃料棒)
+item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium_4.name=四联燃料棒(超激发态钚基元始珍珠燃料棒)
+item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium.name=枯竭燃料棒(超激发态钚基元始珍珠燃料棒)
+item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2.name=二联枯竭燃料棒(超激发态钚基元始珍珠燃料棒)
+item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4.name=四联枯竭燃料棒(超激发态钚基元始珍珠燃料棒)
 
 # tooltips for time vial
 text.NHUtilities.TimeVial.tips=§f时间: §6%d 小时 §d%d 分钟 §a%d 秒  
