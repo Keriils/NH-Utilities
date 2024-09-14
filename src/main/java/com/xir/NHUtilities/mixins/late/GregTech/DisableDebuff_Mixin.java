@@ -17,7 +17,8 @@ public class DisableDebuff_Mixin {
         at = @At(
             value = "INVOKE",
             target = "Lnet/minecraft/entity/EntityLivingBase;addPotionEffect(Lnet/minecraft/potion/PotionEffect;)V"))
-    private void NHUtilities$disableDebuff(EntityLivingBase instance, PotionEffect p_70690_1_) {
-        // nothing
+    private void NHUtilities$disableDebuff(EntityLivingBase instance, PotionEffect potionEffect) {
+        // Null method problem
+        instance.addPotionEffect(new PotionEffect(potionEffect.getPotionID(), 5, 1));
     }
 }

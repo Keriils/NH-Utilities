@@ -18,6 +18,7 @@ public class DisableDollyDebuff_Mixin {
             value = "INVOKE",
             target = "Lnet/minecraft/entity/player/EntityPlayer;addPotionEffect(Lnet/minecraft/potion/PotionEffect;)V"))
     private void NHUtilities$disableDebuff(EntityPlayer instance, PotionEffect potionEffect) {
-        // nothing
+        // Null method problem
+        instance.addPotionEffect(new PotionEffect(potionEffect.getPotionID(), 5, 1));
     }
 }

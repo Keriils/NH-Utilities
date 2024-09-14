@@ -4,7 +4,6 @@ import static com.github.technus.tectech.thing.CustomItemList.hatch_CreativeMain
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.recipe.RecipeMaps.centrifugeRecipes;
 import static gregtech.api.recipe.RecipeMaps.extractorRecipes;
-import static thaumcraft.common.config.ConfigItems.itemEldritchObject;
 import static witchinggadgets.common.WGContent.ItemMaterial;
 
 import net.minecraft.item.ItemStack;
@@ -52,6 +51,16 @@ public class GTRecipes {
 
         GT_Values.RA.stdBuilder()
             .itemInputs(
+                new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium, 4),
+                GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Ichorium, 8),
+                GT_Utility.getIntegratedCircuit(4))
+            .itemOutputs(new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium_4, 1))
+            .duration(10 * SECOND)
+            .eut(TierEU.RECIPE_IV)
+            .addTo(assemblerRecipes);
+
+        GT_Values.RA.stdBuilder()
+            .itemInputs(
                 new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium_2, 2),
                 GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Ichorium, 4),
                 GT_Utility.getIntegratedCircuit(5))
@@ -77,6 +86,16 @@ public class GTRecipes {
                 GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Shadow, 4),
                 GT_Utility.getIntegratedCircuit(2))
             .itemOutputs(new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium_2, 1))
+            .duration(10 * SECOND)
+            .eut(TierEU.RECIPE_IV)
+            .addTo(assemblerRecipes);
+
+        GT_Values.RA.stdBuilder()
+            .itemInputs(
+                new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium, 4),
+                GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Shadow, 8),
+                GT_Utility.getIntegratedCircuit(4))
+            .itemOutputs(new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium_4, 1))
             .duration(10 * SECOND)
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
@@ -166,7 +185,7 @@ public class GTRecipes {
             .addTo(centrifugeRecipes);
 
         GT_Values.RA.stdBuilder()
-            .itemInputs(new ItemStack(itemEldritchObject, 1, 3))
+            .itemInputs(thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3))
             .itemOutputs(new ItemStack(FuelRodList.primordialPearlDust, 4))
             .duration(100 * SECOND)
             .eut(TierEU.RECIPE_EV)
@@ -174,7 +193,7 @@ public class GTRecipes {
 
         GT_Values.RA.stdBuilder()
             .itemInputs(new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 0))
-            .itemOutputs(new ItemStack(FuelRodList.ichorDroplet, 4))
+            .itemOutputs(new ItemStack(FuelRodList.ichorDroplet, 2))
             .duration(100 * SECOND)
             .eut(TierEU.RECIPE_EV)
             .addTo(extractorRecipes);

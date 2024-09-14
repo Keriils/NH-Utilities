@@ -56,7 +56,7 @@ public class FuelRodList {
         fuelRodExcitedRadianceUranium = new FuelRod(
             "fuelRodExcitedRadianceUranium",
             1,
-            150,
+            100,
             6,
             800,
             86400,
@@ -65,7 +65,7 @@ public class FuelRodList {
         fuelRodExcitedRadianceUranium_2 = new FuelRod(
             "fuelRodExcitedRadianceUranium_2",
             2,
-            600,
+            400,
             36,
             1600,
             86400,
@@ -74,7 +74,7 @@ public class FuelRodList {
         fuelRodExcitedRadianceUranium_4 = new FuelRod(
             "fuelRodExcitedRadianceUranium_4",
             4,
-            1800,
+            1200,
             144,
             3200,
             86400,
@@ -84,8 +84,8 @@ public class FuelRodList {
         fuelRodSuperExcitedPrimordialPearlPlutonium = new FuelRod(
             "fuelRodSuperExcitedPrimordialPearlPlutonium",
             1,
-            3200,
-            128,
+            2000,
+            80,
             6400,
             10000,
             1.3F,
@@ -93,8 +93,8 @@ public class FuelRodList {
         fuelRodSuperExcitedPrimordialPearlPlutonium_2 = new FuelRod(
             "fuelRodSuperExcitedPrimordialPearlPlutonium_2",
             2,
-            12800,
-            768,
+            8000,
+            480,
             12800,
             10000,
             3.3F,
@@ -102,8 +102,8 @@ public class FuelRodList {
         fuelRodSuperExcitedPrimordialPearlPlutonium_4 = new FuelRod(
             "fuelRodSuperExcitedPrimordialPearlPlutonium_4",
             4,
-            38400,
-            3064,
+            24000,
+            1915,
             25600,
             10000,
             1.3F,
