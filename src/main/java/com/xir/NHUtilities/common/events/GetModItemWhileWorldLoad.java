@@ -7,16 +7,22 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @SuppressWarnings("unused")
-public class WorldLoad {
+public class GetModItemWhileWorldLoad {
 
-    public static int healingAxe;
+    private static int healingAxe;
+    private static Item itemHealingAxe;
 
     @SubscribeEvent
     public void initHealingAxeIdOnWorldLoad(EntityJoinWorldEvent event) {
-        healingAxe = Item.getIdFromItem(GameRegistry.findItem("ExtraUtilities", "defoliageAxe"));
+        itemHealingAxe = GameRegistry.findItem("ExtraUtilities", "defoliageAxe");
+        healingAxe = Item.getIdFromItem(itemHealingAxe);
     }
 
     public static int getHealingAxeID() {
         return healingAxe;
+    }
+
+    public static Item getItemHealingAxe() {
+        return itemHealingAxe;
     }
 }

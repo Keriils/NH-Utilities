@@ -9,7 +9,10 @@ public enum TargetMod {
     EnderIO("Ender IO", "EnderIO"),
     WorldEdit("WorldEdit", "worldedit"),
     ExtraUtilities("Extra Utilities", "ExtraUtilities"),
-    SpiceOfLife("SpiceOfLife", "SpiceOfLife"),;
+    SpiceOfLife("SpiceOfLife", "SpiceOfLife"),
+    JABBA("JABBA", "JABBA"),
+
+    ;
 
     public final String modName;
     public final String modId;
