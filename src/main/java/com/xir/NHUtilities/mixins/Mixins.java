@@ -1,5 +1,7 @@
 package com.xir.NHUtilities.mixins;
 
+import static com.xir.NHUtilities.config.Config.disableDollyDebuff;
+import static com.xir.NHUtilities.config.Config.disableSuperChestOrTankDebuff;
 import static com.xir.NHUtilities.config.Config.enableAccelerateEnderIoMachine;
 import static com.xir.NHUtilities.config.Config.enableAccelerateGregTechMachine;
 import static com.xir.NHUtilities.config.Config.enableEnhancedTeleporterMKII;
@@ -40,6 +42,10 @@ public enum Mixins {
         "SpiceOfLife.GuiHandler_Server_Mixin", TargetMod.SpiceOfLife),
     SpiceOfLife_LunchBoxGuiHandlerClient(Category.LunchBoxPlus, Side.CLIENT, Phase.LATE,
         "SpiceOfLife.GuiHandler_Client_Mixin", TargetMod.SpiceOfLife),
+    DisableDebuff_Mixin(Category.DisableSuperTankOrChestDebuff, Side.BOTH, Phase.LATE, "GregTech.DisableDebuff_Mixin",
+        TargetMod.GregTech),
+    DisableDollyDebuff_Mixin(Category.DisableDollyDebuff, Side.BOTH, Phase.LATE, "JABBA.DisableDollyDebuff_Mixin",
+        TargetMod.JABBA),
 
     ;
 
@@ -51,6 +57,8 @@ public enum Mixins {
         WEToolWithExuHealingAxe(enableWEToolWithExuHealingAxe),
         ToAccelerateEnderIoMachine(enableAccelerateEnderIoMachine),
         LunchBoxPlus(enableLunchBoxPlus),
+        DisableSuperTankOrChestDebuff(disableSuperChestOrTankDebuff),
+        DisableDollyDebuff(disableDollyDebuff),
 
         ;
 

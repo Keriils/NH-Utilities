@@ -41,7 +41,10 @@ public class Config {
     public static boolean enableEnhancedTeleporterMKII = true;
     public static boolean enableModifyEnderIoCapBankIO = true;
     public static boolean enableWEToolWithExuHealingAxe = false;
+    public static boolean enableEnhancedExUHealingAxe = true;
     public static boolean enableAccelerateEnderIoMachine = true;
+    public static boolean disableSuperChestOrTankDebuff = true;
+    public static boolean disableDollyDebuff = true;
     public static boolean enableLunchBoxPlus = true;
     public static String[] listeningMods = new String[] { "NHUtilities", "TwistSpaceTechnology", "boxplusplus",
         "programmablehatches" };
@@ -166,6 +169,18 @@ public class Config {
                 "enable Accelerate EnderIO Machine");
             enableLunchBoxPlus = configuration
                 .getBoolean("enableLunchBoxPlus", CATEGORY_MIXIN_CONFIG, enableLunchBoxPlus, "enable Lunch Box Plus");
+            enableEnhancedExUHealingAxe = configuration.getBoolean(
+                "enableEnhancedExUHealingAxe",
+                CATEGORY_MIXIN_CONFIG,
+                enableEnhancedExUHealingAxe,
+                "enable Enhanced ExU Healing Axe");
+            disableSuperChestOrTankDebuff = configuration.getBoolean(
+                "disableSuperChestOrTankDebuff",
+                CATEGORY_MIXIN_CONFIG,
+                disableSuperChestOrTankDebuff,
+                "disable Super Chest Or Tank Debuff");
+            disableDollyDebuff = configuration
+                .getBoolean("disableDollyDebuff", CATEGORY_MIXIN_CONFIG, disableDollyDebuff, "disable Dolly Debuff");
 
         }
 

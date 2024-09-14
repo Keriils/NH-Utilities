@@ -1,3 +1,6 @@
+# This lang file for NH-Utilities
+
+# common items
 key.toggleTeleporterMKII=Toggle Enhanced Charm of Dislocation GUI
 info.teleporterInfBaubles.txt=Support putting in-any-baubles
 info.teleporterInfBaublesButton.txt=Support the use of-button-to open the baubles
@@ -6,6 +9,28 @@ item.NHUtilities:HungerRing.name=HungerRing
 item.NHUtilities:TimeVial.name=TimeVial
 item.NHUtilities:EternityVial.name=EternityVial
 item.NHUtilities:LunchBoxPlus.name=Lunch Box Plus
+
+# tc fuel rod project
+text.NHUtilities.fuelRod.tooltip.0=Durability: %s/%s
+text.NHUtilities.fuelRod.tooltip.1=Has Mox Behaviour
+text.NHUtilities.fuelRod.tooltip.2=base heat(heta/s): %d
+text.NHUtilities.fuelRod.tooltip.3=base power(EU/t): %d
+item.NHUtilities:ichorDroplet.name=Ichor Droplet
+item.NHUtilities:primordialPearlDust.name=Primordial Pearl Dust
+item.NHUtilities:ichorFuelRod.name=Ichor Fuel Rod
+item.NHUtilities:radianceFuelRod.name=Radiance Fuel Rod
+item.NHUtilities:fuelRodExcitedRadianceUranium.name=Fuel Rod (Excited Radiance Uranium)
+item.NHUtilities:fuelRodExcitedRadianceUranium_2.name=Dual Rod (Excited Radiance Uranium)
+item.NHUtilities:fuelRodExcitedRadianceUranium_4.name=Quad Rod (Excited Radiance Uranium)
+item.NHUtilities:depletedFuelRodExcitedRadianceUranium.name=Fuel Rod (Depleted Excited Radiance Uranium)
+item.NHUtilities:depletedFuelRodExcitedRadianceUranium_2.name=Dual Fuel Rod (Depleted Excited Radiance Uranium)
+item.NHUtilities:depletedFuelRodExcitedRadianceUranium_4.name=Quad Fuel Rod (Depleted Excited Radiance Uranium)
+item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium.name=Fuel Rod (Super Excited Primordial Pearl Plutonium)
+item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium_2.name=Dual Rod (Super Excited Primordial Pearl Plutonium)
+item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium_4.name=Quad Rod (Super Excited Primordial Pearl Plutonium)
+item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium.name=Fuel Rod (Depleted Super Excited Primordial Pearl Plutonium)
+item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2.name=Dual Fuel Rod (Depleted Super Excited Primordial Pearl Plutonium)
+item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4.name=Quad Fuel Rod (Depleted Super Excited Primordial Pearl Plutonium)
 
 # tooltips for time vial
 text.NHUtilities.TimeVial.tips=§ftime: §6%d hours §d%d minutes §a%d seconds 

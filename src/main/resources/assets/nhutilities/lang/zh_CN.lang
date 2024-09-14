@@ -1,3 +1,6 @@
+# This lang file for NH-Utilities
+
+# common items
 key.toggleTeleporterMKII=开关高级传送器GUI
 info.teleporterInfBaubles.txt=支持放入-任意-饰品栏目
 info.teleporterInfBaublesButton.txt=支持使用-按键-打开饰品
@@ -6,6 +9,28 @@ item.NHUtilities:HungerRing.name=饥饿指环
 item.NHUtilities:TimeVial.name=时间之瓶
 item.NHUtilities:EternityVial.name=永恒之瓶
 item.NHUtilities:LunchBoxPlus.name=超级午餐盒
+
+# tc fuel rod project
+text.NHUtilities.fuelRod.tooltip.0=耐久:%d/%d
+text.NHUtilities.fuelRod.tooltip.1=具有MOX特性
+text.NHUtilities.fuelRod.tooltip.2=基础产热(heta/s): %d
+text.NHUtilities.fuelRod.tooltip.3=基础发电功率(EU/t): %d
+item.NHUtilities:ichorFuelRod.name=灵宝燃料棒(空)
+item.NHUtilities:radianceFuelRod.name=光辉燃料棒(空)
+item.NHUtilities:ichorDroplet.name=灵宝液滴
+item.NHUtilities:primordialPearlDust.name=元始尘埃
+item.NHUtilities:fuelRodExcitedRadianceUranium.name=燃料棒(激发态铀基闪耀之辉燃料棒)
+item.NHUtilities:fuelRodExcitedRadianceUranium_2.name=二联燃料棒(激发态铀基闪耀之辉燃料棒)
+item.NHUtilities:fuelRodExcitedRadianceUranium_4.name=四联燃料棒(激发态铀基闪耀之辉燃料棒)
+item.NHUtilities:depletedFuelRodExcitedRadianceUranium.name=枯竭燃料棒(激发态铀基闪耀之辉燃料棒)
+item.NHUtilities:depletedFuelRodExcitedRadianceUranium_2.name=枯竭二联燃料棒(激发态铀基闪耀之辉燃料棒)
+item.NHUtilities:depletedFuelRodExcitedRadianceUranium_4.name=枯竭四联燃料棒(激发态铀基闪耀之辉燃料棒)
+item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium.name=燃料棒(超激发态钚基原始珍珠燃料棒)
+item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium_2.name=二联燃料棒(超激发态钚基原始珍珠燃料棒)
+item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium_4.name=四联燃料棒(超激发态钚基原始珍珠燃料棒)
+item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium.name=枯竭燃料棒(超激发态钚基原始珍珠燃料棒)
+item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2.name=二联枯竭燃料棒(超激发态钚基原始珍珠燃料棒)
+item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4.name=四联枯竭燃料棒(超激发态钚基原始珍珠燃料棒)
 
 # tooltips for time vial
 text.NHUtilities.TimeVial.tips=§f时间: §6%d 小时 §d%d 分钟 §a%d 秒  
