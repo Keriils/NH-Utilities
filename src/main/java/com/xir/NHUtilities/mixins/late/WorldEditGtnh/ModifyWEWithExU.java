@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import com.sk89q.worldedit.entity.Player;
 import com.sk89q.worldedit.extension.platform.PlatformManager;
-import com.xir.NHUtilities.common.events.WorldLoad;
+import com.xir.NHUtilities.common.events.GetModItemWhileWorldLoad;
 
 @Mixin(value = PlatformManager.class, remap = false)
 public class ModifyWEWithExU {
@@ -35,7 +35,8 @@ public class ModifyWEWithExU {
     @Unique
     private int NHUtilities$check(@NotNull Player instance) {
         int itemInHand = instance.getItemInHand();
-        return itemInHand == WorldLoad.getHealingAxeID() ? NHUtilities$pManager.getConfiguration().wandItem
+        return itemInHand == GetModItemWhileWorldLoad.getHealingAxeID()
+            ? NHUtilities$pManager.getConfiguration().wandItem
             : itemInHand;
     }
 

@@ -1,5 +1,6 @@
 package com.xir.NHUtilities.common.recipes.GTRecipes;
 
+import static com.github.technus.tectech.thing.CustomItemList.hatch_CreativeMaintenance;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.recipe.RecipeMaps.centrifugeRecipes;
 import static gregtech.api.recipe.RecipeMaps.extractorRecipes;
@@ -13,6 +14,7 @@ import com.xir.NHUtilities.common.items.FuelRodList;
 
 import goodgenerator.items.MyMaterial;
 import gregtech.api.enums.GT_Values;
+import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.TierEU;
@@ -176,5 +178,13 @@ public class GTRecipes {
             .duration(100 * SECOND)
             .eut(TierEU.RECIPE_EV)
             .addTo(extractorRecipes);
+
+        // for adding debug maintenance recipe
+        GT_Values.RA.stdBuilder()
+            .itemInputs(ItemList.Hull_EV.get(1), ItemList.Duct_Tape.get(1), GT_Utility.getIntegratedCircuit(16))
+            .itemOutputs(hatch_CreativeMaintenance.get(1))
+            .duration(25 * SECOND)
+            .eut(TierEU.RECIPE_HV)
+            .addTo(assemblerRecipes);
     }
 }
