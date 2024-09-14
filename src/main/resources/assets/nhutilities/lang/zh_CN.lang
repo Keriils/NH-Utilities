@@ -25,12 +25,12 @@ item.NHUtilities:fuelRodExcitedRadianceUranium_4.name=四联燃料棒(激发态�
 item.NHUtilities:depletedFuelRodExcitedRadianceUranium.name=枯竭燃料棒(激发态铀基闪耀之辉燃料棒)
 item.NHUtilities:depletedFuelRodExcitedRadianceUranium_2.name=枯竭二联燃料棒(激发态铀基闪耀之辉燃料棒)
 item.NHUtilities:depletedFuelRodExcitedRadianceUranium_4.name=枯竭四联燃料棒(激发态铀基闪耀之辉燃料棒)
-item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium.name=燃料棒(超激发态钚基原始珍珠燃料棒)
-item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium_2.name=二联燃料棒(超激发态钚基原始珍珠燃料棒)
-item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium_4.name=四联燃料棒(超激发态钚基原始珍珠燃料棒)
-item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium.name=枯竭燃料棒(超激发态钚基原始珍珠燃料棒)
-item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2.name=二联枯竭燃料棒(超激发态钚基原始珍珠燃料棒)
-item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4.name=四联枯竭燃料棒(超激发态钚基原始珍珠燃料棒)
+item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium.name=燃料棒(超激发态钚基元始珍珠燃料棒)
+item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium_2.name=二联燃料棒(超激发态钚基元始珍珠燃料棒)
+item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium_4.name=四联燃料棒(超激发态钚基元始珍珠燃料棒)
+item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium.name=枯竭燃料棒(超激发态钚基元始珍珠燃料棒)
+item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2.name=二联枯竭燃料棒(超激发态钚基元始珍珠燃料棒)
+item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4.name=四联枯竭燃料棒(超激发态钚基元始珍珠燃料棒)
 
 # tooltips for time vial
 text.NHUtilities.TimeVial.tips=§f时间: §6%d 小时 §d%d 分钟 §a%d 秒  
@@ -65,7 +65,15 @@ tc.research_category.NHUTILITIES=奥术格雷学
 
 tc.research_name.THAUMICEBF=奥术工业高炉
 tc.research_text.THAUMICEBF=熊熊燃烧
-nhu.research.thaumicebf_1=得益于你浅薄的奇术知识，你发现一些要素的魔晶能将对应的格雷机器融合在一起.你怀着忐忑不安的心情尝试将工业高炉融合为一个更高级的高炉.显然，你成功了.
+nhu.research.thaumicebf_1=得益于浅薄的奇术知识，你发现一些要素的魔晶能将对应的格雷机器融合在一起.你怀着忐忑不安的心情尝试将工业高炉融合为一个更高级的高炉.显然，你成功了.
+
+tc.research_name.SHADOWMETALFUELROD=燃料棒(激发态铀基闪耀之辉燃料棒)
+tc.research_text.SHADOWMETALFUELROD=让神秘再次伟大
+nhu.research.shadowmetalfuelrod_1=长久以来，你对核电能释放巨大的能量感到疑惑不解，它太过粗糙，看起来好像渎神的玩意.在一次偶然的核电爆炸事故后，空气中弥漫着一种你熟悉的能量...你试图把这种巨大的能量塞进光与暗的交织，不过它看起来还是有点容易泄露.
+
+tc.research_name.ICHORIUMFUELROD=燃料棒(超激发态钚基原始珍珠燃料棒)
+tc.research_text.ICHORIUMFUELROD=真的要...走到这一步吗？
+nhu.research.ichoriumfuelrod_1=你对你的上一个作品非常满意，你近乎偏执的想更进一步.一点点的激发钚，一点点的神之血，一点点的珍珠，一点点的科技小玩意融聚在一起.它们能产生什么呢？你如是想.
 
 # Tooltips for TCEBF
 nhu.tcebf.machine=奥术工业高炉

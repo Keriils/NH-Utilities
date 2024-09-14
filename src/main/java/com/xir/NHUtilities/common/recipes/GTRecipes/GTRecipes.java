@@ -66,7 +66,7 @@ public class GTRecipes {
                 GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Shadow, 4),
                 GT_OreDictUnificator.get(OrePrefixes.ring, Materials.Shadow, 2),
                 GT_Utility.getIntegratedCircuit(2))
-            .itemOutputs(new ItemStack(FuelRodList.radianceFuelRod, 1))
+            .itemOutputs(new ItemStack(FuelRodList.shadowFuelRod, 1))
             .duration(50 * SECOND)
             .eut(TierEU.RECIPE_HV)
             .addTo(assemblerRecipes);
@@ -123,7 +123,7 @@ public class GTRecipes {
         GT_Values.RA.stdBuilder()
             .itemInputs(new ItemStack(FuelRodList.depletedFuelRodExcitedRadianceUranium, 1))
             .itemOutputs(
-                new ItemStack(FuelRodList.radianceFuelRod, 1),
+                new ItemStack(FuelRodList.shadowFuelRod, 1),
                 Materials.Uranium.getDust(16),
                 Materials.Plutonium.getDust(4),
                 Materials.Graphite.getDust(16),
@@ -138,7 +138,7 @@ public class GTRecipes {
         GT_Values.RA.stdBuilder()
             .itemInputs(new ItemStack(FuelRodList.depletedFuelRodExcitedRadianceUranium_2, 1))
             .itemOutputs(
-                new ItemStack(FuelRodList.radianceFuelRod, 2),
+                new ItemStack(FuelRodList.shadowFuelRod, 2),
                 Materials.Uranium.getDust(32),
                 Materials.Plutonium.getDust(8),
                 Materials.Graphite.getDust(32),
@@ -153,7 +153,7 @@ public class GTRecipes {
         GT_Values.RA.stdBuilder()
             .itemInputs(new ItemStack(FuelRodList.depletedFuelRodExcitedRadianceUranium_4, 1))
             .itemOutputs(
-                new ItemStack(FuelRodList.radianceFuelRod, 4),
+                new ItemStack(FuelRodList.shadowFuelRod, 4),
                 Materials.Uranium.getDust(64),
                 Materials.Plutonium.getDust(16),
                 Materials.Graphite.getDust(64),

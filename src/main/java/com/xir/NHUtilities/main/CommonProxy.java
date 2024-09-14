@@ -4,6 +4,7 @@ import static com.xir.NHUtilities.main.NHUtilities.LOG;
 import static com.xir.NHUtilities.main.ReferencedInfo.MOD_NAME;
 
 import com.xir.NHUtilities.common.recipes.GTRecipes.GTRecipes;
+import com.xir.NHUtilities.common.research.GTApiResearch;
 import com.xir.NHUtilities.loader.EntityLoader;
 import com.xir.NHUtilities.loader.EventLoader;
 import com.xir.NHUtilities.loader.ItemsLoader;
@@ -55,6 +56,9 @@ public class CommonProxy {
 
         GTRecipes.registerNHUtilitiesGTRecipe();
         LOG.info("Loaded NHUtilities GTRecipes");
+
+        GTApiResearch.addGTApiResearchAndRecipes();
+        LOG.info("Loaded TC_Researches and TC_Recipes through GTAPI");
 
     }
 
