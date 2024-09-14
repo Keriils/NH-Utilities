@@ -29,10 +29,8 @@ public class GTApiResearch {
     public static void addGTApiResearchAndRecipes() {
         GregTech_API.sThaumcraftCompat.addResearch(
             ShadowMetalFuelRod,
-            StatCollector.translateToLocal(
-                PrefixOfResearchInThaumonomicon + "name." + ShadowMetalFuelRod),
-            StatCollector.translateToLocal(
-                PrefixOfResearchInThaumonomicon + "text." + ShadowMetalFuelRod),
+            StatCollector.translateToLocal(PrefixOfResearchInThaumonomicon + "name." + ShadowMetalFuelRod),
+            StatCollector.translateToLocal(PrefixOfResearchInThaumonomicon + "text." + ShadowMetalFuelRod),
             new String[] { "INFUSION" },
             MOD_ID_UPPER,
             new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium, 1),
@@ -68,10 +66,8 @@ public class GTApiResearch {
                         new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 256))) });
         GregTech_API.sThaumcraftCompat.addResearch(
             IchoriumFuelRod,
-            StatCollector.translateToLocal(
-                PrefixOfResearchInThaumonomicon + "name." + IchoriumFuelRod),
-            StatCollector.translateToLocal(
-                PrefixOfResearchInThaumonomicon + "text." + IchoriumFuelRod),
+            StatCollector.translateToLocal(PrefixOfResearchInThaumonomicon + "name." + IchoriumFuelRod),
+            StatCollector.translateToLocal(PrefixOfResearchInThaumonomicon + "text." + IchoriumFuelRod),
             new String[] { "PRIMPEARL", "ICHOR", ShadowMetalFuelRod },
             MOD_ID_UPPER,
             new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium, 1),
