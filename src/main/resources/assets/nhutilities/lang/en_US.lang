@@ -67,6 +67,14 @@ tc.research_name.THAUMICEBF=Thaumic Electric Blast Furnace
 tc.research_text.THAUMICEBF=Burning Fiercely
 nhu.research.thaumicebf_1=Thanks to your limited knowledge of Thaumcraft, you discover that elemental crystals can fuse corresponding GT Machines together. With a sense of anxious anticipation, you attempt to fuse the industrial blast furnace into a more advanced version. Obviously, you succeeded.
 
+tc.research_name.SHADOWMETALFUELROD=Fuel Rod (Excited Radiance Uranium)
+tc.research_text.SHADOWMETALFUELROD=Make Thaumcraft Great Again!
+nhu.research.shadowmetalfuelrod_1=For a long time, you were perplexed by the immense energy released by nuclear power. It seemed too crude, almost like a blasphemous creation. After a nuclear explosion accident, the air is filled with an energy that you are familiar with... You try to contain this massive energy within the intertwining of light and darkness, but it still seems a bit prone to leakage.
+
+tc.research_name.ICHORIUMFUELROD=Fuel Rod (Super Excited Primordial Pearl Plutonium)
+tc.research_text.ICHORIUMFUELROD=Do we really have to... come to this point?
+nhu.research.ichoriumfuelrod_1=You were extremely satisfied with your previous work. And you're almost obsessively driven to take it further. A little bit of plutonium, a small amount of kami blood, a little bit of pearl, and a little technological dust fused together. What could they create? You wonder.
+
 # Tooltips for TCEBF
 nhu.tcebf.machine=Thaumic Electric Blast Furnace
 nhu.tcebf.machine.type=Blast Furnace

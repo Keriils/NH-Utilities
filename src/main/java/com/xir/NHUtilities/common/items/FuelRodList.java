@@ -10,7 +10,7 @@ import com.xir.NHUtilities.utils.RegisterUtils;
 public class FuelRodList {
 
     public static ItemBasic ichorFuelRod;
-    public static ItemBasic radianceFuelRod;
+    public static ItemBasic shadowFuelRod;
 
     public static ItemBasic ichorDroplet;
     public static ItemBasic primordialPearlDust;
@@ -34,7 +34,7 @@ public class FuelRodList {
     public static void fuelRodInit() {
 
         ichorFuelRod = new ItemBasic("ichorFuelRod");
-        radianceFuelRod = new ItemBasic("radianceFuelRod");
+        shadowFuelRod = new ItemBasic("radianceFuelRod");
 
         ichorDroplet = new ItemBasic("ichorDroplet");
         primordialPearlDust = new ItemBasic("primordialPearlDust");
@@ -110,7 +110,7 @@ public class FuelRodList {
             new ItemStack(depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4, 1));
 
         RegisterUtils.registerItem(ichorFuelRod);
-        RegisterUtils.registerItem(radianceFuelRod);
+        RegisterUtils.registerItem(shadowFuelRod);
         RegisterUtils.registerItem(ichorDroplet);
         RegisterUtils.registerItem(primordialPearlDust);
 
