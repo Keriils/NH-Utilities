@@ -54,7 +54,7 @@ public class GTRecipes {
         GT_Values.RA.stdBuilder()
             .itemInputs(
                 new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium, 4),
-                GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Ichorium, 8),
+                GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.Ichorium, 6),
                 GT_Utility.getIntegratedCircuit(4))
             .itemOutputs(new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium_4, 1))
             .duration(10 * SECOND)
@@ -98,7 +98,7 @@ public class GTRecipes {
         GT_Values.RA.stdBuilder()
             .itemInputs(
                 new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium, 4),
-                GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Shadow, 8),
+                GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.Shadow, 6),
                 GT_Utility.getIntegratedCircuit(4))
             .itemOutputs(new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium_4, 1))
             .duration(10 * SECOND)
@@ -196,7 +196,7 @@ public class GTRecipes {
             .itemOutputs(new ItemStack(FuelRodList.primordialPearlDust, 4))
             .duration(100 * SECOND)
             .eut(TierEU.RECIPE_EV)
-            .addTo(extractorRecipes);
+            .addTo(maceratorRecipes);
 
         GT_Values.RA.stdBuilder()
             .itemInputs(new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 0))
@@ -211,6 +211,6 @@ public class GTRecipes {
             .itemOutputs(hatch_CreativeMaintenance.get(1))
             .duration(25 * SECOND)
             .eut(TierEU.RECIPE_HV)
-            .addTo(maceratorRecipes);
+            .addTo(assemblerRecipes);
     }
 }
