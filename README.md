@@ -3,7 +3,7 @@
 
 ---
 ## 当前已增加内容
-  - ✔ 增强的龙研**高级传送器MKII**——支持放入饰品栏/快捷键打开
+  - ✔ 增强了龙研**高级传送器MKII**——支持放入饰品栏/快捷键打开
   - ✔ lang文件自动重置: 主要是mod版本改变后自动重置备份的lang文件
     可以在config/NHUtilities/NHUtilities.cfg文件下配置
     默认支持TST BOX 可编程舱室 等mod
