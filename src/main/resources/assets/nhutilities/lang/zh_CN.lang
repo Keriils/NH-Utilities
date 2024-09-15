@@ -9,6 +9,7 @@ item.NHUtilities:HungerRing.name=饥饿指环
 item.NHUtilities:TimeVial.name=时间之瓶
 item.NHUtilities:EternityVial.name=永恒之瓶
 item.NHUtilities:LunchBoxPlus.name=超级午餐盒
+item.NHUtilities:KamiRing.name=Kami神环
 
 # tc fuel rod project
 text.NHUtilities.fuelRod.tooltip.0=耐久:%d/%d

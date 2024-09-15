@@ -9,6 +9,7 @@ item.NHUtilities:HungerRing.name=HungerRing
 item.NHUtilities:TimeVial.name=TimeVial
 item.NHUtilities:EternityVial.name=EternityVial
 item.NHUtilities:LunchBoxPlus.name=Lunch Box Plus
+item.NHUtilities:KamiRing.name=Kami Divine Ring
 
 # tc fuel rod project
 text.NHUtilities.fuelRod.tooltip.0=Durability: %s/%s
