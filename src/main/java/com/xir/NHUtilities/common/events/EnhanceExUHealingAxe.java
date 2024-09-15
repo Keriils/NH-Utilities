@@ -11,7 +11,8 @@ public class EnhanceExUHealingAxe {
     @SubscribeEvent
     public void onHeldHealingAxe(PlayerEvent event) {
         EntityPlayer entityPlayer = event.entityPlayer;
-        if (entityPlayer.worldObj.getTotalWorldTime() % 40L == 0L && entityPlayer.getHeldItem() != null
+        if (entityPlayer != null && entityPlayer.worldObj.getTotalWorldTime() % 40L == 0L
+            && entityPlayer.getHeldItem() != null
             && (entityPlayer.getHeldItem()
                 .getItem() == GetModItemWhileWorldLoad.getItemHealingAxe())) {
             entityPlayer.getFoodStats()
