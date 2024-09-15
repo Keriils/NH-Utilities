@@ -37,7 +37,6 @@ public class KamiRing extends ItemBasic implements IBauble {
 
         if (player instanceof EntityPlayer entityPlayer) {
             if (entityPlayer.isDead) entityPlayer.isDead = false;
-            if (!entityPlayer.capabilities.disableDamage) entityPlayer.capabilities.disableDamage = true;
             if (entityPlayer.worldObj.getTotalWorldTime() % 10 == 0) {
                 if (entityPlayer.getFoodStats()
                     .getFoodLevel() != 20) {
@@ -60,12 +59,6 @@ public class KamiRing extends ItemBasic implements IBauble {
 
         if (player.isEntityInvulnerable() && (player instanceof IEntityInvulnerable entityInvulnerable)) {
             entityInvulnerable.setEntityInvulnerable(false);
-        }
-
-        if (player instanceof EntityPlayer entityPlayer) {
-            if (!entityPlayer.capabilities.isCreativeMode) {
-                entityPlayer.capabilities.disableDamage = false;
-            }
         }
 
     }
