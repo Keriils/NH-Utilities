@@ -9,12 +9,13 @@ item.NHUtilities:HungerRing.name=饥饿指环
 item.NHUtilities:TimeVial.name=时间之瓶
 item.NHUtilities:EternityVial.name=永恒之瓶
 item.NHUtilities:LunchBoxPlus.name=超级午餐盒
+item.NHUtilities:KamiRing.name=Kami神环
 
 # tc fuel rod project
 text.NHUtilities.fuelRod.tooltip.0=耐久:%d/%d
-text.NHUtilities.fuelRod.tooltip.1=具有MOX特性
-text.NHUtilities.fuelRod.tooltip.2=基础产热(heta/s): %d
-text.NHUtilities.fuelRod.tooltip.3=基础发电功率(EU/t): %d
+text.NHUtilities.fuelRod.tooltip.1=具有MOX特性 | MOX系数: %d
+text.NHUtilities.fuelRod.tooltip.2=基础产热(heta/s): %d/%d/%d
+text.NHUtilities.fuelRod.tooltip.3=基础发电功率(EU/t): %d/%d/%d
 item.NHUtilities:ichorFuelRod.name=灵宝燃料棒(空)
 item.NHUtilities:radianceFuelRod.name=光辉燃料棒(空)
 item.NHUtilities:ichorDroplet.name=灵宝液滴

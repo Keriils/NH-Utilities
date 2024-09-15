@@ -56,27 +56,27 @@ public class FuelRodList {
         fuelRodExcitedRadianceUranium = new FuelRod(
             "fuelRodExcitedRadianceUranium",
             1,
-            150,
-            6,
-            800,
+            2000,
+            26,
+            4000,
             86400,
             0F,
             new ItemStack(depletedFuelRodExcitedRadianceUranium, 1));
         fuelRodExcitedRadianceUranium_2 = new FuelRod(
             "fuelRodExcitedRadianceUranium_2",
             2,
-            600,
-            36,
-            1600,
+            2000,
+            26,
+            4000,
             86400,
             0F,
             new ItemStack(depletedFuelRodExcitedRadianceUranium_2, 1));
         fuelRodExcitedRadianceUranium_4 = new FuelRod(
             "fuelRodExcitedRadianceUranium_4",
             4,
-            1800,
-            144,
-            3200,
+            2000,
+            26,
+            4000,
             86400,
             0F,
             new ItemStack(depletedFuelRodExcitedRadianceUranium_4, 1));
@@ -84,29 +84,29 @@ public class FuelRodList {
         fuelRodSuperExcitedPrimordialPearlPlutonium = new FuelRod(
             "fuelRodSuperExcitedPrimordialPearlPlutonium",
             1,
-            3200,
-            128,
-            6400,
-            10000,
-            1.3F,
+            8600,
+            80,
+            12800,
+            15000,
+            3.3F,
             new ItemStack(depletedFuelRodSuperExcitedPrimordialPearlPlutonium, 1));
         fuelRodSuperExcitedPrimordialPearlPlutonium_2 = new FuelRod(
             "fuelRodSuperExcitedPrimordialPearlPlutonium_2",
             2,
+            8600,
+            80,
             12800,
-            768,
-            12800,
-            10000,
+            15000,
             3.3F,
             new ItemStack(depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2, 1));
         fuelRodSuperExcitedPrimordialPearlPlutonium_4 = new FuelRod(
             "fuelRodSuperExcitedPrimordialPearlPlutonium_4",
             4,
-            38400,
-            3064,
-            25600,
-            10000,
-            1.3F,
+            8600,
+            80,
+            12800,
+            15000,
+            3.3F,
             new ItemStack(depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4, 1));
 
         RegisterUtils.registerItem(ichorFuelRod);

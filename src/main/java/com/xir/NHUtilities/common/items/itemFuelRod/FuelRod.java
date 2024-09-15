@@ -197,14 +197,27 @@ public class FuelRod extends RadioactiveItem implements IReactorComponent, IBoxa
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean extraInformation) {
+        final int powerInfo = (int) this.Power * 25;
         list.add(
             String.format(
                 StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.0"),
                 getMaxCustomDamage() - getCustomDamage(stack),
                 getMaxCustomDamage()));
-        if (this.HeatBonus > 0F) list.add(StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.1"));
-        list.add(String.format(StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.2"), this.Heat));
-        list.add(String.format(StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.3"), this.Power));
+        if (this.HeatBonus > 0F) list
+            .add(String.format(StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.1"), this.HeatBonus));
+        list.add(
+            String.format(
+                String.format(
+                    StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.2"),
+                    this.Heat,
+                    this.Heat * 6,
+                    this.Heat * 24)));
+        list.add(
+            String.format(
+                StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.3"),
+                powerInfo,
+                powerInfo * 4,
+                powerInfo * 12));
     }
     // endregion
 

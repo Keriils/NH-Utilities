@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import mcp.mobius.betterbarrels.common.items.dolly.ItemBarrelMover;
 
-@Mixin(value = ItemBarrelMover.class, remap = false)
+@Mixin(value = ItemBarrelMover.class)
 public class DisableDollyDebuff_Mixin {
 
     @Redirect(
@@ -18,6 +18,6 @@ public class DisableDollyDebuff_Mixin {
             value = "INVOKE",
             target = "Lnet/minecraft/entity/player/EntityPlayer;addPotionEffect(Lnet/minecraft/potion/PotionEffect;)V"))
     private void NHUtilities$disableDebuff(EntityPlayer instance, PotionEffect potionEffect) {
-        // nothing
+        // Null method problem
     }
 }

@@ -2,7 +2,7 @@
 .settings
 /.idea/
 /.vscode/
-/run/
+/run/*
 /build/
 /eclipse/
 .classpath
@@ -14,14 +14,14 @@
 options.txt
 /saves/
 usernamecache.json
-banned-ips.json
-banned-players.json
+!banned-ips.json
+!banned-players.json
 eula.txt
-ops.json
+!ops.json
 server.properties
 servers.dat
 usercache.json
-whitelist.json
+!whitelist.json
 /out/
 *.iml
 *.ipr

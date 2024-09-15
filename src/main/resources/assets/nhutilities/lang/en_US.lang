@@ -9,12 +9,13 @@ item.NHUtilities:HungerRing.name=HungerRing
 item.NHUtilities:TimeVial.name=TimeVial
 item.NHUtilities:EternityVial.name=EternityVial
 item.NHUtilities:LunchBoxPlus.name=Lunch Box Plus
+item.NHUtilities:KamiRing.name=Kami Divine Ring
 
 # tc fuel rod project
 text.NHUtilities.fuelRod.tooltip.0=Durability: %s/%s
-text.NHUtilities.fuelRod.tooltip.1=Has Mox Behaviour
-text.NHUtilities.fuelRod.tooltip.2=base heat(heta/s): %d
-text.NHUtilities.fuelRod.tooltip.3=base power(EU/t): %d
+text.NHUtilities.fuelRod.tooltip.1=Has Mox Behaviour | MOX-coefficient: %d
+text.NHUtilities.fuelRod.tooltip.2=base heat(heta/s): %d/%d/%d
+text.NHUtilities.fuelRod.tooltip.3=base power(EU/t): %d/%d/%d
 item.NHUtilities:ichorDroplet.name=Ichor Droplet
 item.NHUtilities:primordialPearlDust.name=Primordial Pearl Dust
 item.NHUtilities:ichorFuelRod.name=Ichor Fuel Rod

@@ -1,5 +1,6 @@
 package com.xir.NHUtilities.loader;
 
+import static com.xir.NHUtilities.common.items.ModsItemsList.KamiRing;
 import static com.xir.NHUtilities.common.items.ModsItemsList.eternityVial;
 import static com.xir.NHUtilities.common.items.ModsItemsList.gluttonyRing;
 import static com.xir.NHUtilities.common.items.ModsItemsList.hungerRing;
@@ -20,6 +21,7 @@ public class ItemsLoader {
         FuelRodList.fuelRodInit();
         RegisterUtils.registerItem(gluttonyRing, enableGluttonyRingAndHungerRing);
         RegisterUtils.registerItem(hungerRing, enableGluttonyRingAndHungerRing);
+        RegisterUtils.registerItem(KamiRing, true);
         RegisterUtils.registerItem(timeVial, enableTimeVial);
         RegisterUtils.registerItem(eternityVial, enableEternityVial);
         RegisterUtils.registerItem(lunchBoxPlus, "LunchBoxPlus", enableLunchBoxPlus);
