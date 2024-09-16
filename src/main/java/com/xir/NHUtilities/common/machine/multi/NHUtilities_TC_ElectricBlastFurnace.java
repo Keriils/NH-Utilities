@@ -10,10 +10,6 @@ import static gregtech.api.enums.GT_HatchElement.Muffler;
 import static gregtech.api.enums.GT_HatchElement.OutputBus;
 import static gregtech.api.enums.GT_HatchElement.OutputHatch;
 import static gregtech.api.enums.GT_Values.VN;
-import static gregtech.api.enums.Textures.BlockIcons.OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE;
-import static gregtech.api.enums.Textures.BlockIcons.OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE;
-import static gregtech.api.enums.Textures.BlockIcons.OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW;
-import static gregtech.api.enums.Textures.BlockIcons.OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_GLOW;
 import static gregtech.api.enums.Textures.BlockIcons.casingTexturePages;
 import static gregtech.api.util.GT_StructureUtility.buildHatchAdder;
 import static gregtech.api.util.GT_StructureUtility.ofCoil;
@@ -43,6 +39,8 @@ import gregtech.GT_Mod;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.HeatingCoilLevel;
 import gregtech.api.enums.Materials;
+import gregtech.api.enums.Textures;
+import gregtech.api.interfaces.IIconContainer;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.fluid.IFluidStore;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
@@ -72,6 +70,14 @@ public class NHUtilities_TC_ElectricBlastFurnace extends
         Materials.CarbonMonoxide.getGas(1000), Materials.SulfurDioxide.getGas(1000) };
     protected static final int CASING_INDEX = 11;
     protected static final String STRUCTURE_PIECE_MAIN = "main";
+    private static final IIconContainer Active = new Textures.BlockIcons.CustomIcon(
+        "iconsets/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_ACTIVE");
+    private static final IIconContainer Active_Glow = new Textures.BlockIcons.CustomIcon(
+        "iconsets/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW");
+    private static final IIconContainer Not_Active = new Textures.BlockIcons.CustomIcon(
+        "iconsets/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE");
+    private static final IIconContainer Not_Active_Glow = new Textures.BlockIcons.CustomIcon(
+        "iconsets/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_GLOW");
     private static final IStructureDefinition<NHUtilities_TC_ElectricBlastFurnace> STRUCTURE_DEFINITION = StructureDefinition
         .<NHUtilities_TC_ElectricBlastFurnace>builder()
         .addShape(
@@ -181,20 +187,20 @@ public class NHUtilities_TC_ElectricBlastFurnace extends
         int colorIndex, boolean aActive, boolean redstoneLevel) {
         if (side == aFacing) {
             if (aActive) return new ITexture[] { casingTexturePages[0][CASING_INDEX], TextureFactory.builder()
-                .addIcon(OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE)
+                .addIcon(Active)
                 .extFacing()
                 .build(),
                 TextureFactory.builder()
-                    .addIcon(OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW)
+                    .addIcon(Active_Glow)
                     .extFacing()
                     .glow()
                     .build() };
             return new ITexture[] { casingTexturePages[0][CASING_INDEX], TextureFactory.builder()
-                .addIcon(OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE)
+                .addIcon(Not_Active)
                 .extFacing()
                 .build(),
                 TextureFactory.builder()
-                    .addIcon(OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_GLOW)
+                    .addIcon(Not_Active_Glow)
                     .extFacing()
                     .glow()
                     .build() };
