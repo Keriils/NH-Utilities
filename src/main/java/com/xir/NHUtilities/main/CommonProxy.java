@@ -30,14 +30,14 @@ public class CommonProxy {
         EventLoader.registerNHUtilitiesEvents();
         LOG.info("Loaded Events.");
 
+        MachineLoader.registerNHUtilitiesMachine();
+        LOG.info("Loaded GregTechMachines.");
+
     }
 
     public void init(FMLInitializationEvent event) {
 
         LOG.info("Initializing " + MOD_NAME + "!");
-
-        MachineLoader.registerNHUtilitiesMachine();
-        LOG.info("Loaded GregTechMachines.");
 
         RecipeLoader.registerNHUtilitiesRecipes();
         LOG.info("Loaded Recipes.");
