@@ -184,6 +184,7 @@ public class TimeVial extends ItemBasic {
 
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity playerIn, int slot, boolean isHeld) {
+        if (worldIn.isRemote) return;
         if (!(playerIn instanceof EntityPlayer player)) return;
         if (limitOneTimeVial && worldIn.getTotalWorldTime() % 600 == 0) {
             mergeSameVialTime(player, stack);
