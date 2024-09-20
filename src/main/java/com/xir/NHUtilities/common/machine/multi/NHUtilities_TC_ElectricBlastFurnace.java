@@ -10,6 +10,10 @@ import static gregtech.api.enums.GT_HatchElement.Muffler;
 import static gregtech.api.enums.GT_HatchElement.OutputBus;
 import static gregtech.api.enums.GT_HatchElement.OutputHatch;
 import static gregtech.api.enums.GT_Values.VN;
+import static gregtech.api.enums.Textures.BlockIcons.OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE;
+import static gregtech.api.enums.Textures.BlockIcons.OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE;
+import static gregtech.api.enums.Textures.BlockIcons.OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW;
+import static gregtech.api.enums.Textures.BlockIcons.OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_GLOW;
 import static gregtech.api.enums.Textures.BlockIcons.casingTexturePages;
 import static gregtech.api.util.GT_StructureUtility.buildHatchAdder;
 import static gregtech.api.util.GT_StructureUtility.ofCoil;
@@ -34,6 +38,7 @@ import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructa
 import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
 import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
+import com.xir.NHUtilities.config.Config;
 
 import gregtech.GT_Mod;
 import gregtech.api.GregTech_API;
@@ -185,6 +190,35 @@ public class NHUtilities_TC_ElectricBlastFurnace extends
     @Override
     public ITexture[] getTexture(IGregTechTileEntity baseMetaTileEntity, ForgeDirection side, ForgeDirection aFacing,
         int colorIndex, boolean aActive, boolean redstoneLevel) {
+        if (Config.disableTCBlastFurnace) return originalTexture(side, aFacing, aActive);
+        return tcCustomTexture(side, aFacing, aActive);
+    }
+
+    private ITexture[] originalTexture(ForgeDirection side, ForgeDirection aFacing, boolean aActive) {
+        if (side == aFacing) {
+            if (aActive) return new ITexture[] { casingTexturePages[0][CASING_INDEX], TextureFactory.builder()
+                .addIcon(OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE)
+                .extFacing()
+                .build(),
+                TextureFactory.builder()
+                    .addIcon(OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW)
+                    .extFacing()
+                    .glow()
+                    .build() };
+            return new ITexture[] { casingTexturePages[0][CASING_INDEX], TextureFactory.builder()
+                .addIcon(OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE)
+                .extFacing()
+                .build(),
+                TextureFactory.builder()
+                    .addIcon(OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_GLOW)
+                    .extFacing()
+                    .glow()
+                    .build() };
+        }
+        return new ITexture[] { casingTexturePages[0][CASING_INDEX] };
+    }
+
+    private ITexture[] tcCustomTexture(ForgeDirection side, ForgeDirection aFacing, boolean aActive) {
         if (side == aFacing) {
             if (aActive) return new ITexture[] { casingTexturePages[0][CASING_INDEX], TextureFactory.builder()
                 .addIcon(Active)
