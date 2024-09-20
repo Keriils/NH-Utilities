@@ -119,12 +119,16 @@ public class TimeVial extends ItemBasic {
                 int currentRate = eta.getTimeRate();
                 int nextRateTimeRequired = (int) (currentRate * eta.getRemainingTime() * timeVialDiscountValue);
 
-                //// Invert the GregTechMachineMode
-                // if (player.isSneaking()) {
-                // eta.setGregTechMachineMode(!eta.getGregTechMachineMode());
-                // }
-
-                if (currentRate < MAX_ACCELERATION && shouldAndConsumeTimeData(stack, nextRateTimeRequired)) {
+                if (player.isSneaking()) { // recycling time
+                    NBTTagCompound nbtTagCompound = stack.getTagCompound();
+                    if (nbtTagCompound != null) {
+                        nbtTagCompound.setInteger(
+                            "storedTimeTick",
+                            nbtTagCompound.getInteger("storedTimeTick") + currentRate * eta.getRemainingTime());
+                        stack.setTagCompound(nbtTagCompound);
+                    }
+                    eta.setDead();
+                } else if (currentRate < MAX_ACCELERATION && shouldAndConsumeTimeData(stack, nextRateTimeRequired)) {
                     eta.setTimeRate(currentRate * 2);
                     etaInteract(eta, world, targetPosX, targetPosY, targetPosZ);
                 }
@@ -184,6 +188,7 @@ public class TimeVial extends ItemBasic {
 
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity playerIn, int slot, boolean isHeld) {
+        if (worldIn.isRemote) return;
         if (!(playerIn instanceof EntityPlayer player)) return;
         if (limitOneTimeVial && worldIn.getTotalWorldTime() % 600 == 0) {
             mergeSameVialTime(player, stack);

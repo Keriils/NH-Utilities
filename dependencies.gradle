@@ -28,6 +28,7 @@ dependencies {
     // debug info & nbtEdit
     runtimeOnly("com.github.GTNewHorizons:ServerUtilities:2.0.66:dev")
     runtimeOnly files("libs/ForgeNBTEdit.jar")
+    runtimeOnly files("libs/inventorytweaks-1.7.0-dev.jar")
 
     // Thaumcraft things
     implementation('com.github.GTNewHorizons:ThaumicTinkerer:2.9.4:dev')
