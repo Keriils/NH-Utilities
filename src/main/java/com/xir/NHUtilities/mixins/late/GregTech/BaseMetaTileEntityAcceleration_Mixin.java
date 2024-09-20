@@ -1,8 +1,6 @@
 package com.xir.NHUtilities.mixins.late.GregTech;
 
 import static com.xir.NHUtilities.config.Config.accelerateGregTechMachineDiscount;
-import static com.xir.NHUtilities.config.Config.enableLogInfo;
-import static com.xir.NHUtilities.main.NHUtilities.LOG;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -27,42 +25,47 @@ public abstract class BaseMetaTileEntityAcceleration_Mixin implements ITileEntit
     @Shadow(remap = false)
     public abstract IMetaTileEntity getMetaTileEntity();
 
+    @Shadow(remap = false)
+    public abstract boolean isActive();
+
     @Override
     public boolean tickAcceleration(int tickAcceleratedRate) {
-        // safely calling
-        int currentProgress = this.getProgress();
-        int maxProgress = this.getMaxProgress();
+        if (this.isActive()) {
+            // safely calling
+            int currentProgress = this.getProgress();
+            int maxProgress = this.getMaxProgress();
 
-        if (maxProgress >= 2) { // obviously
-            tickAcceleratedRate = (int) (tickAcceleratedRate * accelerateGregTechMachineDiscount); // discount for
-                                                                                                   // accelerating
-                                                                                                   // gregtech machines
-            int newProgress = currentProgress + tickAcceleratedRate;
-            int NHUtilities$modify = Math.min(maxProgress, newProgress);
-            if (enableLogInfo) LOG.info("modifyArg {}", NHUtilities$modify);
+            if (maxProgress >= 2) { // obviously
+                tickAcceleratedRate = (int) (tickAcceleratedRate * accelerateGregTechMachineDiscount); // discount for
+                                                                                                       // accelerating
+                                                                                                       // gregtech
+                                                                                                       // machines
+                int NHUtilities$modify = Math.min(maxProgress, currentProgress + tickAcceleratedRate);
 
-            IMetaTileEntity metaTileEntity = this.getMetaTileEntity();
+                IMetaTileEntity metaTileEntity = this.getMetaTileEntity();
 
-            // for accelerating basic machine
-            if (metaTileEntity instanceof GT_MetaTileEntity_BasicMachine basicMachine) {
-                basicMachine.mProgresstime = NHUtilities$modify;
-                if (enableLogInfo) LOG.info("success accelerating basicMachine");
+                // for accelerating basic machine
+                if (metaTileEntity instanceof GT_MetaTileEntity_BasicMachine basicMachine) {
+                    basicMachine.mProgresstime = NHUtilities$modify;
+                    return true;
+                }
+
+                // for accelerating multi machine
+                if (metaTileEntity instanceof GT_MetaTileEntity_MultiBlockBase multiBlockBase) {
+                    multiBlockBase.mProgresstime = NHUtilities$modify;
+                    return true;
+                }
+
+                // for accelerating primitive blast furnace
+                if (metaTileEntity instanceof GT_MetaTileEntity_PrimitiveBlastFurnace primitiveBlastFurnace) {
+                    primitiveBlastFurnace.mProgresstime = NHUtilities$modify;
+                    return true;
+                }
+
+                return false; // this for accelerating gt machine by executing TE update method
+
             }
-
-            // for accelerating multi machine
-            if (metaTileEntity instanceof GT_MetaTileEntity_MultiBlockBase multiBlockBase) {
-                multiBlockBase.mProgresstime = NHUtilities$modify;
-                if (enableLogInfo) LOG.info("success accelerating multiBlockBase");
-            }
-
-            // for accelerating primitive blast furnace
-            if (metaTileEntity instanceof GT_MetaTileEntity_PrimitiveBlastFurnace primitiveBlastFurnace) {
-                primitiveBlastFurnace.mProgresstime = NHUtilities$modify;
-                if (enableLogInfo) LOG.info("success accelerating primitiveBlastFurnace");
-            }
-        } else {
-            return false; // this for accelerating gt machine by executing TE update method
         }
-        return true;
+        return true; // this for not acceleration while machine is shutdown
     }
 }
