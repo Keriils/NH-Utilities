@@ -11,6 +11,9 @@ item.NHUtilities:EternityVial.name=EternityVial
 item.NHUtilities:LunchBoxPlus.name=Lunch Box Plus
 item.NHUtilities:KamiRing.name=Kami Divine Ring
 
+#focus
+item.focus_tape.name=Wand Focus: Tape
+
 # tc fuel rod project
 text.NHUtilities.fuelRod.tooltip.0=Durability: %s/%s
 text.NHUtilities.fuelRod.tooltip.1=Has Mox Behaviour | MOX-coefficient: %d

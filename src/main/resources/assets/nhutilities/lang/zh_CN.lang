@@ -11,6 +11,9 @@ item.NHUtilities:EternityVial.name=永恒之瓶
 item.NHUtilities:LunchBoxPlus.name=超级午餐盒
 item.NHUtilities:KamiRing.name=Kami神环
 
+#focus
+item.focus_tape.name=法杖核心：航空胶带
+
 # tc fuel rod project
 text.NHUtilities.fuelRod.tooltip.0=耐久:%d/%d
 text.NHUtilities.fuelRod.tooltip.1=具有MOX特性 | MOX系数: %d

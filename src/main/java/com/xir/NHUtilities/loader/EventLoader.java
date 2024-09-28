@@ -9,6 +9,7 @@ import net.minecraftforge.common.MinecraftForge;
 import com.xir.NHUtilities.common.events.EnhanceExUHealingAxe;
 import com.xir.NHUtilities.common.events.GetModItemWhileWorldLoad;
 import com.xir.NHUtilities.common.events.GluttonyRingEvent;
+import com.xir.NHUtilities.common.events.WarpWardRingEvent;
 
 public class EventLoader {
 
@@ -22,5 +23,6 @@ public class EventLoader {
         if (enableEnhancedExUHealingAxe) {
             MinecraftForge.EVENT_BUS.register(new EnhanceExUHealingAxe());
         }
+        MinecraftForge.EVENT_BUS.register(new WarpWardRingEvent());
     }
 }

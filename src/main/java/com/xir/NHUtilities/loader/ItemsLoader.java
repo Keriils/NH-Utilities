@@ -2,10 +2,12 @@ package com.xir.NHUtilities.loader;
 
 import static com.xir.NHUtilities.common.items.ModsItemsList.KamiRing;
 import static com.xir.NHUtilities.common.items.ModsItemsList.eternityVial;
+import static com.xir.NHUtilities.common.items.ModsItemsList.focusTape;
 import static com.xir.NHUtilities.common.items.ModsItemsList.gluttonyRing;
 import static com.xir.NHUtilities.common.items.ModsItemsList.hungerRing;
 import static com.xir.NHUtilities.common.items.ModsItemsList.lunchBoxPlus;
 import static com.xir.NHUtilities.common.items.ModsItemsList.timeVial;
+import static com.xir.NHUtilities.common.items.ModsItemsList.warpRing;
 import static com.xir.NHUtilities.config.Config.enableEternityVial;
 import static com.xir.NHUtilities.config.Config.enableGluttonyRingAndHungerRing;
 import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
@@ -25,6 +27,8 @@ public class ItemsLoader {
         RegisterUtils.registerItem(timeVial, enableTimeVial);
         RegisterUtils.registerItem(eternityVial, enableEternityVial);
         RegisterUtils.registerItem(lunchBoxPlus, "LunchBoxPlus", enableLunchBoxPlus);
+        RegisterUtils.registerItem(focusTape, "focusTape");
+        RegisterUtils.registerItem(warpRing, "warpRing");
     }
 
 }

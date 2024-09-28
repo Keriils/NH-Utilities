@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import com.xir.NHUtilities.common.items.aItemCore.ItemBasic;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import thaumcraft.api.wands.ItemFocusBasic;
 
 @SuppressWarnings("unused")
 public final class RegisterUtils {
@@ -27,4 +28,7 @@ public final class RegisterUtils {
         if (shouldRegister) GameRegistry.registerItem(item, itemName);
     }
 
+    public static void registerItem(ItemFocusBasic itemFocusBasic, String string) {
+        GameRegistry.registerItem(itemFocusBasic, string);
+    }
 }

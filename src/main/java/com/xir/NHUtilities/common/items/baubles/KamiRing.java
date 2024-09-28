@@ -12,9 +12,11 @@ import com.xir.NHUtilities.common.items.aItemCore.ItemBasic;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import cpw.mods.fml.common.Optional;
+import thaumcraft.api.IVisDiscountGear;
+import thaumcraft.api.aspects.Aspect;
 
 @Optional.Interface(iface = "baubles.api.IBauble", modid = "Baubles")
-public class KamiRing extends ItemBasic implements IBauble {
+public class KamiRing extends ItemBasic implements IBauble, IVisDiscountGear {
 
     public KamiRing() {
         super("KamiRing");
@@ -73,5 +75,10 @@ public class KamiRing extends ItemBasic implements IBauble {
     @Optional.Method(modid = "Baubles")
     public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
         return true;
+    }
+
+    @Override
+    public int getVisDiscount(ItemStack var1, EntityPlayer var2, Aspect var3) {
+        return 99;
     }
 }
