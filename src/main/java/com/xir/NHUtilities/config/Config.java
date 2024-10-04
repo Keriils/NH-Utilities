@@ -183,7 +183,7 @@ public class Config {
             disableDollyDebuff = configuration
                 .getBoolean("disableDollyDebuff", CATEGORY_MIXIN_CONFIG, disableDollyDebuff, "disable Dolly Debuff");
             disableTCBlastFurnace = configuration
-                .getBoolean("disableTCBlastFurnace", CATEGORY_MASS, disableTCBlastFurnace, "disable TC Blast Furnace");
+                .getBoolean("disableTCBlastFurnaceNewTexture", CATEGORY_MASS, disableTCBlastFurnace, "disable TC Blast Furnace New Texture");
 
         }
 

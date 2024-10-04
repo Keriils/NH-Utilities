@@ -34,7 +34,6 @@ public class WarpWardRingEvent {
         if (tileEntity instanceof BaseMetaTileEntity) {
             Random random = new Random();
             int number = random.nextInt(1000) + 1;
-            Thaumcraft.addWarpToPlayer(player, 1, true);
             if (number <= 1000) {
                 String name = player.getCommandSenderName();
                 int wp = Knowledge.getWarpPerm(name);
@@ -55,7 +54,7 @@ public class WarpWardRingEvent {
                     } else if (number <= 900) {
                         if (wn >= 1) {
                             Knowledge.setWarpSticky(name, wn - 1);
-                            Knowledge.setWarpTemp(name, wc + 1);
+                            Knowledge.setWarpTemp(name, wt + 1);
                             ChatHelper.sendToPlayer(player, StatCollector.translateToLocal("chat.nhutilities.2"));
                             return;
                         }
