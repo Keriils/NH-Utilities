@@ -16,20 +16,20 @@ public class FuelRodList {
     public static ItemBasic primordialPearlDust;
 
     public static DepletedFuelRod depletedFuelRodExcitedRadianceUranium;
-    public static DepletedFuelRod depletedFuelRodExcitedRadianceUranium_2;
-    public static DepletedFuelRod depletedFuelRodExcitedRadianceUranium_4;
+    public static DepletedFuelRod depletedFuelRodExcitedRadianceUranium2;
+    public static DepletedFuelRod depletedFuelRodExcitedRadianceUranium4;
 
     public static DepletedFuelRod depletedFuelRodSuperExcitedPrimordialPearlPlutonium;
-    public static DepletedFuelRod depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2;
-    public static DepletedFuelRod depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4;
+    public static DepletedFuelRod depletedFuelRodSuperExcitedPrimordialPearlPlutonium2;
+    public static DepletedFuelRod depletedFuelRodSuperExcitedPrimordialPearlPlutonium4;
 
     public static FuelRod fuelRodExcitedRadianceUranium;
-    public static FuelRod fuelRodExcitedRadianceUranium_2;
-    public static FuelRod fuelRodExcitedRadianceUranium_4;
+    public static FuelRod fuelRodExcitedRadianceUranium2;
+    public static FuelRod fuelRodExcitedRadianceUranium4;
 
     public static FuelRod fuelRodSuperExcitedPrimordialPearlPlutonium;
-    public static FuelRod fuelRodSuperExcitedPrimordialPearlPlutonium_2;
-    public static FuelRod fuelRodSuperExcitedPrimordialPearlPlutonium_4;
+    public static FuelRod fuelRodSuperExcitedPrimordialPearlPlutonium2;
+    public static FuelRod fuelRodSuperExcitedPrimordialPearlPlutonium4;
 
     public static void fuelRodInit() {
 
@@ -40,74 +40,74 @@ public class FuelRodList {
         primordialPearlDust = new ItemBasic("primordialPearlDust");
 
         depletedFuelRodExcitedRadianceUranium = new DepletedFuelRod("depletedFuelRodExcitedRadianceUranium", 100);
-        depletedFuelRodExcitedRadianceUranium_2 = new DepletedFuelRod("depletedFuelRodExcitedRadianceUranium_2", 200);
-        depletedFuelRodExcitedRadianceUranium_4 = new DepletedFuelRod("depletedFuelRodExcitedRadianceUranium_4", 400);
+        depletedFuelRodExcitedRadianceUranium2 = new DepletedFuelRod("depletedFuelRodExcitedRadianceUranium_2", 200);
+        depletedFuelRodExcitedRadianceUranium4 = new DepletedFuelRod("depletedFuelRodExcitedRadianceUranium_4", 400);
 
         depletedFuelRodSuperExcitedPrimordialPearlPlutonium = new DepletedFuelRod(
             "depletedFuelRodSuperExcitedPrimordialPearlPlutonium",
             800);
-        depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2 = new DepletedFuelRod(
+        depletedFuelRodSuperExcitedPrimordialPearlPlutonium2 = new DepletedFuelRod(
             "depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2",
             1600);
-        depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4 = new DepletedFuelRod(
+        depletedFuelRodSuperExcitedPrimordialPearlPlutonium4 = new DepletedFuelRod(
             "depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4",
             3200);
 
         fuelRodExcitedRadianceUranium = new FuelRod(
             "fuelRodExcitedRadianceUranium",
             1,
-            2000,
-            26,
+            20000,
+            64,
             4000,
             86400,
             0F,
             new ItemStack(depletedFuelRodExcitedRadianceUranium, 1));
-        fuelRodExcitedRadianceUranium_2 = new FuelRod(
+        fuelRodExcitedRadianceUranium2 = new FuelRod(
             "fuelRodExcitedRadianceUranium_2",
             2,
-            2000,
-            26,
+            20000,
+            64,
             4000,
             86400,
             0F,
-            new ItemStack(depletedFuelRodExcitedRadianceUranium_2, 1));
-        fuelRodExcitedRadianceUranium_4 = new FuelRod(
+            new ItemStack(depletedFuelRodExcitedRadianceUranium2, 1));
+        fuelRodExcitedRadianceUranium4 = new FuelRod(
             "fuelRodExcitedRadianceUranium_4",
             4,
-            2000,
-            26,
+            20000,
+            64,
             4000,
             86400,
             0F,
-            new ItemStack(depletedFuelRodExcitedRadianceUranium_4, 1));
+            new ItemStack(depletedFuelRodExcitedRadianceUranium4, 1));
 
         fuelRodSuperExcitedPrimordialPearlPlutonium = new FuelRod(
             "fuelRodSuperExcitedPrimordialPearlPlutonium",
             1,
-            8600,
+            86000,
             80,
             12800,
             15000,
-            3.3F,
+            6.3F,
             new ItemStack(depletedFuelRodSuperExcitedPrimordialPearlPlutonium, 1));
-        fuelRodSuperExcitedPrimordialPearlPlutonium_2 = new FuelRod(
+        fuelRodSuperExcitedPrimordialPearlPlutonium2 = new FuelRod(
             "fuelRodSuperExcitedPrimordialPearlPlutonium_2",
             2,
-            8600,
+            86000,
             80,
             12800,
             15000,
-            3.3F,
-            new ItemStack(depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2, 1));
-        fuelRodSuperExcitedPrimordialPearlPlutonium_4 = new FuelRod(
+            6.3F,
+            new ItemStack(depletedFuelRodSuperExcitedPrimordialPearlPlutonium2, 1));
+        fuelRodSuperExcitedPrimordialPearlPlutonium4 = new FuelRod(
             "fuelRodSuperExcitedPrimordialPearlPlutonium_4",
             4,
-            8600,
+            86000,
             80,
             12800,
             15000,
-            3.3F,
-            new ItemStack(depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4, 1));
+            6.3F,
+            new ItemStack(depletedFuelRodSuperExcitedPrimordialPearlPlutonium4, 1));
 
         RegisterUtils.registerItem(ichorFuelRod);
         RegisterUtils.registerItem(shadowFuelRod);
@@ -115,20 +115,20 @@ public class FuelRodList {
         RegisterUtils.registerItem(primordialPearlDust);
 
         RegisterUtils.registerItem(depletedFuelRodExcitedRadianceUranium);
-        RegisterUtils.registerItem(depletedFuelRodExcitedRadianceUranium_2);
-        RegisterUtils.registerItem(depletedFuelRodExcitedRadianceUranium_4);
+        RegisterUtils.registerItem(depletedFuelRodExcitedRadianceUranium2);
+        RegisterUtils.registerItem(depletedFuelRodExcitedRadianceUranium4);
 
         RegisterUtils.registerItem(fuelRodExcitedRadianceUranium);
-        RegisterUtils.registerItem(fuelRodExcitedRadianceUranium_2);
-        RegisterUtils.registerItem(fuelRodExcitedRadianceUranium_4);
+        RegisterUtils.registerItem(fuelRodExcitedRadianceUranium2);
+        RegisterUtils.registerItem(fuelRodExcitedRadianceUranium4);
 
         RegisterUtils.registerItem(depletedFuelRodSuperExcitedPrimordialPearlPlutonium);
-        RegisterUtils.registerItem(depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2);
-        RegisterUtils.registerItem(depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4);
+        RegisterUtils.registerItem(depletedFuelRodSuperExcitedPrimordialPearlPlutonium2);
+        RegisterUtils.registerItem(depletedFuelRodSuperExcitedPrimordialPearlPlutonium4);
 
         RegisterUtils.registerItem(fuelRodSuperExcitedPrimordialPearlPlutonium);
-        RegisterUtils.registerItem(fuelRodSuperExcitedPrimordialPearlPlutonium_2);
-        RegisterUtils.registerItem(fuelRodSuperExcitedPrimordialPearlPlutonium_4);
+        RegisterUtils.registerItem(fuelRodSuperExcitedPrimordialPearlPlutonium2);
+        RegisterUtils.registerItem(fuelRodSuperExcitedPrimordialPearlPlutonium4);
 
     }
 }

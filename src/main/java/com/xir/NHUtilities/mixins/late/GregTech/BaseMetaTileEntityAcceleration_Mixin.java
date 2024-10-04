@@ -9,9 +9,9 @@ import com.xir.NHUtilities.common.api.ITileEntityTickAcceleration;
 
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.metatileentity.BaseMetaTileEntity;
-import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_BasicMachine;
-import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_MultiBlockBase;
-import gregtech.common.tileentities.machines.multi.GT_MetaTileEntity_PrimitiveBlastFurnace;
+import gregtech.api.metatileentity.implementations.MTEBasicMachine;
+import gregtech.api.metatileentity.implementations.MTEMultiBlockBase;
+import gregtech.common.tileentities.machines.multi.MTEPrimitiveBlastFurnace;
 
 @Mixin(BaseMetaTileEntity.class)
 public abstract class BaseMetaTileEntityAcceleration_Mixin implements ITileEntityTickAcceleration {
@@ -45,19 +45,19 @@ public abstract class BaseMetaTileEntityAcceleration_Mixin implements ITileEntit
                 IMetaTileEntity metaTileEntity = this.getMetaTileEntity();
 
                 // for accelerating basic machine
-                if (metaTileEntity instanceof GT_MetaTileEntity_BasicMachine basicMachine) {
+                if (metaTileEntity instanceof MTEBasicMachine basicMachine) {
                     basicMachine.mProgresstime = NHUtilities$modify;
                     return true;
                 }
 
                 // for accelerating multi machine
-                if (metaTileEntity instanceof GT_MetaTileEntity_MultiBlockBase multiBlockBase) {
+                if (metaTileEntity instanceof MTEMultiBlockBase multiBlockBase) {
                     multiBlockBase.mProgresstime = NHUtilities$modify;
                     return true;
                 }
 
                 // for accelerating primitive blast furnace
-                if (metaTileEntity instanceof GT_MetaTileEntity_PrimitiveBlastFurnace primitiveBlastFurnace) {
+                if (metaTileEntity instanceof MTEPrimitiveBlastFurnace primitiveBlastFurnace) {
                     primitiveBlastFurnace.mProgresstime = NHUtilities$modify;
                     return true;
                 }
