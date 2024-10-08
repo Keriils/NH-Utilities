@@ -97,3 +97,8 @@ nhu.tcebf.machine.build.helper_9=Any bottom layer casing
 nhu.tcebf.machine.build.helper_10=Fluid outputs, Any bottom layer casing
 nhu.tcebf.machine.build.helper_11=Pollution gases (CO2/CO/SO2), Any top layer casing
 nhu.tcebf.machine.build.helper_12=Pollution gas output amount scales with Muffler Hatch tier
+
+# Chat in Game
+chat.nhutilities.1=It seems like nothing happened...
+chat.nhutilities.2=You feel like you've left all your worries behind
+chat.nhutilities.3=Something heavy has left...

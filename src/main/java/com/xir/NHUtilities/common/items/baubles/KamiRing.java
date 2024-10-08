@@ -79,6 +79,6 @@ public class KamiRing extends ItemBasic implements IBauble, IVisDiscountGear {
 
     @Override
     public int getVisDiscount(ItemStack var1, EntityPlayer var2, Aspect var3) {
-        return 99;
+        return 60;
     }
 }

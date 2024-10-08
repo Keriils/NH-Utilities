@@ -182,8 +182,11 @@ public class Config {
                 "disable Super Chest Or Tank Debuff");
             disableDollyDebuff = configuration
                 .getBoolean("disableDollyDebuff", CATEGORY_MIXIN_CONFIG, disableDollyDebuff, "disable Dolly Debuff");
-            disableTCBlastFurnace = configuration
-                .getBoolean("disableTCBlastFurnaceNewTexture", CATEGORY_MASS, disableTCBlastFurnace, "disable TC Blast Furnace New Texture");
+            disableTCBlastFurnace = configuration.getBoolean(
+                "disableTCBlastFurnaceNewTexture",
+                CATEGORY_MASS,
+                disableTCBlastFurnace,
+                "disable TC Blast Furnace New Texture");
 
         }
 

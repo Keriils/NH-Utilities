@@ -18,7 +18,7 @@ import com.xir.NHUtilities.utils.InventoryUtils;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import gregtech.api.metatileentity.BaseMetaTileEntity;
 import shukaro.warptheory.util.ChatHelper;
-import thaumcraft.common.Thaumcraft;
+import shukaro.warptheory.util.FormatCodes;
 
 public class WarpWardRingEvent {
 
@@ -33,41 +33,58 @@ public class WarpWardRingEvent {
         if (!baublesItem.isPresent()) return;
         if (tileEntity instanceof BaseMetaTileEntity) {
             Random random = new Random();
-            int number = random.nextInt(1000) + 1;
-            if (number <= 1000) {
+            int number = random.nextInt(100) + 1;
+            if (number <= 3) {
                 String name = player.getCommandSenderName();
-                int wp = Knowledge.getWarpPerm(name);
-                int wn = Knowledge.getWarpSticky(name);
-                int wt = Knowledge.getWarpTemp(name);
-                int wc = Knowledge.getWarpCounter(name);
-                if (wc == 0) {
+                int warpPerm = Knowledge.getWarpPerm(name);
+                int warpSticky = Knowledge.getWarpSticky(name);
+                int warpTemp = Knowledge.getWarpTemp(name);
+                int warpCounter = Knowledge.getWarpCounter(name);
+                if (warpCounter == 0) {
+                    ChatHelper.sendToPlayer(
+                        player,
+                        FormatCodes.Purple.code + FormatCodes.Italic.code
+                            + StatCollector.translateToLocal("chat.nhutilities.1"));
                     return;
                 } else {
-                    if (number <= 500) {
-                        if (wt >= 1) {
-                            int newWt = wt-2;
-                            Knowledge.warpTemp.replace(name,wt,newWt);
-                            Knowledge.setWarpCounter(name,wc-1);
-                            ChatHelper.sendToPlayer(player, StatCollector.translateToLocal("chat.nhutilities.1"));
-                            return;
-                        }
-                    } else if (number <= 900) {
-                        if (wn >= 1) {
-                            Knowledge.setWarpSticky(name, wn - 1);
-                            Knowledge.setWarpTemp(name, wt + 1);
-                            ChatHelper.sendToPlayer(player, StatCollector.translateToLocal("chat.nhutilities.2"));
-                            return;
-                        }
+                    int amount = random.nextInt(10) + 1;
+                    if (warpCounter <= amount) {
+                        Knowledge.setWarpTemp(name, 0);
+                        Knowledge.setWarpSticky(name, 0);
+                        Knowledge.setWarpPerm(name, 0);
+                        Knowledge.setWarpCounter(name, 0);
+                        ChatHelper.sendToPlayer(
+                            player,
+                            FormatCodes.Purple.code + FormatCodes.Italic.code
+                                + StatCollector.translateToLocal("chat.nhutilities.2"));
                     } else {
-                        if (wp >= 1) {
-                            Knowledge.setWarpPerm(name, wp - 1);
-                            Knowledge.setWarpSticky(name, wn + 1);
-                            ChatHelper.sendToPlayer(player, StatCollector.translateToLocal("chat.nhutilities.3"));
-                            return;
+                        Knowledge.setWarpCounter(name, warpCounter - amount);
+                        if (warpTemp <= amount) {
+                            Knowledge.setWarpTemp(name, 0);
+                            amount -= warpTemp;
+                            if (warpSticky <= amount) {
+                                Knowledge.setWarpSticky(name, 0);
+                                amount -= warpSticky;
+                                if (warpPerm <= amount) {
+                                    Knowledge.setWarpPerm(name, 0);
+                                } else {
+                                    Knowledge.setWarpPerm(name, warpPerm - amount);
+                                }
+                            } else {
+                                Knowledge.setWarpSticky(name, warpSticky - amount);
+                            }
+                        } else {
+                            Knowledge.setWarpTemp(name, warpTemp - amount);
                         }
                     }
+                    ChatHelper.sendToPlayer(
+                        player,
+                        FormatCodes.Purple.code + FormatCodes.Italic.code
+                            + StatCollector.translateToLocal("chat.nhutilities.3"));
                 }
             }
+        } else {
+            return;
         }
     }
 }

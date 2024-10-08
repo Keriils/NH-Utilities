@@ -97,3 +97,8 @@ nhu.tcebf.machine.build.helper_9=任意底层机械方块
 nhu.tcebf.machine.build.helper_10=液态流体，任意底层机械方块
 nhu.tcebf.machine.build.helper_11=气态流体，任意顶层机械方块
 nhu.tcebf.machine.build.helper_12=污染气体输出取决于消声仓等级
+
+# Chat in Game
+chat.nhutilities.1=好像无事发生...
+chat.nhutilities.2=你感觉一身轻松
+chat.nhutilities.3=一些沉重的东西离开了...
