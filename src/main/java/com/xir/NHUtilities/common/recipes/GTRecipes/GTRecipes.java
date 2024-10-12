@@ -1,25 +1,24 @@
 package com.xir.NHUtilities.common.recipes.GTRecipes;
 
-import static com.github.technus.tectech.thing.CustomItemList.hatch_CreativeMaintenance;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.recipe.RecipeMaps.centrifugeRecipes;
 import static gregtech.api.recipe.RecipeMaps.extractorRecipes;
 import static gregtech.api.recipe.RecipeMaps.maceratorRecipes;
-import static witchinggadgets.common.WGContent.ItemMaterial;
+import static tectech.thing.CustomItemList.hatch_CreativeMaintenance;
 
 import net.minecraft.item.ItemStack;
 
-import com.github.bartimaeusnek.bartworks.system.material.WerkstoffLoader;
 import com.xir.NHUtilities.common.items.FuelRodList;
 
-import goodgenerator.items.MyMaterial;
-import gregtech.api.enums.GT_Values;
+import bartworks.system.material.WerkstoffLoader;
+import goodgenerator.items.GGMaterial;
+import gregtech.api.enums.GTValues;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.TierEU;
-import gregtech.api.util.GT_OreDictUnificator;
-import gregtech.api.util.GT_Utility;
+import gregtech.api.util.GTOreDictUnificator;
+import gregtech.api.util.GTUtility;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.item.kami.ItemKamiResource;
 
@@ -30,123 +29,129 @@ public class GTRecipes {
     public static void registerNHUtilitiesGTRecipe() {
 
         // ichor fuel rod
-        GT_Values.RA.stdBuilder()
+        GTValues.RA.stdBuilder()
             .itemInputs(
-                GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Ichorium, 4),
-                GT_OreDictUnificator.get(OrePrefixes.ring, Materials.Ichorium, 2),
-                GT_Utility.getIntegratedCircuit(2))
+                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Ichorium, 4),
+                GTOreDictUnificator.get(OrePrefixes.ring, Materials.Ichorium, 2),
+                GTUtility.getIntegratedCircuit(2))
             .itemOutputs(new ItemStack(FuelRodList.ichorFuelRod, 1))
             .duration(50 * SECOND)
             .eut(TierEU.RECIPE_HV)
             .addTo(assemblerRecipes);
 
-        GT_Values.RA.stdBuilder()
+        GTValues.RA.stdBuilder()
             .itemInputs(
                 new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium, 2),
-                GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Ichorium, 4),
-                GT_Utility.getIntegratedCircuit(2))
-            .itemOutputs(new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium_2, 1))
+                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Ichorium, 4),
+                GTUtility.getIntegratedCircuit(2))
+            .itemOutputs(new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium2, 1))
             .duration(10 * SECOND)
             .noOptimize()
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
-        GT_Values.RA.stdBuilder()
+        GTValues.RA.stdBuilder()
             .itemInputs(
                 new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium, 4),
-                GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.Ichorium, 6),
-                GT_Utility.getIntegratedCircuit(4))
-            .itemOutputs(new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium_4, 1))
+                GTOreDictUnificator.get(OrePrefixes.stickLong, Materials.Ichorium, 6),
+                GTUtility.getIntegratedCircuit(4))
+            .itemOutputs(new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium4, 1))
             .duration(10 * SECOND)
             .noOptimize()
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
-        GT_Values.RA.stdBuilder()
+        GTValues.RA.stdBuilder()
             .itemInputs(
-                new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium_2, 2),
-                GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Ichorium, 4),
-                GT_Utility.getIntegratedCircuit(5))
-            .itemOutputs(new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium_4, 1))
+                new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium2, 2),
+                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Ichorium, 4),
+                GTUtility.getIntegratedCircuit(5))
+            .itemOutputs(new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium4, 1))
             .duration(10 * SECOND)
             .noOptimize()
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
         // radiance fuel rod
-        GT_Values.RA.stdBuilder()
+        GTValues.RA.stdBuilder()
             .itemInputs(
-                GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Shadow, 4),
-                GT_OreDictUnificator.get(OrePrefixes.ring, Materials.Shadow, 2),
-                GT_Utility.getIntegratedCircuit(2))
+                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Shadow, 4),
+                GTOreDictUnificator.get(OrePrefixes.ring, Materials.Shadow, 2),
+                GTUtility.getIntegratedCircuit(2))
             .itemOutputs(new ItemStack(FuelRodList.shadowFuelRod, 1))
             .duration(50 * SECOND)
             .eut(TierEU.RECIPE_HV)
             .addTo(assemblerRecipes);
 
-        GT_Values.RA.stdBuilder()
+        GTValues.RA.stdBuilder()
             .itemInputs(
                 new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium, 2),
-                GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Shadow, 4),
-                GT_Utility.getIntegratedCircuit(2))
-            .itemOutputs(new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium_2, 1))
+                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Shadow, 4),
+                GTUtility.getIntegratedCircuit(2))
+            .itemOutputs(new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium2, 1))
             .duration(10 * SECOND)
             .noOptimize()
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
-        GT_Values.RA.stdBuilder()
+        GTValues.RA.stdBuilder()
             .itemInputs(
                 new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium, 4),
-                GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.Shadow, 6),
-                GT_Utility.getIntegratedCircuit(4))
-            .itemOutputs(new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium_4, 1))
+                GTOreDictUnificator.get(OrePrefixes.stickLong, Materials.Shadow, 6),
+                GTUtility.getIntegratedCircuit(4))
+            .itemOutputs(new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium4, 1))
             .duration(10 * SECOND)
             .noOptimize()
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
-        GT_Values.RA.stdBuilder()
+        GTValues.RA.stdBuilder()
             .itemInputs(
-                new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium_2, 2),
-                GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Shadow, 4),
-                GT_Utility.getIntegratedCircuit(5))
-            .itemOutputs(new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium_4, 1))
+                new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium2, 2),
+                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Shadow, 4),
+                GTUtility.getIntegratedCircuit(5))
+            .itemOutputs(new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium4, 1))
             .duration(10 * SECOND)
             .noOptimize()
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
         // centrifuge
-        GT_Values.RA.stdBuilder()
+        GTValues.RA.stdBuilder()
             .itemInputs(new ItemStack(FuelRodList.depletedFuelRodSuperExcitedPrimordialPearlPlutonium, 1))
             .itemOutputs(new ItemStack(FuelRodList.ichorFuelRod, 1))
-            .itemOutputs(new ItemStack(FuelRodList.ichorFuelRod, 1), new ItemStack(ItemMaterial, 1, 12))
+            .itemOutputs(
+                new ItemStack(FuelRodList.ichorFuelRod, 1),
+                thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3))
             .outputChances(10000, 500)
-            .fluidOutputs(MyMaterial.plutoniumBasedLiquidFuelDepleted.getFluidOrGas(1000))
+            .fluidOutputs(GGMaterial.plutoniumBasedLiquidFuelDepleted.getFluidOrGas(1000))
             .duration(20 * SECOND)
             .eut(TierEU.RECIPE_IV)
             .addTo(centrifugeRecipes);
 
-        GT_Values.RA.stdBuilder()
-            .itemInputs(new ItemStack(FuelRodList.depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2, 1))
-            .itemOutputs(new ItemStack(FuelRodList.ichorFuelRod, 2), new ItemStack(ItemMaterial, 1, 12))
+        GTValues.RA.stdBuilder()
+            .itemInputs(new ItemStack(FuelRodList.depletedFuelRodSuperExcitedPrimordialPearlPlutonium2, 1))
+            .itemOutputs(
+                new ItemStack(FuelRodList.ichorFuelRod, 2),
+                thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3))
             .outputChances(10000, 1500)
-            .fluidOutputs(MyMaterial.plutoniumBasedLiquidFuelDepleted.getFluidOrGas(2000))
+            .fluidOutputs(GGMaterial.plutoniumBasedLiquidFuelDepleted.getFluidOrGas(2000))
             .duration(20 * SECOND)
             .eut(TierEU.RECIPE_IV)
             .addTo(centrifugeRecipes);
 
-        GT_Values.RA.stdBuilder()
-            .itemInputs(new ItemStack(FuelRodList.depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4, 1))
-            .itemOutputs(new ItemStack(FuelRodList.ichorFuelRod, 4), new ItemStack(ItemMaterial, 1, 12))
+        GTValues.RA.stdBuilder()
+            .itemInputs(new ItemStack(FuelRodList.depletedFuelRodSuperExcitedPrimordialPearlPlutonium4, 1))
+            .itemOutputs(
+                new ItemStack(FuelRodList.ichorFuelRod, 4),
+                thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3))
             .outputChances(10000, 3500)
-            .fluidOutputs(MyMaterial.plutoniumBasedLiquidFuelDepleted.getFluidOrGas(4000))
+            .fluidOutputs(GGMaterial.plutoniumBasedLiquidFuelDepleted.getFluidOrGas(4000))
             .duration(20 * SECOND)
             .eut(TierEU.RECIPE_IV)
             .addTo(centrifugeRecipes);
 
-        GT_Values.RA.stdBuilder()
+        GTValues.RA.stdBuilder()
             .itemInputs(new ItemStack(FuelRodList.depletedFuelRodExcitedRadianceUranium, 1))
             .itemOutputs(
                 new ItemStack(FuelRodList.shadowFuelRod, 1),
@@ -161,8 +166,8 @@ public class GTRecipes {
             .eut(TierEU.RECIPE_IV)
             .addTo(centrifugeRecipes);
 
-        GT_Values.RA.stdBuilder()
-            .itemInputs(new ItemStack(FuelRodList.depletedFuelRodExcitedRadianceUranium_2, 1))
+        GTValues.RA.stdBuilder()
+            .itemInputs(new ItemStack(FuelRodList.depletedFuelRodExcitedRadianceUranium2, 1))
             .itemOutputs(
                 new ItemStack(FuelRodList.shadowFuelRod, 2),
                 Materials.Uranium.getDust(32),
@@ -176,8 +181,8 @@ public class GTRecipes {
             .eut(TierEU.RECIPE_IV)
             .addTo(centrifugeRecipes);
 
-        GT_Values.RA.stdBuilder()
-            .itemInputs(new ItemStack(FuelRodList.depletedFuelRodExcitedRadianceUranium_4, 1))
+        GTValues.RA.stdBuilder()
+            .itemInputs(new ItemStack(FuelRodList.depletedFuelRodExcitedRadianceUranium4, 1))
             .itemOutputs(
                 new ItemStack(FuelRodList.shadowFuelRod, 4),
                 Materials.Uranium.getDust(64),
@@ -191,14 +196,14 @@ public class GTRecipes {
             .eut(TierEU.RECIPE_IV)
             .addTo(centrifugeRecipes);
 
-        GT_Values.RA.stdBuilder()
+        GTValues.RA.stdBuilder()
             .itemInputs(thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3))
             .itemOutputs(new ItemStack(FuelRodList.primordialPearlDust, 4))
             .duration(100 * SECOND)
             .eut(TierEU.RECIPE_EV)
             .addTo(maceratorRecipes);
 
-        GT_Values.RA.stdBuilder()
+        GTValues.RA.stdBuilder()
             .itemInputs(new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 0))
             .itemOutputs(new ItemStack(FuelRodList.ichorDroplet, 2))
             .duration(100 * SECOND)
@@ -206,8 +211,8 @@ public class GTRecipes {
             .addTo(extractorRecipes);
 
         // for adding debug maintenance recipe
-        GT_Values.RA.stdBuilder()
-            .itemInputs(ItemList.Hull_EV.get(1), ItemList.Duct_Tape.get(1), GT_Utility.getIntegratedCircuit(16))
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Hull_EV.get(1), ItemList.Duct_Tape.get(1), GTUtility.getIntegratedCircuit(16))
             .itemOutputs(hatch_CreativeMaintenance.get(1))
             .duration(25 * SECOND)
             .eut(TierEU.RECIPE_HV)
