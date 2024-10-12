@@ -6,7 +6,7 @@ import com.xir.NHUtilities.common.items.aItemCore.ItemBasic;
 import com.xir.NHUtilities.common.items.baubles.GluttonyRing;
 import com.xir.NHUtilities.common.items.baubles.HungerRing;
 import com.xir.NHUtilities.common.items.baubles.KamiRing;
-import com.xir.NHUtilities.common.items.baubles.WarpRing;
+import com.xir.NHUtilities.common.items.baubles.WarpWardRing;
 import com.xir.NHUtilities.common.items.lunchBoxPlus.LunchBoxPlus;
 import com.xir.NHUtilities.common.items.timeVial.EternityVial;
 import com.xir.NHUtilities.common.items.timeVial.TimeVial;
@@ -22,5 +22,5 @@ public class ModsItemsList {
     public static final TimeVial eternityVial = new EternityVial();
     public static final LunchBoxPlus lunchBoxPlus = new LunchBoxPlus();
     public static final ItemFocusTape focusTape = new ItemFocusTape();
-    public static final Item warpRing = new WarpRing();
+    public static final Item warpRing = new WarpWardRing();
 }

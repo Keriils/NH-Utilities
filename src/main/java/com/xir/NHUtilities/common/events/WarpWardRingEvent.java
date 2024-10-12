@@ -12,7 +12,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
 
-import com.xir.NHUtilities.common.items.baubles.WarpRing;
+import com.xir.NHUtilities.common.items.baubles.WarpWardRing;
 import com.xir.NHUtilities.utils.InventoryUtils;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -29,7 +29,7 @@ public class WarpWardRingEvent {
         World world = event.world;
         TileEntity tileEntity = world.getTileEntity(x, y, z);
         if (tileEntity == null) return;
-        Optional<ItemStack> baublesItem = InventoryUtils.getItemInPlayerBaublesInventory(player, WarpRing.class);
+        Optional<ItemStack> baublesItem = InventoryUtils.getItemInPlayerBaublesInventory(player, WarpWardRing.class);
         if (!baublesItem.isPresent()) return;
         if (tileEntity instanceof BaseMetaTileEntity) {
             Random random = new Random();

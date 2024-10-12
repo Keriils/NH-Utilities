@@ -1,5 +1,6 @@
 package com.xir.NHUtilities.common.items.baubles;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -7,13 +8,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 
 import baubles.common.items.ItemRing;
+import net.minecraft.util.IIcon;
 import thaumcraft.api.IVisDiscountGear;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.config.Config;
 
-public class WarpRing extends ItemRing implements IVisDiscountGear {
+public class WarpWardRing extends ItemRing implements IVisDiscountGear {
 
-    public WarpRing() {
+    public WarpWardRing() {
         this.setUnlocalizedName("WarpWardRing");
         this.setCreativeTab(CreativeTabs.tabTools);
     }
