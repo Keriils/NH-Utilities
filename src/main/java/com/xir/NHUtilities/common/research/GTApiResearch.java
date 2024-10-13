@@ -61,9 +61,9 @@ public class GTApiResearch {
                     new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium, 1),
                     8,
                     Arrays.asList(
-                        new TCAspects.TC_AspectStack(TCAspects.RADIO, 256),
-                        new TCAspects.TC_AspectStack(TCAspects.PRAECANTATIO, 256),
-                        new TCAspects.TC_AspectStack(TCAspects.POTENTIA, 256))) });
+                        new TCAspects.TC_AspectStack(TCAspects.RADIO, 16),
+                        new TCAspects.TC_AspectStack(TCAspects.PRAECANTATIO, 16),
+                        new TCAspects.TC_AspectStack(TCAspects.POTENTIA, 16))) });
         GregTechAPI.sThaumcraftCompat.addResearch(
             IchoriumFuelRod,
             StatCollector.translateToLocal(PrefixOfResearchInThaumonomicon + "name." + IchoriumFuelRod),
@@ -95,8 +95,8 @@ public class GTApiResearch {
                     new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium, 1),
                     16,
                     Arrays.asList(
-                        new TCAspects.TC_AspectStack(TCAspects.RADIO, 1024),
-                        new TCAspects.TC_AspectStack(TCAspects.PRAECANTATIO, 1024),
-                        new TCAspects.TC_AspectStack(TCAspects.POTENTIA, 1024))) });
+                        new TCAspects.TC_AspectStack(TCAspects.RADIO, 64),
+                        new TCAspects.TC_AspectStack(TCAspects.PRAECANTATIO, 64),
+                        new TCAspects.TC_AspectStack(TCAspects.POTENTIA, 64))) });
     }
 }

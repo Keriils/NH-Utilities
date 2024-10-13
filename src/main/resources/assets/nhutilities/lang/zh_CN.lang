@@ -10,6 +10,10 @@ item.NHUtilities:TimeVial.name=时间之瓶
 item.NHUtilities:EternityVial.name=永恒之瓶
 item.NHUtilities:LunchBoxPlus.name=超级午餐盒
 item.NHUtilities:KamiRing.name=Kami神环
+item.NHUtilities:WarpWardRing.name=净化之戒
+
+#focus
+item.focus_tape.name=法杖核心：航空胶带
 
 # tc fuel rod project
 text.NHUtilities.fuelRod.tooltip.0=耐久:%d/%d
@@ -72,9 +76,17 @@ tc.research_name.SHADOWMETALFUELROD=燃料棒(激发态铀基闪耀之辉燃料�
 tc.research_text.SHADOWMETALFUELROD=让神秘再次伟大
 nhu.research.shadowmetalfuelrod_1=长久以来，你对核电能释放巨大的能量感到疑惑不解，它太过粗糙，看起来好像渎神的玩意.在一次偶然的核电爆炸事故后，空气中弥漫着一种你熟悉的能量...你试图把这种巨大的能量塞进光与暗的交织，不过它看起来还是有点容易泄露.
 
-tc.research_name.ICHORIUMFUELROD=燃料棒(超激发态钚基原始珍珠燃料棒)
+tc.research_name.ICHORIUMFUELROD=燃料棒(超激发态钚基元始珍珠燃料棒)
 tc.research_text.ICHORIUMFUELROD=真的要...走到这一步吗？
 nhu.research.ichoriumfuelrod_1=你对你的上一个作品非常满意，你近乎偏执的想更进一步.一点点的激发钚，一点点的神之血，一点点的珍珠，一点点的科技小玩意融聚在一起.它们能产生什么呢？你如是想.
+
+tc.research_name.FOCUSTAPE=法杖核心：航空胶带
+tc.research_text.FOCUSTAPE=取之不尽！
+nhu.research.focustape_1=你厌倦了维护仓室.电子魔法工具的核心又太过鸡肋.所以你发明了这个.
+
+tc.research_name.WARPWARDRING=净化之戒
+tc.research_text.WARPWARDRING=扭曲人禁止进入工业区？
+nhu.research.warpwardring_1=你还在为不能进入工业区发愁吗？你还在担心队友的高炉里面会长出蘑菇吗？你还在担心家里会时不时蹦出一个凋零吗？仅仅需要一点点的跑图和EV的力场发生器，混入元始魔力后，你得到了这个能避免一切扭曲事件的戒指.(佩戴这个戒指的时候放置一些GT方块有概率消除三种扭曲)
 
 # Tooltips for TCEBF
 nhu.tcebf.machine=奥术工业高炉
@@ -94,3 +106,8 @@ nhu.tcebf.machine.build.helper_9=任意底层机械方块
 nhu.tcebf.machine.build.helper_10=液态流体，任意底层机械方块
 nhu.tcebf.machine.build.helper_11=气态流体，任意顶层机械方块
 nhu.tcebf.machine.build.helper_12=污染气体输出取决于消声仓等级
+
+# Chat in Game
+chat.nhutilities.1=好像无事发生...
+chat.nhutilities.2=你感觉一身轻松
+chat.nhutilities.3=一些沉重的东西离开了...

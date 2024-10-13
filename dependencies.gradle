@@ -33,6 +33,7 @@ dependencies {
 
     // Thaumcraft things
     implementation('com.github.GTNewHorizons:ThaumicTinkerer:2.10.1:dev')
+    implementation('com.github.GTNewHorizons:WarpTheory:1.4.1-GTNH:dev')
 }
 
 
