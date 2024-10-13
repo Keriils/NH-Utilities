@@ -10,6 +10,7 @@ item.NHUtilities:TimeVial.name=TimeVial
 item.NHUtilities:EternityVial.name=EternityVial
 item.NHUtilities:LunchBoxPlus.name=Lunch Box Plus
 item.NHUtilities:KamiRing.name=Kami Divine Ring
+item.NHUtilities:WarpWardRing.name=Ring of Purification
 
 #focus
 item.focus_tape.name=Wand Focus: Tape
@@ -78,6 +79,14 @@ nhu.research.shadowmetalfuelrod_1=For a long time, you've been puzzled by the im
 tc.research_name.ICHORIUMFUELROD=Fuel Rod (Super Excited Primordial Pearl Plutonium)
 tc.research_text.ICHORIUMFUELROD=Is This Step Truly Necessary?
 nhu.research.ichoriumfuelrod_1=You were very pleased with your previous creation. But you are almost obsessively driven to push the boundaries further. A touch of plutonium, a drop of divine ichor, a sprinkle of pearl essence, and a dash of technological components fused together. What will they create? You ponder.
+
+tc.research_name.FOCUSTAPE=Wand Focus:Tape
+tc.research_text.FOCUSTAPE=Now More of it!
+nhu.research.focustape_1=You were tired of fixing the hatch.EMT focus is too bad.So you invite this.
+
+tc.research_name.WARPWARDRING=Ring of Purification
+tc.research_text.WARPWARDRING=Banned thaumer from industrial zone?
+nhu.research.warpwardring_1=Are you still worried about not being able to enter the industrial zone? Are you concerned that mushrooms might grow inside your teammate's blast furnace? Are you afraid that a Wither might pop up at home from time to time? With just a bit of map running and an EV field generator, infused with essential, you can obtain this ring that prevents all warp events. (When wearing this ring, placing some GT blocks has a chance to clear three types of warp.)
 
 # Tooltips for TCEBF
 nhu.tcebf.machine=Thaumic Electric Blast Furnace

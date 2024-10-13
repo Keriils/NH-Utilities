@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregtech.api.metatileentity.BaseMetaTileEntity;
-import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_Hatch_Maintenance;
+import gregtech.api.metatileentity.implementations.MTEHatchMaintenance;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.ItemFocusBasic;
@@ -76,23 +76,22 @@ public class ItemFocusTape extends ItemFocusBasic {
             return wandstack;
         }
         if (wandCasting != null
-            && (mBaseMetaTileEntity
-                .getMetaTileEntity() instanceof GT_MetaTileEntity_Hatch_Maintenance gt_metaTileEntity_hatch_maintenance)
-            && (!gt_metaTileEntity_hatch_maintenance.mWrench || !gt_metaTileEntity_hatch_maintenance.mSolderingTool
-                || !gt_metaTileEntity_hatch_maintenance.mSoftHammer
-                || !gt_metaTileEntity_hatch_maintenance.mHardHammer
-                || !gt_metaTileEntity_hatch_maintenance.mScrewdriver
-                || !gt_metaTileEntity_hatch_maintenance.mCrowbar
-                || gt_metaTileEntity_hatch_maintenance.getBaseMetaTileEntity()
+            && (mBaseMetaTileEntity.getMetaTileEntity() instanceof MTEHatchMaintenance hatchMaintenance)
+            && (!hatchMaintenance.mWrench || !hatchMaintenance.mSolderingTool
+                || !hatchMaintenance.mSoftHammer
+                || !hatchMaintenance.mHardHammer
+                || !hatchMaintenance.mScrewdriver
+                || !hatchMaintenance.mCrowbar
+                || hatchMaintenance.getBaseMetaTileEntity()
                     .isActive())) {
             if (wandCasting.consumeAllVis(wandstack, player, this.getVisCost(wandstack), true, false)) {
-                gt_metaTileEntity_hatch_maintenance.mHardHammer = true;
-                gt_metaTileEntity_hatch_maintenance.mCrowbar = true;
-                gt_metaTileEntity_hatch_maintenance.mScrewdriver = true;
-                gt_metaTileEntity_hatch_maintenance.mSoftHammer = true;
-                gt_metaTileEntity_hatch_maintenance.mSolderingTool = true;
-                gt_metaTileEntity_hatch_maintenance.mWrench = true;
-                gt_metaTileEntity_hatch_maintenance.getBaseMetaTileEntity()
+                hatchMaintenance.mHardHammer = true;
+                hatchMaintenance.mCrowbar = true;
+                hatchMaintenance.mScrewdriver = true;
+                hatchMaintenance.mSoftHammer = true;
+                hatchMaintenance.mSolderingTool = true;
+                hatchMaintenance.mWrench = true;
+                hatchMaintenance.getBaseMetaTileEntity()
                     .setActive(false);
                 world.playSoundEffect(x, y, z, "thaumcraft:wand", 1.0F, 1.0F);
             }

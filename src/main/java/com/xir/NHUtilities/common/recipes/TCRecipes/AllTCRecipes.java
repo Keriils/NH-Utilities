@@ -11,8 +11,12 @@ public class AllTCRecipes {
     public static void addAllNHUTCRecipes() {
         // part
         ArcaneCraftingRecipes.run();
+        CrucibleRecipes.run();
+        InfusionRecipes.run();
         // part->all
         AllTCRecipes.putAll(ArcaneCraftingRecipes.ArcaneCraftingRecipes);
+        AllTCRecipes.putAll(CrucibleRecipes.CrucibleRecipes);
+        AllTCRecipes.putAll(InfusionRecipes.InfusionRecipes);
         // all->tcAll
         ConfigResearch.recipes.putAll(AllTCRecipes);
     }
