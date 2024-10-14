@@ -190,7 +190,7 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
     @Override
     public ITexture[] getTexture(IGregTechTileEntity baseMetaTileEntity, ForgeDirection side, ForgeDirection aFacing,
         int colorIndex, boolean aActive, boolean redstoneLevel) {
-        if (Config.disableTCBlastFurnace) return originalTexture(side, aFacing, aActive);
+        if (Config.disableTCBlastFurnaceNewTextures) return originalTexture(side, aFacing, aActive);
         return tcCustomTexture(side, aFacing, aActive);
     }
 
