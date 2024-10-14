@@ -1,5 +1,8 @@
 # This lang file for NH-Utilities
 
+#Item Group
+itemGroup.nhutilities=NH Utilities
+
 # common items
 key.toggleTeleporterMKII=Toggle Enhanced Charm of Dislocation GUI
 info.teleporterInfBaubles.txt=Support putting in-any-baubles

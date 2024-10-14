@@ -29,7 +29,7 @@ public class InfusionRecipes {
             "warpwardring",
             ThaumcraftApi.addInfusionCraftingRecipe(
                 ResearchLoader.WarpWardRing.toUpperCase(),
-                new ItemStack(ModsItemsList.warpRing, 1),
+                new ItemStack(ModsItemsList.warpWardRing, 1),
                 16,
                 WarpWardRing,
                 ItemList.Field_Generator_EV.get(1L),

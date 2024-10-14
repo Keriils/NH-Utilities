@@ -1,5 +1,8 @@
 # This lang file for NH-Utilities
 
+#Item Group
+itemGroup.nhutilities=(你来)
+
 # common items
 key.toggleTeleporterMKII=开关高级传送器GUI
 info.teleporterInfBaubles.txt=支持放入-任意-饰品栏目
