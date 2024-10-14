@@ -86,7 +86,7 @@ nhu.research.focustape_1=你厌倦了维护仓室.电子魔法工具的核心又
 
 tc.research_name.WARPWARDRING=净化之戒
 tc.research_text.WARPWARDRING=扭曲人禁止进入工业区？
-nhu.research.warpwardring_1=你还在为不能进入工业区发愁吗？你还在担心队友的高炉里面会长出蘑菇吗？你还在担心家里会时不时蹦出一个凋零吗？仅仅需要一点点的跑图和EV的力场发生器，混入元始魔力后，你得到了这个能避免一切扭曲事件的戒指.(佩戴这个戒指的时候放置一些GT方块有概率消除三种扭曲)
+nhu.research.warpwardring_1=你还在为不能进入工业区发愁吗？你还在担心队友的高炉里面会长出蘑菇吗？你还在担心家里会时不时蹦出一个凋零吗？仅仅需要一点点的跑图和EV的力场发生器，混入元始魔力后，你得到了这个能避免一切扭曲事件的戒指.(并且佩戴这个戒指的时候放置某些GT方块有概率消除一些扭曲)
 
 # Tooltips for TCEBF
 nhu.tcebf.machine=奥术工业高炉

@@ -86,7 +86,7 @@ nhu.research.focustape_1=You were tired of fixing the hatch.EMT focus is too bad
 
 tc.research_name.WARPWARDRING=Ring of Purification
 tc.research_text.WARPWARDRING=Banned thaumer from industrial zone?
-nhu.research.warpwardring_1=Are you still worried about not being able to enter the industrial zone? Are you concerned that mushrooms might grow inside your teammate's blast furnace? Are you afraid that a Wither might pop up at home from time to time? With just a bit of map running and an EV field generator, infused with essential, you can obtain this ring that prevents all warp events. (When wearing this ring, placing some GT blocks has a chance to clear three types of warp.)
+nhu.research.warpwardring_1=Are you still worried about not being able to enter the industrial zone? Are you concerned that mushrooms might grow inside your teammate's blast furnace? Are you afraid that a Wither might pop up at home from time to time? With just a bit of map running and an EV field generator, infused with essential, you can obtain this ring that prevents all warp events. (When wearing this ring, placing some GT blocks has a chance to clear part of warp.)
 
 # Tooltips for TCEBF
 nhu.tcebf.machine=Thaumic Electric Blast Furnace
