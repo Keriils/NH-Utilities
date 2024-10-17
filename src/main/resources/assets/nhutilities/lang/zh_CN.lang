@@ -73,7 +73,7 @@ tc.research_category.NHUTILITIES=奥术格雷学
 
 tc.research_name.THAUMICEBF=奥术工业高炉
 tc.research_text.THAUMICEBF=熊熊燃烧
-nhu.research.thaumicebf_1=得益于浅薄的奇术知识，你发现一些要素的魔晶能将对应的格雷机器融合在一起.你怀着忐忑不安的心情尝试将工业高炉融合为一个更高级的高炉.显然，你成功了.
+nhu.research.thaumicebf_1=得益于浅薄的奇术知识，你发现一些法杖核心能将对应的格雷机器融合在一起.你怀着忐忑不安的心情尝试将工业高炉融合为一个更高级的高炉.显然，你成功了.
 
 tc.research_name.SHADOWMETALFUELROD=燃料棒(激发态铀基闪耀之辉燃料棒)
 tc.research_text.SHADOWMETALFUELROD=让神秘再次伟大
@@ -96,6 +96,7 @@ nhu.tcebf.machine=奥术工业高炉
 nhu.tcebf.machine.type=工业高炉
 nhu.tcebf.machine.info_1=奥术工业高炉的控制器方块
 nhu.tcebf.machine.info_2=提供最高4并行 || 20%EU 减免 || 加速100%
+nhu.tcebf.machine.info_3=(如果你不喜欢这个邪术之眼材质，你可以在配置文件中关闭它)
 nhu.tcebf.machine.build.helper_1=正面底中
 nhu.tcebf.machine.build.helper_2=隔热机械方块
 nhu.tcebf.machine.build.helper_3.1=加热线圈

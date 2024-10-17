@@ -161,6 +161,7 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
         tt.addMachineType(StatCollector.translateToLocal("nhu.tcebf.machine.type"))
             .addInfo(StatCollector.translateToLocal("nhu.tcebf.machine.info_1"))
             .addInfo(StatCollector.translateToLocal("nhu.tcebf.machine.info_2"))
+            .addInfo(StatCollector.translateToLocal("nhu.tcebf.machine.info_3"))
             .addPollutionAmount(getPollutionPerSecond(null))
             .addSeparator()
             .beginStructureBlock(3, 4, 3, true)
