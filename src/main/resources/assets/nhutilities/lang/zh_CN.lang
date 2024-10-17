@@ -1,7 +1,7 @@
 # This lang file for NH-Utilities
 
 #Item Group
-itemGroup.nhutilities=nh实用设备
+itemGroup.nhutilities=NH Utilities
 
 # common items
 key.toggleTeleporterMKII=开关高级传送器GUI
