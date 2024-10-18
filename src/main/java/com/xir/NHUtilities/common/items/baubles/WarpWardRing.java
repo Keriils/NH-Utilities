@@ -1,6 +1,5 @@
 package com.xir.NHUtilities.common.items.baubles;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -19,7 +18,6 @@ public class WarpWardRing extends ItemBasic implements IBauble, IVisDiscountGear
     public WarpWardRing() {
         super("WarpWardRing");
         this.setMaxStackSize(1);
-        this.setCreativeTab(CreativeTabs.tabTools);
     }
 
     @Override

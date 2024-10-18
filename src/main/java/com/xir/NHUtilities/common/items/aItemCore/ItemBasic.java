@@ -3,6 +3,8 @@ package com.xir.NHUtilities.common.items.aItemCore;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import com.xir.NHUtilities.loader.CreativeTabsLoader;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -17,6 +19,7 @@ public class ItemBasic extends Item {
     public ItemBasic(String name) {
         this.name = name;
         this.setTextureName(name);
+        this.setCreativeTab(CreativeTabsLoader.nhuCreativeTab);
     }
 
     @Override

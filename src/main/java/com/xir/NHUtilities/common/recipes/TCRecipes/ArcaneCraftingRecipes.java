@@ -14,14 +14,17 @@ import gregtech.api.util.GTOreDictUnificator;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.common.config.ConfigBlocks;
+import thaumcraft.common.config.ConfigItems;
 
 public class ArcaneCraftingRecipes {
 
     public static HashMap<String, Object> ArcaneCraftingRecipes = new HashMap<>();
-    private static final AspectList gtcthaumicebf = new AspectList().add(Aspect.FIRE, 25)
-        .add(Aspect.ORDER, 25)
-        .add(Aspect.ENTROPY, 25);
+    private static final AspectList gtcthaumicebf = new AspectList().add(Aspect.FIRE, 64)
+        .add(Aspect.ORDER, 64)
+        .add(Aspect.ENTROPY, 64)
+        .add(Aspect.WATER, 64)
+        .add(Aspect.AIR, 64)
+        .add(Aspect.EARTH, 64);
 
     public static void run() {
         ArcaneCraftingRecipes.put(
@@ -30,8 +33,8 @@ public class ArcaneCraftingRecipes {
                 ResearchLoader.ThaumicEBF.toUpperCase(),
                 CustomItemList.Machine_Multi_TCBlastFurnace.get(1L),
                 gtcthaumicebf,
-                new Object[] { " a ", "aba", " c ", 'a', ItemList.Machine_Multi_BlastFurnace.get(1L), 'b',
-                    new ItemStack(ConfigBlocks.blockCrystal, 1, 1), 'c',
-                    GTOreDictUnificator.get(OrePrefixes.circuit, Materials.Advanced, 1L) }));
+                new Object[] { "aaa", "bcb", "dbd", 'a', ItemList.Machine_Multi_BlastFurnace.get(1L), 'b',
+                    ItemList.Field_Generator_LV.get(1L), 'c', new ItemStack(ConfigItems.itemFocusFire, 1), 'd',
+                    GTOreDictUnificator.get(OrePrefixes.wireGt16, Materials.Kanthal, 1L) }));
     }
 }

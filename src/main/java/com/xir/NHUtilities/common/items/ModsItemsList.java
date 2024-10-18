@@ -22,5 +22,5 @@ public class ModsItemsList {
     public static final TimeVial eternityVial = new EternityVial();
     public static final LunchBoxPlus lunchBoxPlus = new LunchBoxPlus();
     public static final ItemFocusTape focusTape = new ItemFocusTape();
-    public static final Item warpRing = new WarpWardRing();
+    public static final Item warpWardRing = new WarpWardRing();
 }

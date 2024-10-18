@@ -71,7 +71,7 @@ public class ResearchLoader {
             -2,
             0,
             3,
-            new ItemStack(ModsItemsList.warpRing))).setParents("INFUSION")
+            new ItemStack(ModsItemsList.warpWardRing))).setParents("INFUSION")
                 .setPages(
                     new ResearchPage[] { new ResearchPage(prefixNHUResearchWithDotEnding + WarpWardRing + "_1"),
                         new ResearchPage((InfusionRecipe) ConfigResearch.recipes.get("warpwardring")) })

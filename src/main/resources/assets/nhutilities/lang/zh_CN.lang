@@ -1,5 +1,8 @@
 # This lang file for NH-Utilities
 
+#Item Group
+itemGroup.nhutilities=NH Utilities
+
 # common items
 key.toggleTeleporterMKII=开关高级传送器GUI
 info.teleporterInfBaubles.txt=支持放入-任意-饰品栏目
@@ -70,7 +73,7 @@ tc.research_category.NHUTILITIES=奥术格雷学
 
 tc.research_name.THAUMICEBF=奥术工业高炉
 tc.research_text.THAUMICEBF=熊熊燃烧
-nhu.research.thaumicebf_1=得益于浅薄的奇术知识，你发现一些要素的魔晶能将对应的格雷机器融合在一起.你怀着忐忑不安的心情尝试将工业高炉融合为一个更高级的高炉.显然，你成功了.
+nhu.research.thaumicebf_1=得益于浅薄的奇术知识，你发现一些法杖核心能将对应的格雷机器融合在一起.你怀着忐忑不安的心情尝试将工业高炉融合为一个更高级的高炉.显然，你成功了.
 
 tc.research_name.SHADOWMETALFUELROD=燃料棒(激发态铀基闪耀之辉燃料棒)
 tc.research_text.SHADOWMETALFUELROD=让神秘再次伟大
@@ -86,13 +89,14 @@ nhu.research.focustape_1=你厌倦了维护仓室.电子魔法工具的核心又
 
 tc.research_name.WARPWARDRING=净化之戒
 tc.research_text.WARPWARDRING=扭曲人禁止进入工业区？
-nhu.research.warpwardring_1=你还在为不能进入工业区发愁吗？你还在担心队友的高炉里面会长出蘑菇吗？你还在担心家里会时不时蹦出一个凋零吗？仅仅需要一点点的跑图和EV的力场发生器，混入元始魔力后，你得到了这个能避免一切扭曲事件的戒指.(佩戴这个戒指的时候放置一些GT方块有概率消除三种扭曲)
+nhu.research.warpwardring_1=你还在为不能进入工业区发愁吗？你还在担心队友的高炉里面会长出蘑菇吗？你还在担心家里会时不时蹦出一个凋零吗？仅仅需要一点点的跑图和EV的力场发生器，混入元始魔力后，你得到了这个能避免一切扭曲事件的戒指.(并且佩戴这个戒指的时候放置某些GT方块有概率消除一些扭曲)
 
 # Tooltips for TCEBF
 nhu.tcebf.machine=奥术工业高炉
 nhu.tcebf.machine.type=工业高炉
 nhu.tcebf.machine.info_1=奥术工业高炉的控制器方块
 nhu.tcebf.machine.info_2=提供最高4并行 || 20%EU 减免 || 加速100%
+nhu.tcebf.machine.info_3=(如果你不喜欢这个邪术之眼材质，你可以在配置文件中关闭它)
 nhu.tcebf.machine.build.helper_1=正面底中
 nhu.tcebf.machine.build.helper_2=隔热机械方块
 nhu.tcebf.machine.build.helper_3.1=加热线圈
