@@ -73,7 +73,7 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
     implements ISurvivalConstructable {
 
     private double tcSpeedBonus = 1.0 / 1.25;
-    private double tcEuModifier = 0.8F;
+    private double tcEuModifier = 1.0 / 1.05;
     private int mHeatingCapacity = 0;
     protected final ArrayList<MTEHatchOutput> mPollutionOutputHatches = new ArrayList<>();
     protected final FluidStack[] pollutionFluidStacks = { Materials.CarbonDioxide.getGas(1000),
