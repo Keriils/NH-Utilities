@@ -31,6 +31,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -65,10 +66,14 @@ import gregtech.api.util.GTUtility;
 import gregtech.api.util.MultiblockTooltipBuilder;
 import gregtech.api.util.OverclockCalculator;
 import gregtech.common.tileentities.machines.multi.MTEAbstractMultiFurnace;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.visnet.VisNetHandler;
 
 public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace<NHUtilities_TC_ElectricBlastFurnace>
     implements ISurvivalConstructable {
 
+    private double tcSpeedBonus = 1.0 / 1.25;
+    private double tcEuModifier = 0.8F;
     private int mHeatingCapacity = 0;
     protected final ArrayList<MTEHatchOutput> mPollutionOutputHatches = new ArrayList<>();
     protected final FluidStack[] pollutionFluidStacks = { Materials.CarbonDioxide.getGas(1000),
@@ -136,6 +141,8 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
     @Override
     public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
         this.mHeatingCapacity = 0;
+        this.tcSpeedBonus = 1.0 / 1.25;
+        this.tcEuModifier = 1.0 / 1.05;
         setCoilLevel(HeatingCoilLevel.None);
         mPollutionOutputHatches.clear();
         if (!checkPiece(STRUCTURE_PIECE_MAIN, 1, 3, 0)) return false;
@@ -162,6 +169,18 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
             .addInfo(StatCollector.translateToLocal("nhu.tcebf.machine.info_1"))
             .addInfo(StatCollector.translateToLocal("nhu.tcebf.machine.info_2"))
             .addInfo(StatCollector.translateToLocal("nhu.tcebf.machine.info_3"))
+            .addInfo(
+                StatCollector.translateToLocal("nhu.tcebf.machine.info_4") + ":"
+                    + EnumChatFormatting.AQUA
+                    + "100/⌈125+75*fire(cv)*entropy(cv)/(fire*entropy+13.5)⌉")
+            .addInfo(
+                StatCollector.translateToLocal("nhu.tcebf.machine.info_5") + ":"
+                    + EnumChatFormatting.AQUA
+                    + "100/⌈105+15*fire(cv)*order(cv)/(fire*order+13.5)⌉")
+            .addInfo(
+                "" + EnumChatFormatting.ITALIC
+                    + EnumChatFormatting.DARK_PURPLE
+                    + StatCollector.translateToLocal("nhu.tcebf.machine.info_6"))
             .addPollutionAmount(getPollutionPerSecond(null))
             .addSeparator()
             .beginStructureBlock(3, 4, 3, true)
@@ -254,6 +273,13 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
     }
 
     @Override
+    protected void setProcessingLogicPower(ProcessingLogic logic) {
+        super.setProcessingLogicPower(logic);
+        logic.setSpeedBonus(tcSpeedBonus);
+        logic.setEuModifier(tcEuModifier);
+    }
+
+    @Override
     protected ProcessingLogic createProcessingLogic() {
         int maxParallel = 4;
         return new ProcessingLogic() {
@@ -272,9 +298,7 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
                 return recipe.mSpecialValue <= mHeatingCapacity ? CheckRecipeResultRegistry.SUCCESSFUL
                     : CheckRecipeResultRegistry.insufficientHeat(recipe.mSpecialValue);
             }
-        }.setSpeedBonus(0.50F)
-            .setEuModifier(0.80F)
-            .setMaxParallel(maxParallel);
+        }.setMaxParallel(maxParallel);
     }
 
     @Override
@@ -405,11 +429,24 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
     }
 
     @Override
+    public void saveNBTData(NBTTagCompound aNBT) {
+        super.saveNBTData(aNBT);
+        aNBT.setDouble("tcSpeedBonus", tcSpeedBonus);
+        aNBT.setDouble("tcEuModifier", tcEuModifier);
+    }
+
+    @Override
     public void loadNBTData(final NBTTagCompound aNBT) {
         super.loadNBTData(aNBT);
         if (aNBT.hasKey("isBussesSeparate")) {
             // backward compatibility
             inputSeparation = aNBT.getBoolean("isBussesSeparate");
+        }
+        if (aNBT.hasKey("tcSpeedBonus")) {
+            tcSpeedBonus = aNBT.getDouble("tcSpeedBonus");
+        }
+        if (aNBT.hasKey("tcEuModifier")) {
+            tcEuModifier = aNBT.getDouble("tcEuModifier");
         }
     }
 
@@ -426,5 +463,37 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
     @Override
     public boolean supportsBatchMode() {
         return true;
+    }
+
+    @Override
+    public void onPostTick(IGregTechTileEntity aBaseMetaTileEntity, long aTick) {
+        super.onPostTick(aBaseMetaTileEntity, aTick);
+        if (aTick % 10 == 0 && this.mMachine) {
+            final World world = this.getBaseMetaTileEntity()
+                .getWorld();
+            int x = this.getBaseMetaTileEntity()
+                .getXCoord();
+            int y = this.getBaseMetaTileEntity()
+                .getYCoord();
+            int z = this.getBaseMetaTileEntity()
+                .getZCoord();
+            getNode(world, x, y, z);
+        }
+    }
+
+    private void getNode(World world, int x, int y, int z) {
+        int fire = VisNetHandler.drainVis(world, x, y, z, Aspect.FIRE, 999);
+        int entropy = VisNetHandler.drainVis(world, x, y, z, Aspect.ENTROPY, 999);
+        int order = VisNetHandler.drainVis(world, x, y, z, Aspect.ORDER, 999);
+        if (fire == 0 || entropy == 0) {
+            tcSpeedBonus = 0.8F;
+        } else {
+            tcSpeedBonus = 100.0 / Math.ceil(125.0 + 75.0 * fire * entropy / (fire * entropy + 13.5F));
+        }
+        if (fire == 0 || order == 0) {
+            tcEuModifier = 1.0 / 1.05;
+        } else {
+            tcEuModifier = 100.0 / Math.ceil(105 + 15.0 * fire * order / (fire * order + 13.5F));
+        }
     }
 }
