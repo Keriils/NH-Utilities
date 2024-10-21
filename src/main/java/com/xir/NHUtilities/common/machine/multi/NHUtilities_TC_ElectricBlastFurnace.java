@@ -210,51 +210,26 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
     @Override
     public ITexture[] getTexture(IGregTechTileEntity baseMetaTileEntity, ForgeDirection side, ForgeDirection aFacing,
         int colorIndex, boolean aActive, boolean redstoneLevel) {
-        if (Config.disableTCBlastFurnaceNewTextures) return originalTexture(side, aFacing, aActive);
-        return tcCustomTexture(side, aFacing, aActive);
-    }
-
-    private ITexture[] originalTexture(ForgeDirection side, ForgeDirection aFacing, boolean aActive) {
         if (side == aFacing) {
             if (aActive) return new ITexture[] { casingTexturePages[0][CASING_INDEX], TextureFactory.builder()
-                .addIcon(OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE)
+                .addIcon(Config.disableTCBlastFurnaceNewTextures ? OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE : Active)
                 .extFacing()
                 .build(),
                 TextureFactory.builder()
-                    .addIcon(OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW)
+                    .addIcon(
+                        Config.disableTCBlastFurnaceNewTextures ? OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW
+                            : Active_Glow)
                     .extFacing()
                     .glow()
                     .build() };
             return new ITexture[] { casingTexturePages[0][CASING_INDEX], TextureFactory.builder()
-                .addIcon(OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE)
+                .addIcon(Config.disableTCBlastFurnaceNewTextures ? OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE : Not_Active)
                 .extFacing()
                 .build(),
                 TextureFactory.builder()
-                    .addIcon(OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_GLOW)
-                    .extFacing()
-                    .glow()
-                    .build() };
-        }
-        return new ITexture[] { casingTexturePages[0][CASING_INDEX] };
-    }
-
-    private ITexture[] tcCustomTexture(ForgeDirection side, ForgeDirection aFacing, boolean aActive) {
-        if (side == aFacing) {
-            if (aActive) return new ITexture[] { casingTexturePages[0][CASING_INDEX], TextureFactory.builder()
-                .addIcon(Active)
-                .extFacing()
-                .build(),
-                TextureFactory.builder()
-                    .addIcon(Active_Glow)
-                    .extFacing()
-                    .glow()
-                    .build() };
-            return new ITexture[] { casingTexturePages[0][CASING_INDEX], TextureFactory.builder()
-                .addIcon(Not_Active)
-                .extFacing()
-                .build(),
-                TextureFactory.builder()
-                    .addIcon(Not_Active_Glow)
+                    .addIcon(
+                        Config.disableTCBlastFurnaceNewTextures ? OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_GLOW
+                            : Not_Active_Glow)
                     .extFacing()
                     .glow()
                     .build() };
