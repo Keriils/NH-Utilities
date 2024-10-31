@@ -1,5 +1,7 @@
 package com.xir.NHUtilities.mixins.late.WorldEditGtnh;
 
+import net.minecraft.item.Item;
+
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -8,7 +10,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import com.sk89q.worldedit.entity.Player;
 import com.sk89q.worldedit.extension.platform.PlatformManager;
-import com.xir.NHUtilities.common.events.GetModItemWhileWorldLoad;
+
+import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mixin(value = PlatformManager.class, remap = false)
 public class ModifyWEWithExU {
@@ -35,7 +38,7 @@ public class ModifyWEWithExU {
     @Unique
     private int NHUtilities$check(@NotNull Player instance) {
         int itemInHand = instance.getItemInHand();
-        return itemInHand == GetModItemWhileWorldLoad.getHealingAxeID()
+        return itemInHand == Item.getIdFromItem(GameRegistry.findItem("ExtraUtilities", "defoliageAxe"))
             ? NHUtilities$pManager.getConfiguration().wandItem
             : itemInHand;
     }
