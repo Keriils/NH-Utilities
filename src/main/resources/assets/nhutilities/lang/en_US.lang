@@ -15,6 +15,10 @@ item.NHUtilities:LunchBoxPlus.name=Lunch Box Plus
 item.NHUtilities:KamiRing.name=Kami Divine Ring
 item.NHUtilities:WarpWardRing.name=Ring of Purification
 
+# common blocks
+tile.nhutilities:ChaosDragonEgg.name=Chaos Dragon Egg
+tile.nhutilities:AncientDragonEgg.name=Ancient Dragon Egg
+
 #focus
 item.focus_tape.name=Wand Focus: Tape
 

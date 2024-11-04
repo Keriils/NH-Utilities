@@ -1,6 +1,6 @@
 # This lang file for NH-Utilities
 
-#Item Group
+# Item Group
 itemGroup.nhutilities=NH Utilities
 
 # common items
@@ -15,7 +15,11 @@ item.NHUtilities:LunchBoxPlus.name=超级午餐盒
 item.NHUtilities:KamiRing.name=Kami神环
 item.NHUtilities:WarpWardRing.name=净化之戒
 
-#focus
+# common blocks
+tile.nhutilities:ChaosDragonEgg.name=混沌龙蛋
+tile.nhutilities:AncientDragonEgg.name=上古末影龙蛋
+
+# focus
 item.focus_tape.name=法杖核心：航空胶带
 
 # tc fuel rod project

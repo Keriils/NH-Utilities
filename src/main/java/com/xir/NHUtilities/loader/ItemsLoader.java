@@ -1,6 +1,8 @@
 package com.xir.NHUtilities.loader;
 
 import static com.xir.NHUtilities.common.items.ModsItemsList.KamiRing;
+import static com.xir.NHUtilities.common.items.ModsItemsList.ancientDragonEgg;
+import static com.xir.NHUtilities.common.items.ModsItemsList.chaosDragonEgg;
 import static com.xir.NHUtilities.common.items.ModsItemsList.eternityVial;
 import static com.xir.NHUtilities.common.items.ModsItemsList.focusTape;
 import static com.xir.NHUtilities.common.items.ModsItemsList.gluttonyRing;
@@ -29,6 +31,8 @@ public class ItemsLoader {
         RegisterUtils.registerItem(lunchBoxPlus, "LunchBoxPlus", enableLunchBoxPlus);
         RegisterUtils.registerItem(focusTape, "focusTape");
         RegisterUtils.registerItem(warpWardRing, "warpRing");
+        RegisterUtils.registerBlock(chaosDragonEgg, "ChaosDragonEgg");
+        RegisterUtils.registerBlock(ancientDragonEgg, "AncientDragonEgg");
     }
 
 }
