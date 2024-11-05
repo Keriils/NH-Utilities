@@ -15,6 +15,7 @@ import static gregtech.api.enums.Textures.BlockIcons.MACHINE_CASING_MAGIC_GLOW;
 import static gregtech.api.enums.Textures.BlockIcons.OVERLAYS_ENERGY_OUT_MULTI;
 import static gregtech.api.objects.XSTR.XSTR_INSTANCE;
 import static gregtech.common.misc.WirelessNetworkManager.addEUToGlobalEnergyMap;
+import static net.minecraft.util.StatCollector.translateToLocal;
 import static tectech.thing.metaTileEntity.Textures.OVERLAYS_ENERGY_IN_WIRELESS_MULTI_16A;
 
 import java.math.BigInteger;
@@ -56,29 +57,33 @@ import mcp.mobius.waila.api.IWailaDataAccessor;
 
 public class MTEMagicalEggMachine extends MTEBasicGenerator {
 
-    private int totalValidTick = 0;
     private UUID ownerUUID;
-    private int eggBonus = 1;
-    private byte currentTier;
+    private int eggBonus;
     private int MaterialBonus;
+    private byte currentTier;
+    private long totalValidTick;
+    private long currentAmperes = 1;
     private boolean isWirelessMode = false;
     private ITexture[][][] newTexture;
     private boolean shouldUpdateTexture = false;
+    private boolean isPlaced = false;
     private static final ItemStack[] CORE_MATERIAL = new ItemStack[] { new ItemStack(ModItems.dragonHeart, 1, 0),
         new ItemStack(ModItems.draconicCore, 1, 0), new ItemStack(ModItems.wyvernCore, 1, 0),
         new ItemStack(ModItems.awakenedCore, 1, 0), new ItemStack(ModItems.chaoticCore, 1, 0) };
 
     // region Constructor
-    public MTEMagicalEggMachine(int aID, String aName, String aNameRegional, int aTier) {
-        super(aID, aName, aNameRegional, aTier, new String[0]);
+    public MTEMagicalEggMachine(int aID, String aNameRegional, int aTier) {
+        super(aID, "egg machine" + aTier, aNameRegional, aTier, new String[0]);
         if (GT.isClientSide()) newTexture = mTextures;
         currentTier = (byte) aTier;
+        isPlaced = true;
     }
 
     public MTEMagicalEggMachine(String aName, int aTier, String[] aDescription, ITexture[][][] aTextures) {
         super(aName, aTier, aDescription, aTextures);
         if (GT.isClientSide()) newTexture = mTextures;
         currentTier = (byte) aTier;
+        isPlaced = true;
     }
 
     @Override
@@ -139,13 +144,25 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
         ownerUUID = aBaseMetaTileEntity.getOwnerUuid();
     }
 
+    private void clearBuffer() {
+        eggBonus = 1;
+        currentAmperes = 1;
+        MaterialBonus = 1;
+    }
+
     @Override
     public void onPostTick(IGregTechTileEntity aBaseMetaTileEntity, long aTick) {
         if (!aBaseMetaTileEntity.isServerSide()) return;
         if (!aBaseMetaTileEntity.isAllowedToWork()) return;
-        if ((aBaseMetaTileEntity.getUniversalEnergyStored() >= aBaseMetaTileEntity.getEUCapacity())) return;
-        if (!hasValidEgg()) return;
+        if (!isWirelessMode && (aBaseMetaTileEntity.getUniversalEnergyStored() >= aBaseMetaTileEntity.getEUCapacity()))
+            return;
 
+        if (!hasValidEgg()) {
+            clearBuffer();
+            return;
+        }
+
+        currentAmperes = calculateAmp();
         eggBonus = getEggBonus();
         MaterialBonus = getMaterialBonus();
 
@@ -198,7 +215,7 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
 
     @Override
     public long maxEUStore() {
-        return Math.max(getEUVar(), V[mTier] * 114514L + getMinimumStoredEU());
+        return Math.max(getEUVar(), V[mTier] * 114514L);
     }
 
     @Override
@@ -209,7 +226,7 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
 
     @Override
     public long maxAmperesOut() {
-        return (long) eggBonus * MaterialBonus << ((mTier - currentTier) * 2);
+        return currentAmperes == 0 ? 1 : currentAmperes;
     }
 
     @Override
@@ -221,18 +238,24 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
     public void saveNBTData(NBTTagCompound aNBT) {
         aNBT.setInteger("eggBonus", eggBonus);
         aNBT.setByte("currentTier", currentTier);
+        aNBT.setLong("currentAmperes", currentAmperes);
         aNBT.setLong("MaterialBonus", MaterialBonus);
         aNBT.setBoolean("isWirelessMode", isWirelessMode);
-        aNBT.setInteger("totalValidTick", totalValidTick);
+        aNBT.setLong("totalValidTick", totalValidTick);
     }
 
     @Override
     public void loadNBTData(NBTTagCompound aNBT) {
         eggBonus = aNBT.getInteger("eggBonus");
         currentTier = aNBT.getByte("currentTier");
+        currentAmperes = aNBT.getLong("currentAmperes");
         MaterialBonus = aNBT.getInteger("MaterialBonus");
         isWirelessMode = aNBT.getBoolean("isWirelessMode");
-        totalValidTick = aNBT.getInteger("totalValidTick");
+        totalValidTick = aNBT.getLong("totalValidTick");
+    }
+
+    private long calculateAmp() {
+        return (long) eggBonus * MaterialBonus << ((mTier - currentTier) * 2);
     }
     // endregion
 
@@ -247,21 +270,22 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
         } else {
             if (++currentTier > mTier) currentTier = 0;
         }
+        currentAmperes = calculateAmp();
         GTUtility.sendChatToPlayer(
             aPlayer,
             "Current EU Output: " + GTUtility.formatNumbers(V[currentTier])
                 + String.format(
                     " (%s) (%s)",
                     GTUtility.getColoredTierNameFromTier(currentTier),
-                    EnumChatFormatting.LIGHT_PURPLE
-                        + GTUtility.formatNumbers((long) eggBonus * MaterialBonus << ((mTier - currentTier) * 2))
-                        + "A"));
+                    EnumChatFormatting.LIGHT_PURPLE + GTUtility.formatNumbers(currentAmperes)
+                        + "A"
+                        + EnumChatFormatting.RESET));
     }
 
     @Override
     public boolean onWireCutterRightClick(ForgeDirection side, ForgeDirection wrenchingSide, EntityPlayer aPlayer,
         float aX, float aY, float aZ, ItemStack aTool) {
-        if (getBaseMetaTileEntity().isServerSide()) {
+        if (mTier >= 9 && getBaseMetaTileEntity().isServerSide()) {
             isWirelessMode = !isWirelessMode;
             GTUtility.sendChatToPlayer(aPlayer, "Wireless Mode: " + (isWirelessMode ? "On" : "Off"));
         }
@@ -271,6 +295,19 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
     @Override
     public void getWailaBody(ItemStack itemStack, List<String> currentTip, IWailaDataAccessor accessor,
         IWailaConfigHandler config) {
+        final NBTTagCompound tag = accessor.getNBTData();
+        final long voltage = V[tag.getByte("currentTier")];
+        final long Amperes = tag.getLong("currentAmperes");
+
+        currentTip.add(
+            String.format(
+                "Voltage: %s (%s)",
+                GTUtility.getColoredTierNameFromVoltage(voltage),
+                EnumChatFormatting.LIGHT_PURPLE + GTUtility.formatNumbers(Amperes) + "A" + EnumChatFormatting.RESET));
+        currentTip.add(
+            String.format(
+                "TotalBouns: %sx",
+                "" + EnumChatFormatting.GOLD + (tag.getInteger("eggBonus") * tag.getInteger("MaterialBonus"))));
         super.getWailaBody(itemStack, currentTip, accessor, config);
     }
 
@@ -278,6 +315,10 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
     public void getWailaNBTData(EntityPlayerMP player, TileEntity tile, NBTTagCompound tag, World world, int x, int y,
         int z) {
         super.getWailaNBTData(player, tile, tag, world, x, y, z);
+        tag.setByte("currentTier", currentTier);
+        tag.setLong("currentAmperes", currentAmperes);
+        tag.setInteger("eggBonus", eggBonus);
+        tag.setInteger("MaterialBonus", MaterialBonus);
     }
 
     @Override
@@ -288,9 +329,29 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
     @Override
     public String[] getDescription() {
         ArrayList<String> list = new ArrayList<>();
-        list.add("114514");
-        list.add("114514");
-        list.add("a test!!!");
+        list.add(translateToLocal("nhu.tooltips.eggMachine.type"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.line"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.info0"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.info1"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.info2"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.info3"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.line"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.info4"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.info5"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.info6"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.info7"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.info8"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.info9"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.line"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.info10"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.info11"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.info12"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.info13"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.info14"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.info15"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.line"));
+        list.add(translateToLocal("nhu.logotype.gt.logo"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.line"));
         return list.toArray(new String[0]);
     }
     // endregion
@@ -333,7 +394,7 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
                 .addIcon(MACHINE_CASING_MAGIC_GLOW)
                 .glow()
                 .build(),
-            ENERGY_OUT[currentTier] };
+            ENERGY_OUT[isPlaced ? currentTier : mTier] };
     }
 
     @Override
@@ -377,7 +438,7 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
                 .addIcon(MACHINE_CASING_MAGIC_ACTIVE_GLOW)
                 .glow()
                 .build(),
-            ENERGY_OUT[currentTier] };
+            ENERGY_OUT[isPlaced ? currentTier : mTier] };
     }
 
     @Override

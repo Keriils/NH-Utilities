@@ -40,7 +40,7 @@ public class ResearchLoader {
             0,
             0,
             9,
-            CustomItemList.Machine_Multi_TCBlastFurnace.get(1L))).setSpecial()
+            CustomItemList.TCBlastFurnace.get(1L))).setSpecial()
                 .setPages(
                     new ResearchPage[] { new ResearchPage(prefixNHUResearchWithDotEnding + ThaumicEBF + "_1"),
                         new ResearchPage((ShapedArcaneRecipe) ConfigResearch.recipes.get("gtcthaumicebf")) })

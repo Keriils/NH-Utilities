@@ -19,8 +19,20 @@ import gregtech.api.util.GTUtility;
 @SuppressWarnings("deprecation")
 public enum CustomItemList implements IItemContainer {
 
-    Machine_Multi_TCBlastFurnace,
-    EggMachineLuv;
+    TCBlastFurnace,
+    Egg_Machine_EV,
+    Egg_Machine_IV,
+    Egg_Machine_LuV,
+    Egg_Machine_ZPM,
+    Egg_Machine_UV,
+    Egg_Machine_UHV,
+    Egg_Machine_UEV,
+    Egg_Machine_UIV,
+    Egg_Machine_UMV,
+    Egg_Machine_UXV,
+    Egg_Machine_MAX,
+
+    ;
 
     private ItemStack mStack;
     private boolean mHasNotBeenSet;

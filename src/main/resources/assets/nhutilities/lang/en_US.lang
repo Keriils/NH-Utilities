@@ -118,6 +118,42 @@ nhu.tcebf.machine.build.helper_10=Fluid outputs, Any bottom layer casing
 nhu.tcebf.machine.build.helper_11=Pollution gases (CO2/CO/SO2), Any top layer casing
 nhu.tcebf.machine.build.helper_12=Pollution gas output amount scales with Muffler Hatch tier
 
+# Tooltips for Egg Machine
+nhu.eggMachine.tier.EV=Basic Egg Energy Absorber
+nhu.eggMachine.tier.IV=Intermediate Egg Energy Absorber
+nhu.eggMachine.tier.LuV=Advanced Egg Energy Absorber
+nhu.eggMachine.tier.ZPM=Epic Egg Energy Absorber
+nhu.eggMachine.tier.UV=Legendary Egg Energy Absorber
+nhu.eggMachine.tier.UHV=Divine Egg Energy Absorber
+nhu.eggMachine.tier.UEV=Stellar Egg Energy Absorber
+nhu.eggMachine.tier.UIV=Eternal Egg Energy Absorber
+nhu.eggMachine.tier.UMV=Cosmic Egg Energy Absorber
+nhu.eggMachine.tier.UXV=Singularity Egg Energy Absorber
+# Humorous...
+nhu.eggMachine.tier.MAX=Ultimate Invincible Legendary Stellar Eternal Cosmic Singularity Egg Energy Absorber
+nhu.eggMachine.tier.ULV=Egg Machine
+nhu.tooltips.eggMachine.type=§fMachine Type: §6Egg machine energy
+nhu.tooltips.eggMachine.line=§e-----------------------------------------
+nhu.tooltips.eggMachine.info0=§6Lost all other functions, only generates power from eggs!!
+nhu.tooltips.eggMachine.info1=§6Use a screwdriver to switch output voltage, amperage is based on current power.
+nhu.tooltips.eggMachine.info2=§6Use wire cutters to enable wireless mode, requires machine tier of at least §cUHV.
+nhu.tooltips.eggMachine.info3=§6Directly outputs energy to the wireless power grid, each operation takes 256 ticks.
+nhu.tooltips.eggMachine.info4=§dDifferent eggs provide different efficiencies:
+nhu.tooltips.eggMachine.info5=§d- Creeper Egg: 1x
+nhu.tooltips.eggMachine.info6=§d- Ender Dragon Egg: 4x
+nhu.tooltips.eggMachine.info7=§d- Chaos Dragon Egg: 16x
+nhu.tooltips.eggMachine.info8=§d- Infinite Egg: 64x
+nhu.tooltips.eggMachine.info9=§d- Ancient Ender Dragon Egg: 256x
+nhu.tooltips.eggMachine.info10=§bDifferent upgrades placed inside the machine provide different efficiencies:
+nhu.tooltips.eggMachine.info11=§b- Dragon Heart: 2x
+nhu.tooltips.eggMachine.info12=§b- Dragon Core: 4x
+nhu.tooltips.eggMachine.info13=§b- Wyvern Core: 8x
+nhu.tooltips.eggMachine.info14=§b- Awakened Dragon Core: 16x
+nhu.tooltips.eggMachine.info15=§b- Chaos Dragon Core: 32x
+
+# Tooltips for NHU Logotype
+nhu.logotype.gt.logo=§6Added by §dNH Utilities
+
 # Chat in Game
 chat.nhutilities.1=It seems like nothing happened...
 chat.nhutilities.2=You feel like you've left all your worries behind

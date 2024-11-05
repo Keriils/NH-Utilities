@@ -69,8 +69,7 @@ import gregtech.common.tileentities.machines.multi.MTEAbstractMultiFurnace;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.visnet.VisNetHandler;
 
-public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace<NHUtilities_TC_ElectricBlastFurnace>
-    implements ISurvivalConstructable {
+public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> implements ISurvivalConstructable {
 
     private double tcSpeedBonus = 1.0 / 1.25;
     private double tcEuModifier = 1.0 / 1.05;
@@ -88,8 +87,8 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
         "iconsets/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE");
     private static final IIconContainer Not_Active_Glow = new Textures.BlockIcons.CustomIcon(
         "iconsets/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_GLOW");
-    private static final IStructureDefinition<NHUtilities_TC_ElectricBlastFurnace> STRUCTURE_DEFINITION = StructureDefinition
-        .<NHUtilities_TC_ElectricBlastFurnace>builder()
+    private static final IStructureDefinition<TCBlastFurnace> STRUCTURE_DEFINITION = StructureDefinition
+        .<TCBlastFurnace>builder()
         .addShape(
             STRUCTURE_PIECE_MAIN,
             transpose(
@@ -97,22 +96,17 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
                     { "b~b", "bbb", "bbb" } }))
         .addElement(
             't',
-            buildHatchAdder(NHUtilities_TC_ElectricBlastFurnace.class)
-                .atLeast(
-                    OutputHatch.withAdder(NHUtilities_TC_ElectricBlastFurnace::addOutputHatchToTopList)
-                        .withCount(t -> t.mPollutionOutputHatches.size()))
+            buildHatchAdder(TCBlastFurnace.class).atLeast(
+                OutputHatch.withAdder(TCBlastFurnace::addOutputHatchToTopList)
+                    .withCount(t -> t.mPollutionOutputHatches.size()))
                 .casingIndex(CASING_INDEX)
                 .dot(1)
                 .buildAndChain(GregTechAPI.sBlockCasings1, CASING_INDEX))
         .addElement('m', Muffler.newAny(CASING_INDEX, 2))
-        .addElement(
-            'C',
-            ofCoil(
-                NHUtilities_TC_ElectricBlastFurnace::setCoilLevel,
-                NHUtilities_TC_ElectricBlastFurnace::getCoilLevel))
+        .addElement('C', ofCoil(TCBlastFurnace::setCoilLevel, TCBlastFurnace::getCoilLevel))
         .addElement(
             'b',
-            buildHatchAdder(NHUtilities_TC_ElectricBlastFurnace.class)
+            buildHatchAdder(TCBlastFurnace.class)
                 .atLeast(InputHatch, OutputHatch, InputBus, OutputBus, Maintenance, Energy)
                 .casingIndex(CASING_INDEX)
                 .dot(1)
@@ -130,11 +124,11 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
         return false;
     }
 
-    public NHUtilities_TC_ElectricBlastFurnace(int aID, String aName, String aNameRegional) {
-        super(aID, aName, aNameRegional);
+    public TCBlastFurnace(int aID, String aNameRegional) {
+        super(aID, "multimachine.tcblastfurnace", aNameRegional);
     }
 
-    public NHUtilities_TC_ElectricBlastFurnace(String aName) {
+    public TCBlastFurnace(String aName) {
         super(aName);
     }
 
@@ -158,7 +152,7 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
     }
 
     @Override
-    public IStructureDefinition<NHUtilities_TC_ElectricBlastFurnace> getStructureDefinition() {
+    public IStructureDefinition<TCBlastFurnace> getStructureDefinition() {
         return STRUCTURE_DEFINITION;
     }
 
@@ -204,7 +198,7 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
 
     @Override
     public IMetaTileEntity newMetaEntity(IGregTechTileEntity aTileEntity) {
-        return new NHUtilities_TC_ElectricBlastFurnace(this.mName);
+        return new TCBlastFurnace(this.mName);
     }
 
     @Override

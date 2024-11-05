@@ -118,6 +118,41 @@ nhu.tcebf.machine.build.helper_10=液态流体，任意底层机械方块
 nhu.tcebf.machine.build.helper_11=气态流体，任意顶层机械方块
 nhu.tcebf.machine.build.helper_12=污染气体输出取决于消声仓等级
 
+# Tooltips for Egg Machine
+nhu.eggMachine.tier.EV=初级蛋机能源吸收器
+nhu.eggMachine.tier.IV=中级蛋机能源吸收器
+nhu.eggMachine.tier.LuV=高级蛋机能源吸收器
+nhu.eggMachine.tier.ZPM=史诗蛋机能源吸收器
+nhu.eggMachine.tier.UV=传奇蛋机能源吸收器
+nhu.eggMachine.tier.UHV=神圣蛋机能源吸收器
+nhu.eggMachine.tier.UEV=星辉蛋机能源吸收器
+nhu.eggMachine.tier.UIV=永恒蛋机能源吸收器
+nhu.eggMachine.tier.UMV=寰宇蛋机能源吸收器
+nhu.eggMachine.tier.UXV=奇点蛋机能源吸收器
+# 幽默....
+nhu.eggMachine.tier.MAX=究极无敌传奇星辉永恒寰宇奇点宇宙蛋机能源吸收器
+nhu.tooltips.eggMachine.type=§f机器类型: §6蛋机能源
+nhu.tooltips.eggMachine.line=§e-----------------------------------------
+nhu.tooltips.eggMachine.info0=§6失去了其他的功能,只用蛋发电!!
+nhu.tooltips.eggMachine.info1=§6使用螺丝刀切换输出电压,安数基于当前的功率.
+nhu.tooltips.eggMachine.info2=§6使用剪线钳启用无线模式,需要机器等级大于等于§cUHV.
+nhu.tooltips.eggMachine.info3=§6直接向无线电网输出能源,每次操作时间256tick.
+nhu.tooltips.eggMachine.info4=§d不同的蛋提供不同的效率:
+nhu.tooltips.eggMachine.info5=§d- 爬行者蛋: 1x
+nhu.tooltips.eggMachine.info6=§d- 末影龙蛋: 4x
+nhu.tooltips.eggMachine.info7=§d- 混沌龙蛋: 16x
+nhu.tooltips.eggMachine.info8=§d- 无限之蛋: 64x
+nhu.tooltips.eggMachine.info9=§d- 上古末影龙蛋: 256x
+nhu.tooltips.eggMachine.info10=§b机器内部放入不同的升级提供的效率:
+nhu.tooltips.eggMachine.info11=§b- 龙之心: 2x
+nhu.tooltips.eggMachine.info12=§b- 普通龙芯: 4x
+nhu.tooltips.eggMachine.info13=§b- 双足龙芯: 8x
+nhu.tooltips.eggMachine.info14=§b- 觉醒龙芯: 16x
+nhu.tooltips.eggMachine.info15=§b- 混沌龙芯: 32x
+
+# Tooltips for NHU Logotype
+nhu.logotype.gt.logo=§6由 §dNH Utilities §6添加
+
 # Chat in Game
 chat.nhutilities.1=好像无事发生...
 chat.nhutilities.2=你感觉一身轻松

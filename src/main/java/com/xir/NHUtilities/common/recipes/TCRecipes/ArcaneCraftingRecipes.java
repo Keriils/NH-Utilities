@@ -31,7 +31,7 @@ public class ArcaneCraftingRecipes {
             "gtcthaumicebf",
             ThaumcraftApi.addArcaneCraftingRecipe(
                 ResearchLoader.ThaumicEBF.toUpperCase(),
-                CustomItemList.Machine_Multi_TCBlastFurnace.get(1L),
+                CustomItemList.TCBlastFurnace.get(1L),
                 gtcthaumicebf,
                 new Object[] { "aaa", "bcb", "dbd", 'a', ItemList.Machine_Multi_BlastFurnace.get(1L), 'b',
                     ItemList.Field_Generator_LV.get(1L), 'c', new ItemStack(ConfigItems.itemFocusFire, 1), 'd',
