@@ -39,7 +39,6 @@ import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructa
 import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
 import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
-import com.xir.NHUtilities.config.Config;
 
 import gregtech.GTMod;
 import gregtech.api.GregTechAPI;
@@ -72,6 +71,7 @@ import thaumcraft.api.visnet.VisNetHandler;
 public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace<NHUtilities_TC_ElectricBlastFurnace>
     implements ISurvivalConstructable {
 
+    private boolean isNewTexture = true;
     private double tcSpeedBonus = 1.0 / 1.25;
     private double tcEuModifier = 1.0 / 1.05;
     private int mHeatingCapacity = 0;
@@ -172,11 +172,11 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
             .addInfo(
                 StatCollector.translateToLocal("nhu.tcebf.machine.info_4") + ":"
                     + EnumChatFormatting.AQUA
-                    + "100/⌈125+75*fire(cv)*entropy(cv)/(fire*entropy+13.5)⌉")
+                    + "100/⌈125+75*fire(cv)*entropy(cv)/(fire(cv)*entropy(cv)+13.5)⌉")
             .addInfo(
                 StatCollector.translateToLocal("nhu.tcebf.machine.info_5") + ":"
                     + EnumChatFormatting.AQUA
-                    + "100/⌈105+15*fire(cv)*order(cv)/(fire*order+13.5)⌉")
+                    + "100/⌈105+15*fire(cv)*order(cv)/(fire(cv)*order(cv)+13.5)⌉")
             .addInfo(
                 "" + EnumChatFormatting.ITALIC
                     + EnumChatFormatting.DARK_PURPLE
@@ -212,29 +212,38 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
         int colorIndex, boolean aActive, boolean redstoneLevel) {
         if (side == aFacing) {
             if (aActive) return new ITexture[] { casingTexturePages[0][CASING_INDEX], TextureFactory.builder()
-                .addIcon(Config.disableTCBlastFurnaceNewTextures ? OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE : Active)
+                .addIcon(isNewTexture ? Active : OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE)
                 .extFacing()
                 .build(),
                 TextureFactory.builder()
-                    .addIcon(
-                        Config.disableTCBlastFurnaceNewTextures ? OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW
-                            : Active_Glow)
+                    .addIcon(isNewTexture ? Active_Glow : OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW)
                     .extFacing()
                     .glow()
                     .build() };
             return new ITexture[] { casingTexturePages[0][CASING_INDEX], TextureFactory.builder()
-                .addIcon(Config.disableTCBlastFurnaceNewTextures ? OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE : Not_Active)
+                .addIcon(isNewTexture ? Not_Active : OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE)
                 .extFacing()
                 .build(),
                 TextureFactory.builder()
-                    .addIcon(
-                        Config.disableTCBlastFurnaceNewTextures ? OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_GLOW
-                            : Not_Active_Glow)
+                    .addIcon(isNewTexture ? Not_Active_Glow : OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_GLOW)
                     .extFacing()
                     .glow()
                     .build() };
         }
         return new ITexture[] { casingTexturePages[0][CASING_INDEX] };
+    }
+
+    @Override
+    public void onValueUpdate(byte aValue) {
+        super.onValueUpdate(aValue);
+        boolean oIsNewTexture = isNewTexture;
+        isNewTexture = (aValue & 1) == 1;
+        if (oIsNewTexture != isNewTexture) getBaseMetaTileEntity().issueTextureUpdate();
+    }
+
+    @Override
+    public byte getUpdateData() {
+        return (byte) (isNewTexture ? 1 : 0);
     }
 
     @Override
@@ -397,10 +406,17 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
 
     @Override
     public void onScrewdriverRightClick(ForgeDirection side, EntityPlayer aPlayer, float aX, float aY, float aZ) {
-        inputSeparation = !inputSeparation;
-        GTUtility.sendChatToPlayer(
-            aPlayer,
-            StatCollector.translateToLocal("GT5U.machines.separatebus") + " " + inputSeparation);
+        if (aPlayer.isSneaking()) {
+            isNewTexture = !isNewTexture;
+            GTUtility.sendChatToPlayer(
+                aPlayer,
+                StatCollector.translateToLocal("GT5U.machines.isnewtexture") + " " + isNewTexture);
+        } else {
+            inputSeparation = !inputSeparation;
+            GTUtility.sendChatToPlayer(
+                aPlayer,
+                StatCollector.translateToLocal("GT5U.machines.separatebus") + " " + inputSeparation);
+        }
     }
 
     @Override
@@ -408,6 +424,7 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
         super.saveNBTData(aNBT);
         aNBT.setDouble("tcSpeedBonus", tcSpeedBonus);
         aNBT.setDouble("tcEuModifier", tcEuModifier);
+        aNBT.setBoolean("isNewTexture", isNewTexture);
     }
 
     @Override
@@ -422,6 +439,9 @@ public class NHUtilities_TC_ElectricBlastFurnace extends MTEAbstractMultiFurnace
         }
         if (aNBT.hasKey("tcEuModifier")) {
             tcEuModifier = aNBT.getDouble("tcEuModifier");
+        }
+        if (aNBT.hasKey("isNewTexture")) {
+            isNewTexture = aNBT.getBoolean("isNewTexture");
         }
     }
 

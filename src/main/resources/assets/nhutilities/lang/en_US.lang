@@ -96,7 +96,7 @@ nhu.tcebf.machine=Thaumic Electric Blast Furnace
 nhu.tcebf.machine.type=Blast Furnace
 nhu.tcebf.machine.info_1=Controller block for the Thaumic Electric Blast Furnace
 nhu.tcebf.machine.info_2=Provide up to 4 parallels || 80% EU required || +100% speed up
-nhu.tcebf.machine.info_3=(If you don't like new texture, you can close it in config)
+nhu.tcebf.machine.info_3=(If you don't like this texture, you can change it by using screwdriver)
 nhu.tcebf.machine.info_4=Node acceleration formula
 nhu.tcebf.machine.info_5=Node consumption formula
 nhu.tcebf.machine.info_6=It's watching you all the time...
@@ -118,3 +118,5 @@ nhu.tcebf.machine.build.helper_12=Pollution gas output amount scales with Muffle
 chat.nhutilities.1=It seems like nothing happened...
 chat.nhutilities.2=You feel like you've left all your worries behind
 chat.nhutilities.3=Something heavy has left...
+
+GT5U.machines.isnewtexture=Is new texture?
