@@ -18,7 +18,6 @@ public class Config {
 
     // region register massItems key !!!
     public static boolean enableGluttonyRingAndHungerRing = true;
-    public static boolean disableTCBlastFurnaceNewTextures = false;
     // endregion
 
     // region TimeVial
@@ -182,12 +181,6 @@ public class Config {
                 "disable Super Chest Or Tank Debuff");
             disableDollyDebuff = configuration
                 .getBoolean("disableDollyDebuff", CATEGORY_MIXIN_CONFIG, disableDollyDebuff, "disable Dolly Debuff");
-            disableTCBlastFurnaceNewTextures = configuration.getBoolean(
-                "disableTCBlastFurnaceNewTexture",
-                CATEGORY_MASS,
-                disableTCBlastFurnaceNewTextures,
-                "disable TC Blast Furnace New Texture");
-
         }
 
         try {
