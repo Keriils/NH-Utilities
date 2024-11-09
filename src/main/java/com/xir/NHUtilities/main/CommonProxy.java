@@ -5,7 +5,6 @@ import static com.xir.NHUtilities.main.ReferencedInfo.MOD_NAME;
 
 import com.xir.NHUtilities.common.recipes.GTRecipes.GTRecipes;
 import com.xir.NHUtilities.common.research.GTApiResearch;
-import com.xir.NHUtilities.loader.CreativeTabsLoader;
 import com.xir.NHUtilities.loader.EntityLoader;
 import com.xir.NHUtilities.loader.EventLoader;
 import com.xir.NHUtilities.loader.ItemsLoader;
@@ -24,9 +23,6 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
 
         LOG.info("Pre-initializing " + MOD_NAME + "!");
-
-        CreativeTabsLoader.registerNHUCreativeTabs();
-        LOG.info("Loaded Creative Tabs.");
 
         ItemsLoader.registerNHUtilitiesItems();
         LOG.info("Loaded Items.");

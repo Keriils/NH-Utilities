@@ -6,8 +6,8 @@ import net.minecraft.item.ItemStack;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.xir.NHUtilities.common.api.IEntityInvulnerable;
-import com.xir.NHUtilities.common.items.aItemCore.ItemBasic;
+import com.xir.NHUtilities.common.api.interfaces.IEntityInvulnerable;
+import com.xir.NHUtilities.common.items.aItemCore.ItemBase;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
@@ -16,7 +16,7 @@ import thaumcraft.api.IVisDiscountGear;
 import thaumcraft.api.aspects.Aspect;
 
 @Optional.Interface(iface = "baubles.api.IBauble", modid = "Baubles")
-public class KamiRing extends ItemBasic implements IBauble, IVisDiscountGear {
+public class KamiRing extends ItemBase implements IBauble, IVisDiscountGear {
 
     public KamiRing() {
         super("KamiRing");

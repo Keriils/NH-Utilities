@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.xir.NHUtilities.common.api.ITileEntityTickAcceleration;
+import com.xir.NHUtilities.common.api.interfaces.ITileEntityTickAcceleration;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

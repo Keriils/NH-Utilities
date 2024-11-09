@@ -5,7 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 
-import com.xir.NHUtilities.common.items.aItemCore.ItemBasic;
+import com.xir.NHUtilities.common.items.aItemCore.ItemBase;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
@@ -13,7 +13,7 @@ import thaumcraft.api.IVisDiscountGear;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.config.Config;
 
-public class WarpWardRing extends ItemBasic implements IBauble, IVisDiscountGear {
+public class WarpWardRing extends ItemBase implements IBauble, IVisDiscountGear {
 
     public WarpWardRing() {
         super("WarpWardRing");

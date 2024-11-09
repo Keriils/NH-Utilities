@@ -1,17 +1,5 @@
 package com.xir.NHUtilities.loader;
 
-import static com.xir.NHUtilities.common.api.enums.CustomItemList.Egg_Machine_EV;
-import static com.xir.NHUtilities.common.api.enums.CustomItemList.Egg_Machine_IV;
-import static com.xir.NHUtilities.common.api.enums.CustomItemList.Egg_Machine_LuV;
-import static com.xir.NHUtilities.common.api.enums.CustomItemList.Egg_Machine_MAX;
-import static com.xir.NHUtilities.common.api.enums.CustomItemList.Egg_Machine_UEV;
-import static com.xir.NHUtilities.common.api.enums.CustomItemList.Egg_Machine_UHV;
-import static com.xir.NHUtilities.common.api.enums.CustomItemList.Egg_Machine_UIV;
-import static com.xir.NHUtilities.common.api.enums.CustomItemList.Egg_Machine_UMV;
-import static com.xir.NHUtilities.common.api.enums.CustomItemList.Egg_Machine_UV;
-import static com.xir.NHUtilities.common.api.enums.CustomItemList.Egg_Machine_UXV;
-import static com.xir.NHUtilities.common.api.enums.CustomItemList.Egg_Machine_ZPM;
-import static com.xir.NHUtilities.common.api.enums.CustomItemList.TCBlastFurnace;
 import static com.xir.NHUtilities.common.api.enums.MetaTileEntityID.EGG_MACHINE_EV;
 import static com.xir.NHUtilities.common.api.enums.MetaTileEntityID.EGG_MACHINE_IV;
 import static com.xir.NHUtilities.common.api.enums.MetaTileEntityID.EGG_MACHINE_LuV;
@@ -24,11 +12,23 @@ import static com.xir.NHUtilities.common.api.enums.MetaTileEntityID.EGG_MACHINE_
 import static com.xir.NHUtilities.common.api.enums.MetaTileEntityID.EGG_MACHINE_UXV;
 import static com.xir.NHUtilities.common.api.enums.MetaTileEntityID.EGG_MACHINE_ZPM;
 import static com.xir.NHUtilities.common.api.enums.MetaTileEntityID.TC_BLAST_FURNACE;
+import static com.xir.NHUtilities.common.api.enums.NHU_MachineList.Egg_Machine_EV;
+import static com.xir.NHUtilities.common.api.enums.NHU_MachineList.Egg_Machine_IV;
+import static com.xir.NHUtilities.common.api.enums.NHU_MachineList.Egg_Machine_LuV;
+import static com.xir.NHUtilities.common.api.enums.NHU_MachineList.Egg_Machine_MAX;
+import static com.xir.NHUtilities.common.api.enums.NHU_MachineList.Egg_Machine_UEV;
+import static com.xir.NHUtilities.common.api.enums.NHU_MachineList.Egg_Machine_UHV;
+import static com.xir.NHUtilities.common.api.enums.NHU_MachineList.Egg_Machine_UIV;
+import static com.xir.NHUtilities.common.api.enums.NHU_MachineList.Egg_Machine_UMV;
+import static com.xir.NHUtilities.common.api.enums.NHU_MachineList.Egg_Machine_UV;
+import static com.xir.NHUtilities.common.api.enums.NHU_MachineList.Egg_Machine_UXV;
+import static com.xir.NHUtilities.common.api.enums.NHU_MachineList.Egg_Machine_ZPM;
+import static com.xir.NHUtilities.common.api.enums.NHU_MachineList.TCBlastFurnace;
 import static net.minecraft.util.StatCollector.translateToLocal;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.xir.NHUtilities.common.api.enums.CustomItemList;
+import com.xir.NHUtilities.common.api.enums.NHU_MachineList;
 import com.xir.NHUtilities.common.machine.multi.TCBlastFurnace;
 import com.xir.NHUtilities.common.machine.single.MTEMagicalEggMachine;
 
@@ -36,7 +36,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 
 public class MachineLoader {
 
-    public static void registerMTE(@NotNull CustomItemList item, @NotNull MetaTileEntity mte) {
+    private static void registerMTE(@NotNull NHU_MachineList item, @NotNull MetaTileEntity mte) {
         item.set(mte.getStackForm(1L));
     }
 

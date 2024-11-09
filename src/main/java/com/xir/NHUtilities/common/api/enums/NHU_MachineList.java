@@ -17,7 +17,7 @@ import gregtech.api.util.GTOreDictUnificator;
 import gregtech.api.util.GTUtility;
 
 @SuppressWarnings("deprecation")
-public enum CustomItemList implements IItemContainer {
+public enum NHU_MachineList implements IItemContainer {
 
     TCBlastFurnace,
     Egg_Machine_EV,
@@ -39,11 +39,11 @@ public enum CustomItemList implements IItemContainer {
     private boolean mDeprecated;
     private boolean mWarned;
 
-    CustomItemList() {
+    NHU_MachineList() {
         mHasNotBeenSet = true;
     }
 
-    CustomItemList(boolean aDeprecated) {
+    NHU_MachineList(boolean aDeprecated) {
         if (aDeprecated) {
             mDeprecated = true;
             mHasNotBeenSet = true;

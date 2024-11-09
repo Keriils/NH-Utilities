@@ -1,15 +1,15 @@
 package com.xir.NHUtilities.common.blocks;
 
-import static com.xir.NHUtilities.loader.CreativeTabsLoader.nhuCreativeTab;
+import static com.xir.NHUtilities.common.api.NHUCreativeTabs.nhuCreativeTab;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDragonEgg;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
-public class ChaosDragonEgg extends BlockDragonEgg {
+public class DragonEgg extends BlockDragonEgg {
 
-    public ChaosDragonEgg(String name) {
+    public DragonEgg(String name) {
         String localName = "nhutilities:" + name;
         this.setHardness(100.0F);
         this.setResistance(9999999.9F);

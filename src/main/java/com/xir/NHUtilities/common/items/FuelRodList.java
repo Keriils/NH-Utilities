@@ -2,18 +2,18 @@ package com.xir.NHUtilities.common.items;
 
 import net.minecraft.item.ItemStack;
 
-import com.xir.NHUtilities.common.items.aItemCore.ItemBasic;
+import com.xir.NHUtilities.common.items.aItemCore.ItemBase;
 import com.xir.NHUtilities.common.items.itemFuelRod.DepletedFuelRod;
 import com.xir.NHUtilities.common.items.itemFuelRod.FuelRod;
-import com.xir.NHUtilities.utils.RegisterUtils;
+import com.xir.NHUtilities.utils.RegisterUtil;
 
 public class FuelRodList {
 
-    public static ItemBasic ichorFuelRod;
-    public static ItemBasic shadowFuelRod;
+    public static ItemBase ichorFuelRod;
+    public static ItemBase shadowFuelRod;
 
-    public static ItemBasic ichorDroplet;
-    public static ItemBasic primordialPearlDust;
+    public static ItemBase ichorDroplet;
+    public static ItemBase primordialPearlDust;
 
     public static DepletedFuelRod depletedFuelRodExcitedRadianceUranium;
     public static DepletedFuelRod depletedFuelRodExcitedRadianceUranium2;
@@ -33,11 +33,11 @@ public class FuelRodList {
 
     public static void fuelRodInit() {
 
-        ichorFuelRod = new ItemBasic("ichorFuelRod");
-        shadowFuelRod = new ItemBasic("radianceFuelRod");
+        ichorFuelRod = new ItemBase("ichorFuelRod");
+        shadowFuelRod = new ItemBase("radianceFuelRod");
 
-        ichorDroplet = new ItemBasic("ichorDroplet");
-        primordialPearlDust = new ItemBasic("primordialPearlDust");
+        ichorDroplet = new ItemBase("ichorDroplet");
+        primordialPearlDust = new ItemBase("primordialPearlDust");
 
         depletedFuelRodExcitedRadianceUranium = new DepletedFuelRod("depletedFuelRodExcitedRadianceUranium", 100);
         depletedFuelRodExcitedRadianceUranium2 = new DepletedFuelRod("depletedFuelRodExcitedRadianceUranium_2", 200);
@@ -109,26 +109,26 @@ public class FuelRodList {
             6.3F,
             new ItemStack(depletedFuelRodSuperExcitedPrimordialPearlPlutonium4, 1));
 
-        RegisterUtils.registerItem(ichorFuelRod);
-        RegisterUtils.registerItem(shadowFuelRod);
-        RegisterUtils.registerItem(ichorDroplet);
-        RegisterUtils.registerItem(primordialPearlDust);
+        RegisterUtil.registerItem(ichorFuelRod);
+        RegisterUtil.registerItem(shadowFuelRod);
+        RegisterUtil.registerItem(ichorDroplet);
+        RegisterUtil.registerItem(primordialPearlDust);
 
-        RegisterUtils.registerItem(depletedFuelRodExcitedRadianceUranium);
-        RegisterUtils.registerItem(depletedFuelRodExcitedRadianceUranium2);
-        RegisterUtils.registerItem(depletedFuelRodExcitedRadianceUranium4);
+        RegisterUtil.registerItem(depletedFuelRodExcitedRadianceUranium);
+        RegisterUtil.registerItem(depletedFuelRodExcitedRadianceUranium2);
+        RegisterUtil.registerItem(depletedFuelRodExcitedRadianceUranium4);
 
-        RegisterUtils.registerItem(fuelRodExcitedRadianceUranium);
-        RegisterUtils.registerItem(fuelRodExcitedRadianceUranium2);
-        RegisterUtils.registerItem(fuelRodExcitedRadianceUranium4);
+        RegisterUtil.registerItem(fuelRodExcitedRadianceUranium);
+        RegisterUtil.registerItem(fuelRodExcitedRadianceUranium2);
+        RegisterUtil.registerItem(fuelRodExcitedRadianceUranium4);
 
-        RegisterUtils.registerItem(depletedFuelRodSuperExcitedPrimordialPearlPlutonium);
-        RegisterUtils.registerItem(depletedFuelRodSuperExcitedPrimordialPearlPlutonium2);
-        RegisterUtils.registerItem(depletedFuelRodSuperExcitedPrimordialPearlPlutonium4);
+        RegisterUtil.registerItem(depletedFuelRodSuperExcitedPrimordialPearlPlutonium);
+        RegisterUtil.registerItem(depletedFuelRodSuperExcitedPrimordialPearlPlutonium2);
+        RegisterUtil.registerItem(depletedFuelRodSuperExcitedPrimordialPearlPlutonium4);
 
-        RegisterUtils.registerItem(fuelRodSuperExcitedPrimordialPearlPlutonium);
-        RegisterUtils.registerItem(fuelRodSuperExcitedPrimordialPearlPlutonium2);
-        RegisterUtils.registerItem(fuelRodSuperExcitedPrimordialPearlPlutonium4);
+        RegisterUtil.registerItem(fuelRodSuperExcitedPrimordialPearlPlutonium);
+        RegisterUtil.registerItem(fuelRodSuperExcitedPrimordialPearlPlutonium2);
+        RegisterUtil.registerItem(fuelRodSuperExcitedPrimordialPearlPlutonium4);
 
     }
 }

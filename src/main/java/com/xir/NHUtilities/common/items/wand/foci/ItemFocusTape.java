@@ -7,7 +7,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-import com.xir.NHUtilities.loader.CreativeTabsLoader;
+import com.xir.NHUtilities.common.api.NHUCreativeTabs;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -27,7 +27,7 @@ public class ItemFocusTape extends ItemFocusBasic {
         setMaxDamage(0);
         setMaxStackSize(1);
         setNoRepair();
-        setCreativeTab(CreativeTabsLoader.nhuCreativeTab);
+        setCreativeTab(NHUCreativeTabs.nhuCreativeTab);
         setUnlocalizedName(name);
     }
 

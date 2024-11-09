@@ -24,13 +24,13 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
 import com.xir.NHUtilities.common.entity.EntityTimeAccelerator;
-import com.xir.NHUtilities.common.items.aItemCore.ItemBasic;
+import com.xir.NHUtilities.common.items.aItemCore.ItemBase;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.avaritia.entity.EntityImmortalItem;
 
-public class TimeVial extends ItemBasic {
+public class TimeVial extends ItemBase {
 
     protected static final int TIME_INIT_RATE = enableTimeAcceleratorBoost ? 8 : 4;
     // referenced RandomThings

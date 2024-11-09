@@ -6,7 +6,7 @@ import static com.xir.NHUtilities.main.ReferencedInfo.MOD_ID_UPPER;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-import com.xir.NHUtilities.common.api.enums.CustomItemList;
+import com.xir.NHUtilities.common.api.enums.NHU_MachineList;
 import com.xir.NHUtilities.common.items.ModsItemsList;
 
 import thaumcraft.api.aspects.Aspect;
@@ -40,7 +40,7 @@ public class ResearchLoader {
             0,
             0,
             9,
-            CustomItemList.TCBlastFurnace.get(1L))).setSpecial()
+            NHU_MachineList.TCBlastFurnace.get(1L))).setSpecial()
                 .setPages(
                     new ResearchPage[] { new ResearchPage(prefixNHUResearchWithDotEnding + ThaumicEBF + "_1"),
                         new ResearchPage((ShapedArcaneRecipe) ConfigResearch.recipes.get("gtcthaumicebf")) })
