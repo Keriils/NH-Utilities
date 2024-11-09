@@ -22,6 +22,7 @@ import com.xir.NHUtilities.utils.RegisterUtil;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+@SuppressWarnings({"unused","UnusedReturnValue"})
 public abstract class MetaBlockBase extends BlockBase implements IMetaTypeObject {
 
     @SideOnly(Side.CLIENT)
@@ -45,8 +46,7 @@ public abstract class MetaBlockBase extends BlockBase implements IMetaTypeObject
 
     @Override
     public ItemStack addMetaItem(String aName, int aMeta, String aExtraFolder, String[] tooltips) {
-        MetaTypeManager manager = getMTManager();
-        return MetaObjectUtil.addMetaItemUtil(manager, this, aName, aMeta, aExtraFolder, tooltips);
+        return MetaObjectUtil.addMetaItemUtil(getMTManager(), this, aName, aMeta, aExtraFolder, tooltips);
     }
 
     @Override

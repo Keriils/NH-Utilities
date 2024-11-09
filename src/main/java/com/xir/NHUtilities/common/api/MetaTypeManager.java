@@ -17,7 +17,7 @@ import com.xir.NHUtilities.utils.CommonUtil;
  * including their icons, metaData, and tooltips.
  */
 @SuppressWarnings("unused")
-public final class MetaTypeManager {
+public class MetaTypeManager {
 
     // region Meta Item
     public static final MetaTypeManager MetaItem01 = create();
