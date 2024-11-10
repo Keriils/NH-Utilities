@@ -6,11 +6,11 @@ import com.xir.NHUtilities.common.api.MetaTypeManager;
 import com.xir.NHUtilities.common.api.NHUCreativeTabs;
 import com.xir.NHUtilities.common.blocks.aBlockCore.MetaBlockBase;
 
-public class MetaBlock01 extends MetaBlockBase {
+public class MetaBlock extends MetaBlockBase {
 
-    public MetaBlock01() {
-        super("MetaBlock01");
-        this.setCreativeTab(NHUCreativeTabs.metaBlock01Tab);
+    public MetaBlock() {
+        super("MetaBlock");
+        this.setCreativeTab(NHUCreativeTabs.MetaBlockTab);
     }
 
     @Override
@@ -20,22 +20,23 @@ public class MetaBlock01 extends MetaBlockBase {
 
     @Override
     public void loadMetaItem() {
+        addMetaItem("CreativeTab", 0);
         addMetaItem("test_1", 1);
         addMetaItem("test_2", 2);
     }
 
     @Override
-    public String getBlockName() {
-        return "nhu.MetaBlock.01";
+    public String getRegisterName() {
+        return "nhu.MetaBlock";
     }
 
     @Override
     public MetaTypeManager getMTManager() {
-        return MetaTypeManager.MetaBlock01;
+        return MetaTypeManager.MetaBlock;
     }
 
     @Override
     public String getIconFolderName() {
-        return "MetaBlock_01";
+        return "MetaBlock";
     }
 }

@@ -13,7 +13,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 
 public class EventLoader {
 
-    public static void registerNHUtilitiesEvents() {
+    public static void initNHUtilitiesEvents() {
         registerEvent(true, new GluttonyRingEvent(), enableGluttonyRingAndHungerRing);
         registerEvent(true, new EnhanceExUHealingAxe(), enableEnhancedExUHealingAxe);
         registerEvent(true, new WarpWardRingEvent());

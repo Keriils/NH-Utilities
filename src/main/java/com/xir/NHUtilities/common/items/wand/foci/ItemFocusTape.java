@@ -8,6 +8,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
 import com.xir.NHUtilities.common.api.NHUCreativeTabs;
+import com.xir.NHUtilities.common.api.interfaces.IRegisterProvider;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -18,16 +19,16 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.ItemFocusBasic;
 import thaumcraft.common.items.wands.ItemWandCasting;
 
-public class ItemFocusTape extends ItemFocusBasic {
+public class ItemFocusTape extends ItemFocusBasic implements IRegisterProvider {
 
-    private final String name = "focus_tape";
+    private final String name = "FocusTape";
     private static final AspectList cost = new AspectList().add(Aspect.ORDER, 500);
 
     public ItemFocusTape() {
         setMaxDamage(0);
         setMaxStackSize(1);
         setNoRepair();
-        setCreativeTab(NHUCreativeTabs.nhuCreativeTab);
+        setCreativeTab(NHUCreativeTabs.NHUCreativeTab);
         setUnlocalizedName(name);
     }
 
@@ -102,6 +103,11 @@ public class ItemFocusTape extends ItemFocusBasic {
 
     @Override
     public int getActivationCooldown(ItemStack stack) {
-        return 100;
+        return 10;
+    }
+
+    @Override
+    public String getRegisterName() {
+        return this.name;
     }
 }

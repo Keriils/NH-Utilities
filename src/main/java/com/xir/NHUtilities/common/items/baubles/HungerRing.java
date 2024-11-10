@@ -18,6 +18,7 @@ public class HungerRing extends ItemBase implements IBauble {
     public HungerRing() {
         super("HungerRing");
         setMaxStackSize(1);
+        setTextureName("Baubles/HungerRing");
     }
 
     @Override

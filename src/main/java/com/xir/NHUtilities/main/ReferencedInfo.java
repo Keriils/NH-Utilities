@@ -1,11 +1,16 @@
 package com.xir.NHUtilities.main;
 
+import net.minecraft.launchwrapper.Launch;
+
 import cpw.mods.fml.common.Loader;
 
 @SuppressWarnings("unused")
 public final class ReferencedInfo {
 
     private ReferencedInfo() {}
+
+    // For Dev
+    public static final boolean isDevEnvironment = (Boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
 
     // For Mod Main Info
     public static final String MOD_ID = "NHUtilities";

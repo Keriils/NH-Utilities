@@ -10,11 +10,11 @@ public class MetaItemBlock01 extends MetaItemBlockBase {
 
     public MetaItemBlock01(Block block) {
         super(block);
-        this.setCreativeTab(NHUCreativeTabs.metaBlock01Tab);
+        this.setCreativeTab(NHUCreativeTabs.MetaBlockTab);
     }
 
     @Override
     public MetaTypeManager getMTManager() {
-        return MetaTypeManager.MetaBlock01;
+        return MetaTypeManager.MetaBlock;
     }
 }

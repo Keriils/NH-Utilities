@@ -20,11 +20,11 @@ import com.xir.NHUtilities.utils.CommonUtil;
 public class MetaTypeManager {
 
     // region Meta Item
-    public static final MetaTypeManager MetaItem01 = create();
+    public static final MetaTypeManager MetaItem = create();
     // endregion
 
     // region Meta Block
-    public static final MetaTypeManager MetaBlock01 = create();
+    public static final MetaTypeManager MetaBlock = create();
     // endregion
 
     // region Manager

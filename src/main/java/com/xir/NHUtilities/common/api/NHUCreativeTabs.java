@@ -3,37 +3,37 @@ package com.xir.NHUtilities.common.api;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-import com.xir.NHUtilities.common.items.ModsItemsList;
+import com.xir.NHUtilities.common.api.enums.NHUItemList;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class NHUCreativeTabs {
 
-    public static final CreativeTabs nhuCreativeTab = new CreativeTabs("nhutilities") {
+    public static final CreativeTabs NHUCreativeTab = new CreativeTabs("nhutilities") {
 
         @Override
         @SideOnly(Side.CLIENT)
         public Item getTabIconItem() {
-            return ModsItemsList.eternityVial;
+            return NHUItemList.EternityVial.getItem();
         }
     };
 
-    public static final CreativeTabs metaItem01Tab = new CreativeTabs("metaItem01") {
+    public static final CreativeTabs MetaItemTab = new CreativeTabs("metaItem") {
 
         @Override
         @SideOnly(Side.CLIENT)
         public Item getTabIconItem() {
-            return ModsItemsList.metaItem01;
+            return NHUItemList.MetaItem.getItem();
         }
     };
 
-    public static final CreativeTabs metaBlock01Tab = new CreativeTabs("metaBlock01") {
+    public static final CreativeTabs MetaBlockTab = new CreativeTabs("metaBlock") {
 
         @Override
         @SideOnly(Side.CLIENT)
         public Item getTabIconItem() {
-            return Item.getItemFromBlock(ModsItemsList.metaItemBlock01);
+            return NHUItemList.MetaBlock.getItem();
         }
     };
 }

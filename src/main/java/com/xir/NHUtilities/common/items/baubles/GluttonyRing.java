@@ -15,6 +15,7 @@ public class GluttonyRing extends ItemBase implements IBauble {
     public GluttonyRing() {
         super("GluttonyRing");
         setMaxStackSize(1);
+        this.setTextureName("Baubles/GluttonyRing");
     }
 
     @Override

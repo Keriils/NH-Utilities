@@ -21,6 +21,7 @@ public class KamiRing extends ItemBase implements IBauble, IVisDiscountGear {
     public KamiRing() {
         super("KamiRing");
         setMaxStackSize(1);
+        setTextureName("Baubles/KamiRing");
     }
 
     @Override

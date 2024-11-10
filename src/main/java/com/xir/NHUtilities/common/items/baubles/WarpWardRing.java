@@ -18,6 +18,7 @@ public class WarpWardRing extends ItemBase implements IBauble, IVisDiscountGear 
     public WarpWardRing() {
         super("WarpWardRing");
         this.setMaxStackSize(1);
+        setTextureName("Baubles/WarpWardRing");
     }
 
     @Override

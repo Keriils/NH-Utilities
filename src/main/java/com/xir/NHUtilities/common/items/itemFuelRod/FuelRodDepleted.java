@@ -8,10 +8,11 @@ import ic2.api.item.IBoxable;
 import ic2.api.reactor.IReactor;
 import ic2.api.reactor.IReactorComponent;
 
-public class DepletedFuelRod extends RadioactiveItem implements IReactorComponent, IBoxable {
+public class FuelRodDepleted extends RadioactiveItem implements IReactorComponent, IBoxable {
 
-    public DepletedFuelRod(String name, int mRadio) {
-        super(name, mRadio);
+    public FuelRodDepleted(String aName, int mRadio) {
+        super(aName, mRadio);
+        this.setTextureName("FuelRod/" + aName);
     }
 
     @Override

@@ -24,13 +24,13 @@ public class CommonProxy {
 
         LOG.info("Pre-initializing " + MOD_NAME + "!");
 
-        ItemsLoader.registerNHUtilitiesItems();
+        ItemsLoader.initNHUtilitiesItems();
         LOG.info("Loaded Items.");
 
-        EventLoader.registerNHUtilitiesEvents();
+        EventLoader.initNHUtilitiesEvents();
         LOG.info("Loaded Events.");
 
-        MachineLoader.registerNHUtilitiesMachine();
+        MachineLoader.initNHUtilitiesMachine();
         LOG.info("Loaded GregTechMachines.");
 
     }
@@ -39,10 +39,10 @@ public class CommonProxy {
 
         LOG.info("Initializing " + MOD_NAME + "!");
 
-        RecipeLoader.registerNHUtilitiesRecipes();
+        RecipeLoader.initNHUtilitiesRecipes();
         LOG.info("Loaded Recipes.");
 
-        EntityLoader.registerNHUtilitiesEntity();
+        EntityLoader.initNHUtilitiesEntity();
         LOG.info("Loaded Entities.");
 
     }
@@ -51,10 +51,10 @@ public class CommonProxy {
 
         LOG.info("Post-initializing " + MOD_NAME + "!");
 
-        ResearchLoader.registerNHUtilitiesResearch();
+        ResearchLoader.initNHUtilitiesResearch();
         LOG.info("Loaded Researches");
 
-        GTRecipes.registerNHUtilitiesGTRecipe();
+        GTRecipes.initNHUtilitiesGTRecipe();
         LOG.info("Loaded NHUtilities GTRecipes");
 
         GTApiResearch.addGTApiResearchAndRecipes();

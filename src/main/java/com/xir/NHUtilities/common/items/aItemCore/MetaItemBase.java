@@ -2,7 +2,6 @@ package com.xir.NHUtilities.common.items.aItemCore;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -20,7 +19,7 @@ import com.xir.NHUtilities.utils.RegisterUtil;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SuppressWarnings({"unused","UnusedReturnValue"})
+@SuppressWarnings({ "unused", "UnusedReturnValue" })
 public abstract class MetaItemBase extends ItemBase implements IMetaTypeObject {
 
     @SideOnly(Side.CLIENT)
@@ -32,12 +31,17 @@ public abstract class MetaItemBase extends ItemBase implements IMetaTypeObject {
         this.name = aUnlocalizedName;
         this.setMaxDamage(0);
         this.setHasSubtypes(true);
-        this.unlocalizedName = "item." + this.name + ".";
+        this.unlocalizedName = "item." + this.name;
         if (CommonUtil.isClientSide()) this.iconPathName = "nhutilities:MetaResources/" + getIconFolderName() + "/";
+        RegisterUtil.registerItem(this);
     }
 
     public ItemStack addMetaItem(String aName, int aMeta) {
-        return addMetaItem(aName, aMeta, null);
+        return addMetaItem(aName, aMeta, null, null);
+    }
+
+    public ItemStack addMetaItem(String aName, int aMeta, String[] tooltips) {
+        return addMetaItem(aName, aMeta, null, tooltips);
     }
 
     public ItemStack addMetaItem(String aName, int aMeta, String aExtraFolder) {
@@ -51,14 +55,13 @@ public abstract class MetaItemBase extends ItemBase implements IMetaTypeObject {
 
     @Override
     public String getUnlocalizedName() {
-        return unlocalizedName + "NULL";
+        return unlocalizedName;
     }
 
     @Override
     public String getUnlocalizedName(ItemStack itemStack) {
         int meta = itemStack.getItemDamage();
-        Map<Integer, String> metaNameMap = getMTManager().getNameMap();
-        return metaNameMap.containsKey(meta) ? unlocalizedName + meta : getUnlocalizedName();
+        return getMTManager().getName(meta) != null ? (getUnlocalizedName() + "." + meta) : "nhutilities.null";
     }
 
     /**
@@ -67,7 +70,6 @@ public abstract class MetaItemBase extends ItemBase implements IMetaTypeObject {
      * {@link IMetaTypeObject#loadMetaItem()}
      */
     public void initializeMetaTypeObject() {
-        RegisterUtil.registerItem(this);
         this.getMTManager()
             .setMetaObject(this);
         this.loadMetaItem();
@@ -84,7 +86,7 @@ public abstract class MetaItemBase extends ItemBase implements IMetaTypeObject {
      * return the item registered name
      */
     @Override
-    public abstract String getItemName();
+    public abstract String getRegisterName();
 
     /**
      * return the MetaTypeManager registered in {@link MetaTypeManager}
@@ -103,14 +105,12 @@ public abstract class MetaItemBase extends ItemBase implements IMetaTypeObject {
     @Override
     @SideOnly(Side.CLIENT)
     public IIcon getIconFromDamage(int meta) {
-        Map<Integer, IIcon> iconMap = getMTManager().getIconMap();
-        return iconMap.containsKey(meta) ? iconMap.get(meta) : this.itemIcon;
+        return getMTManager().getIcon(meta);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister register) {
-        super.registerIcons(register);
         MetaObjectUtil.registerIconUtil(getMTManager(), iconPathName, register);
     }
 

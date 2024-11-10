@@ -1,7 +1,6 @@
 package com.xir.NHUtilities.common.blocks.aBlockCore;
 
 import java.util.List;
-import java.util.Map;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,7 +21,7 @@ import com.xir.NHUtilities.utils.RegisterUtil;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SuppressWarnings({"unused","UnusedReturnValue"})
+@SuppressWarnings({ "unused", "UnusedReturnValue" })
 public abstract class MetaBlockBase extends BlockBase implements IMetaTypeObject {
 
     @SideOnly(Side.CLIENT)
@@ -32,12 +31,17 @@ public abstract class MetaBlockBase extends BlockBase implements IMetaTypeObject
 
     public MetaBlockBase(String aUnlocalizedName) {
         this.name = aUnlocalizedName;
-        this.unlocalizedName = "block." + this.name + ".";
+        this.unlocalizedName = "block." + this.name;
         if (CommonUtil.isClientSide()) this.iconPathName = "nhutilities:MetaResources/" + getIconFolderName() + "/";
+        RegisterUtil.registerBlock(this, this.getItemBlockClass(), this.getRegisterName());
     }
 
     public ItemStack addMetaItem(String aName, int aMeta) {
-        return addMetaItem(aName, aMeta, null);
+        return addMetaItem(aName, aMeta, null, null);
+    }
+
+    public ItemStack addMetaItem(String aName, int aMeta, String[] tooltips) {
+        return addMetaItem(aName, aMeta, null, tooltips);
     }
 
     public ItemStack addMetaItem(String aName, int aMeta, String aExtraFolder) {
@@ -51,7 +55,6 @@ public abstract class MetaBlockBase extends BlockBase implements IMetaTypeObject
 
     @Override
     public void initializeMetaTypeObject() {
-        RegisterUtil.registerBlock(this, this.getItemBlockClass());
         getMTManager().setMetaObject(this);
         this.loadMetaItem();
     }
@@ -69,7 +72,7 @@ public abstract class MetaBlockBase extends BlockBase implements IMetaTypeObject
      * return the block registered name
      */
     @Override
-    public abstract String getBlockName();
+    public abstract String getRegisterName();
 
     /**
      * return the MetaTypeManager registered in {@link MetaTypeManager}
@@ -118,14 +121,12 @@ public abstract class MetaBlockBase extends BlockBase implements IMetaTypeObject
     @Override
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta) {
-        Map<Integer, IIcon> iconMap = getMTManager().getIconMap();
-        return iconMap.containsKey(meta) ? iconMap.get(meta) : this.blockIcon;
+        return getMTManager().getIcon(meta);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister register) {
-        super.registerBlockIcons(register);
         MetaObjectUtil.registerIconUtil(getMTManager(), iconPathName, register);
     }
 

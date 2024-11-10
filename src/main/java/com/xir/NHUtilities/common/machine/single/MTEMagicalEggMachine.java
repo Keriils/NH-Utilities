@@ -39,7 +39,7 @@ import net.minecraftforge.fluids.FluidStack;
 import com.brandon3055.draconicevolution.common.ModItems;
 import com.gtnewhorizons.modularui.api.screen.ModularWindow;
 import com.gtnewhorizons.modularui.api.screen.UIBuildContext;
-import com.xir.NHUtilities.common.items.ModsItemsList;
+import com.xir.NHUtilities.common.api.enums.NHUItemList;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -66,6 +66,7 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
     private boolean isWirelessMode = false;
     private ITexture[][][] newTexture;
     private boolean shouldUpdateTexture = false;
+    // this field for display common texture
     private boolean isPlaced = false;
     private static final ItemStack[] CORE_MATERIAL = new ItemStack[] { new ItemStack(ModItems.dragonHeart, 1, 0),
         new ItemStack(ModItems.draconicCore, 1, 0), new ItemStack(ModItems.wyvernCore, 1, 0),
@@ -206,10 +207,10 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
         if (block.getUnlocalizedName()
             .contains("creeperEgg")) return 1;
         if (block == Blocks.dragon_egg) return 4;
-        if (block == ModsItemsList.chaosDragonEgg) return 16;
+        if (block == NHUItemList.ChaosDragonEgg.getBlock()) return 16;
         if (block.getUnlocalizedName()
             .contains("infinityegg")) return 64;
-        if (block == ModsItemsList.ancientDragonEgg) return 256;
+        if (block == NHUItemList.AncientDragonEgg.getBlock()) return 256;
         return 0;
     }
 
@@ -306,7 +307,7 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
                 EnumChatFormatting.LIGHT_PURPLE + GTUtility.formatNumbers(Amperes) + "A" + EnumChatFormatting.RESET));
         currentTip.add(
             String.format(
-                "TotalBouns: %sx",
+                "TotalBonus: %sx",
                 "" + EnumChatFormatting.GOLD + (tag.getInteger("eggBonus") * tag.getInteger("MaterialBonus"))));
         super.getWailaBody(itemStack, currentTip, accessor, config);
     }
@@ -375,7 +376,7 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
 
     @Override
     public ITexture[] getTexture(IGregTechTileEntity baseMetaTileEntity, ForgeDirection side,
-        ForgeDirection facingDirection, int colorIndex, boolean active, boolean redstoneLevel) {
+        ForgeDirection facingDirection, int colorIndex, boolean active, boolean redStoneLevel) {
         if (shouldUpdateTexture) {
             shouldUpdateTexture = false;
             if (GT.isClientSide()) newTexture = getTextureSet(null);

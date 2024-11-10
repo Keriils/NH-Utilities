@@ -1,10 +1,9 @@
 package com.xir.NHUtilities.common.blocks.aBlockCore;
 
-import static com.xir.NHUtilities.common.api.NHUCreativeTabs.nhuCreativeTab;
+import static com.xir.NHUtilities.common.api.NHUCreativeTabs.NHUCreativeTab;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,7 +26,7 @@ public abstract class MetaItemBlockBase extends ItemBlock implements IMetaObject
         super(block);
         this.setMaxDamage(0);
         this.setHasSubtypes(true);
-        this.setCreativeTab(nhuCreativeTab);
+        this.setCreativeTab(NHUCreativeTab);
     }
 
     /**
@@ -44,20 +43,13 @@ public abstract class MetaItemBlockBase extends ItemBlock implements IMetaObject
     @Override
     public String getUnlocalizedName(ItemStack itemStack) {
         int meta = itemStack.getItemDamage();
-        Map<Integer, String> metaNameMap = getMTManager().getNameMap();
-        return getUnlocalizedName() + (metaNameMap.containsKey(meta) ? meta : "NULL");
-    }
-
-    @Override
-    public ItemBlock setUnlocalizedName(String p_77655_1_) {
-        return super.setUnlocalizedName(p_77655_1_);
+        return getMTManager().getName(meta) != null ? (getUnlocalizedName() + "." + meta) : "nhutilities.null";
     }
 
     @Override
     public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List<String> aList, boolean b3h) {
         int meta = itemStack.getItemDamage();
-        String[] tooltip = getMTManager().getTooltipsMap()
-            .get(meta);
+        String[] tooltip = getMTManager().getTooltips(meta);
         if (tooltip != null) aList.addAll(Arrays.asList(tooltip));
         aList.add(this.mNoMobsToolTip);
         aList.add(this.mNoTileEntityToolTip);

@@ -2,77 +2,85 @@
 
 #Item Group
 itemGroup.nhutilities=NH Utilities
+itemGroup.metaItem=NHU Material
+itemGroup.metaBlock=NHU Block
 
-# common items
+# Tooltips For NHU Logotype
+nhu.logotype.gt.logo=§6Added by §dNH Utilities
+
+#Error
+nhutilities.null.name=§cError
+
+# Common Items
+item.GluttonyRing.name=GluttonyRing
+item.HungerRing.name=HungerRing
+item.TimeVial.name=TimeVial
+item.EternityVial.name=EternityVial
+item.LunchBoxPlus.name=Lunch Box Plus
+item.KamiRing.name=Kami Divine Ring
+item.WarpWardRing.name=Ring of Purification
+
+# Teleporter MK-II
 key.toggleTeleporterMKII=Toggle Enhanced Charm of Dislocation GUI
 info.teleporterInfBaubles.txt=Support putting in-any-baubles
 info.teleporterInfBaublesButton.txt=Support the use of-button-to open the baubles
-item.NHUtilities:GluttonyRing.name=GluttonyRing
-item.NHUtilities:HungerRing.name=HungerRing
-item.NHUtilities:TimeVial.name=TimeVial
-item.NHUtilities:EternityVial.name=EternityVial
-item.NHUtilities:LunchBoxPlus.name=Lunch Box Plus
-item.NHUtilities:KamiRing.name=Kami Divine Ring
-item.NHUtilities:WarpWardRing.name=Ring of Purification
 
-# common blocks
-tile.nhutilities:ChaosDragonEgg.name=Chaos Dragon Egg
-tile.nhutilities:AncientDragonEgg.name=Ancient Dragon Egg
+# Common Blocks
+block.ChaosDragonEgg.name=Chaos Dragon Egg
+block.AncientDragonEgg.name=Ancient Dragon Egg
 
-#focus
-item.focus_tape.name=Wand Focus: Tape
+# Focus
+item.FocusTape.name=Wand Focus: Tape
 
-# tc fuel rod project
-text.NHUtilities.fuelRod.tooltip.0=Durability: %s/%s
-text.NHUtilities.fuelRod.tooltip.1=Has Mox Behaviour | MOX-coefficient: %d
-text.NHUtilities.fuelRod.tooltip.2=base heat(heta/s): %d/%d/%d
-text.NHUtilities.fuelRod.tooltip.3=base power(EU/t): %d/%d/%d
-item.NHUtilities:ichorDroplet.name=Ichor Droplet
-item.NHUtilities:primordialPearlDust.name=Primordial Pearl Dust
-item.NHUtilities:ichorFuelRod.name=Ichor Fuel Rod
-item.NHUtilities:radianceFuelRod.name=Radiance Fuel Rod
-item.NHUtilities:fuelRodExcitedRadianceUranium.name=Fuel Rod (Excited Radiance Uranium)
-item.NHUtilities:fuelRodExcitedRadianceUranium_2.name=Dual Rod (Excited Radiance Uranium)
-item.NHUtilities:fuelRodExcitedRadianceUranium_4.name=Quad Rod (Excited Radiance Uranium)
-item.NHUtilities:depletedFuelRodExcitedRadianceUranium.name=Fuel Rod (Depleted Excited Radiance Uranium)
-item.NHUtilities:depletedFuelRodExcitedRadianceUranium_2.name=Dual Fuel Rod (Depleted Excited Radiance Uranium)
-item.NHUtilities:depletedFuelRodExcitedRadianceUranium_4.name=Quad Fuel Rod (Depleted Excited Radiance Uranium)
-item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium.name=Fuel Rod (Super Excited Primordial Pearl Plutonium)
-item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium_2.name=Dual Rod (Super Excited Primordial Pearl Plutonium)
-item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium_4.name=Quad Rod (Super Excited Primordial Pearl Plutonium)
-item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium.name=Fuel Rod (Depleted Super Excited Primordial Pearl Plutonium)
-item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2.name=Dual Fuel Rod (Depleted Super Excited Primordial Pearl Plutonium)
-item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4.name=Quad Fuel Rod (Depleted Super Excited Primordial Pearl Plutonium)
+# Tc Fuel Rod Project
+info.fuelRod.tooltip.0=Durability: %s/%s
+info.fuelRod.tooltip.1=Has Mox Behaviour | MOX-coefficient: %d
+info.fuelRod.tooltip.2=base heat(heta/s): %d/%d/%d
+info.fuelRod.tooltip.3=base power(EU/t): %d/%d/%d
+item.MetaItem.0.name=Ichor Fuel Rod
+item.MetaItem.1.name=Radiance Fuel Rod
+item.MetaItem.2.name=Ichor Droplet
+item.MetaItem.3.name=Primordial Pearl Dust
+item.RodRadianceUranium.name=Fuel Rod (Excited Radiance Uranium)
+item.RodRadianceUranium2.name=Dual Rod (Excited Radiance Uranium)
+item.RodRadianceUranium4.name=Quad Rod (Excited Radiance Uranium)
+item.RodRadianceUraniumDepleted.name=Fuel Rod (Depleted Excited Radiance Uranium)
+item.RodRadianceUraniumDepleted2.name=Dual Fuel Rod (Depleted Excited Radiance Uranium)
+item.RodRadianceUraniumDepleted4.name=Quad Fuel Rod (Depleted Excited Radiance Uranium)
+item.RodPrimordialPearlPlutonium.name=Fuel Rod (Super Excited Primordial Pearl Plutonium)
+item.RodPrimordialPearlPlutonium2.name=Dual Rod (Super Excited Primordial Pearl Plutonium)
+item.RodPrimordialPearlPlutonium4.name=Quad Rod (Super Excited Primordial Pearl Plutonium)
+item.RodPrimordialPearlPlutoniumDepleted.name=Fuel Rod (Depleted Super Excited Primordial Pearl Plutonium)
+item.RodPrimordialPearlPlutoniumDepleted2.name=Dual Fuel Rod (Depleted Super Excited Primordial Pearl Plutonium)
+item.RodPrimordialPearlPlutoniumDepleted4.name=Quad Fuel Rod (Depleted Super Excited Primordial Pearl Plutonium)
 
-# tooltips for time vial
-text.NHUtilities.TimeVial.tips=§ftime: §6%d hours §d%d minutes §a%d seconds 
-text.NHUtilities.TimeVial.details_0=Possesses 6 acceleration gradients.
-text.NHUtilities.TimeVial.details_1=Default adjustable range [4->128].
-text.NHUtilities.TimeVial.details_2=Can be modified in the configuration to [8->256].
-text.NHUtilities.TimeVial.details_3=Checks every 30 seconds if the player has multiple time vials.
-text.NHUtilities.TimeVial.details_4=When multiples are present, executes time accumulation, adding the most time to one vial.
-text.NHUtilities.TimeVial.details_5=While setting the remaining time vials to:
-text.NHUtilities.TimeVial.details_6=Uh...114514.   -11 hours -45 minutes -14 seconds.
-text.NHUtilities.TimeVial.details_7=Can be modified without limits in the config file.
-text.NHUtilities.TimeVial.details_8=The rules for GT machine acceleration are as follows:
-text.NHUtilities.TimeVial.details_9=By default, the acceleration method is applied by accumulating ticks if Shift is not held down.
-text.NHUtilities.TimeVial.details_10=Machines require processing time time and time must be >= 2 ticks.
-text.NHUtilities.TimeVial.details_11=Executes time + acceleration multiplier * discount (default 0.8f), which is adjustable.
-text.NHUtilities.TimeVial.details_12=In simple terms, adds the corresponding time to the machine's working time.
-text.NHUtilities.TimeVial.details_13=Configuration file notes
-text.NHUtilities.TimeVial.details_14=Allows adjusting the volume of the vial sounds and whether to enable number textures, i.e., 8x or 16x patterns.
-text.NHUtilities.TimeVial.details_15=If unsure, do not modify. enableLogInfo = true
+# Tooltips For Time Vial
+text.EternityVial.details_0=Eternity
+text.TimeVial.tips=§ftime: §6%d hours §d%d minutes §a%d seconds 
+text.TimeVial.details_0=Possesses 6 acceleration gradients.
+text.TimeVial.details_1=Default adjustable range [4->128].
+text.TimeVial.details_2=Can be modified in the configuration to [8->256].
+text.TimeVial.details_3=Checks every 30 seconds if the player has multiple time vials.
+text.TimeVial.details_4=When multiples are present, executes time accumulation, adding the most time to one vial.
+text.TimeVial.details_5=While setting the remaining time vials to:
+text.TimeVial.details_6=Uh...114514.   -11 hours -45 minutes -14 seconds.
+text.TimeVial.details_7=Can be modified without limits in the config file.
+text.TimeVial.details_8=The rules for GT machine acceleration are as follows:
+text.TimeVial.details_9=By default, the acceleration method is applied by accumulating ticks if Shift is not held down.
+text.TimeVial.details_10=Machines require processing time time and time must be >= 2 ticks.
+text.TimeVial.details_11=Executes time + acceleration multiplier * discount (default 0.8f), which is adjustable.
+text.TimeVial.details_12=In simple terms, adds the corresponding time to the machine's working time.
+text.TimeVial.details_13=Configuration file notes
+text.TimeVial.details_14=Allows adjusting the volume of the vial sounds and whether to enable number textures, i.e., 8x or 16x patterns.
+text.TimeVial.details_15=If unsure, do not modify. enableLogInfo = true
 
-# tooltips for time vial
-text.NHUtilities.EternityVial.details_0=Eternity
+# Information Helper
+infoHelper.NHUtilities.txt_0=§6====§f[§dHold
+infoHelper.NHUtilities.txt_1=§dfor Details§f]§6====
+infoHelper.NHUtilities.key_ctrl=§bCtrl
+infoHelper.NHUtilities.key_shift=§bShift
 
-# information helper
-infohelper.NHUtilities.txt_0=§6====§f[§dHold
-infohelper.NHUtilities.txt_1=§dfor Details§f]§6====
-infohelper.NHUtilities.key_ctrl=§bCtrl
-infohelper.NHUtilities.key_shift=§bShift
-
-# research
+# Research
 tc.research_category.NHUTILITIES=GregThaumcality
 
 tc.research_name.THAUMICEBF=Thaumic Electric Blast Furnace
@@ -95,7 +103,7 @@ tc.research_name.WARPWARDRING=Ring of Purification
 tc.research_text.WARPWARDRING=Banned thaumer from industrial zone?
 nhu.research.warpwardring_1=Are you still worried about not being able to enter the industrial zone? Are you concerned that mushrooms might grow inside your teammate's blast furnace? Are you afraid that a Wither might pop up at home from time to time? With just a bit of map running and an EV field generator, infused with essential, you can obtain this ring that prevents all warp events. (When wearing this ring, placing some GT blocks has a chance to clear part of warp.)
 
-# Tooltips for TCEBF
+# Tooltips for TC-EBF
 nhu.tcebf.machine=Thaumic Electric Blast Furnace
 nhu.tcebf.machine.type=Blast Furnace
 nhu.tcebf.machine.info_1=Controller block for the Thaumic Electric Blast Furnace
@@ -118,7 +126,7 @@ nhu.tcebf.machine.build.helper_10=Fluid outputs, Any bottom layer casing
 nhu.tcebf.machine.build.helper_11=Pollution gases (CO2/CO/SO2), Any top layer casing
 nhu.tcebf.machine.build.helper_12=Pollution gas output amount scales with Muffler Hatch tier
 
-# Tooltips for Egg Machine
+# Tooltips For Egg Machine
 nhu.eggMachine.tier.EV=Basic Egg Energy Absorber
 nhu.eggMachine.tier.IV=Intermediate Egg Energy Absorber
 nhu.eggMachine.tier.LuV=Advanced Egg Energy Absorber
@@ -151,10 +159,7 @@ nhu.tooltips.eggMachine.info13=§b- Wyvern Core: 8x
 nhu.tooltips.eggMachine.info14=§b- Awakened Dragon Core: 16x
 nhu.tooltips.eggMachine.info15=§b- Chaos Dragon Core: 32x
 
-# Tooltips for NHU Logotype
-nhu.logotype.gt.logo=§6Added by §dNH Utilities
-
-# Chat in Game
+# Chat In Game
 chat.nhutilities.1=It seems like nothing happened...
 chat.nhutilities.2=You feel like you've left all your worries behind
 chat.nhutilities.3=Something heavy has left...

@@ -1,10 +1,12 @@
 package com.xir.NHUtilities.common.blocks.aBlockCore;
 
-import static com.xir.NHUtilities.common.api.NHUCreativeTabs.nhuCreativeTab;
+import static com.xir.NHUtilities.common.api.NHUCreativeTabs.NHUCreativeTab;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+
+import com.xir.NHUtilities.common.api.interfaces.IRegisterProvider;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -13,21 +15,20 @@ import cpw.mods.fml.relauncher.SideOnly;
  * The aim is to simplify some writing as well as others
  */
 @SuppressWarnings("unused")
-public class BlockBase extends Block {
+public class BlockBase extends Block implements IRegisterProvider {
 
-    protected static final String BLOCK_LANG_KEY_STRING = "block.NHUtilities:";
     protected String name;
 
     public BlockBase() {
-        this("_null_", nhuCreativeTab, Material.iron);
+        this("_null_", NHUCreativeTab, Material.iron);
     }
 
     public BlockBase(String aName) {
-        this(aName, nhuCreativeTab, Material.iron);
+        this(aName, NHUCreativeTab, Material.iron);
     }
 
     public BlockBase(String aName, Material aMaterial) {
-        this(aName, nhuCreativeTab, aMaterial);
+        this(aName, NHUCreativeTab, aMaterial);
     }
 
     public BlockBase(String aName, CreativeTabs aCreativeTabs) {
@@ -55,7 +56,7 @@ public class BlockBase extends Block {
 
     @Override
     public String getUnlocalizedName() {
-        return BLOCK_LANG_KEY_STRING + this.name;
+        return "block." + this.name;
     }
 
     @Override
@@ -64,8 +65,8 @@ public class BlockBase extends Block {
         return this;
     }
 
-    public String getBlockName() {
+    @Override
+    public String getRegisterName() {
         return this.name;
     }
-
 }

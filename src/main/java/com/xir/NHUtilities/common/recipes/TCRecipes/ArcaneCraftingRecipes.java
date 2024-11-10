@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import net.minecraft.item.ItemStack;
 
-import com.xir.NHUtilities.common.api.enums.NHU_MachineList;
+import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.loader.ResearchLoader;
 
 import gregtech.api.enums.ItemList;
@@ -31,7 +31,7 @@ public class ArcaneCraftingRecipes {
             "gtcthaumicebf",
             ThaumcraftApi.addArcaneCraftingRecipe(
                 ResearchLoader.ThaumicEBF.toUpperCase(),
-                NHU_MachineList.TCBlastFurnace.get(1L),
+                NHUItemList.TCBlastFurnace.get(1),
                 gtcthaumicebf,
                 new Object[] { "aaa", "bcb", "dbd", 'a', ItemList.Machine_Multi_BlastFurnace.get(1L), 'b',
                     ItemList.Field_Generator_LV.get(1L), 'c', new ItemStack(ConfigItems.itemFocusFire, 1), 'd',

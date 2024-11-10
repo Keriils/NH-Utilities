@@ -25,7 +25,7 @@ public interface IMetaTypeObject extends IMetaObjectProvider {
 
     /**
      * This method should be called within {@link IMetaTypeObject#loadMetaItem()}
-     * 
+     *
      * @param aExtraFolder extra group folder for a series of items or blocks of the same type
      */
     ItemStack addMetaItem(String aName, int aMeta, String aExtraFolder, String[] tooltips);

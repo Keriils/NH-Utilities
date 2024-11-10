@@ -4,61 +4,49 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 
-import com.xir.NHUtilities.common.blocks.aBlockCore.BlockBase;
-import com.xir.NHUtilities.common.items.aItemCore.ItemBase;
+import com.xir.NHUtilities.common.api.interfaces.IRegisterProvider;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({ "unused", "UnusedReturnValue" })
 public final class RegisterUtil {
 
     private RegisterUtil() {}
 
-    public static void registerItem(ItemBase item) {
-        registerItem(item, item.getItemName(), true);
+    public static Item registerItem(IRegisterProvider registerProvider) {
+        return registerItem(registerProvider, true);
     }
 
-    public static void registerItem(ItemBase item, boolean shouldRegister) {
-        registerItem(item, item.getItemName(), shouldRegister);
+    public static Item registerItem(IRegisterProvider registerProvider, boolean shouldRegister) {
+        return registerItem((Item) registerProvider, registerProvider.getRegisterName(), shouldRegister);
     }
 
-    public static void registerItem(Item item, String itemName) {
-        registerItem(item, itemName, true);
+    public static Item registerItem(Item item, String itemName) {
+        return registerItem(item, itemName, true);
     }
 
-    public static void registerItem(Item item, String itemName, boolean shouldRegister) {
-        if (shouldRegister) GameRegistry.registerItem(item, itemName);
+    public static Item registerItem(Item item, String itemName, boolean shouldRegister) {
+        if (shouldRegister) return GameRegistry.registerItem(item, itemName, null);
+        return null;
     }
 
-    public static void registerBlock(BlockBase block) {
-        registerBlock(block, block.getBlockName());
+    public static Block registerBlock(Block block, String blockName) {
+        return registerBlock(block, blockName, true);
     }
 
-    public static void registerBlock(Block block, String blockName) {
-        registerBlock(block, blockName, true);
+    public static Block registerBlock(Block block, String blockName, boolean shouldRegister) {
+        return registerBlock(block, null, blockName, shouldRegister);
     }
 
-    public static void registerBlock(BlockBase block, boolean shouldRegister) {
-        registerBlock(block, block.getBlockName(), shouldRegister);
+    public static Block registerBlock(Block block, Class<? extends ItemBlock> itemClass, String blockName) {
+        return registerBlock(block, itemClass, blockName, true);
     }
 
-    public static void registerBlock(Block block, String blockName, boolean shouldRegister) {
-        registerBlock(block, null, blockName, shouldRegister);
-    }
-
-    public static void registerBlock(BlockBase block, Class<? extends ItemBlock> itemClass) {
-        registerBlock(block, itemClass, block.getBlockName());
-    }
-
-    public static void registerBlock(Block block, Class<? extends ItemBlock> itemClass, String blockName) {
-        registerBlock(block, itemClass, blockName, true);
-    }
-
-    public static void registerBlock(Block block, Class<? extends ItemBlock> itemClass, String blockName,
+    public static Block registerBlock(Block block, Class<? extends ItemBlock> itemClass, String blockName,
         boolean shouldRegister) {
-        if (!shouldRegister) return;
-        if (itemClass == null) GameRegistry.registerBlock(block, blockName);
-        else GameRegistry.registerBlock(block, itemClass, blockName);
+        if (!shouldRegister) return null;
+        if (itemClass == null) return GameRegistry.registerBlock(block, blockName);
+        else return GameRegistry.registerBlock(block, itemClass, blockName);
     }
 
 }
