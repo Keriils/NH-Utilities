@@ -1,74 +1,86 @@
 # This lang file for NH-Utilities
 
-#Item Group
+# Item Group
 itemGroup.nhutilities=NH Utilities
+itemGroup.metaItem=NHU材料
+itemGroup.metaBlock=NHU方块
 
-# common items
+# Tooltips For NHU Logotype
+nhu.logotype.gt.logo=§6由 §dNH Utilities §6添加
+
+#Error
+nhutilities.null.name=§cError
+
+# Common Items
+item.GluttonyRing.name=暴食指环
+item.HungerRing.name=饥饿指环
+item.TimeVial.name=时间之瓶
+item.EternityVial.name=永恒之瓶
+item.LunchBoxPlus.name=超级午餐盒
+item.KamiRing.name=Kami神环
+item.WarpWardRing.name=净化之戒
+
+# Teleporter MK-II
 key.toggleTeleporterMKII=开关高级传送器GUI
 info.teleporterInfBaubles.txt=支持放入-任意-饰品栏目
 info.teleporterInfBaublesButton.txt=支持使用-按键-打开饰品
-item.NHUtilities:GluttonyRing.name=暴食指环
-item.NHUtilities:HungerRing.name=饥饿指环
-item.NHUtilities:TimeVial.name=时间之瓶
-item.NHUtilities:EternityVial.name=永恒之瓶
-item.NHUtilities:LunchBoxPlus.name=超级午餐盒
-item.NHUtilities:KamiRing.name=Kami神环
-item.NHUtilities:WarpWardRing.name=净化之戒
 
-#focus
-item.focus_tape.name=法杖核心：航空胶带
+# Common Blocks
+block.ChaosDragonEgg.name=混沌龙蛋
+block.AncientDragonEgg.name=上古末影龙蛋
 
-# tc fuel rod project
-text.NHUtilities.fuelRod.tooltip.0=耐久:%d/%d
-text.NHUtilities.fuelRod.tooltip.1=具有MOX特性 | MOX系数: %d
-text.NHUtilities.fuelRod.tooltip.2=基础产热(heta/s): %d/%d/%d
-text.NHUtilities.fuelRod.tooltip.3=基础发电功率(EU/t): %d/%d/%d
-item.NHUtilities:ichorFuelRod.name=灵宝燃料棒(空)
-item.NHUtilities:radianceFuelRod.name=光辉燃料棒(空)
-item.NHUtilities:ichorDroplet.name=灵宝液滴
-item.NHUtilities:primordialPearlDust.name=元始尘埃
-item.NHUtilities:fuelRodExcitedRadianceUranium.name=燃料棒(激发态铀基闪耀之辉燃料棒)
-item.NHUtilities:fuelRodExcitedRadianceUranium_2.name=二联燃料棒(激发态铀基闪耀之辉燃料棒)
-item.NHUtilities:fuelRodExcitedRadianceUranium_4.name=四联燃料棒(激发态铀基闪耀之辉燃料棒)
-item.NHUtilities:depletedFuelRodExcitedRadianceUranium.name=枯竭燃料棒(激发态铀基闪耀之辉燃料棒)
-item.NHUtilities:depletedFuelRodExcitedRadianceUranium_2.name=枯竭二联燃料棒(激发态铀基闪耀之辉燃料棒)
-item.NHUtilities:depletedFuelRodExcitedRadianceUranium_4.name=枯竭四联燃料棒(激发态铀基闪耀之辉燃料棒)
-item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium.name=燃料棒(超激发态钚基元始珍珠燃料棒)
-item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium_2.name=二联燃料棒(超激发态钚基元始珍珠燃料棒)
-item.NHUtilities:fuelRodSuperExcitedPrimordialPearlPlutonium_4.name=四联燃料棒(超激发态钚基元始珍珠燃料棒)
-item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium.name=枯竭燃料棒(超激发态钚基元始珍珠燃料棒)
-item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium_2.name=二联枯竭燃料棒(超激发态钚基元始珍珠燃料棒)
-item.NHUtilities:depletedFuelRodSuperExcitedPrimordialPearlPlutonium_4.name=四联枯竭燃料棒(超激发态钚基元始珍珠燃料棒)
+# Focus
+item.FocusTape.name=法杖核心：航空胶带
 
-# tooltips for time vial
-text.NHUtilities.TimeVial.tips=§f时间: §6%d 小时 §d%d 分钟 §a%d 秒  
-text.NHUtilities.TimeVial.details_0=拥有 6 个加速梯度
-text.NHUtilities.TimeVial.details_1=默认可调整范围[4->128]
-text.NHUtilities.TimeVial.details_2=可在配置修改为[8->256]
-text.NHUtilities.TimeVial.details_3=间隔 30 秒检测一次玩家是否有多个时间瓶
-text.NHUtilities.TimeVial.details_4=当有多个时执行 时间累加 添加最多时间的瓶子
-text.NHUtilities.TimeVial.details_5=同时把其余时间瓶时间修改为:
-text.NHUtilities.TimeVial.details_6=额..114514.   -11 小时 -45 分钟 -14秒
-text.NHUtilities.TimeVial.details_7=可在配置文件修改无限制
-text.NHUtilities.TimeVial.details_8=GT机器加速的规则如下:
-text.NHUtilities.TimeVial.details_9=如果不按住 shift 默认执行加速方法 tick累加
-text.NHUtilities.TimeVial.details_10=即机器需要加工时间time且 time >= 2tick
-text.NHUtilities.TimeVial.details_11=执行time + 加速倍率 * 折扣(默认0.8f) 可调整
-text.NHUtilities.TimeVial.details_12=简单说就是给机器工作时间 加上相应的时间
-text.NHUtilities.TimeVial.details_13=配置文件说明
-text.NHUtilities.TimeVial.details_14=允许调整瓶子声音大小,是否启用数字贴图 即 8x 16x的图案
-text.NHUtilities.TimeVial.details_15=如果不清楚请不要修改 enableLogInfo = true
+# Tc Fuel Rod Project
+info.fuelRod.tooltip.0=耐久:%d/%d
+info.fuelRod.tooltip.1=具有MOX特性 | MOX系数: %d
+info.fuelRod.tooltip.2=基础产热(heta/s): %d/%d/%d
+info.fuelRod.tooltip.3=基础发电功率(EU/t): %d/%d/%d
+item.MetaItem.0.name=灵宝燃料棒(空)
+item.MetaItem.1.name=光辉燃料棒(空)
+item.MetaItem.2.name=灵宝液滴
+item.MetaItem.3.name=元始尘埃
+item.RodRadianceUranium.name=燃料棒(激发态铀基闪耀之辉燃料棒)
+item.RodRadianceUranium2.name=二联燃料棒(激发态铀基闪耀之辉燃料棒)
+item.RodRadianceUranium4.name=四联燃料棒(激发态铀基闪耀之辉燃料棒)
+item.RodRadianceUraniumDepleted.name=枯竭燃料棒(激发态铀基闪耀之辉燃料棒)
+item.RodRadianceUraniumDepleted2.name=枯竭二联燃料棒(激发态铀基闪耀之辉燃料棒)
+item.RodRadianceUraniumDepleted4.name=枯竭四联燃料棒(激发态铀基闪耀之辉燃料棒)
+item.RodPrimordialPearlPlutonium.name=燃料棒(超激发态钚基元始珍珠燃料棒)
+item.RodPrimordialPearlPlutonium2.name=二联燃料棒(超激发态钚基元始珍珠燃料棒)
+item.RodPrimordialPearlPlutonium4.name=四联燃料棒(超激发态钚基元始珍珠燃料棒)
+item.RodPrimordialPearlPlutoniumDepleted.name=枯竭燃料棒(超激发态钚基元始珍珠燃料棒)
+item.RodPrimordialPearlPlutoniumDepleted2.name=二联枯竭燃料棒(超激发态钚基元始珍珠燃料棒)
+item.RodPrimordialPearlPlutoniumDepleted4.name=四联枯竭燃料棒(超激发态钚基元始珍珠燃料棒)
 
-# tooltips for time vial
-text.NHUtilities.EternityVial.details_0=Eternity
+# Tooltips For Time Vial
+text.EternityVial.details_0=Eternity
+text.TimeVial.tips=§f时间: §6%d 小时 §d%d 分钟 §a%d 秒  
+text.TimeVial.details_0=拥有 6 个加速梯度
+text.TimeVial.details_1=默认可调整范围[4->128]
+text.TimeVial.details_2=可在配置修改为[8->256]
+text.TimeVial.details_3=间隔 30 秒检测一次玩家是否有多个时间瓶
+text.TimeVial.details_4=当有多个时执行 时间累加 添加最多时间的瓶子
+text.TimeVial.details_5=同时把其余时间瓶时间修改为:
+text.TimeVial.details_6=额..114514.   -11 小时 -45 分钟 -14秒
+text.TimeVial.details_7=可在配置文件修改无限制
+text.TimeVial.details_8=GT机器加速的规则如下:
+text.TimeVial.details_9=如果不按住 shift 默认执行加速方法 tick累加
+text.TimeVial.details_10=即机器需要加工时间time且 time >= 2tick
+text.TimeVial.details_11=执行time + 加速倍率 * 折扣(默认0.8f) 可调整
+text.TimeVial.details_12=简单说就是给机器工作时间 加上相应的时间
+text.TimeVial.details_13=配置文件说明
+text.TimeVial.details_14=允许调整瓶子声音大小,是否启用数字贴图 即 8x 16x的图案
+text.TimeVial.details_15=如果不清楚请不要修改 enableLogInfo = true
 
-# information helper
-infohelper.NHUtilities.txt_0=§6====§f[§d按下
-infohelper.NHUtilities.txt_1=§d显示更多信息§f]§6====
-infohelper.NHUtilities.key_ctrl=§bCtrl
-infohelper.NHUtilities.key_shift=§bShift
+# Information Helper
+infoHelper.NHUtilities.txt_0=§6====§f[§d按下
+infoHelper.NHUtilities.txt_1=§d显示更多信息§f]§6====
+infoHelper.NHUtilities.key_ctrl=§bCtrl
+infoHelper.NHUtilities.key_shift=§bShift
 
-# research
+# Research
 tc.research_category.NHUTILITIES=奥术格雷学
 
 tc.research_name.THAUMICEBF=奥术工业高炉
@@ -91,7 +103,7 @@ tc.research_name.WARPWARDRING=净化之戒
 tc.research_text.WARPWARDRING=扭曲人禁止进入工业区？
 nhu.research.warpwardring_1=你还在为不能进入工业区发愁吗？你还在担心队友的高炉里面会长出蘑菇吗？你还在担心家里会时不时蹦出一个凋零吗？仅仅需要一点点的跑图和EV的力场发生器，混入元始魔力后，你得到了这个能避免一切扭曲事件的戒指.(并且佩戴这个戒指的时候放置某些GT方块有概率消除一些扭曲)
 
-# Tooltips for TCEBF
+# Tooltips For TC-EBF
 nhu.tcebf.machine=奥术工业高炉
 nhu.tcebf.machine.type=工业高炉
 nhu.tcebf.machine.info_1=奥术工业高炉的控制器方块
@@ -114,7 +126,39 @@ nhu.tcebf.machine.build.helper_10=液态流体，任意底层机械方块
 nhu.tcebf.machine.build.helper_11=气态流体，任意顶层机械方块
 nhu.tcebf.machine.build.helper_12=污染气体输出取决于消声仓等级
 
-# Chat in Game
+# Tooltips for Egg Machine
+nhu.eggMachine.tier.EV=初级蛋机能源吸收器
+nhu.eggMachine.tier.IV=中级蛋机能源吸收器
+nhu.eggMachine.tier.LuV=高级蛋机能源吸收器
+nhu.eggMachine.tier.ZPM=史诗蛋机能源吸收器
+nhu.eggMachine.tier.UV=传奇蛋机能源吸收器
+nhu.eggMachine.tier.UHV=神圣蛋机能源吸收器
+nhu.eggMachine.tier.UEV=星辉蛋机能源吸收器
+nhu.eggMachine.tier.UIV=永恒蛋机能源吸收器
+nhu.eggMachine.tier.UMV=寰宇蛋机能源吸收器
+nhu.eggMachine.tier.UXV=奇点蛋机能源吸收器
+# 幽默....
+nhu.eggMachine.tier.MAX=究极无敌传奇星辉永恒寰宇奇点宇宙蛋机能源吸收器
+nhu.tooltips.eggMachine.type=§f机器类型: §6蛋机能源
+nhu.tooltips.eggMachine.line=§e-----------------------------------------
+nhu.tooltips.eggMachine.info0=§6失去了其他的功能,只用蛋发电!!
+nhu.tooltips.eggMachine.info1=§6使用螺丝刀切换输出电压,安数基于当前的功率.
+nhu.tooltips.eggMachine.info2=§6使用剪线钳启用无线模式,需要机器等级大于等于§cUHV.
+nhu.tooltips.eggMachine.info3=§6直接向无线电网输出能源,每次操作时间256tick.
+nhu.tooltips.eggMachine.info4=§d不同的蛋提供不同的效率:
+nhu.tooltips.eggMachine.info5=§d- 爬行者蛋: 1x
+nhu.tooltips.eggMachine.info6=§d- 末影龙蛋: 4x
+nhu.tooltips.eggMachine.info7=§d- 混沌龙蛋: 16x
+nhu.tooltips.eggMachine.info8=§d- 无限之蛋: 64x
+nhu.tooltips.eggMachine.info9=§d- 上古末影龙蛋: 256x
+nhu.tooltips.eggMachine.info10=§b机器内部放入不同的升级提供的效率:
+nhu.tooltips.eggMachine.info11=§b- 龙之心: 2x
+nhu.tooltips.eggMachine.info12=§b- 普通龙芯: 4x
+nhu.tooltips.eggMachine.info13=§b- 双足龙芯: 8x
+nhu.tooltips.eggMachine.info14=§b- 觉醒龙芯: 16x
+nhu.tooltips.eggMachine.info15=§b- 混沌龙芯: 32x
+
+# Chat In Game
 chat.nhutilities.1=好像无事发生...
 chat.nhutilities.2=你感觉一身轻松
 chat.nhutilities.3=一些沉重的东西离开了...

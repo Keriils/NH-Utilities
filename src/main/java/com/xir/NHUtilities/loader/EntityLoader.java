@@ -7,7 +7,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 
 public class EntityLoader {
 
-    public static void registerNHUtilitiesEntity() {
+    public static void initNHUtilitiesEntity() {
         EntityRegistry
             .registerModEntity(EntityTimeAccelerator.class, "Accelerator", 0, NHUtilities.instance, 64, 10, false);
     }

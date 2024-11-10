@@ -5,7 +5,7 @@ import com.xir.NHUtilities.common.recipes.TCRecipes.AllTCRecipes;
 
 public class RecipeLoader {
 
-    public static void registerNHUtilitiesRecipes() {
+    public static void initNHUtilitiesRecipes() {
 
         // For Workbench Crafting
         CommonRecipes.addAllCommonRecipes();

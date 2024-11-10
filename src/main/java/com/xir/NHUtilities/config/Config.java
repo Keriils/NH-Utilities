@@ -17,6 +17,7 @@ public class Config {
     static final Logger ConfigLog = LogManager.getLogger("NHUtilities_Config");
 
     // region register massItems key !!!
+    public static int metaIdOffset = 0;
     public static boolean enableGluttonyRingAndHungerRing = true;
     // endregion
 
@@ -181,6 +182,9 @@ public class Config {
                 "disable Super Chest Or Tank Debuff");
             disableDollyDebuff = configuration
                 .getBoolean("disableDollyDebuff", CATEGORY_MIXIN_CONFIG, disableDollyDebuff, "disable Dolly Debuff");
+            metaIdOffset = configuration
+                .getInt("metaIdOffset", CATEGORY_MASS, metaIdOffset, -5000, 5000, "An offset of meta id for machines");
+
         }
 
         try {

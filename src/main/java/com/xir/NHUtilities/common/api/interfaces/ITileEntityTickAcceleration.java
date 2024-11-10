@@ -1,4 +1,4 @@
-package com.xir.NHUtilities.common.api;
+package com.xir.NHUtilities.common.api.interfaces;
 
 import com.xir.NHUtilities.common.entity.EntityTimeAccelerator;
 

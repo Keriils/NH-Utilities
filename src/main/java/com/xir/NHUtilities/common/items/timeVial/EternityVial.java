@@ -29,7 +29,7 @@ public class EternityVial extends TimeVial implements ICosmicRenderItem {
     public EternityVial() {
         setMaxStackSize(1);
         setUnlocalizedName("EternityVial");
-        setTextureName("EternityVial");
+        setTextureName("TimeVial/EternityVial");
     }
 
     @Override
@@ -37,8 +37,8 @@ public class EternityVial extends TimeVial implements ICosmicRenderItem {
     public void registerIcons(IIconRegister register) {
         super.registerIcons(register);
         this.cosmicMask = register.registerIcon(
-            enableEternityVialCosmicRenderDeepening ? "nhutilities:EternityVial_mask"
-                : "nhutilities:EternityVial_mask2");
+            enableEternityVialCosmicRenderDeepening ? "nhutilities:TimeVial/EternityVial_mask"
+                : "nhutilities:TimeVial/EternityVial_mask2");
     }
 
     @Override
@@ -49,9 +49,7 @@ public class EternityVial extends TimeVial implements ICosmicRenderItem {
     @Override
     @SideOnly(Side.CLIENT)
     protected void getInfoFromNBT(@NotNull ItemStack stack, @NotNull List<String> list) {
-        list.add(
-            TooltipsChroma
-                .applyChromaEffect(StatCollector.translateToLocal("text.NHUtilities.EternityVial.details_0")));
+        list.add(TooltipsChroma.applyChromaEffect(StatCollector.translateToLocal("text.EternityVial.details_0")));
     }
 
     @Override

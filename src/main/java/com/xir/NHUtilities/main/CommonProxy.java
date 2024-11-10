@@ -5,7 +5,6 @@ import static com.xir.NHUtilities.main.ReferencedInfo.MOD_NAME;
 
 import com.xir.NHUtilities.common.recipes.GTRecipes.GTRecipes;
 import com.xir.NHUtilities.common.research.GTApiResearch;
-import com.xir.NHUtilities.loader.CreativeTabsLoader;
 import com.xir.NHUtilities.loader.EntityLoader;
 import com.xir.NHUtilities.loader.EventLoader;
 import com.xir.NHUtilities.loader.ItemsLoader;
@@ -25,16 +24,13 @@ public class CommonProxy {
 
         LOG.info("Pre-initializing " + MOD_NAME + "!");
 
-        CreativeTabsLoader.registerNHUCreativeTabs();
-        LOG.info("Loaded Creative Tabs.");
-
-        ItemsLoader.registerNHUtilitiesItems();
+        ItemsLoader.initNHUtilitiesItems();
         LOG.info("Loaded Items.");
 
-        EventLoader.registerNHUtilitiesEvents();
+        EventLoader.initNHUtilitiesEvents();
         LOG.info("Loaded Events.");
 
-        MachineLoader.registerNHUtilitiesMachine();
+        MachineLoader.initNHUtilitiesMachine();
         LOG.info("Loaded GregTechMachines.");
 
     }
@@ -43,10 +39,10 @@ public class CommonProxy {
 
         LOG.info("Initializing " + MOD_NAME + "!");
 
-        RecipeLoader.registerNHUtilitiesRecipes();
+        RecipeLoader.initNHUtilitiesRecipes();
         LOG.info("Loaded Recipes.");
 
-        EntityLoader.registerNHUtilitiesEntity();
+        EntityLoader.initNHUtilitiesEntity();
         LOG.info("Loaded Entities.");
 
     }
@@ -55,10 +51,10 @@ public class CommonProxy {
 
         LOG.info("Post-initializing " + MOD_NAME + "!");
 
-        ResearchLoader.registerNHUtilitiesResearch();
+        ResearchLoader.initNHUtilitiesResearch();
         LOG.info("Loaded Researches");
 
-        GTRecipes.registerNHUtilitiesGTRecipe();
+        GTRecipes.initNHUtilitiesGTRecipe();
         LOG.info("Loaded NHUtilities GTRecipes");
 
         GTApiResearch.addGTApiResearchAndRecipes();

@@ -4,7 +4,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import com.xir.NHUtilities.common.api.ITileEntityTickAcceleration;
+import com.xir.NHUtilities.common.api.interfaces.ITileEntityTickAcceleration;
 
 import crazypants.enderio.machine.AbstractPoweredMachineEntity;
 import crazypants.enderio.power.ICapacitor;

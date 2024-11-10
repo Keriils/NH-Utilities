@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 import gregtech.api.util.GTUtility;
 import ic2.core.IC2Potion;
 
-public class RadioactiveItem extends ItemBasic {
+public class RadioactiveItem extends ItemBase {
 
     private final int mRadio;
 

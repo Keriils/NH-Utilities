@@ -8,7 +8,7 @@ import net.minecraftforge.client.MinecraftForgeClient;
 
 import com.xir.NHUtilities.client.key.KeyBindings;
 import com.xir.NHUtilities.client.key.KeyInputHandler;
-import com.xir.NHUtilities.common.items.ModsItemsList;
+import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.loader.RenderLoader;
 
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -32,7 +32,7 @@ public class ClientProxy extends CommonProxy {
 
         if (enableEternityVialCosmicRender) {
             CosmicItemRenderer cosmic = new CosmicItemRenderer();
-            MinecraftForgeClient.registerItemRenderer(ModsItemsList.eternityVial, cosmic);
+            MinecraftForgeClient.registerItemRenderer(NHUItemList.EternityVial.getItem(), cosmic);
         }
 
         if (enableTimeVial) {

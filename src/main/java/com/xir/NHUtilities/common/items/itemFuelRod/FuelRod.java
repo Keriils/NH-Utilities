@@ -44,6 +44,7 @@ public class FuelRod extends RadioactiveItem implements IReactorComponent, IBoxa
         this.HeatBonus = aHeatBonus;
         this.depletedResult = aDepletedResult;
         this.setMaxDamage(100);
+        this.setTextureName("FuelRod/" + aName);
     }
     // endregion
 
@@ -200,21 +201,21 @@ public class FuelRod extends RadioactiveItem implements IReactorComponent, IBoxa
         final int powerInfo = (int) this.Power * 25;
         list.add(
             String.format(
-                StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.0"),
+                StatCollector.translateToLocal("info.fuelRod.tooltip.0"),
                 getMaxCustomDamage() - getCustomDamage(stack),
                 getMaxCustomDamage()));
-        if (this.HeatBonus > 0F) list
-            .add(String.format(StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.1"), this.HeatBonus));
+        if (this.HeatBonus > 0F)
+            list.add(String.format(StatCollector.translateToLocal("info.fuelRod.tooltip.1"), this.HeatBonus));
         list.add(
             String.format(
                 String.format(
-                    StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.2"),
+                    StatCollector.translateToLocal("info.fuelRod.tooltip.2"),
                     this.Heat,
                     this.Heat * 6,
                     this.Heat * 24)));
         list.add(
             String.format(
-                StatCollector.translateToLocal("text.NHUtilities.fuelRod.tooltip.3"),
+                StatCollector.translateToLocal("info.fuelRod.tooltip.3"),
                 powerInfo,
                 powerInfo * 4,
                 powerInfo * 12));
