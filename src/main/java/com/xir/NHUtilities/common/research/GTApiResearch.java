@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
 import com.xir.NHUtilities.common.items.FuelRodList;
+import com.xir.NHUtilities.utils.TcText;
 
 import goodgenerator.util.ItemRefer;
 import gregtech.api.GregTechAPI;
@@ -22,15 +23,13 @@ import thaumic.tinkerer.common.item.ItemBrightNitor;
 
 public class GTApiResearch {
 
-    private static final String PrefixOfResearchInThaumonomicon = "tc.research_";
-    private static final String ShadowMetalFuelRod = "SHADOWMETALFUELROD";
-    private static final String IchoriumFuelRod = "ICHORIUMFUELROD";
-
     public static void addGTApiResearchAndRecipes() {
         GregTechAPI.sThaumcraftCompat.addResearch(
-            ShadowMetalFuelRod,
-            StatCollector.translateToLocal(PrefixOfResearchInThaumonomicon + "name." + ShadowMetalFuelRod),
-            StatCollector.translateToLocal(PrefixOfResearchInThaumonomicon + "text." + ShadowMetalFuelRod),
+            TcText.shadowMetalFuelRod.toUpperCase(),
+            StatCollector.translateToLocal(
+                TcText.prefixOfResearchInThaumonomicon + "name." + TcText.shadowMetalFuelRod.toUpperCase()),
+            StatCollector.translateToLocal(
+                TcText.prefixOfResearchInThaumonomicon + "text." + TcText.shadowMetalFuelRod.toUpperCase()),
             new String[] { "INFUSION" },
             MOD_ID_UPPER,
             new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium, 1),
@@ -43,9 +42,9 @@ public class GTApiResearch {
                 new TCAspects.TC_AspectStack(TCAspects.RADIO, 8),
                 new TCAspects.TC_AspectStack(TCAspects.POTENTIA, 16)),
             null,
-            new Object[] { "nhu.research.shadowmetalfuelrod_1",
+            new Object[] { TcText.researchPrefixInLang + TcText.shadowMetalFuelRod + "_1",
                 GregTechAPI.sThaumcraftCompat.addInfusionRecipe(
-                    ShadowMetalFuelRod,
+                    TcText.shadowMetalFuelRod.toUpperCase(),
                     new ItemStack(FuelRodList.shadowFuelRod, 1),
                     new ItemStack[] { ItemRefer.High_Density_Uranium.get(1),
                         new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class), 1),
@@ -65,10 +64,12 @@ public class GTApiResearch {
                         new TCAspects.TC_AspectStack(TCAspects.PRAECANTATIO, 16),
                         new TCAspects.TC_AspectStack(TCAspects.POTENTIA, 16))) });
         GregTechAPI.sThaumcraftCompat.addResearch(
-            IchoriumFuelRod,
-            StatCollector.translateToLocal(PrefixOfResearchInThaumonomicon + "name." + IchoriumFuelRod),
-            StatCollector.translateToLocal(PrefixOfResearchInThaumonomicon + "text." + IchoriumFuelRod),
-            new String[] { "PRIMPEARL", "ICHOR", ShadowMetalFuelRod },
+            TcText.ichoriumFuelRod.toUpperCase(),
+            StatCollector.translateToLocal(
+                TcText.prefixOfResearchInThaumonomicon + "name." + TcText.ichoriumFuelRod.toUpperCase()),
+            StatCollector.translateToLocal(
+                TcText.prefixOfResearchInThaumonomicon + "text." + TcText.ichoriumFuelRod.toUpperCase()),
+            new String[] { "PRIMPEARL", "ICHOR", TcText.shadowMetalFuelRod.toUpperCase() },
             MOD_ID_UPPER,
             new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium, 1),
             9,
@@ -80,9 +81,9 @@ public class GTApiResearch {
                 new TCAspects.TC_AspectStack(TCAspects.RADIO, 8),
                 new TCAspects.TC_AspectStack(TCAspects.POTENTIA, 16)),
             null,
-            new Object[] { "nhu.research.ichoriumfuelrod_1",
+            new Object[] { TcText.researchPrefixInLang + TcText.ichoriumFuelRod + "_1",
                 GregTechAPI.sThaumcraftCompat.addInfusionRecipe(
-                    IchoriumFuelRod,
+                    TcText.ichoriumFuelRod.toUpperCase(),
                     new ItemStack(FuelRodList.ichorFuelRod, 1),
                     new ItemStack[] { plutoniumBasedLiquidFuelExcited.get(OrePrefixes.cell, 1),
                         atomicSeparationCatalyst.get(OrePrefixes.dust, 1),
