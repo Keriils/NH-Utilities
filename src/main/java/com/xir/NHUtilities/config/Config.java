@@ -17,6 +17,7 @@ public class Config {
     static final Logger ConfigLog = LogManager.getLogger("NHUtilities_Config");
 
     // region register massItems key !!!
+    public static int metaIdOffset = 0;
     public static boolean enableGluttonyRingAndHungerRing = true;
     public static boolean disableTCBlastFurnaceNewTextures = false;
     // endregion
@@ -187,6 +188,8 @@ public class Config {
                 CATEGORY_MASS,
                 disableTCBlastFurnaceNewTextures,
                 "disable TC Blast Furnace New Texture");
+            metaIdOffset = configuration
+                .getInt("metaIdOffset", CATEGORY_MASS, metaIdOffset, -5000, 5000, "An offset of meta id for machines");
 
         }
 

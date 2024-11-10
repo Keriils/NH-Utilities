@@ -10,7 +10,7 @@ import org.lwjgl.input.Keyboard;
 /**
  * referenced draconic evolution
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
 public final class InformationHelper {
 
     private InformationHelper() {}
