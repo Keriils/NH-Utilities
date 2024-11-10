@@ -10,10 +10,10 @@ import org.lwjgl.input.Keyboard;
 /**
  * referenced draconic evolution
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
 public final class InformationHelper {
 
-    private InformationHelper() {};
+    private InformationHelper() {}
 
     public static final String dividingLine = "=====================";
 
@@ -28,12 +28,12 @@ public final class InformationHelper {
     public static boolean holdShiftForDetails(List list) {
         if (!isShiftKeyDown()) {
             list.add(
-                StatCollector.translateToLocal("infohelper.NHUtilities.txt_0") + " "
+                StatCollector.translateToLocal("infoHelper.NHUtilities.txt_0") + " "
                     + EnumChatFormatting.ITALIC
-                    + StatCollector.translateToLocal("infohelper.NHUtilities.key_shift")
+                    + StatCollector.translateToLocal("infoHelper.NHUtilities.key_shift")
                     + EnumChatFormatting.RESET
                     + " "
-                    + StatCollector.translateToLocal("infohelper.NHUtilities.txt_1"));
+                    + StatCollector.translateToLocal("infoHelper.NHUtilities.txt_1"));
             return false;
         }
         return true;
@@ -42,12 +42,12 @@ public final class InformationHelper {
     public static boolean holdCtrlForDetails(List list) {
         if (!isShiftKeyDown()) {
             list.add(
-                StatCollector.translateToLocal("infohelper.NHUtilities.txt_0") + " "
+                StatCollector.translateToLocal("infoHelper.NHUtilities.txt_0") + " "
                     + EnumChatFormatting.ITALIC
-                    + StatCollector.translateToLocal("infohelper.NHUtilities.key_ctrl")
+                    + StatCollector.translateToLocal("infoHelper.NHUtilities.key_ctrl")
                     + EnumChatFormatting.RESET
                     + " "
-                    + StatCollector.translateToLocal("infohelper.NHUtilities.txt_1"));
+                    + StatCollector.translateToLocal("infoHelper.NHUtilities.txt_1"));
             return false;
         }
         return true;

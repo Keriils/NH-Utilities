@@ -24,13 +24,13 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
 import com.xir.NHUtilities.common.entity.EntityTimeAccelerator;
-import com.xir.NHUtilities.common.items.aItemCore.ItemBasic;
+import com.xir.NHUtilities.common.items.aItemCore.ItemBase;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.avaritia.entity.EntityImmortalItem;
 
-public class TimeVial extends ItemBasic {
+public class TimeVial extends ItemBase {
 
     protected static final int TIME_INIT_RATE = enableTimeAcceleratorBoost ? 8 : 4;
     // referenced RandomThings
@@ -44,6 +44,7 @@ public class TimeVial extends ItemBasic {
     public TimeVial() {
         super("TimeVial");
         setMaxStackSize(1);
+        setTextureName("TimeVial/TimeVial");
     }
 
     @Override
@@ -53,24 +54,24 @@ public class TimeVial extends ItemBasic {
         getInfoFromNBT(stack, list);
         if (holdShiftForDetails(list)) {
             list.add(dividingLine);
-            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_0"));
-            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_1"));
-            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_2"));
+            list.add(StatCollector.translateToLocal("text.TimeVial.details_0"));
+            list.add(StatCollector.translateToLocal("text.TimeVial.details_1"));
+            list.add(StatCollector.translateToLocal("text.TimeVial.details_2"));
             list.add(dividingLine);
-            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_3"));
-            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_4"));
-            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_5"));
-            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_6"));
-            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_7"));
+            list.add(StatCollector.translateToLocal("text.TimeVial.details_3"));
+            list.add(StatCollector.translateToLocal("text.TimeVial.details_4"));
+            list.add(StatCollector.translateToLocal("text.TimeVial.details_5"));
+            list.add(StatCollector.translateToLocal("text.TimeVial.details_6"));
+            list.add(StatCollector.translateToLocal("text.TimeVial.details_7"));
             list.add(dividingLine);
-            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_8"));
-            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_9"));
-            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_10"));
-            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_11"));
-            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_12"));
+            list.add(StatCollector.translateToLocal("text.TimeVial.details_8"));
+            list.add(StatCollector.translateToLocal("text.TimeVial.details_9"));
+            list.add(StatCollector.translateToLocal("text.TimeVial.details_10"));
+            list.add(StatCollector.translateToLocal("text.TimeVial.details_11"));
+            list.add(StatCollector.translateToLocal("text.TimeVial.details_12"));
             list.add(dividingLine);
-            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_13"));
-            list.add(StatCollector.translateToLocal("text.NHUtilities.TimeVial.details_14"));
+            list.add(StatCollector.translateToLocal("text.TimeVial.details_13"));
+            list.add(StatCollector.translateToLocal("text.TimeVial.details_14"));
             list.add(dividingLine);
         }
     }
@@ -83,7 +84,7 @@ public class TimeVial extends ItemBasic {
         int hours = storedTimeSeconds / 3600;
         int minutes = (storedTimeSeconds % 3600) / 60;
         int seconds = storedTimeSeconds % 60;
-        list.add(I18n.format("text.NHUtilities.TimeVial.tips", hours, minutes, seconds));
+        list.add(I18n.format("text.TimeVial.tips", hours, minutes, seconds));
     }
 
     @Override

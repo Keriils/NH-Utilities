@@ -9,11 +9,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-import com.xir.NHUtilities.common.items.ModsItemsList;
+import com.xir.NHUtilities.common.api.enums.NHUItemList;
 
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
-import fox.spiteful.avaritia.items.LudicrousItems;
 import singulariteam.eternalsingularity.item.EternalSingularityItem;
 
 public class CommonRecipes {
@@ -25,7 +23,7 @@ public class CommonRecipes {
 
         if (enableGluttonyRingAndHungerRing) {
             GameRegistry.addShapedRecipe(
-                new ItemStack(ModsItemsList.gluttonyRing),
+                NHUItemList.GluttonyRing.get(1),
                 "SIS",
                 "IAI",
                 "SIS",
@@ -35,15 +33,13 @@ public class CommonRecipes {
                 Items.string,
                 'I',
                 Items.iron_ingot);
-            GameRegistry
-                .addShapelessRecipe(new ItemStack(ModsItemsList.hungerRing), new ItemStack(ModsItemsList.gluttonyRing));
-            GameRegistry
-                .addShapelessRecipe(new ItemStack(ModsItemsList.gluttonyRing), new ItemStack(ModsItemsList.hungerRing));
+            GameRegistry.addShapelessRecipe(NHUItemList.HungerRing.get(1), NHUItemList.GluttonyRing.get(1));
+            GameRegistry.addShapelessRecipe(NHUItemList.GluttonyRing.get(1), NHUItemList.HungerRing.get(1));
         }
 
         if (enableTimeVial) {
             GameRegistry.addShapedRecipe(
-                new ItemStack(ModsItemsList.timeVial),
+                NHUItemList.TimeVial.get(1),
                 "GGG",
                 "DCD",
                 "QBQ",
@@ -58,44 +54,30 @@ public class CommonRecipes {
                 'Q',
                 new ItemStack(Items.dye, 1, 4));
             GameRegistry.addShapedRecipe(
-                new ItemStack(ModsItemsList.timeVial),
+                NHUItemList.TimeVial.get(1),
                 "CCC",
                 "CTC",
                 "CCC",
                 'C',
                 Blocks.cobblestone,
                 'T',
-                ModsItemsList.timeVial);
+                NHUItemList.TimeVial.get(1));
         }
 
-        if (enableEternityVial) {
-            if (!Loader.isModLoaded("gregtech") && Loader.isModLoaded("Avaritia")) {
-                GameRegistry.addShapedRecipe(
-                    new ItemStack(ModsItemsList.eternityVial),
-                    "ICI",
-                    "CTC",
-                    "ICI",
-                    'T',
-                    ModsItemsList.timeVial,
-                    'C',
-                    new ItemStack(LudicrousItems.resource, 1, 5),
-                    'I',
-                    new ItemStack(LudicrousItems.resource, 1, 6));
-            } else if (Loader.isModLoaded("gregtech")) {
-                GameRegistry.addShapedRecipe(
-                    new ItemStack(ModsItemsList.eternityVial),
-                    "SSS",
-                    "STS",
-                    "SSS",
-                    'T',
-                    ModsItemsList.timeVial,
-                    'S',
-                    EternalSingularityItem.instance);
-            }
+        if (enableTimeVial && enableEternityVial) {
+            GameRegistry.addShapedRecipe(
+                NHUItemList.EternityVial.get(1),
+                "SSS",
+                "STS",
+                "SSS",
+                'T',
+                NHUItemList.TimeVial.get(1),
+                'S',
+                EternalSingularityItem.instance);
         }
         if (enableLunchBoxPlus) {
             GameRegistry.addShapedRecipe(
-                new ItemStack(ModsItemsList.lunchBoxPlus),
+                NHUItemList.LunchBoxPlus.get(1),
                 "IDI",
                 "DCD",
                 "IDI",

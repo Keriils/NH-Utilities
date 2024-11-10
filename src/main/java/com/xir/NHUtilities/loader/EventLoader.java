@@ -9,15 +9,28 @@ import com.xir.NHUtilities.common.events.EnhanceExUHealingAxe;
 import com.xir.NHUtilities.common.events.GluttonyRingEvent;
 import com.xir.NHUtilities.common.events.WarpWardRingEvent;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+
 public class EventLoader {
 
-    public static void registerNHUtilitiesEvents() {
-        if (enableGluttonyRingAndHungerRing) {
-            MinecraftForge.EVENT_BUS.register(new GluttonyRingEvent());
+    public static void initNHUtilitiesEvents() {
+        registerEvent(true, new GluttonyRingEvent(), enableGluttonyRingAndHungerRing);
+        registerEvent(true, new EnhanceExUHealingAxe(), enableEnhancedExUHealingAxe);
+        registerEvent(true, new WarpWardRingEvent());
+    }
+
+    private static void registerEvent(boolean isMinecraftForgeEvent, Object event) {
+        registerEvent(isMinecraftForgeEvent, event, true);
+    }
+
+    private static void registerEvent(boolean isMinecraftForgeEvent, Object event, boolean shouldRegister) {
+        if (!shouldRegister) return;
+        if (isMinecraftForgeEvent) {
+            MinecraftForge.EVENT_BUS.register(event);
+        } else {
+            FMLCommonHandler.instance()
+                .bus()
+                .register(event);
         }
-        if (enableEnhancedExUHealingAxe) {
-            MinecraftForge.EVENT_BUS.register(new EnhanceExUHealingAxe());
-        }
-        MinecraftForge.EVENT_BUS.register(new WarpWardRingEvent());
     }
 }

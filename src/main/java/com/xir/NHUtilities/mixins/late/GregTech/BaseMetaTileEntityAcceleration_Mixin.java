@@ -5,7 +5,7 @@ import static com.xir.NHUtilities.config.Config.accelerateGregTechMachineDiscoun
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
-import com.xir.NHUtilities.common.api.ITileEntityTickAcceleration;
+import com.xir.NHUtilities.common.api.interfaces.ITileEntityTickAcceleration;
 
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.metatileentity.BaseMetaTileEntity;
