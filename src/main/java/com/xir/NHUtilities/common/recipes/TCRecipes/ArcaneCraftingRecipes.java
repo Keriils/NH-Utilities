@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import net.minecraft.item.ItemStack;
 
-import com.xir.NHUtilities.common.api.enums.CustomItemList;
+import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.utils.TcText;
 
 import gregtech.api.enums.ItemList;
@@ -23,7 +23,7 @@ public class ArcaneCraftingRecipes {
             TcText.thaumicEBF,
             ThaumcraftApi.addArcaneCraftingRecipe(
                 TcText.thaumicEBF.toUpperCase(),
-                CustomItemList.Machine_Multi_TCBlastFurnace.get(1L),
+                NHUItemList.TCBlastFurnace.get(1),
                 TcText.aThaumicEbf,
                 new Object[] { "aaa", "bcb", "dbd", 'a', ItemList.Machine_Multi_BlastFurnace.get(1L), 'b',
                     ItemList.Field_Generator_LV.get(1L), 'c', new ItemStack(ConfigItems.itemFocusFire, 1), 'd',

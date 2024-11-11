@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import net.minecraft.item.ItemStack;
 
-import com.xir.NHUtilities.common.items.ModsItemsList;
+import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.utils.TcText;
 
 import gregtech.api.enums.ItemList;
@@ -20,7 +20,7 @@ public class InfusionRecipes {
             TcText.warpWardRing,
             ThaumcraftApi.addInfusionCraftingRecipe(
                 TcText.warpWardRing.toUpperCase(),
-                new ItemStack(ModsItemsList.warpWardRing, 1),
+                NHUItemList.WarpWardRing.get(1),
                 16,
                 TcText.aWarpWardRing,
                 ItemList.Field_Generator_EV.get(1L),

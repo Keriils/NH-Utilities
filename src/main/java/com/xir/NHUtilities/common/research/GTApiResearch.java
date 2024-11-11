@@ -9,7 +9,7 @@ import java.util.Arrays;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
-import com.xir.NHUtilities.common.items.FuelRodList;
+import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.utils.TcText;
 
 import goodgenerator.util.ItemRefer;
@@ -32,7 +32,7 @@ public class GTApiResearch {
                 TcText.prefixOfResearchInThaumonomicon + "text." + TcText.shadowMetalFuelRod.toUpperCase()),
             new String[] { "INFUSION" },
             MOD_ID_UPPER,
-            new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium, 1),
+            NHUItemList.RodRadianceUranium.get(1),
             8,
             0,
             2,
@@ -45,19 +45,19 @@ public class GTApiResearch {
             new Object[] { TcText.researchPrefixInLang + TcText.shadowMetalFuelRod + "_1",
                 GregTechAPI.sThaumcraftCompat.addInfusionRecipe(
                     TcText.shadowMetalFuelRod.toUpperCase(),
-                    new ItemStack(FuelRodList.shadowFuelRod, 1),
+                    NHUItemList.ShadowFuelRod.get(1),
                     new ItemStack[] { ItemRefer.High_Density_Uranium.get(1),
                         new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class), 1),
                         new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class), 1),
                         new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class), 1),
                         new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class), 1),
-                        new ItemStack(FuelRodList.ichorDroplet, 1), ItemRefer.High_Density_Uranium.get(1),
+                        NHUItemList.IchorDroplet.get(1), ItemRefer.High_Density_Uranium.get(1),
                         new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class), 1),
                         new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class), 1),
                         new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class), 1),
                         new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class), 1),
-                        new ItemStack(FuelRodList.ichorDroplet, 1) },
-                    new ItemStack(FuelRodList.fuelRodExcitedRadianceUranium, 1),
+                        NHUItemList.IchorDroplet.get(1) },
+                    NHUItemList.RodRadianceUranium.get(1),
                     8,
                     Arrays.asList(
                         new TCAspects.TC_AspectStack(TCAspects.RADIO, 16),
@@ -71,7 +71,7 @@ public class GTApiResearch {
                 TcText.prefixOfResearchInThaumonomicon + "text." + TcText.ichoriumFuelRod.toUpperCase()),
             new String[] { "PRIMPEARL", "ICHOR", TcText.shadowMetalFuelRod.toUpperCase() },
             MOD_ID_UPPER,
-            new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium, 1),
+            NHUItemList.RodPrimordialPearlPlutonium.get(1),
             9,
             0,
             2,
@@ -84,16 +84,15 @@ public class GTApiResearch {
             new Object[] { TcText.researchPrefixInLang + TcText.ichoriumFuelRod + "_1",
                 GregTechAPI.sThaumcraftCompat.addInfusionRecipe(
                     TcText.ichoriumFuelRod.toUpperCase(),
-                    new ItemStack(FuelRodList.ichorFuelRod, 1),
+                    NHUItemList.IchorFuelRod.get(1),
                     new ItemStack[] { plutoniumBasedLiquidFuelExcited.get(OrePrefixes.cell, 1),
                         atomicSeparationCatalyst.get(OrePrefixes.dust, 1),
                         GTOreDictUnificator.get(OrePrefixes.cellMolten, Materials.Ichorium, 1),
-                        atomicSeparationCatalyst.get(OrePrefixes.dust, 1),
-                        new ItemStack(FuelRodList.primordialPearlDust, 1),
+                        atomicSeparationCatalyst.get(OrePrefixes.dust, 1), NHUItemList.PrimordialPearlDust.get(1),
                         atomicSeparationCatalyst.get(OrePrefixes.dust, 1),
                         GTOreDictUnificator.get(OrePrefixes.cellMolten, Materials.Ichorium, 1),
                         atomicSeparationCatalyst.get(OrePrefixes.dust, 1) },
-                    new ItemStack(FuelRodList.fuelRodSuperExcitedPrimordialPearlPlutonium, 1),
+                    NHUItemList.RodPrimordialPearlPlutonium.get(1),
                     16,
                     Arrays.asList(
                         new TCAspects.TC_AspectStack(TCAspects.RADIO, 64),

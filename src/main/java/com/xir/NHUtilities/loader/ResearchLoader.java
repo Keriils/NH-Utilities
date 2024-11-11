@@ -3,11 +3,9 @@ package com.xir.NHUtilities.loader;
 import static com.xir.NHUtilities.main.ReferencedInfo.MOD_ID_LOWER;
 import static com.xir.NHUtilities.main.ReferencedInfo.MOD_ID_UPPER;
 
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-import com.xir.NHUtilities.common.api.enums.CustomItemList;
-import com.xir.NHUtilities.common.items.ModsItemsList;
+import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.utils.TcText;
 
 import thaumcraft.api.aspects.Aspect;
@@ -21,11 +19,11 @@ import thaumcraft.common.config.ConfigResearch;
 
 public class ResearchLoader {
 
-    public static void registerNHUtilitiesResearch() {
+    public static void initNHUtilitiesResearch() {
         ResearchCategories.registerCategory(
             MOD_ID_UPPER,
-            new ResourceLocation(MOD_ID_LOWER, "textures/items/NHUInBookicon.png"),
-            new ResourceLocation(MOD_ID_LOWER, "textures/gui/gui_researchback.png"));
+            new ResourceLocation(MOD_ID_LOWER, "textures/items/ResearchIcon.png"),
+            new ResourceLocation(MOD_ID_LOWER, "textures/gui/research_background.png"));
         (new ResearchItem(
             TcText.thaumicEBF.toUpperCase(),
             MOD_ID_UPPER,
@@ -33,7 +31,7 @@ public class ResearchLoader {
             0,
             0,
             9,
-            CustomItemList.Machine_Multi_TCBlastFurnace.get(1L))).setSpecial()
+            NHUItemList.TCBlastFurnace.get(1))).setSpecial()
                 .setPages(
                     new ResearchPage[] { new ResearchPage(TcText.researchPrefixInLang + TcText.thaumicEBF + "_1"),
                         new ResearchPage((ShapedArcaneRecipe) ConfigResearch.recipes.get(TcText.thaumicEBF)) })
@@ -47,7 +45,7 @@ public class ResearchLoader {
             0,
             2,
             1,
-            new ItemStack(ModsItemsList.focusTape))).setSecondary()
+            NHUItemList.FocusTape.get(1))).setSecondary()
                 .setPages(
                     new ResearchPage[] { new ResearchPage(TcText.researchPrefixInLang + TcText.focusTape + "_1"),
                         new ResearchPage((CrucibleRecipe) ConfigResearch.recipes.get(TcText.focusTape)) })
@@ -59,7 +57,7 @@ public class ResearchLoader {
             -2,
             0,
             3,
-            new ItemStack(ModsItemsList.warpWardRing))).setParents("INFUSION")
+            NHUItemList.WarpWardRing.get(1))).setParents("INFUSION")
                 .setPages(
                     new ResearchPage[] { new ResearchPage(TcText.researchPrefixInLang + TcText.warpWardRing + "_1"),
                         new ResearchPage((InfusionRecipe) ConfigResearch.recipes.get(TcText.warpWardRing)) })

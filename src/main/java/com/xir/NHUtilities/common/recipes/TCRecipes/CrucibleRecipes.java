@@ -2,9 +2,7 @@ package com.xir.NHUtilities.common.recipes.TCRecipes;
 
 import java.util.HashMap;
 
-import net.minecraft.item.ItemStack;
-
-import com.xir.NHUtilities.common.items.ModsItemsList;
+import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.utils.TcText;
 
 import gregtech.api.enums.ItemList;
@@ -19,7 +17,7 @@ public class CrucibleRecipes {
             TcText.focusTape,
             ThaumcraftApi.addCrucibleRecipe(
                 TcText.focusTape.toUpperCase(),
-                new ItemStack(ModsItemsList.focusTape, 1),
+                NHUItemList.FocusTape.get(1),
                 ItemList.Duct_Tape.get(1),
                 TcText.aFocusTape));
     }
