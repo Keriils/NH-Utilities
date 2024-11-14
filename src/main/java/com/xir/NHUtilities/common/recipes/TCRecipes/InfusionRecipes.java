@@ -5,33 +5,24 @@ import java.util.HashMap;
 import net.minecraft.item.ItemStack;
 
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
-import com.xir.NHUtilities.loader.ResearchLoader;
+import com.xir.NHUtilities.utils.TcText;
 
 import gregtech.api.enums.ItemList;
 import thaumcraft.api.ThaumcraftApi;
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.ConfigItems;
 
 public class InfusionRecipes {
 
     public static HashMap<String, Object> InfusionRecipes = new HashMap<>();
-    private static final AspectList WarpWardRing = new AspectList().add(Aspect.ORDER, 512)
-        .add(Aspect.FIRE, 512)
-        .add(Aspect.WATER, 512)
-        .add(Aspect.EARTH, 512)
-        .add(Aspect.AIR, 512)
-        .add(Aspect.ENTROPY, 512)
-        .add(Aspect.WEATHER, 16);
 
     public static void run() {
         InfusionRecipes.put(
-            "warpwardring",
+            TcText.warpWardRing,
             ThaumcraftApi.addInfusionCraftingRecipe(
-                ResearchLoader.WarpWardRing.toUpperCase(),
+                TcText.warpWardRing.toUpperCase(),
                 NHUItemList.WarpWardRing.get(1),
                 16,
-                WarpWardRing,
+                TcText.aWarpWardRing,
                 ItemList.Field_Generator_EV.get(1L),
                 new ItemStack[] { new ItemStack(ConfigItems.itemBaubleBlanks, 1, 3),
                     new ItemStack(ConfigItems.itemBaubleBlanks, 1, 4),
