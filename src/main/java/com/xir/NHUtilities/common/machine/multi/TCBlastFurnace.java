@@ -2,22 +2,22 @@ package com.xir.NHUtilities.common.machine.multi;
 
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.transpose;
 import static com.xir.NHUtilities.main.ReferencedInfo.MOD_NAME;
-import static gregtech.api.enums.GTValues.VN;
-import static gregtech.api.enums.HatchElement.Energy;
-import static gregtech.api.enums.HatchElement.InputBus;
-import static gregtech.api.enums.HatchElement.InputHatch;
-import static gregtech.api.enums.HatchElement.Maintenance;
-import static gregtech.api.enums.HatchElement.Muffler;
-import static gregtech.api.enums.HatchElement.OutputBus;
-import static gregtech.api.enums.HatchElement.OutputHatch;
+import static gregtech.api.enums.GT_HatchElement.Energy;
+import static gregtech.api.enums.GT_HatchElement.InputBus;
+import static gregtech.api.enums.GT_HatchElement.InputHatch;
+import static gregtech.api.enums.GT_HatchElement.Maintenance;
+import static gregtech.api.enums.GT_HatchElement.Muffler;
+import static gregtech.api.enums.GT_HatchElement.OutputBus;
+import static gregtech.api.enums.GT_HatchElement.OutputHatch;
+import static gregtech.api.enums.GT_Values.VN;
 import static gregtech.api.enums.Textures.BlockIcons.OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE;
 import static gregtech.api.enums.Textures.BlockIcons.OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE;
 import static gregtech.api.enums.Textures.BlockIcons.OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW;
 import static gregtech.api.enums.Textures.BlockIcons.OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_GLOW;
 import static gregtech.api.enums.Textures.BlockIcons.casingTexturePages;
-import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
-import static gregtech.api.util.GTStructureUtility.ofCoil;
-import static gregtech.api.util.GTUtility.filterValidMTEs;
+import static gregtech.api.util.GT_StructureUtility.buildHatchAdder;
+import static gregtech.api.util.GT_StructureUtility.ofCoil;
+import static gregtech.api.util.GT_Utility.filterValidMTEs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,8 +40,8 @@ import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
 import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 
-import gregtech.GTMod;
-import gregtech.api.GregTechAPI;
+import gregtech.GT_Mod;
+import gregtech.api.GregTech_API;
 import gregtech.api.enums.HeatingCoilLevel;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.Textures;
@@ -51,30 +51,31 @@ import gregtech.api.interfaces.fluid.IFluidStore;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.logic.ProcessingLogic;
-import gregtech.api.metatileentity.implementations.MTEHatch;
-import gregtech.api.metatileentity.implementations.MTEHatchEnergy;
-import gregtech.api.metatileentity.implementations.MTEHatchMuffler;
-import gregtech.api.metatileentity.implementations.MTEHatchOutput;
+import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_Hatch;
+import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_Hatch_Energy;
+import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_Hatch_Muffler;
+import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_Hatch_Output;
 import gregtech.api.recipe.RecipeMap;
 import gregtech.api.recipe.RecipeMaps;
 import gregtech.api.recipe.check.CheckRecipeResult;
 import gregtech.api.recipe.check.CheckRecipeResultRegistry;
 import gregtech.api.render.TextureFactory;
-import gregtech.api.util.GTRecipe;
-import gregtech.api.util.GTUtility;
-import gregtech.api.util.MultiblockTooltipBuilder;
-import gregtech.api.util.OverclockCalculator;
-import gregtech.common.tileentities.machines.multi.MTEAbstractMultiFurnace;
+import gregtech.api.util.GT_Multiblock_Tooltip_Builder;
+import gregtech.api.util.GT_OverclockCalculator;
+import gregtech.api.util.GT_Recipe;
+import gregtech.api.util.GT_Utility;
+import gregtech.common.tileentities.machines.multi.GT_MetaTileEntity_AbstractMultiFurnace;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.visnet.VisNetHandler;
 
-public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> implements ISurvivalConstructable {
+public class TCBlastFurnace extends GT_MetaTileEntity_AbstractMultiFurnace<TCBlastFurnace>
+    implements ISurvivalConstructable {
 
     private boolean isNewTexture = true;
     private double tcSpeedBonus = 1.0 / 1.25;
     private double tcEuModifier = 1.0 / 1.05;
     private int mHeatingCapacity = 0;
-    protected final ArrayList<MTEHatchOutput> mPollutionOutputHatches = new ArrayList<>();
+    protected final ArrayList<GT_MetaTileEntity_Hatch_Output> mPollutionOutputHatches = new ArrayList<>();
     protected final FluidStack[] pollutionFluidStacks = { Materials.CarbonDioxide.getGas(1000),
         Materials.CarbonMonoxide.getGas(1000), Materials.SulfurDioxide.getGas(1000) };
     protected static final int CASING_INDEX = 11;
@@ -101,7 +102,7 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
                     .withCount(t -> t.mPollutionOutputHatches.size()))
                 .casingIndex(CASING_INDEX)
                 .dot(1)
-                .buildAndChain(GregTechAPI.sBlockCasings1, CASING_INDEX))
+                .buildAndChain(GregTech_API.sBlockCasings1, CASING_INDEX))
         .addElement('m', Muffler.newAny(CASING_INDEX, 2))
         .addElement('C', ofCoil(TCBlastFurnace::setCoilLevel, TCBlastFurnace::getCoilLevel))
         .addElement(
@@ -110,16 +111,16 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
                 .atLeast(InputHatch, OutputHatch, InputBus, OutputBus, Maintenance, Energy)
                 .casingIndex(CASING_INDEX)
                 .dot(1)
-                .buildAndChain(GregTechAPI.sBlockCasings1, CASING_INDEX))
+                .buildAndChain(GregTech_API.sBlockCasings1, CASING_INDEX))
         .build();
 
     public boolean addOutputHatchToTopList(IGregTechTileEntity aTileEntity, int aBaseCasingIndex) {
         if (aTileEntity == null) return false;
         IMetaTileEntity aMetaTileEntity = aTileEntity.getMetaTileEntity();
         if (aMetaTileEntity == null) return false;
-        if (aMetaTileEntity instanceof MTEHatchOutput) {
-            ((MTEHatch) aMetaTileEntity).updateTexture(aBaseCasingIndex);
-            return mPollutionOutputHatches.add((MTEHatchOutput) aMetaTileEntity);
+        if (aMetaTileEntity instanceof GT_MetaTileEntity_Hatch_Output) {
+            ((GT_MetaTileEntity_Hatch) aMetaTileEntity).updateTexture(aBaseCasingIndex);
+            return mPollutionOutputHatches.add((GT_MetaTileEntity_Hatch_Output) aMetaTileEntity);
         }
         return false;
     }
@@ -142,7 +143,7 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
         if (!checkPiece(STRUCTURE_PIECE_MAIN, 1, 3, 0)) return false;
         if (getCoilLevel() == HeatingCoilLevel.None) return false;
         if (mMaintenanceHatches.size() != 1) return false;
-        this.mHeatingCapacity = (int) getCoilLevel().getHeat() + 100 * (GTUtility.getTier(getMaxInputVoltage()) - 2);
+        this.mHeatingCapacity = (int) getCoilLevel().getHeat() + 100 * (GT_Utility.getTier(getMaxInputVoltage()) - 2);
         return true;
     }
 
@@ -157,8 +158,8 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
     }
 
     @Override
-    protected MultiblockTooltipBuilder createTooltip() {
-        MultiblockTooltipBuilder tt = new MultiblockTooltipBuilder();
+    protected GT_Multiblock_Tooltip_Builder createTooltip() {
+        GT_Multiblock_Tooltip_Builder tt = new GT_Multiblock_Tooltip_Builder();
         tt.addMachineType(StatCollector.translateToLocal("nhu.tcebf.machine.type"))
             .addInfo(StatCollector.translateToLocal("nhu.tcebf.machine.info_1"))
             .addInfo(StatCollector.translateToLocal("nhu.tcebf.machine.info_2"))
@@ -242,7 +243,7 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
 
     @Override
     public int getPollutionPerSecond(ItemStack aStack) {
-        return GTMod.gregtechproxy.mPollutionEBFPerSecond;
+        return GT_Mod.gregtechproxy.mPollutionEBFPerSecond;
     }
 
     @Override
@@ -253,8 +254,8 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
     @Override
     protected void setProcessingLogicPower(ProcessingLogic logic) {
         super.setProcessingLogicPower(logic);
-        logic.setSpeedBonus(tcSpeedBonus);
-        logic.setEuModifier(tcEuModifier);
+        logic.setSpeedBonus((float) tcSpeedBonus);
+        logic.setEuModifier((float) tcEuModifier);
     }
 
     @Override
@@ -264,7 +265,7 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
 
             @Nonnull
             @Override
-            protected OverclockCalculator createOverclockCalculator(@Nonnull GTRecipe recipe) {
+            protected GT_OverclockCalculator createOverclockCalculator(@Nonnull GT_Recipe recipe) {
                 return super.createOverclockCalculator(recipe).setRecipeHeat(recipe.mSpecialValue)
                     .setMachineHeat(mHeatingCapacity)
                     .setHeatOC(true)
@@ -272,7 +273,7 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
             }
 
             @Override
-            protected @Nonnull CheckRecipeResult validateRecipe(@Nonnull GTRecipe recipe) {
+            protected @Nonnull CheckRecipeResult validateRecipe(@Nonnull GT_Recipe recipe) {
                 return recipe.mSpecialValue <= mHeatingCapacity ? CheckRecipeResultRegistry.SUCCESSFUL
                     : CheckRecipeResultRegistry.insufficientHeat(recipe.mSpecialValue);
             }
@@ -283,7 +284,7 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
     public boolean addOutput(FluidStack aLiquid) {
         if (aLiquid == null) return false;
         FluidStack tLiquid = aLiquid.copy();
-        ArrayList<MTEHatchOutput> tOutputHatches;
+        ArrayList<GT_MetaTileEntity_Hatch_Output> tOutputHatches;
         if (isPollutionFluid(tLiquid)) {
             tOutputHatches = this.mPollutionOutputHatches;
             multiplyPollutionFluidAmount(tLiquid);
@@ -313,7 +314,7 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
 
     public int getPollutionReduction() {
         int reduction = 100;
-        for (MTEHatchMuffler tHatch : filterValidMTEs(mMufflerHatches)) {
+        for (GT_MetaTileEntity_Hatch_Muffler tHatch : filterValidMTEs(mMufflerHatches)) {
             reduction = Math.min(tHatch.calculatePollutionReduction(100), reduction);
         }
         return reduction;
@@ -328,7 +329,7 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
         int mPollutionReduction = getPollutionReduction();
         long storedEnergy = 0;
         long maxEnergy = 0;
-        for (MTEHatchEnergy tHatch : filterValidMTEs(mEnergyHatches)) {
+        for (GT_MetaTileEntity_Hatch_Energy tHatch : filterValidMTEs(mEnergyHatches)) {
             storedEnergy += tHatch.getBaseMetaTileEntity()
                 .getStoredEU();
             maxEnergy += tHatch.getBaseMetaTileEntity()
@@ -338,36 +339,36 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
         return new String[] {
             StatCollector.translateToLocal("GT5U.multiblock.Progress") + ": "
                 + EnumChatFormatting.GREEN
-                + GTUtility.formatNumbers(mProgresstime / 20)
+                + GT_Utility.formatNumbers(mProgresstime / 20)
                 + EnumChatFormatting.RESET
                 + " s / "
                 + EnumChatFormatting.YELLOW
-                + GTUtility.formatNumbers(mMaxProgresstime / 20)
+                + GT_Utility.formatNumbers(mMaxProgresstime / 20)
                 + EnumChatFormatting.RESET
                 + " s",
             StatCollector.translateToLocal("GT5U.multiblock.energy") + ": "
                 + EnumChatFormatting.GREEN
-                + GTUtility.formatNumbers(storedEnergy)
+                + GT_Utility.formatNumbers(storedEnergy)
                 + EnumChatFormatting.RESET
                 + " EU / "
                 + EnumChatFormatting.YELLOW
-                + GTUtility.formatNumbers(maxEnergy)
+                + GT_Utility.formatNumbers(maxEnergy)
                 + EnumChatFormatting.RESET
                 + " EU",
             StatCollector.translateToLocal("GT5U.multiblock.usage") + ": "
                 + EnumChatFormatting.RED
-                + GTUtility.formatNumbers(-mEUt)
+                + GT_Utility.formatNumbers(-mEUt)
                 + EnumChatFormatting.RESET
                 + " EU/t",
             StatCollector.translateToLocal("GT5U.multiblock.mei") + ": "
                 + EnumChatFormatting.YELLOW
-                + GTUtility.formatNumbers(getMaxInputVoltage())
+                + GT_Utility.formatNumbers(getMaxInputVoltage())
                 + EnumChatFormatting.RESET
                 + " EU/t(*2A) "
                 + StatCollector.translateToLocal("GT5U.machines.tier")
                 + ": "
                 + EnumChatFormatting.YELLOW
-                + VN[GTUtility.getTier(getMaxInputVoltage())]
+                + VN[GT_Utility.getTier(getMaxInputVoltage())]
                 + EnumChatFormatting.RESET,
             StatCollector.translateToLocal("GT5U.multiblock.problems") + ": "
                 + EnumChatFormatting.RED
@@ -382,7 +383,7 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
                 + " %",
             StatCollector.translateToLocal("GT5U.EBF.heat") + ": "
                 + EnumChatFormatting.GREEN
-                + GTUtility.formatNumbers(mHeatingCapacity)
+                + GT_Utility.formatNumbers(mHeatingCapacity)
                 + EnumChatFormatting.RESET
                 + " K",
             StatCollector.translateToLocal("GT5U.multiblock.pollution") + ": "
@@ -402,12 +403,12 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
     public void onScrewdriverRightClick(ForgeDirection side, EntityPlayer aPlayer, float aX, float aY, float aZ) {
         if (aPlayer.isSneaking()) {
             isNewTexture = !isNewTexture;
-            GTUtility.sendChatToPlayer(
+            GT_Utility.sendChatToPlayer(
                 aPlayer,
                 StatCollector.translateToLocal("GT5U.machines.isnewtexture") + " " + isNewTexture);
         } else {
             inputSeparation = !inputSeparation;
-            GTUtility.sendChatToPlayer(
+            GT_Utility.sendChatToPlayer(
                 aPlayer,
                 StatCollector.translateToLocal("GT5U.machines.separatebus") + " " + inputSeparation);
         }

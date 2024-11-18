@@ -5,14 +5,14 @@ import static com.xir.NHUtilities.config.Config.accelerateGregTechMachineDiscoun
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
+import com.github.technus.tectech.thing.metaTileEntity.multi.GT_MetaTileEntity_EM_research;
 import com.xir.NHUtilities.common.api.interfaces.ITileEntityTickAcceleration;
 
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.metatileentity.BaseMetaTileEntity;
-import gregtech.api.metatileentity.implementations.MTEBasicMachine;
-import gregtech.api.metatileentity.implementations.MTEMultiBlockBase;
-import gregtech.common.tileentities.machines.multi.MTEPrimitiveBlastFurnace;
-import tectech.thing.metaTileEntity.multi.MTEResearchStation;
+import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_BasicMachine;
+import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_MultiBlockBase;
+import gregtech.common.tileentities.machines.multi.GT_MetaTileEntity_PrimitiveBlastFurnace;
 
 @Mixin(BaseMetaTileEntity.class)
 public abstract class BaseMetaTileEntityAcceleration_Mixin implements ITileEntityTickAcceleration {
@@ -38,7 +38,7 @@ public abstract class BaseMetaTileEntityAcceleration_Mixin implements ITileEntit
             IMetaTileEntity metaTileEntity = this.getMetaTileEntity();
 
             // for accelerating Research Station
-            if (metaTileEntity instanceof MTEResearchStation researchStation) {
+            if (metaTileEntity instanceof GT_MetaTileEntity_EM_research researchStation) {
                 if (researchStation instanceof ITileEntityTickAcceleration resAte) {
                     resAte.tickAcceleration(tickAcceleratedRate);
                 }
@@ -51,19 +51,19 @@ public abstract class BaseMetaTileEntityAcceleration_Mixin implements ITileEntit
                 int NHUtilities$modify = Math.min(maxProgress, currentProgress + tickAcceleratedRate);
 
                 // for accelerating basic machine
-                if (metaTileEntity instanceof MTEBasicMachine basicMachine) {
+                if (metaTileEntity instanceof GT_MetaTileEntity_BasicMachine basicMachine) {
                     basicMachine.mProgresstime = NHUtilities$modify;
                     return true;
                 }
 
                 // for accelerating multi machine
-                if (metaTileEntity instanceof MTEMultiBlockBase multiBlockBase) {
+                if (metaTileEntity instanceof GT_MetaTileEntity_MultiBlockBase multiBlockBase) {
                     multiBlockBase.mProgresstime = NHUtilities$modify;
                     return true;
                 }
 
                 // for accelerating primitive blast furnace
-                if (metaTileEntity instanceof MTEPrimitiveBlastFurnace primitiveBlastFurnace) {
+                if (metaTileEntity instanceof GT_MetaTileEntity_PrimitiveBlastFurnace primitiveBlastFurnace) {
                     primitiveBlastFurnace.mProgresstime = NHUtilities$modify;
                     return true;
                 }

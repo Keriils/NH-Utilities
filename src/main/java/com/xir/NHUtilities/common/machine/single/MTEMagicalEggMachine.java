@@ -1,7 +1,8 @@
 package com.xir.NHUtilities.common.machine.single;
 
-import static gregtech.api.enums.GTValues.GT;
-import static gregtech.api.enums.GTValues.V;
+import static com.github.technus.tectech.thing.metaTileEntity.Textures.OVERLAYS_ENERGY_IN_WIRELESS_MULTI_16A;
+import static gregtech.api.enums.GT_Values.GT;
+import static gregtech.api.enums.GT_Values.V;
 import static gregtech.api.enums.Textures.BlockIcons.MACHINE_CASING_DRAGONEGG;
 import static gregtech.api.enums.Textures.BlockIcons.MACHINE_CASING_DRAGONEGG_GLOW;
 import static gregtech.api.enums.Textures.BlockIcons.MACHINE_CASING_MAGIC;
@@ -16,7 +17,6 @@ import static gregtech.api.enums.Textures.BlockIcons.OVERLAYS_ENERGY_OUT_MULTI;
 import static gregtech.api.objects.XSTR.XSTR_INSTANCE;
 import static gregtech.common.misc.WirelessNetworkManager.addEUToGlobalEnergyMap;
 import static net.minecraft.util.StatCollector.translateToLocal;
-import static tectech.thing.metaTileEntity.Textures.OVERLAYS_ENERGY_IN_WIRELESS_MULTI_16A;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -47,15 +47,15 @@ import gregtech.api.enums.ParticleFX;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
-import gregtech.api.metatileentity.implementations.MTEBasicGenerator;
+import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_BasicGenerator;
 import gregtech.api.recipe.RecipeMap;
 import gregtech.api.render.TextureFactory;
-import gregtech.api.util.GTUtility;
+import gregtech.api.util.GT_Utility;
 import gregtech.api.util.WorldSpawnedEventBuilder;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 
-public class MTEMagicalEggMachine extends MTEBasicGenerator {
+public class MTEMagicalEggMachine extends GT_MetaTileEntity_BasicGenerator {
 
     private UUID ownerUUID;
     private boolean shouldWork;
@@ -192,7 +192,7 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
         ItemStack item = mInventory[0];
         if (item == null) return 1;
         for (int i = 0; i < CORE_MATERIAL.length; i++) {
-            if (GTUtility.areStacksEqual(item, CORE_MATERIAL[i], true)) {
+            if (GT_Utility.areStacksEqual(item, CORE_MATERIAL[i], true)) {
                 return 2 << i;
             }
         }
@@ -277,13 +277,13 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
             if (++currentTier > mTier) currentTier = 0;
         }
         currentAmperes = calculateAmp();
-        GTUtility.sendChatToPlayer(
+        GT_Utility.sendChatToPlayer(
             aPlayer,
-            "Current EU Output: " + GTUtility.formatNumbers(V[currentTier])
+            "Current EU Output: " + GT_Utility.formatNumbers(V[currentTier])
                 + String.format(
                     " (%s) (%s)",
-                    GTUtility.getColoredTierNameFromTier(currentTier),
-                    EnumChatFormatting.LIGHT_PURPLE + GTUtility.formatNumbers(currentAmperes)
+                    GT_Utility.getColoredTierNameFromTier(currentTier),
+                    EnumChatFormatting.LIGHT_PURPLE + GT_Utility.formatNumbers(currentAmperes)
                         + "A"
                         + EnumChatFormatting.RESET));
     }
@@ -293,7 +293,7 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
         float aX, float aY, float aZ, ItemStack aTool) {
         if (mTier >= 9 && getBaseMetaTileEntity().isServerSide()) {
             isWirelessMode = !isWirelessMode;
-            GTUtility.sendChatToPlayer(aPlayer, "Wireless Mode: " + (isWirelessMode ? "On" : "Off"));
+            GT_Utility.sendChatToPlayer(aPlayer, "Wireless Mode: " + (isWirelessMode ? "On" : "Off"));
         }
         return super.onWireCutterRightClick(side, wrenchingSide, aPlayer, aX, aY, aZ, aTool);
     }
@@ -308,8 +308,8 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
         currentTip.add(
             String.format(
                 "Voltage: %s (%s)",
-                GTUtility.getColoredTierNameFromVoltage(voltage),
-                EnumChatFormatting.LIGHT_PURPLE + GTUtility.formatNumbers(Amperes) + "A" + EnumChatFormatting.RESET));
+                GT_Utility.getColoredTierNameFromVoltage(voltage),
+                EnumChatFormatting.LIGHT_PURPLE + GT_Utility.formatNumbers(Amperes) + "A" + EnumChatFormatting.RESET));
         currentTip.add(
             String.format(
                 "TotalBonus: %sx",

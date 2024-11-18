@@ -10,7 +10,7 @@ import com.xir.NHUtilities.utils.TcText;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
-import gregtech.api.util.GTOreDictUnificator;
+import gregtech.api.util.GT_OreDictUnificator;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.common.config.ConfigItems;
 
@@ -27,6 +27,6 @@ public class ArcaneCraftingRecipes {
                 TcText.aThaumicEbf,
                 new Object[] { "aaa", "bcb", "dbd", 'a', ItemList.Machine_Multi_BlastFurnace.get(1L), 'b',
                     ItemList.Field_Generator_LV.get(1L), 'c', new ItemStack(ConfigItems.itemFocusFire, 1), 'd',
-                    GTOreDictUnificator.get(OrePrefixes.wireGt16, Materials.Kanthal, 1L) }));
+                    GT_OreDictUnificator.get(OrePrefixes.wireGt16, Materials.Kanthal, 1L) }));
     }
 }

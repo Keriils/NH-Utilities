@@ -7,9 +7,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import gregtech.common.blocks.ItemMachines;
+import gregtech.common.blocks.GT_Item_Machines;
 
-@Mixin(value = ItemMachines.class)
+@Mixin(value = GT_Item_Machines.class)
 public class DisableDebuff_Mixin {
 
     @Redirect(

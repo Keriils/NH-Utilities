@@ -13,7 +13,7 @@ import com.xir.NHUtilities.common.api.interfaces.IRegisterProvider;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregtech.api.metatileentity.BaseMetaTileEntity;
-import gregtech.api.metatileentity.implementations.MTEHatchMaintenance;
+import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_Hatch_Maintenance;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.ItemFocusBasic;
@@ -78,7 +78,7 @@ public class ItemFocusTape extends ItemFocusBasic implements IRegisterProvider {
             return wandstack;
         }
         if (wandCasting != null
-            && (mBaseMetaTileEntity.getMetaTileEntity() instanceof MTEHatchMaintenance hatchMaintenance)
+            && (mBaseMetaTileEntity.getMetaTileEntity() instanceof GT_MetaTileEntity_Hatch_Maintenance hatchMaintenance)
             && (!hatchMaintenance.mWrench || !hatchMaintenance.mSolderingTool
                 || !hatchMaintenance.mSoftHammer
                 || !hatchMaintenance.mHardHammer

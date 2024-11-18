@@ -1,8 +1,8 @@
 package com.xir.NHUtilities.common.research;
 
 import static com.xir.NHUtilities.main.ReferencedInfo.MOD_ID_UPPER;
-import static goodgenerator.items.GGMaterial.atomicSeparationCatalyst;
-import static goodgenerator.items.GGMaterial.plutoniumBasedLiquidFuelExcited;
+import static goodgenerator.items.MyMaterial.atomicSeparationCatalyst;
+import static goodgenerator.items.MyMaterial.plutoniumBasedLiquidFuelExcited;
 
 import java.util.Arrays;
 
@@ -13,18 +13,18 @@ import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.utils.TcText;
 
 import goodgenerator.util.ItemRefer;
-import gregtech.api.GregTechAPI;
+import gregtech.api.GregTech_API;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
-import gregtech.api.enums.TCAspects;
-import gregtech.api.util.GTOreDictUnificator;
+import gregtech.api.enums.TC_Aspects;
+import gregtech.api.util.GT_OreDictUnificator;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.item.ItemBrightNitor;
 
 public class GTApiResearch {
 
     public static void addGTApiResearchAndRecipes() {
-        GregTechAPI.sThaumcraftCompat.addResearch(
+        GregTech_API.sThaumcraftCompat.addResearch(
             TcText.shadowMetalFuelRod.toUpperCase(),
             StatCollector.translateToLocal(
                 TcText.prefixOfResearchInThaumonomicon + "name." + TcText.shadowMetalFuelRod.toUpperCase()),
@@ -38,12 +38,12 @@ public class GTApiResearch {
             2,
             0,
             Arrays.asList(
-                new TCAspects.TC_AspectStack(TCAspects.PRAECANTATIO, 6),
-                new TCAspects.TC_AspectStack(TCAspects.RADIO, 8),
-                new TCAspects.TC_AspectStack(TCAspects.POTENTIA, 16)),
+                new TC_Aspects.TC_AspectStack(TC_Aspects.PRAECANTATIO, 6),
+                new TC_Aspects.TC_AspectStack(TC_Aspects.RADIO, 8),
+                new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 16)),
             null,
             new Object[] { TcText.researchPrefixInLang + TcText.shadowMetalFuelRod + "_1",
-                GregTechAPI.sThaumcraftCompat.addInfusionRecipe(
+                GregTech_API.sThaumcraftCompat.addInfusionRecipe(
                     TcText.shadowMetalFuelRod.toUpperCase(),
                     NHUItemList.ShadowFuelRod.get(1),
                     new ItemStack[] { ItemRefer.High_Density_Uranium.get(1),
@@ -60,10 +60,10 @@ public class GTApiResearch {
                     NHUItemList.RodRadianceUranium.get(1),
                     8,
                     Arrays.asList(
-                        new TCAspects.TC_AspectStack(TCAspects.RADIO, 16),
-                        new TCAspects.TC_AspectStack(TCAspects.PRAECANTATIO, 16),
-                        new TCAspects.TC_AspectStack(TCAspects.POTENTIA, 16))) });
-        GregTechAPI.sThaumcraftCompat.addResearch(
+                        new TC_Aspects.TC_AspectStack(TC_Aspects.RADIO, 16),
+                        new TC_Aspects.TC_AspectStack(TC_Aspects.PRAECANTATIO, 16),
+                        new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 16))) });
+        GregTech_API.sThaumcraftCompat.addResearch(
             TcText.ichoriumFuelRod.toUpperCase(),
             StatCollector.translateToLocal(
                 TcText.prefixOfResearchInThaumonomicon + "name." + TcText.ichoriumFuelRod.toUpperCase()),
@@ -77,26 +77,26 @@ public class GTApiResearch {
             2,
             -1,
             Arrays.asList(
-                new TCAspects.TC_AspectStack(TCAspects.PRAECANTATIO, 6),
-                new TCAspects.TC_AspectStack(TCAspects.RADIO, 8),
-                new TCAspects.TC_AspectStack(TCAspects.POTENTIA, 16)),
+                new TC_Aspects.TC_AspectStack(TC_Aspects.PRAECANTATIO, 6),
+                new TC_Aspects.TC_AspectStack(TC_Aspects.RADIO, 8),
+                new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 16)),
             null,
             new Object[] { TcText.researchPrefixInLang + TcText.ichoriumFuelRod + "_1",
-                GregTechAPI.sThaumcraftCompat.addInfusionRecipe(
+                GregTech_API.sThaumcraftCompat.addInfusionRecipe(
                     TcText.ichoriumFuelRod.toUpperCase(),
                     NHUItemList.IchorFuelRod.get(1),
                     new ItemStack[] { plutoniumBasedLiquidFuelExcited.get(OrePrefixes.cell, 1),
                         atomicSeparationCatalyst.get(OrePrefixes.dust, 1),
-                        GTOreDictUnificator.get(OrePrefixes.cellMolten, Materials.Ichorium, 1),
+                        GT_OreDictUnificator.get(OrePrefixes.cellMolten, Materials.Ichorium, 1),
                         atomicSeparationCatalyst.get(OrePrefixes.dust, 1), NHUItemList.PrimordialPearlDust.get(1),
                         atomicSeparationCatalyst.get(OrePrefixes.dust, 1),
-                        GTOreDictUnificator.get(OrePrefixes.cellMolten, Materials.Ichorium, 1),
+                        GT_OreDictUnificator.get(OrePrefixes.cellMolten, Materials.Ichorium, 1),
                         atomicSeparationCatalyst.get(OrePrefixes.dust, 1) },
                     NHUItemList.RodPrimordialPearlPlutonium.get(1),
                     16,
                     Arrays.asList(
-                        new TCAspects.TC_AspectStack(TCAspects.RADIO, 64),
-                        new TCAspects.TC_AspectStack(TCAspects.PRAECANTATIO, 64),
-                        new TCAspects.TC_AspectStack(TCAspects.POTENTIA, 64))) });
+                        new TC_Aspects.TC_AspectStack(TC_Aspects.RADIO, 64),
+                        new TC_Aspects.TC_AspectStack(TC_Aspects.PRAECANTATIO, 64),
+                        new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 64))) });
     }
 }

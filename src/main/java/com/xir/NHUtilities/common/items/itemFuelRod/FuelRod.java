@@ -14,7 +14,7 @@ import com.xir.NHUtilities.common.items.aItemCore.RadioactiveItem;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import gregtech.api.util.GTUtility;
+import gregtech.api.util.GT_Utility;
 import ic2.api.item.IBoxable;
 import ic2.api.reactor.IReactor;
 import ic2.api.reactor.IReactorComponent;
@@ -95,7 +95,7 @@ public class FuelRod extends RadioactiveItem implements IReactorComponent, IBoxa
                 }
             }
             if (this.getCustomDamage(stack) >= this.getMaxCustomDamage() - 1) {
-                reactor.setItemAt(x, y, GTUtility.copyAmount(1, depletedResult));
+                reactor.setItemAt(x, y, GT_Utility.copyAmount(1, depletedResult));
             } else if (heatRun) {
                 this.setCustomDamage(stack, this.getCustomDamage(stack) + 1);
             }

@@ -2,37 +2,36 @@ package com.xir.NHUtilities.common.recipes.MassRecipes;
 
 import static com.brandon3055.draconicevolution.common.ModBlocks.draconiumBlock;
 import static com.brandon3055.draconicevolution.common.ModBlocks.infusedObsidian;
+import static com.github.technus.tectech.thing.CustomItemList.hatch_CreativeMaintenance;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.recipe.RecipeMaps.blastFurnaceRecipes;
 import static gregtech.api.recipe.RecipeMaps.centrifugeRecipes;
 import static gregtech.api.recipe.RecipeMaps.extractorRecipes;
 import static gregtech.api.recipe.RecipeMaps.maceratorRecipes;
-import static gregtech.api.recipe.RecipeMaps.neutroniumCompressorRecipes;
 import static gregtech.api.recipe.RecipeMaps.plasmaForgeRecipes;
-import static gregtech.api.util.GTRecipeBuilder.MINUTES;
-import static gregtech.api.util.GTRecipeBuilder.SECONDS;
-import static gregtech.api.util.GTRecipeConstants.COIL_HEAT;
-import static gregtech.api.util.GTRecipeConstants.UniversalChemical;
-import static tectech.thing.CustomItemList.hatch_CreativeMaintenance;
+import static gregtech.api.util.GT_RecipeBuilder.MINUTES;
+import static gregtech.api.util.GT_RecipeBuilder.SECONDS;
+import static gregtech.api.util.GT_RecipeConstants.COIL_HEAT;
+import static gregtech.api.util.GT_RecipeConstants.UniversalChemical;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
+import com.github.bartimaeusnek.bartworks.system.material.WerkstoffLoader;
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
 
-import bartworks.system.material.WerkstoffLoader;
 import fox.spiteful.avaritia.crafting.ExtremeCraftingManager;
-import goodgenerator.items.GGMaterial;
-import gregtech.api.enums.GTValues;
+import goodgenerator.items.MyMaterial;
+import gregtech.api.enums.GT_Values;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.MaterialsKevlar;
 import gregtech.api.enums.MaterialsUEVplus;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.TierEU;
-import gregtech.api.recipe.metadata.CompressionTierKey;
-import gregtech.api.util.GTOreDictUnificator;
-import gregtech.api.util.GTUtility;
+import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.GT_Utility;
+import gtPlusPlus.xmod.gregtech.api.enums.GregtechItemList;
 import singulariteam.eternalsingularity.item.EternalSingularityItem;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.item.kami.ItemKamiResource;
@@ -46,8 +45,8 @@ public class NHURecipes {
         initEternityTimeVialRecipe();
 
         // for adding debug maintenance recipe
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.Hull_EV.get(1), ItemList.Duct_Tape.get(1), GTUtility.getIntegratedCircuit(16))
+        GT_Values.RA.stdBuilder()
+            .itemInputs(ItemList.Hull_EV.get(1), ItemList.Duct_Tape.get(1), GT_Utility.getIntegratedCircuit(16))
             .itemOutputs(hatch_CreativeMaintenance.get(1))
             .duration(25 * SECONDS)
             .eut(TierEU.RECIPE_HV)
@@ -57,43 +56,43 @@ public class NHURecipes {
     private static void initFuelRodRecipe() {
 
         // ichor fuel rod
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Ichorium, 4),
-                GTOreDictUnificator.get(OrePrefixes.ring, Materials.Ichorium, 2),
-                GTUtility.getIntegratedCircuit(2))
+                GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Ichorium, 4),
+                GT_OreDictUnificator.get(OrePrefixes.ring, Materials.Ichorium, 2),
+                GT_Utility.getIntegratedCircuit(2))
             .itemOutputs(NHUItemList.IchorFuelRod.get(1))
             .duration(50 * SECONDS)
             .eut(TierEU.RECIPE_HV)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(
                 NHUItemList.RodPrimordialPearlPlutonium.get(2),
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Ichorium, 4),
-                GTUtility.getIntegratedCircuit(2))
+                GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Ichorium, 4),
+                GT_Utility.getIntegratedCircuit(2))
             .itemOutputs(NHUItemList.RodPrimordialPearlPlutonium2.get(1))
             .duration(10 * SECONDS)
             .noOptimize()
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(
                 NHUItemList.RodPrimordialPearlPlutonium.get(4),
-                GTOreDictUnificator.get(OrePrefixes.stickLong, Materials.Ichorium, 6),
-                GTUtility.getIntegratedCircuit(4))
+                GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.Ichorium, 6),
+                GT_Utility.getIntegratedCircuit(4))
             .itemOutputs(NHUItemList.RodPrimordialPearlPlutonium4.get(1))
             .duration(10 * SECONDS)
             .noOptimize()
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(
                 NHUItemList.RodPrimordialPearlPlutonium2.get(2),
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Ichorium, 4),
-                GTUtility.getIntegratedCircuit(5))
+                GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Ichorium, 4),
+                GT_Utility.getIntegratedCircuit(5))
             .itemOutputs(NHUItemList.RodPrimordialPearlPlutonium4.get(1))
             .duration(10 * SECONDS)
             .noOptimize()
@@ -101,43 +100,43 @@ public class NHURecipes {
             .addTo(assemblerRecipes);
 
         // radiance fuel rod
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Shadow, 4),
-                GTOreDictUnificator.get(OrePrefixes.ring, Materials.Shadow, 2),
-                GTUtility.getIntegratedCircuit(2))
+                GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Shadow, 4),
+                GT_OreDictUnificator.get(OrePrefixes.ring, Materials.Shadow, 2),
+                GT_Utility.getIntegratedCircuit(2))
             .itemOutputs(NHUItemList.ShadowFuelRod.get(1))
             .duration(50 * SECONDS)
             .eut(TierEU.RECIPE_HV)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(
                 NHUItemList.RodRadianceUranium.get(2),
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Shadow, 4),
-                GTUtility.getIntegratedCircuit(2))
+                GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Shadow, 4),
+                GT_Utility.getIntegratedCircuit(2))
             .itemOutputs(NHUItemList.RodRadianceUranium2.get(1))
             .duration(10 * SECONDS)
             .noOptimize()
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(
                 NHUItemList.RodRadianceUranium.get(4),
-                GTOreDictUnificator.get(OrePrefixes.stickLong, Materials.Shadow, 6),
-                GTUtility.getIntegratedCircuit(4))
+                GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.Shadow, 6),
+                GT_Utility.getIntegratedCircuit(4))
             .itemOutputs(NHUItemList.RodRadianceUranium4.get(1))
             .duration(10 * SECONDS)
             .noOptimize()
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(
                 NHUItemList.RodRadianceUranium2.get(2),
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Shadow, 4),
-                GTUtility.getIntegratedCircuit(5))
+                GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Shadow, 4),
+                GT_Utility.getIntegratedCircuit(5))
             .itemOutputs(NHUItemList.RodRadianceUranium4.get(1))
             .duration(10 * SECONDS)
             .noOptimize()
@@ -145,34 +144,34 @@ public class NHURecipes {
             .addTo(assemblerRecipes);
 
         // centrifuge
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(NHUItemList.RodPrimordialPearlPlutoniumDepleted.get(1))
             .itemOutputs(NHUItemList.IchorFuelRod.get(1), thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3))
             .outputChances(10000, 500)
-            .fluidOutputs(GGMaterial.plutoniumBasedLiquidFuelDepleted.getFluidOrGas(1000))
+            .fluidOutputs(MyMaterial.plutoniumBasedLiquidFuelDepleted.getFluidOrGas(1000))
             .duration(20 * SECONDS)
             .eut(TierEU.RECIPE_IV)
             .addTo(centrifugeRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(NHUItemList.RodPrimordialPearlPlutoniumDepleted2.get(1))
             .itemOutputs(NHUItemList.IchorFuelRod.get(2), thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3))
             .outputChances(10000, 1500)
-            .fluidOutputs(GGMaterial.plutoniumBasedLiquidFuelDepleted.getFluidOrGas(2000))
+            .fluidOutputs(MyMaterial.plutoniumBasedLiquidFuelDepleted.getFluidOrGas(2000))
             .duration(20 * SECONDS)
             .eut(TierEU.RECIPE_IV)
             .addTo(centrifugeRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(NHUItemList.RodPrimordialPearlPlutoniumDepleted4.get(1))
             .itemOutputs(NHUItemList.IchorFuelRod.get(4), thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3))
             .outputChances(10000, 3500)
-            .fluidOutputs(GGMaterial.plutoniumBasedLiquidFuelDepleted.getFluidOrGas(4000))
+            .fluidOutputs(MyMaterial.plutoniumBasedLiquidFuelDepleted.getFluidOrGas(4000))
             .duration(20 * SECONDS)
             .eut(TierEU.RECIPE_IV)
             .addTo(centrifugeRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(NHUItemList.RodRadianceUraniumDepleted.get(1))
             .itemOutputs(
                 NHUItemList.ShadowFuelRod.get(1),
@@ -187,7 +186,7 @@ public class NHURecipes {
             .eut(TierEU.RECIPE_IV)
             .addTo(centrifugeRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(NHUItemList.RodRadianceUraniumDepleted2.get(1))
             .itemOutputs(
                 NHUItemList.ShadowFuelRod.get(2),
@@ -202,7 +201,7 @@ public class NHURecipes {
             .eut(TierEU.RECIPE_IV)
             .addTo(centrifugeRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(NHUItemList.RodRadianceUraniumDepleted4.get(1))
             .itemOutputs(
                 NHUItemList.ShadowFuelRod.get(4),
@@ -217,14 +216,14 @@ public class NHURecipes {
             .eut(TierEU.RECIPE_IV)
             .addTo(centrifugeRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(thaumcraft.api.ItemApi.getItem("itemEldritchObject", 3))
             .itemOutputs(NHUItemList.PrimordialPearlDust.get(4))
             .duration(100 * SECONDS)
             .eut(TierEU.RECIPE_EV)
             .addTo(maceratorRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 0))
             .itemOutputs(NHUItemList.IchorDroplet.get(3))
             .duration(100 * SECONDS)
@@ -234,7 +233,7 @@ public class NHURecipes {
 
     private static void initEggMachineRecipe() {
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(NHUItemList.ChaosDragonEgg.get(1))
             .fluidInputs(Materials.Radon.getGas(16384))
             .itemOutputs(NHUItemList.ChaosDraconiumEgg.get(2))
@@ -243,7 +242,7 @@ public class NHURecipes {
             .metadata(COIL_HEAT, 6400)
             .addTo(blastFurnaceRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(NHUItemList.ChaosDraconiumEgg.get(1))
             .fluidInputs(Materials.Draconium.getMolten(1008L))
             .itemOutputs(NHUItemList.ChaosDragonEgg.get(1))
@@ -251,7 +250,7 @@ public class NHURecipes {
             .eut(TierEU.RECIPE_IV)
             .addTo(UniversalChemical);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(NHUItemList.AncientDragonEgg.get(1))
             .fluidInputs(Materials.Radon.getPlasma(16384))
             .itemOutputs(NHUItemList.AncientDraconiumEgg.get(2))
@@ -260,7 +259,7 @@ public class NHURecipes {
             .metadata(COIL_HEAT, 8001)
             .addTo(blastFurnaceRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(NHUItemList.AncientDraconiumEgg.get(1))
             .fluidInputs(Materials.DraconiumAwakened.getMolten(1008L))
             .itemOutputs(NHUItemList.AncientDragonEgg.get(1))
@@ -274,58 +273,58 @@ public class NHURecipes {
             NHUItemList.Egg_Machine_UMV, NHUItemList.Egg_Machine_UXV, NHUItemList.Egg_Machine_MAX };
 
         for (int i = 0; i < eggMachineList.length - 1; i++) {
-            GTValues.RA.stdBuilder()
+            GT_Values.RA.stdBuilder()
                 .itemInputs(eggMachineList[i].get(3))
                 .itemOutputs(eggMachineList[i + 1].get(1))
                 .fluidInputs(Materials.Radon.getGas(4000 << i))
                 .duration((20 << i) * SECONDS)
-                .eut(GTValues.VP[i])
+                .eut(GT_Values.VP[i])
                 .addTo(assemblerRecipes);
         }
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(
                 new ItemStack(Items.egg, 64),
-                ItemList.WetTransformer_EV_HV.get(1),
+                GregtechItemList.Transformer_HA_EV_HV.get(1),
                 ItemList.Field_Generator_HV.get(3),
                 ItemList.Circuit_Parts_Crystal_Chip_Master.get(32),
-                GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Polybenzimidazole, 16))
+                GT_OreDictUnificator.get(OrePrefixes.plateDense, Materials.Polybenzimidazole, 16))
             .fluidInputs(Materials.Radon.getGas(16000))
             .itemOutputs(NHUItemList.Egg_Machine_EV.get(1))
             .duration(60 * SECONDS)
             .eut(TierEU.RECIPE_HV)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(
                 ItemList.MagicEnergyAbsorber_EV.get(1),
-                ItemList.WetTransformer_EV_HV.get(1),
+                GregtechItemList.Transformer_HA_EV_HV.get(1),
                 ItemList.Field_Generator_HV.get(1),
                 ItemList.Circuit_Parts_Crystal_Chip_Master.get(32),
-                GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Polybenzimidazole, 4))
+                GT_OreDictUnificator.get(OrePrefixes.plateDense, Materials.Polybenzimidazole, 4))
             .fluidInputs(Materials.Radon.getGas(4000))
             .itemOutputs(NHUItemList.Egg_Machine_EV.get(1))
             .duration(60 * SECONDS)
             .eut(TierEU.RECIPE_HV)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(
                 NHUItemList.Egg_Machine_EV.get(1),
-                ItemList.WetTransformer_IV_EV.get(1),
+                GregtechItemList.Transformer_HA_IV_EV.get(1),
                 ItemList.Circuit_Parts_Crystal_Chip_Master.get(64),
                 ItemList.Circuit_Parts_Crystal_Chip_Master.get(64),
-                GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Polybenzimidazole, 64))
+                GT_OreDictUnificator.get(OrePrefixes.plateDense, Materials.Polybenzimidazole, 64))
             .fluidInputs(Materials.HSSG.getMolten(1152))
             .itemOutputs(NHUItemList.Egg_Machine_IV.get(1))
             .duration(60 * SECONDS)
             .eut(TierEU.RECIPE_EV)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(
                 NHUItemList.Egg_Machine_IV.get(1),
-                ItemList.WetTransformer_LuV_IV.get(1),
+                GregtechItemList.Transformer_HA_LuV_IV.get(1),
                 ItemList.Energy_LapotronicOrb.get(4),
                 ItemList.Emitter_LuV.get(4))
             .fluidInputs(Materials.HSSS.getMolten(1152))
@@ -334,10 +333,10 @@ public class NHURecipes {
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(
                 NHUItemList.Egg_Machine_LuV.get(1),
-                ItemList.WetTransformer_ZPM_LuV.get(1),
+                GregtechItemList.Transformer_HA_ZPM_LuV.get(1),
                 ItemList.Energy_LapotronicOrb2.get(4),
                 ItemList.Emitter_ZPM.get(4))
             .fluidInputs(Materials.Trinium.getMolten(1152))
@@ -362,13 +361,13 @@ public class NHURecipes {
                 'B',
                 new ItemStack(draconiumBlock, 1, 2),
                 'C',
-                ItemList.WetTransformer_UV_ZPM.get(1),
+                GregtechItemList.Transformer_HA_UV_ZPM.get(1),
                 'Z',
                 NHUItemList.Egg_Machine_ZPM.get(1));
     }
 
     private static void initEternityTimeVialRecipe() {
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(NHUItemList.TimeVial.get(0), new ItemStack(EternalSingularityItem.instance, 64))
             .fluidInputs(MaterialsKevlar.Kevlar.getMolten(1440L))
             .itemOutputs(NHUItemList.EternityVial.get(1))
@@ -378,14 +377,13 @@ public class NHURecipes {
             .eut(TierEU.RECIPE_UMV)
             .addTo(plasmaForgeRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(ItemList.Timepiece.get(1))
             .fluidInputs(MaterialsUEVplus.MagnetohydrodynamicallyConstrainedStarMatter.getMolten(1145))
             .itemOutputs(NHUItemList.EternityVial.get(1))
-            // Require stabilized black hole
-            .metadata(CompressionTierKey.INSTANCE, 2)
+            .metadata(COIL_HEAT, 13500)
             .duration(3 * MINUTES)
             .eut(TierEU.RECIPE_UXV)
-            .addTo(neutroniumCompressorRecipes);
+            .addTo(plasmaForgeRecipes);
     }
 }

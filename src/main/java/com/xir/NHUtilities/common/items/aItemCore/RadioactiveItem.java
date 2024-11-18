@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-import gregtech.api.util.GTUtility;
+import gregtech.api.util.GT_Utility;
 import ic2.core.IC2Potion;
 
 public class RadioactiveItem extends ItemBase {
@@ -23,7 +23,7 @@ public class RadioactiveItem extends ItemBase {
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int slot, boolean isHeld) {
         super.onUpdate(stack, worldIn, entityIn, slot, isHeld);
         EntityLivingBase tPlayer = (EntityPlayer) entityIn;
-        if (!GTUtility.isWearingFullRadioHazmat(tPlayer)) {
+        if (!GT_Utility.isWearingFullRadioHazmat(tPlayer)) {
             tPlayer.addPotionEffect(new PotionEffect(IC2Potion.radiation.id, mRadio, 4));
         }
     }

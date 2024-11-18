@@ -13,13 +13,13 @@ import net.minecraft.item.ItemStack;
 import com.xir.NHUtilities.common.api.MetaTypeManager;
 import com.xir.NHUtilities.common.api.interfaces.IMetaObjectProvider;
 
-import gregtech.api.util.GTLanguageManager;
+import gregtech.api.util.GT_LanguageManager;
 
 public abstract class MetaItemBlockBase extends ItemBlock implements IMetaObjectProvider {
 
-    public final String mNoMobsToolTip = GTLanguageManager
+    public final String mNoMobsToolTip = GT_LanguageManager
         .addStringLocalization("gt.nomobspawnsonthisblock", "Mobs cannot Spawn on this Block");
-    public final String mNoTileEntityToolTip = GTLanguageManager
+    public final String mNoTileEntityToolTip = GT_LanguageManager
         .addStringLocalization("gt.notileentityinthisblock", "This is NOT a TileEntity!");
 
     public MetaItemBlockBase(Block block) {
