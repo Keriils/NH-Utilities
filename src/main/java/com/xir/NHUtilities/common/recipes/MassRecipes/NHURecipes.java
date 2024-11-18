@@ -12,13 +12,13 @@ import static gregtech.api.util.GTRecipeConstants.COIL_HEAT;
 import static gregtech.api.util.GTRecipeConstants.UniversalChemical;
 import static tectech.thing.CustomItemList.hatch_CreativeMaintenance;
 
-import fox.spiteful.avaritia.crafting.ExtremeCraftingManager;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
 
 import bartworks.system.material.WerkstoffLoader;
+import fox.spiteful.avaritia.crafting.ExtremeCraftingManager;
 import goodgenerator.items.GGMaterial;
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.ItemList;
@@ -338,22 +338,24 @@ public class NHURecipes {
             .eut(TierEU.RECIPE_LuV)
             .addTo(assemblerRecipes);
 
-        ExtremeCraftingManager.getInstance().addRecipe(NHUItemList.Egg_Machine_UV.get(1),
-            "         ",
-            " AAAAAAA ",
-            " ABBBBBA ",
-            " ABCCCBA ",
-            " ABCZCBA ",
-            " ABCCCBA ",
-            " ABBBBBA ",
-            " AAAAAAA ",
-            'A',
-            new ItemStack(infusedObsidian, 1),
-            'B',
-            new ItemStack(draconiumBlock, 1, 2),
-            'C',
-            ItemList.WetTransformer_UV_ZPM.get(1),
-            'Z',
-            NHUItemList.Egg_Machine_ZPM.get(1));
+        ExtremeCraftingManager.getInstance()
+            .addRecipe(
+                NHUItemList.Egg_Machine_UV.get(1),
+                "         ",
+                " AAAAAAA ",
+                " ABBBBBA ",
+                " ABCCCBA ",
+                " ABCZCBA ",
+                " ABCCCBA ",
+                " ABBBBBA ",
+                " AAAAAAA ",
+                'A',
+                new ItemStack(infusedObsidian, 1),
+                'B',
+                new ItemStack(draconiumBlock, 1, 2),
+                'C',
+                ItemList.WetTransformer_UV_ZPM.get(1),
+                'Z',
+                NHUItemList.Egg_Machine_ZPM.get(1));
     }
 }
