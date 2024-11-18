@@ -55,7 +55,7 @@ public class CommonProxy {
         LOG.info("Loaded Researches");
 
         NHURecipes.initNHURecipeCrossMod();
-        LOG.info("Loaded NHUtilities GTRecipes");
+        LOG.info("Loaded NHUtilities Recipe Cross Mod");
 
         GTApiResearch.addGTApiResearchAndRecipes();
         LOG.info("Loaded TC_Researches and TC_Recipes through GTAPI");

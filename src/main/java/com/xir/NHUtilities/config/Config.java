@@ -47,6 +47,7 @@ public class Config {
     public static boolean disableSuperChestOrTankDebuff = true;
     public static boolean disableDollyDebuff = true;
     public static boolean enableLunchBoxPlus = true;
+    public static boolean enableSimpleTimeVialRecipe = false;
     public static String[] listeningMods = new String[] { "NHUtilities", "TwistSpaceTechnology", "boxplusplus",
         "programmablehatches" };
     // endregion
@@ -184,7 +185,11 @@ public class Config {
                 .getBoolean("disableDollyDebuff", CATEGORY_MIXIN_CONFIG, disableDollyDebuff, "disable Dolly Debuff");
             metaIdOffset = configuration
                 .getInt("metaIdOffset", CATEGORY_MASS, metaIdOffset, -5000, 5000, "An offset of meta id for machines");
-
+            enableSimpleTimeVialRecipe = configuration.getBoolean(
+                "enableSimpleTimeVialRecipe",
+                CATEGORY_TIME_VIAL,
+                enableSimpleTimeVialRecipe,
+                "enable Simple Time Vial Recipe");
         }
 
         try {

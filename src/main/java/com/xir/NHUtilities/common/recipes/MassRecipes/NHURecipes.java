@@ -7,6 +7,9 @@ import static gregtech.api.recipe.RecipeMaps.blastFurnaceRecipes;
 import static gregtech.api.recipe.RecipeMaps.centrifugeRecipes;
 import static gregtech.api.recipe.RecipeMaps.extractorRecipes;
 import static gregtech.api.recipe.RecipeMaps.maceratorRecipes;
+import static gregtech.api.recipe.RecipeMaps.neutroniumCompressorRecipes;
+import static gregtech.api.recipe.RecipeMaps.plasmaForgeRecipes;
+import static gregtech.api.util.GTRecipeBuilder.MINUTES;
 import static gregtech.api.util.GTRecipeBuilder.SECONDS;
 import static gregtech.api.util.GTRecipeConstants.COIL_HEAT;
 import static gregtech.api.util.GTRecipeConstants.UniversalChemical;
@@ -23,10 +26,14 @@ import goodgenerator.items.GGMaterial;
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
+import gregtech.api.enums.MaterialsKevlar;
+import gregtech.api.enums.MaterialsUEVplus;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.TierEU;
+import gregtech.api.recipe.metadata.CompressionTierKey;
 import gregtech.api.util.GTOreDictUnificator;
 import gregtech.api.util.GTUtility;
+import singulariteam.eternalsingularity.item.EternalSingularityItem;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.item.kami.ItemKamiResource;
 
@@ -36,6 +43,7 @@ public class NHURecipes {
 
         initFuelRodRecipe();
         initEggMachineRecipe();
+        initEternityTimeVialRecipe();
 
         // for adding debug maintenance recipe
         GTValues.RA.stdBuilder()
@@ -357,5 +365,27 @@ public class NHURecipes {
                 ItemList.WetTransformer_UV_ZPM.get(1),
                 'Z',
                 NHUItemList.Egg_Machine_ZPM.get(1));
+    }
+
+    private static void initEternityTimeVialRecipe() {
+        GTValues.RA.stdBuilder()
+            .itemInputs(NHUItemList.TimeVial.get(0), new ItemStack(EternalSingularityItem.instance, 64))
+            .fluidInputs(MaterialsKevlar.Kevlar.getMolten(1440L))
+            .itemOutputs(NHUItemList.EternityVial.get(1))
+            .outputChances(500)
+            .metadata(COIL_HEAT, 13500)
+            .duration(60 * SECONDS)
+            .eut(TierEU.RECIPE_UMV)
+            .addTo(plasmaForgeRecipes);
+
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Timepiece.get(1))
+            .fluidInputs(MaterialsUEVplus.MagnetohydrodynamicallyConstrainedStarMatter.getMolten(1145))
+            .itemOutputs(NHUItemList.EternityVial.get(1))
+            // Require stabilized black hole
+            .metadata(CompressionTierKey.INSTANCE, 2)
+            .duration(3 * MINUTES)
+            .eut(TierEU.RECIPE_UXV)
+            .addTo(neutroniumCompressorRecipes);
     }
 }

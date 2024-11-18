@@ -32,7 +32,7 @@ public class ItemsLoader {
         NHUItemList.GluttonyRing.setAndRegister(new GluttonyRing(), enableGluttonyRingAndHungerRing);
         NHUItemList.WarpWardRing.setAndRegister(new WarpWardRing());
         NHUItemList.FocusTape.setAndRegister(new ItemFocusTape());
-        NHUItemList.LunchBoxPlus.setAndRegister(new LunchBoxPlus(), enableLunchBoxPlus);
+        if (enableLunchBoxPlus) NHUItemList.LunchBoxPlus.setAndRegister(new LunchBoxPlus());
         // endregion
 
         // region Fuel Rod
