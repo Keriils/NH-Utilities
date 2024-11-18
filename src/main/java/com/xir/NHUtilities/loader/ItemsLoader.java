@@ -43,7 +43,7 @@ public class ItemsLoader {
             new FuelRod(
                 "RodRadianceUranium",
                 1,
-                25000,
+                37500,
                 72,
                 4000,
                 86400,
@@ -53,7 +53,7 @@ public class ItemsLoader {
             new FuelRod(
                 "RodRadianceUranium2",
                 2,
-                25000,
+                37500,
                 72,
                 4000,
                 86400,
@@ -63,7 +63,7 @@ public class ItemsLoader {
             new FuelRod(
                 "RodRadianceUranium4",
                 4,
-                25000,
+                37500,
                 72,
                 4000,
                 86400,
@@ -79,31 +79,31 @@ public class ItemsLoader {
             new FuelRod(
                 "RodPrimordialPearlPlutonium",
                 1,
-                92000,
-                160,
+                274000,
+                2000,
                 12800,
                 40000,
-                8.3F,
+                36.3F,
                 NHUItemList.RodPrimordialPearlPlutoniumDepleted.get(1)));
         NHUItemList.RodPrimordialPearlPlutonium2.setAndRegister(
             new FuelRod(
                 "RodPrimordialPearlPlutonium2",
                 2,
-                92000,
-                160,
+                274000,
+                2000,
                 12800,
                 40000,
-                8.3F,
+                36.3F,
                 NHUItemList.RodPrimordialPearlPlutoniumDepleted2.get(1)));
         NHUItemList.RodPrimordialPearlPlutonium4.setAndRegister(
             new FuelRod(
                 "RodPrimordialPearlPlutonium4",
                 4,
-                92000,
-                160,
+                274000,
+                2000,
                 12800,
                 40000,
-                8.3F,
+                36.3F,
                 NHUItemList.RodPrimordialPearlPlutoniumDepleted4.get(1)));
         // endregion
 
