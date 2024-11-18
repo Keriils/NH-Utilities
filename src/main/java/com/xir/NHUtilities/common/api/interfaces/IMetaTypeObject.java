@@ -15,7 +15,11 @@ public interface IMetaTypeObject extends IMetaObjectProvider {
      * This method must be called in the {@link com.xir.NHUtilities.loader.ItemsLoader} and should internally call
      * {@link IMetaTypeObject#loadMetaItem()}
      */
-    void initializeMetaTypeObject();
+    default void initializeMetaTypeObject() {
+        this.getMTManager()
+            .setMetaObject(this);
+        this.loadMetaItem();
+    }
 
     /**
      * Loads the meta items or blocks.

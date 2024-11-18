@@ -58,6 +58,7 @@ import mcp.mobius.waila.api.IWailaDataAccessor;
 public class MTEMagicalEggMachine extends MTEBasicGenerator {
 
     private UUID ownerUUID;
+    private boolean shouldWork;
     private int eggBonus;
     private int MaterialBonus;
     private byte currentTier;
@@ -158,14 +159,19 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
         if (!isWirelessMode && (aBaseMetaTileEntity.getUniversalEnergyStored() >= aBaseMetaTileEntity.getEUCapacity()))
             return;
 
-        if (!hasValidEgg()) {
+        if (aTick % 20 == 0) {
+            aBaseMetaTileEntity.setActive(shouldWork = hasValidEgg());
+            if (shouldWork) {
+                eggBonus = getEggBonus();
+                MaterialBonus = getMaterialBonus();
+                currentAmperes = calculateAmp();
+            }
+        }
+
+        if (!shouldWork) {
             clearBuffer();
             return;
         }
-
-        currentAmperes = calculateAmp();
-        eggBonus = getEggBonus();
-        MaterialBonus = getMaterialBonus();
 
         if (isWirelessMode) {
             totalValidTick++;
@@ -179,7 +185,6 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
         } else {
             long currentPower = V[mTier] * eggBonus * MaterialBonus;
             aBaseMetaTileEntity.increaseStoredEnergyUnits(currentPower, true);
-            aBaseMetaTileEntity.setActive(true);
         }
     }
 

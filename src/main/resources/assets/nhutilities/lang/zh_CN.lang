@@ -20,6 +20,35 @@ item.LunchBoxPlus.name=超级午餐盒
 item.KamiRing.name=Kami神环
 item.WarpWardRing.name=净化之戒
 
+# Meta Item / Material
+item.MetaItem.4.name=富集混沌龙蛋
+item.MetaItem.5.name=富集上古龙蛋
+item.MetaItem.6.name=暂无用途
+item.MetaItem.7.name=暂无用途
+item.MetaItem.101.name=暂无用途
+item.MetaItem.102.name=暂无用途
+item.MetaItem.103.name=暂无用途
+item.MetaItem.104.name=暂无用途
+item.MetaItem.113.name=暂无用途
+item.MetaItem.114.name=暂无用途
+item.MetaItem.115.name=暂无用途
+item.MetaItem.116.name=暂无用途
+item.MetaItem.117.name=暂无用途
+item.MetaItem.118.name=暂无用途
+item.MetaItem.119.name=暂无用途
+item.MetaItem.120.name=暂无用途
+item.MetaItem.121.name=暂无用途
+item.MetaItem.122.name=暂无用途
+item.MetaItem.123.name=暂无用途
+item.MetaItem.124.name=暂无用途
+item.MetaItem.125.name=暂无用途
+item.MetaItem.126.name=暂无用途
+item.MetaItem.127.name=暂无用途
+item.MetaItem.128.name=暂无用途
+item.MetaItem.129.name=暂无用途
+item.MetaItem.130.name=暂无用途
+item.MetaItem.131.name=暂无用途
+
 # Teleporter MK-II
 key.toggleTeleporterMKII=开关高级传送器GUI
 info.teleporterInfBaubles.txt=支持放入-任意-饰品栏目

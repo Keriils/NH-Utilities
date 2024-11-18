@@ -20,6 +20,35 @@ item.LunchBoxPlus.name=Lunch Box Plus
 item.KamiRing.name=Kami Divine Ring
 item.WarpWardRing.name=Ring of Purification
 
+# Meta Item / Material
+item.MetaItem.4.name=Enriched Chaos Draconium Egg
+item.MetaItem.5.name=Enriched Ancient Draconium Egg
+item.MetaItem.6.name=No use at this time
+item.MetaItem.7.name=No use at this time
+item.MetaItem.101.name=No use at this time
+item.MetaItem.102.name=No use at this time
+item.MetaItem.103.name=No use at this time
+item.MetaItem.104.name=No use at this time
+item.MetaItem.113.name=No use at this time
+item.MetaItem.114.name=No use at this time
+item.MetaItem.115.name=No use at this time
+item.MetaItem.116.name=No use at this time
+item.MetaItem.117.name=No use at this time
+item.MetaItem.118.name=No use at this time
+item.MetaItem.119.name=No use at this time
+item.MetaItem.120.name=No use at this time
+item.MetaItem.121.name=No use at this time
+item.MetaItem.122.name=No use at this time
+item.MetaItem.123.name=No use at this time
+item.MetaItem.124.name=No use at this time
+item.MetaItem.125.name=No use at this time
+item.MetaItem.126.name=No use at this time
+item.MetaItem.127.name=No use at this time
+item.MetaItem.128.name=No use at this time
+item.MetaItem.129.name=No use at this time
+item.MetaItem.130.name=No use at this time
+item.MetaItem.131.name=No use at this time
+
 # Teleporter MK-II
 key.toggleTeleporterMKII=Toggle Enhanced Charm of Dislocation GUI
 info.teleporterInfBaubles.txt=Support putting in-any-baubles

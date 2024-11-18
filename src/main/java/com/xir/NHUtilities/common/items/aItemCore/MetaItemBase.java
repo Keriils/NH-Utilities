@@ -65,17 +65,6 @@ public abstract class MetaItemBase extends ItemBase implements IMetaTypeObject {
     }
 
     /**
-     * Initializes and registers the meta type object.
-     * This method must be called in the {@link com.xir.NHUtilities.loader.ItemsLoader} and should internally call
-     * {@link IMetaTypeObject#loadMetaItem()}
-     */
-    public void initializeMetaTypeObject() {
-        this.getMTManager()
-            .setMetaObject(this);
-        this.loadMetaItem();
-    }
-
-    /**
      * Loads the meta items or blocks.
      * This method is called within {@link IMetaTypeObject#initializeMetaTypeObject()}
      */

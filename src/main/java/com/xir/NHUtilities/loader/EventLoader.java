@@ -5,6 +5,7 @@ import static com.xir.NHUtilities.config.Config.enableGluttonyRingAndHungerRing;
 
 import net.minecraftforge.common.MinecraftForge;
 
+import com.xir.NHUtilities.common.events.DragonDeathHandler;
 import com.xir.NHUtilities.common.events.EnhanceExUHealingAxe;
 import com.xir.NHUtilities.common.events.GluttonyRingEvent;
 import com.xir.NHUtilities.common.events.WarpWardRingEvent;
@@ -17,6 +18,7 @@ public class EventLoader {
         registerEvent(true, new GluttonyRingEvent(), enableGluttonyRingAndHungerRing);
         registerEvent(true, new EnhanceExUHealingAxe(), enableEnhancedExUHealingAxe);
         registerEvent(true, new WarpWardRingEvent());
+        registerEvent(true, new DragonDeathHandler());
     }
 
     private static void registerEvent(boolean isMinecraftForgeEvent, Object event) {

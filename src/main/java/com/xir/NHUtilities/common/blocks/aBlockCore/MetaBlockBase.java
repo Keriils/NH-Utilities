@@ -53,12 +53,6 @@ public abstract class MetaBlockBase extends BlockBase implements IMetaTypeObject
         return MetaObjectUtil.addMetaItemUtil(getMTManager(), this, aName, aMeta, aExtraFolder, tooltips);
     }
 
-    @Override
-    public void initializeMetaTypeObject() {
-        getMTManager().setMetaObject(this);
-        this.loadMetaItem();
-    }
-
     public abstract Class<? extends ItemBlock> getItemBlockClass();
 
     /**
