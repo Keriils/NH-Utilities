@@ -12,6 +12,7 @@ import gregtech.api.metatileentity.BaseMetaTileEntity;
 import gregtech.api.metatileentity.implementations.MTEBasicMachine;
 import gregtech.api.metatileentity.implementations.MTEMultiBlockBase;
 import gregtech.common.tileentities.machines.multi.MTEPrimitiveBlastFurnace;
+import tectech.thing.metaTileEntity.multi.MTEResearchStation;
 
 @Mixin(BaseMetaTileEntity.class)
 public abstract class BaseMetaTileEntityAcceleration_Mixin implements ITileEntityTickAcceleration {
@@ -34,15 +35,20 @@ public abstract class BaseMetaTileEntityAcceleration_Mixin implements ITileEntit
             // safely calling
             int currentProgress = this.getProgress();
             int maxProgress = this.getMaxProgress();
+            IMetaTileEntity metaTileEntity = this.getMetaTileEntity();
+
+            // for accelerating Research Station
+            if (metaTileEntity instanceof MTEResearchStation researchStation) {
+                if (researchStation instanceof ITileEntityTickAcceleration resAte) {
+                    resAte.tickAcceleration(tickAcceleratedRate);
+                }
+                return true;
+            }
 
             if (maxProgress >= 2) { // obviously
-                tickAcceleratedRate = (int) (tickAcceleratedRate * accelerateGregTechMachineDiscount); // discount for
-                                                                                                       // accelerating
-                                                                                                       // gregtech
-                                                                                                       // machines
+                // discount for accelerating gregtech machines
+                tickAcceleratedRate = (int) (tickAcceleratedRate * accelerateGregTechMachineDiscount);
                 int NHUtilities$modify = Math.min(maxProgress, currentProgress + tickAcceleratedRate);
-
-                IMetaTileEntity metaTileEntity = this.getMetaTileEntity();
 
                 // for accelerating basic machine
                 if (metaTileEntity instanceof MTEBasicMachine basicMachine) {
