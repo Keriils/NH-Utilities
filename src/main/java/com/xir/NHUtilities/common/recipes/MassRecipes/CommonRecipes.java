@@ -3,6 +3,7 @@ package com.xir.NHUtilities.common.recipes.MassRecipes;
 import static com.xir.NHUtilities.config.Config.enableEternityVial;
 import static com.xir.NHUtilities.config.Config.enableGluttonyRingAndHungerRing;
 import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
+import static com.xir.NHUtilities.config.Config.enableSimpleTimeVialRecipe;
 import static com.xir.NHUtilities.config.Config.enableTimeVial;
 
 import net.minecraft.init.Blocks;
@@ -64,7 +65,7 @@ public class CommonRecipes {
                 NHUItemList.TimeVial.get(1));
         }
 
-        if (enableTimeVial && enableEternityVial) {
+        if (enableTimeVial && enableEternityVial && enableSimpleTimeVialRecipe) {
             GameRegistry.addShapedRecipe(
                 NHUItemList.EternityVial.get(1),
                 "SSS",
@@ -75,6 +76,7 @@ public class CommonRecipes {
                 'S',
                 EternalSingularityItem.instance);
         }
+
         if (enableLunchBoxPlus) {
             GameRegistry.addShapedRecipe(
                 NHUItemList.LunchBoxPlus.get(1),
