@@ -3,7 +3,7 @@ package com.xir.NHUtilities.main;
 import static com.xir.NHUtilities.main.NHUtilities.LOG;
 import static com.xir.NHUtilities.main.ReferencedInfo.MOD_NAME;
 
-import com.xir.NHUtilities.common.recipes.GTRecipes.GTRecipes;
+import com.xir.NHUtilities.common.recipes.MassRecipes.NHURecipes;
 import com.xir.NHUtilities.common.research.GTApiResearch;
 import com.xir.NHUtilities.loader.EntityLoader;
 import com.xir.NHUtilities.loader.EventLoader;
@@ -30,14 +30,14 @@ public class CommonProxy {
         EventLoader.initNHUtilitiesEvents();
         LOG.info("Loaded Events.");
 
-        MachineLoader.initNHUtilitiesMachine();
-        LOG.info("Loaded GregTechMachines.");
-
     }
 
     public void init(FMLInitializationEvent event) {
 
         LOG.info("Initializing " + MOD_NAME + "!");
+
+        MachineLoader.initNHUtilitiesMachine();
+        LOG.info("Loaded GregTechMachines.");
 
         RecipeLoader.initNHUtilitiesRecipes();
         LOG.info("Loaded Recipes.");
@@ -54,7 +54,7 @@ public class CommonProxy {
         ResearchLoader.initNHUtilitiesResearch();
         LOG.info("Loaded Researches");
 
-        GTRecipes.initNHUtilitiesGTRecipe();
+        NHURecipes.initNHURecipeCrossMod();
         LOG.info("Loaded NHUtilities GTRecipes");
 
         GTApiResearch.addGTApiResearchAndRecipes();

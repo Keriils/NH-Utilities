@@ -1,6 +1,7 @@
 package com.xir.NHUtilities.common.api;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import net.minecraft.util.IIcon;
@@ -38,7 +39,7 @@ public class MetaTypeManager {
      * <li>Used to manage extra group folders for a series of items or blocks of the same type.
      */
     private final Map<Integer, String> groupFoldersMap = CommonUtil.isClientSide() ? new HashMap<>() : null;
-    private final Map<Integer, String> nameMap = new HashMap<>();
+    private final Map<Integer, String> nameMap = new LinkedHashMap<>();
     private final Map<Integer, String[]> tooltipsMap = new HashMap<>();
 
     private MetaTypeManager() {}

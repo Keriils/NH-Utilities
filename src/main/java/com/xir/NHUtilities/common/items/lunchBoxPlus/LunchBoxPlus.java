@@ -1,7 +1,6 @@
 package com.xir.NHUtilities.common.items.lunchBoxPlus;
 
-import net.minecraft.creativetab.CreativeTabs;
-
+import com.xir.NHUtilities.common.api.NHUCreativeTabs;
 import com.xir.NHUtilities.common.api.interfaces.IRegisterProvider;
 
 import squeek.spiceoflife.inventory.NBTInventory;
@@ -16,9 +15,9 @@ public class LunchBoxPlus extends ItemFoodContainer implements IRegisterProvider
         super(LUNCH_BOX_PLUS, LUNCH_BOX_PLUS_SLOT_NUM);
 
         setTextureName("nhutilities:" + this.itemName);
-        setUnlocalizedName("NHUtilities:" + this.itemName);
+        setUnlocalizedName(this.itemName);
 
-        setCreativeTab(CreativeTabs.tabMisc);
+        setCreativeTab(NHUCreativeTabs.NHUCreativeTab);
 
     }
 

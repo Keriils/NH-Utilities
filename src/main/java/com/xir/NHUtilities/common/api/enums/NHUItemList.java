@@ -21,6 +21,39 @@ public enum NHUItemList implements IItemContainer {
     MetaBlock,
     // endregion
 
+    // region Material Mass
+    ChaosDraconiumEgg,
+    AncientDraconiumEgg,
+    TestItem,
+    TestItem2,
+    MetaDust1,
+    MetaDust2,
+    MetaDust3,
+    MetaDust4,
+    PlateCrystal1,
+    PlateCrystal2,
+    PlateCrystal3,
+    PlateCrystal4,
+    PlateCrystal5,
+    PlateCrystal6,
+    PlateCrystal7,
+    PlateCrystal8,
+    PlateCrystal9,
+    PlateCrystal1_Hot,
+    PlateCrystal2_Hot,
+    PlateCrystal3_Hot,
+    PlateCrystal4_Hot,
+    PlateCrystal5_Hot,
+    PlateCrystal6_Hot,
+    PlateCrystal7_Hot,
+    PlateCrystal8_Hot,
+    PlateCrystal9_Hot,
+    // endregion
+
+    // region Material Block
+    EggMachineBlock,
+    // endregion
+
     // region Common Item
     TimeVial,
     EternityVial,

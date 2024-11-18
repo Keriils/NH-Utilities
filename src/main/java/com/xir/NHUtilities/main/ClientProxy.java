@@ -8,6 +8,7 @@ import net.minecraftforge.client.MinecraftForgeClient;
 
 import com.xir.NHUtilities.client.key.KeyBindings;
 import com.xir.NHUtilities.client.key.KeyInputHandler;
+import com.xir.NHUtilities.client.render.MetaAbleCosmicItemRenderer;
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.loader.RenderLoader;
 
@@ -30,10 +31,11 @@ public class ClientProxy extends CommonProxy {
             KeyBindings.init();
         }
 
+        CosmicItemRenderer cosmic = new MetaAbleCosmicItemRenderer();
         if (enableEternityVialCosmicRender) {
-            CosmicItemRenderer cosmic = new CosmicItemRenderer();
             MinecraftForgeClient.registerItemRenderer(NHUItemList.EternityVial.getItem(), cosmic);
         }
+        MinecraftForgeClient.registerItemRenderer(NHUItemList.MetaItem.getItem(), cosmic);
 
         if (enableTimeVial) {
             RenderLoader.registerNHUtilitiesEntityRendering();
