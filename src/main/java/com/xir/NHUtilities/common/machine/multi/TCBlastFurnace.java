@@ -171,10 +171,11 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
                 StatCollector.translateToLocal("nhu.tcebf.machine.info_5") + ":"
                     + EnumChatFormatting.AQUA
                     + "100/⌈105+15*fire(cv)*order(cv)/(fire(cv)*order(cv)+13.5)⌉")
+            .addInfo(StatCollector.translateToLocal("nhu.tcebf.machine.info_6"))
             .addInfo(
                 "" + EnumChatFormatting.ITALIC
                     + EnumChatFormatting.DARK_PURPLE
-                    + StatCollector.translateToLocal("nhu.tcebf.machine.info_6"))
+                    + StatCollector.translateToLocal("nhu.tcebf.machine.info_7"))
             .addPollutionAmount(getPollutionPerSecond(null))
             .addSeparator()
             .beginStructureBlock(3, 4, 3, true)
