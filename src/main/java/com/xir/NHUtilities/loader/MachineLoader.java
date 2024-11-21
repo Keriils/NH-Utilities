@@ -24,12 +24,15 @@ import static com.xir.NHUtilities.common.api.enums.NHUItemList.Egg_Machine_UV;
 import static com.xir.NHUtilities.common.api.enums.NHUItemList.Egg_Machine_UXV;
 import static com.xir.NHUtilities.common.api.enums.NHUItemList.Egg_Machine_ZPM;
 import static com.xir.NHUtilities.common.api.enums.NHUItemList.TCBlastFurnace;
+import static com.xir.NHUtilities.common.api.enums.NHUItemList.TestMachine;
+import static com.xir.NHUtilities.main.ReferencedInfo.isDevEnvironment;
 import static net.minecraft.util.StatCollector.translateToLocal;
 
 import org.jetbrains.annotations.NotNull;
 
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.common.machine.multi.TCBlastFurnace;
+import com.xir.NHUtilities.common.machine.multi.TestMachine;
 import com.xir.NHUtilities.common.machine.single.MTEMagicalEggMachine;
 
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -41,6 +44,8 @@ public class MachineLoader {
     }
 
     public static void initNHUtilitiesMachine() {
+
+        if (isDevEnvironment) registerMTE(TestMachine, new TestMachine(24999, "TestMachine", "TestMachine"));
 
         registerMTE(TCBlastFurnace, new TCBlastFurnace(TC_BLAST_FURNACE.ID, translateToLocal("nhu.tcebf.machine")));
         registerMTE(

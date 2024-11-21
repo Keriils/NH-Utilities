@@ -1,15 +1,22 @@
 package com.xir.NHUtilities.common.machine.multi.MTEcore;
 
+import static com.xir.NHUtilities.utils.CommonUtil.trans;
+
+import java.util.Collection;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import org.jetbrains.annotations.ApiStatus;
+import org.jetbrains.annotations.NotNull;
 
 import com.gtnewhorizon.structurelib.alignment.constructable.IConstructable;
 import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructable;
+import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizons.modularui.api.drawable.UITexture;
 import com.gtnewhorizons.modularui.api.math.Pos2d;
 
@@ -19,6 +26,7 @@ import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.logic.ProcessingLogic;
 import gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBase;
 import gregtech.api.recipe.RecipeMap;
+import gregtech.api.recipe.check.CheckRecipeResult;
 
 public abstract class NHU_MTEBase<T extends NHU_MTEBase<T>> extends MTEExtendedPowerMultiBlockBase<T>
     implements IConstructable, ISurvivalConstructable {
@@ -37,8 +45,51 @@ public abstract class NHU_MTEBase<T extends NHU_MTEBase<T>> extends MTEExtendedP
     @Override
     @ApiStatus.OverrideOnly
     protected ProcessingLogic createProcessingLogic() {
-        return null;
+        return new ProcessingLogic().setOverclock(isEnablePerfectOverclock() ? 4.0d : 2.0d, 4.0d)
+            .setSpeedBonus(getSpeedBonus())
+            .setEuModifier(getEuModifier())
+            .setMaxParallelSupplier(this::getMaxParallel);
     }
+
+    @NotNull
+    @Override
+    public CheckRecipeResult checkProcessing() {
+        return super.checkProcessing();
+    }
+
+    @NotNull
+    @Override
+    protected CheckRecipeResult doCheckRecipe() {
+        return super.doCheckRecipe();
+    }
+
+    @Override
+    protected void setupProcessingLogic(ProcessingLogic logic) {
+        super.setupProcessingLogic(logic);
+        logic.setEuModifier(getEuModifier());
+        logic.setSpeedBonus(getSpeedBonus());
+    }
+
+    @ApiStatus.OverrideOnly
+    protected abstract boolean isEnablePerfectOverclock();
+
+    /**
+     * This method is called on each recipe process, to get the eu modifier dynamically.
+     */
+    @ApiStatus.OverrideOnly
+    protected abstract double getEuModifier();
+
+    /**
+     * This method is called on each recipe process, to get the speed bonus dynamically.
+     */
+    @ApiStatus.OverrideOnly
+    protected abstract double getSpeedBonus();
+
+    /**
+     * This method is called to get the max parallel dynamically.
+     */
+    @ApiStatus.OverrideOnly
+    protected abstract int getMaxParallel();
 
     @Override
     @ApiStatus.OverrideOnly
@@ -46,19 +97,20 @@ public abstract class NHU_MTEBase<T extends NHU_MTEBase<T>> extends MTEExtendedP
         return null;
     }
 
+    @NotNull
+    @Override
+    public Collection<RecipeMap<?>> getAvailableRecipeMaps() {
+        return super.getAvailableRecipeMaps();
+    }
+
+    @Override
+    public int getRecipeCatalystPriority() {
+        return super.getRecipeCatalystPriority();
+    }
+
     @Override
     protected void setProcessingLogicPower(ProcessingLogic logic) {
         super.setProcessingLogicPower(logic);
-    }
-
-    @Override
-    protected void setEnergyUsage(ProcessingLogic processingLogic) {
-        super.setEnergyUsage(processingLogic);
-    }
-
-    @Override
-    protected void setupProcessingLogic(ProcessingLogic logic) {
-        super.setupProcessingLogic(logic);
     }
 
     @Override
@@ -90,13 +142,22 @@ public abstract class NHU_MTEBase<T extends NHU_MTEBase<T>> extends MTEExtendedP
     protected void runMachine(IGregTechTileEntity aBaseMetaTileEntity, long aTick) {
         super.runMachine(aBaseMetaTileEntity, aTick);
     }
+
+    @Override
+    public boolean addToMachineList(IGregTechTileEntity aTileEntity, int aBaseCasingIndex) {
+        return super.addToMachineList(aTileEntity, aBaseCasingIndex);
+    }
+
+    public boolean addToMachineListWithExoticEnergy(IGregTechTileEntity aTileEntity, int aBaseCasingIndex) {
+        return this.addToMachineList(aTileEntity, aBaseCasingIndex)
+            || addExoticEnergyInputToMachineList(aTileEntity, aBaseCasingIndex);
+    }
     // endregion
 
     // region Common Setting
-
     @Override
     protected boolean canUseControllerSlotForRecipe() {
-        return false;
+        return super.canUseControllerSlotForRecipe();
     }
 
     @Override
@@ -137,6 +198,38 @@ public abstract class NHU_MTEBase<T extends NHU_MTEBase<T>> extends MTEExtendedP
     public void saveNBTData(NBTTagCompound aNBT) {
         super.saveNBTData(aNBT);
     }
+
+    @Override
+    public String[] getInfoData() {
+
+        var euModify = String.format("%.3f", this.getEuModifier() * 100) + "%";
+        var speedBonus = String.format("%.3f", this.getSpeedBonus() * 100) + "%";
+
+        String[] rawInfo = super.getInfoData();
+        String[] reInfo = new String[rawInfo.length + 3];
+        System.arraycopy(rawInfo, 0, reInfo, 0, rawInfo.length);
+
+        reInfo[rawInfo.length + 2] = EnumChatFormatting.AQUA + trans("Machine.InfoData.EuModifier")
+            + ": "
+            + EnumChatFormatting.GOLD
+            + euModify;
+        reInfo[rawInfo.length + 1] = EnumChatFormatting.AQUA + trans("Machine.InfoData.SpeedMultiplier")
+            + ": "
+            + EnumChatFormatting.GOLD
+            + speedBonus;
+        reInfo[rawInfo.length] = EnumChatFormatting.AQUA + trans("Machine.InfoData.Parallel")
+            + ": "
+            + EnumChatFormatting.GOLD
+            + getMaxParallel();
+        return reInfo;
+
+    }
+
+    @Override
+    public abstract void construct(ItemStack stackSize, boolean hintsOnly);
+
+    @Override
+    public abstract int survivalConstruct(ItemStack stackSize, int elementBudget, ISurvivalBuildEnvironment env);
     // endregion
 
     // region Standardize the setting of machine mode
@@ -283,6 +376,17 @@ public abstract class NHU_MTEBase<T extends NHU_MTEBase<T>> extends MTEExtendedP
     @Override
     public void onRandomDisplayTick(IGregTechTileEntity aBaseMetaTileEntity) {
         super.onRandomDisplayTick(aBaseMetaTileEntity);
+    }
+
+    // for Custom Texture in different condition
+    @Override
+    public void onValueUpdate(byte aValue) {
+        super.onValueUpdate(aValue);
+    }
+
+    @Override
+    public byte getUpdateData() {
+        return super.getUpdateData();
     }
     // endregion
 }

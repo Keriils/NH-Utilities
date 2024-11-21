@@ -39,6 +39,7 @@ import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructa
 import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
 import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
+import com.xir.NHUtilities.common.api.enums.NHUTextEnum;
 
 import gregtech.GT_Mod;
 import gregtech.api.GregTech_API;
@@ -193,6 +194,7 @@ public class TCBlastFurnace extends GT_MetaTileEntity_AbstractMultiFurnace<TCBla
             .addOutputHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_10"))
             .addOutputHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_11"), 1)
             .addStructureInfo(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_12"))
+            .addInfo(NHUTextEnum.Author_Tc_traveler.getText())
             .toolTipFinisher(MOD_NAME);
         return tt;
     }
