@@ -7,6 +7,7 @@ itemGroup.metaBlock=NHU方块
 
 # Tooltips For NHU Logotype
 nhu.logotype.gt.logo=§6由 §dNH Utilities §6添加
+nhu.author.prefix=§6作者:
 
 #Error
 nhutilities.null.name=§cError
@@ -186,6 +187,11 @@ nhu.tooltips.eggMachine.info12=§b- 普通龙芯: 4x
 nhu.tooltips.eggMachine.info13=§b- 双足龙芯: 8x
 nhu.tooltips.eggMachine.info14=§b- 觉醒龙芯: 16x
 nhu.tooltips.eggMachine.info15=§b- 混沌龙芯: 32x
+
+# Machine InfoData
+Machine.InfoData.EuModifier=耗电倍率
+Machine.InfoData.SpeedMultiplier=耗时倍率
+Machine.InfoData.Parallel=最大并行
 
 # Chat In Game
 chat.nhutilities.1=好像无事发生...

@@ -92,6 +92,7 @@ public enum NHUItemList implements IItemContainer {
     // endregion
 
     // region Machines
+    TestMachine,
     TCBlastFurnace,
     Egg_Machine_EV,
     Egg_Machine_IV,
