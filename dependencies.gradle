@@ -29,7 +29,6 @@ dependencies {
     runtimeOnlyNonPublishable("com.github.GTNewHorizons:ServerUtilities:2.0.66:dev")
     runtimeOnlyNonPublishable files("libs/ForgeNBTEdit.jar")
     runtimeOnlyNonPublishable files("libs/inventorytweaks-1.7.0-dev.jar")
-    runtimeOnlyNonPublishable("com.github.GTNewHorizons:BlockRenderer6343:1.2.14:dev") { transitive = false }
 
     // Thaumcraft things
     implementation('com.github.GTNewHorizons:ThaumicTinkerer:2.9.4:dev')
