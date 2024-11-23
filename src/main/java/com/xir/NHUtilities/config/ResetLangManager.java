@@ -3,6 +3,7 @@ package com.xir.NHUtilities.config;
 import static com.xir.NHUtilities.config.Config.ConfigLog;
 import static com.xir.NHUtilities.config.Config.cfgDirPath;
 import static com.xir.NHUtilities.config.Config.minecraftHome;
+import static com.xir.NHUtilities.main.ReferencedInfo.isDevEnvironment;
 
 import java.io.File;
 import java.io.FileReader;
@@ -55,7 +56,7 @@ public class ResetLangManager {
 
     public static void checkInit(String[] listeningMods) throws IOException {
 
-        if (!sourceLang_CN.exists() || !sourceLang_US.exists()) {
+        if (!sourceLang_CN.exists()) {
             ConfigLog.warn("lang files not found");
             return;
         }
@@ -64,6 +65,13 @@ public class ResetLangManager {
         // generate file
         if (!LangManagerFile.exists()) {
             ConfigLog.info("Need to create a manager file");
+            toResetLang(loadedMods);
+            return;
+        }
+
+        // in dev environment always to reset lang files
+        if (isDevEnvironment) {
+            ConfigLog.info("Current in dev env, always to reset lang files.");
             toResetLang(loadedMods);
             return;
         }

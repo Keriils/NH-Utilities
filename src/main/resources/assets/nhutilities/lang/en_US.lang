@@ -7,6 +7,7 @@ itemGroup.metaBlock=NHU Block
 
 # Tooltips For NHU Logotype
 nhu.logotype.gt.logo=§6Added by §dNH Utilities
+nhu.author.prefix=§6Author:
 
 #Error
 nhutilities.null.name=§cError
@@ -187,6 +188,11 @@ nhu.tooltips.eggMachine.info12=§b- Dragon Core: 4x
 nhu.tooltips.eggMachine.info13=§b- Wyvern Core: 8x
 nhu.tooltips.eggMachine.info14=§b- Awakened Dragon Core: 16x
 nhu.tooltips.eggMachine.info15=§b- Chaos Dragon Core: 32x
+
+# Machine InfoData
+Machine.InfoData.EuModifier=Eu Modifier
+Machine.InfoData.SpeedMultiplier=Speed Multiplier
+Machine.InfoData.Parallel=Parallel
 
 # Chat In Game
 chat.nhutilities.1=It seems like nothing happened...

@@ -2,6 +2,7 @@ package com.xir.NHUtilities.utils;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 
@@ -9,6 +10,10 @@ import cpw.mods.fml.common.FMLCommonHandler;
 public class CommonUtil {
 
     private CommonUtil() {}
+
+    public static String trans(String langKey) {
+        return StatCollector.translateToLocal(langKey);
+    }
 
     public static ItemStack copyAmount(int aAmount, Item aItem) {
         return copyAmount(aAmount, new ItemStack(aItem, 1, 0));
