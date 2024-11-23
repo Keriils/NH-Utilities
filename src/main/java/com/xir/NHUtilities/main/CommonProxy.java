@@ -3,6 +3,7 @@ package com.xir.NHUtilities.main;
 import static com.xir.NHUtilities.main.NHUtilities.LOG;
 import static com.xir.NHUtilities.main.ReferencedInfo.MOD_NAME;
 
+import com.xir.NHUtilities.common.api.enums.TexturesSets;
 import com.xir.NHUtilities.common.recipes.MassRecipes.NHURecipes;
 import com.xir.NHUtilities.common.research.GTApiResearch;
 import com.xir.NHUtilities.loader.EntityLoader;
@@ -29,6 +30,8 @@ public class CommonProxy {
 
         EventLoader.initNHUtilitiesEvents();
         LOG.info("Loaded Events.");
+
+        TexturesSets.init();
 
     }
 

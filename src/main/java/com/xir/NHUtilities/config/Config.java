@@ -18,7 +18,9 @@ public class Config {
 
     // region register massItems key !!!
     public static int metaIdOffset = 0;
+    public static int wirelessHatchMetaIdOffset = 0;
     public static boolean enableGluttonyRingAndHungerRing = true;
+    public static boolean enableWirelessHatchMore = true;
     // endregion
 
     // region TimeVial
@@ -48,6 +50,7 @@ public class Config {
     public static boolean disableDollyDebuff = true;
     public static boolean enableLunchBoxPlus = true;
     public static boolean enableSimpleTimeVialRecipe = false;
+    public static boolean enableModifyWirelessHatchTexture = true;
     public static String[] listeningMods = new String[] { "NHUtilities", "TwistSpaceTechnology", "boxplusplus",
         "programmablehatches" };
     // endregion
@@ -185,11 +188,28 @@ public class Config {
                 .getBoolean("disableDollyDebuff", CATEGORY_MIXIN_CONFIG, disableDollyDebuff, "disable Dolly Debuff");
             metaIdOffset = configuration
                 .getInt("metaIdOffset", CATEGORY_MASS, metaIdOffset, -5000, 5000, "An offset of meta id for machines");
+            wirelessHatchMetaIdOffset = configuration.getInt(
+                "wirelessHatchMetaIdOffset",
+                CATEGORY_MASS,
+                wirelessHatchMetaIdOffset,
+                -5000,
+                5000,
+                "An offset of meta id for wireless hatch more obj");
             enableSimpleTimeVialRecipe = configuration.getBoolean(
                 "enableSimpleTimeVialRecipe",
                 CATEGORY_TIME_VIAL,
                 enableSimpleTimeVialRecipe,
                 "enable Simple Time Vial Recipe");
+            enableWirelessHatchMore = configuration.getBoolean(
+                "enableWirelessHatchMore",
+                CATEGORY_MASS,
+                enableWirelessHatchMore,
+                "enable More Wireless Hatch");
+            enableModifyWirelessHatchTexture = configuration.getBoolean(
+                "enableModifyWirelessHatchTexture",
+                CATEGORY_MIXIN_CONFIG,
+                enableModifyWirelessHatchTexture,
+                "Modify To New Wireless Hatch Texture");
         }
 
         try {

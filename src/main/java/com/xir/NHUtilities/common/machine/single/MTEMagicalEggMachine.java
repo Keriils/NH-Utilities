@@ -81,7 +81,7 @@ public class MTEMagicalEggMachine extends GT_MetaTileEntity_BasicGenerator {
         isPlaced = true;
     }
 
-    public MTEMagicalEggMachine(String aName, int aTier, String[] aDescription, ITexture[][][] aTextures) {
+    protected MTEMagicalEggMachine(String aName, int aTier, String[] aDescription, ITexture[][][] aTextures) {
         super(aName, aTier, aDescription, aTextures);
         if (GT.isClientSide()) newTexture = mTextures;
         currentTier = (byte) aTier;

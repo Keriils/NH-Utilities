@@ -25,6 +25,8 @@ public final class ReferencedInfo {
 
     public static final String MOD_NAME_LOWER = "nh utilities";
 
+    public static final String RESOURCE_PATH = MOD_ID_LOWER + ":";
+
     // For Mod dependencies
     public static final String DEPENDENCIES = " after:gregtech;" + " after:Avaritia;"
         + " after:DraconicEvolution;"
