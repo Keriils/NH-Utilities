@@ -9,7 +9,7 @@ import gregtech.api.interfaces.ITexture;
 import tectech.thing.metaTileEntity.hatch.MTEHatchEnergyMulti;
 import tectech.thing.metaTileEntity.hatch.MTEHatchWirelessMulti;
 
-@Mixin(value = MTEHatchWirelessMulti.class,remap = false)
+@Mixin(value = MTEHatchWirelessMulti.class, remap = false)
 public abstract class MTEHatchWirelessTexture_Mixin extends MTEHatchEnergyMulti {
 
     // no use
