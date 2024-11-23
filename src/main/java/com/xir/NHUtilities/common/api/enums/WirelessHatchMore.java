@@ -13,7 +13,7 @@ import com.xir.NHUtilities.common.api.interfaces.IRegisterProvider;
 import com.xir.NHUtilities.utils.CommonUtil;
 import com.xir.NHUtilities.utils.RegisterUtil;
 
-import gregtech.api.util.GTLog;
+import gregtech.api.util.GT_Log;
 
 @SuppressWarnings({ "unused", "UnusedReturnValue" })
 public enum WirelessHatchMore implements IItemContainer {
@@ -176,8 +176,8 @@ public enum WirelessHatchMore implements IItemContainer {
     public ItemStack get(int aAmount) {
         sanityCheck();
         if (CommonUtil.isStackInvalid(mStack)) {
-            GTLog.out.println("Object in the ItemList is null at:");
-            new NullPointerException().printStackTrace(GTLog.out);
+            GT_Log.out.println("Object in the ItemList is null at:");
+            new NullPointerException().printStackTrace(GT_Log.out);
             return new ItemStack(Blocks.fire);
         }
         return CommonUtil.copyAmount(aAmount, mStack);
@@ -238,7 +238,7 @@ public enum WirelessHatchMore implements IItemContainer {
         if (mHasNotBeenSet)
             throw new IllegalAccessError("The Enum '" + name() + "' has not been set to an Item at this time!");
         if (mDeprecated && !mWarned) {
-            new Exception(this + " is now deprecated").printStackTrace(GTLog.err);
+            new Exception(this + " is now deprecated").printStackTrace(GT_Log.err);
             mWarned = true;
         }
     }

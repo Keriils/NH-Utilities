@@ -27,7 +27,7 @@ import static com.xir.NHUtilities.common.api.enums.NHUItemList.TCBlastFurnace;
 import static com.xir.NHUtilities.common.api.enums.NHUItemList.TestMachine;
 import static com.xir.NHUtilities.main.ReferencedInfo.isDevEnvironment;
 import static com.xir.NHUtilities.utils.CommonUtil.trans;
-import static gregtech.api.enums.GTValues.VN;
+import static gregtech.api.enums.GT_Values.VN;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -40,7 +40,7 @@ import com.xir.NHUtilities.common.machine.multi.TestMachine;
 import com.xir.NHUtilities.common.machine.single.MTEMagicalEggMachine;
 
 import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.util.GTUtility;
+import gregtech.api.util.GT_Utility;
 
 public class MachineLoader {
 
@@ -98,7 +98,7 @@ public class MachineLoader {
 
     private static @NotNull String getCN(WirelessHatchMore value, String str) {
         var isCN = trans("Lang.helper.local.lang").equals("zh_CN");
-        if (isCN) return String.format(str, GTUtility.formatNumbers(value.aAmperes), VN[value.aTier]);
-        return String.format(str, VN[value.aTier], GTUtility.formatNumbers(value.aAmperes));
+        if (isCN) return String.format(str, GT_Utility.formatNumbers(value.aAmperes), VN[value.aTier]);
+        return String.format(str, VN[value.aTier], GT_Utility.formatNumbers(value.aAmperes));
     }
 }

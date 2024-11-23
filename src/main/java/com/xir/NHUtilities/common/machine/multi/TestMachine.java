@@ -1,15 +1,15 @@
 package com.xir.NHUtilities.common.machine.multi;
 
+import static com.github.technus.tectech.thing.casing.TT_Container_Casings.sBlockCasingsTT;
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.ofBlock;
 import static com.xir.NHUtilities.main.ReferencedInfo.MOD_NAME;
-import static gregtech.api.enums.HatchElement.Energy;
-import static gregtech.api.enums.HatchElement.ExoticEnergy;
-import static gregtech.api.enums.HatchElement.InputBus;
-import static gregtech.api.enums.HatchElement.InputHatch;
-import static gregtech.api.enums.HatchElement.OutputBus;
-import static gregtech.api.enums.HatchElement.OutputHatch;
-import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
-import static tectech.thing.casing.TTCasingsContainer.sBlockCasingsTT;
+import static gregtech.api.enums.GT_HatchElement.Energy;
+import static gregtech.api.enums.GT_HatchElement.ExoticEnergy;
+import static gregtech.api.enums.GT_HatchElement.InputBus;
+import static gregtech.api.enums.GT_HatchElement.InputHatch;
+import static gregtech.api.enums.GT_HatchElement.OutputBus;
+import static gregtech.api.enums.GT_HatchElement.OutputHatch;
+import static gregtech.api.util.GT_StructureUtility.buildHatchAdder;
 
 import java.util.Collection;
 
@@ -18,6 +18,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.github.technus.tectech.thing.casing.GT_Block_CasingsTT;
+import com.github.technus.tectech.thing.metaTileEntity.multi.base.render.TT_RenderedExtendedFacingTexture;
 import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
 import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
@@ -32,9 +34,7 @@ import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.logic.ProcessingLogic;
 import gregtech.api.recipe.RecipeMap;
 import gregtech.api.recipe.RecipeMaps;
-import gregtech.api.util.MultiblockTooltipBuilder;
-import tectech.thing.casing.BlockGTCasingsTT;
-import tectech.thing.metaTileEntity.multi.base.render.TTRenderedExtendedFacingTexture;
+import gregtech.api.util.GT_Multiblock_Tooltip_Builder;
 
 @SuppressWarnings("unused")
 public class TestMachine extends NHU_MTEBase<TestMachine> {
@@ -69,13 +69,13 @@ public class TestMachine extends NHU_MTEBase<TestMachine> {
     }
 
     @Override
-    protected double getEuModifier() {
-        return 1.0D;
+    protected float getEuModifier() {
+        return 1.0F;
     }
 
     @Override
-    protected double getSpeedBonus() {
-        return 1.0D;
+    protected float getSpeedBonus() {
+        return 1.0F;
     }
 
     @Override
@@ -106,10 +106,12 @@ public class TestMachine extends NHU_MTEBase<TestMachine> {
     }
 
     @Override
-    protected MultiblockTooltipBuilder createTooltip() {
-        return new MultiblockTooltipBuilder().addMachineType("Test")
+    protected GT_Multiblock_Tooltip_Builder createTooltip() {
+        var tt = new GT_Multiblock_Tooltip_Builder();
+        tt.addMachineType("Test")
             .addInfo(NHUTextEnum.Author_Keriils.getText())
             .toolTipFinisher(MOD_NAME);
+        return tt;
     }
     // endregion
 
@@ -118,10 +120,10 @@ public class TestMachine extends NHU_MTEBase<TestMachine> {
     public ITexture[] getTexture(IGregTechTileEntity baseMetaTileEntity, ForgeDirection side, ForgeDirection facing,
         int aColorIndex, boolean aActive, boolean aRedStoneLevel) {
         if (side == facing) {
-            return new ITexture[] { Textures.BlockIcons.casingTexturePages[BlockGTCasingsTT.texturePage][3],
-                new TTRenderedExtendedFacingTexture(aActive ? ScreenON : ScreenOFF) };
+            return new ITexture[] { Textures.BlockIcons.casingTexturePages[GT_Block_CasingsTT.texturePage][3],
+                new TT_RenderedExtendedFacingTexture(aActive ? ScreenON : ScreenOFF) };
         }
-        return new ITexture[] { Textures.BlockIcons.casingTexturePages[BlockGTCasingsTT.texturePage][3] };
+        return new ITexture[] { Textures.BlockIcons.casingTexturePages[GT_Block_CasingsTT.texturePage][3] };
     }
     // endregion
 
@@ -136,7 +138,7 @@ public class TestMachine extends NHU_MTEBase<TestMachine> {
                     .atLeast(InputHatch, OutputHatch, InputBus, OutputBus, Energy.or(ExoticEnergy))
                     .adder(TestMachine::addToMachineListWithExoticEnergy)
                     .dot(1)
-                    .casingIndex(BlockGTCasingsTT.textureOffset + 1)
+                    .casingIndex(GT_Block_CasingsTT.textureOffset + 1)
                     .buildAndChain(ofBlock(sBlockCasingsTT, 1)))
             .addElement('B', ofBlock(sBlockCasingsTT, 2))
             .addElement('C', ofBlock(sBlockCasingsTT, 3))

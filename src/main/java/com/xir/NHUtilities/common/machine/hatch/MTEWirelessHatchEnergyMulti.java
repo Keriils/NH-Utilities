@@ -1,18 +1,19 @@
 package com.xir.NHUtilities.common.machine.hatch;
 
 import static com.xir.NHUtilities.common.api.enums.TexturesSets.getWirelessTex;
-import static com.xir.NHUtilities.utils.CommonUtil.trans;
-import static gregtech.api.enums.GTValues.V;
-import static gregtech.api.util.GTUtility.formatNumbers;
+import static gregtech.api.enums.GT_Values.V;
+import static gregtech.api.util.GT_Utility.formatNumbers;
 
 import net.minecraft.util.EnumChatFormatting;
+
+import com.github.technus.tectech.thing.metaTileEntity.hatch.GT_MetaTileEntity_Hatch_WirelessMulti;
+import com.xir.NHUtilities.utils.CommonUtil;
 
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
-import tectech.thing.metaTileEntity.hatch.MTEHatchWirelessMulti;
 
-public class MTEWirelessHatchEnergyMulti extends MTEHatchWirelessMulti {
+public class MTEWirelessHatchEnergyMulti extends GT_MetaTileEntity_Hatch_WirelessMulti {
 
     public MTEWirelessHatchEnergyMulti(int aID, String aName, String aNameRegional, int aTier, int aAmp) {
         super(aID, aName, aNameRegional, aTier, aAmp);
@@ -40,9 +41,10 @@ public class MTEWirelessHatchEnergyMulti extends MTEHatchWirelessMulti {
 
     @Override
     public String[] getDescription() {
-        return new String[] { EnumChatFormatting.GRAY + trans("Hatch.InfoData.desc.wireless.1"),
-            EnumChatFormatting.GRAY + trans("Hatch.InfoData.desc.wireless.2"), trans("nhu.logotype.gt.logo"),
-            EnumChatFormatting.GRAY + trans("Hatch.InfoData.desc.wireless.3")
+        return new String[] { EnumChatFormatting.GRAY + CommonUtil.trans("Hatch.InfoData.desc.wireless.1"),
+            EnumChatFormatting.GRAY + CommonUtil.trans("Hatch.InfoData.desc.wireless.2"),
+            CommonUtil.trans("nhu.logotype.gt.logo"),
+            EnumChatFormatting.GRAY + CommonUtil.trans("Hatch.InfoData.desc.wireless.3")
                 + EnumChatFormatting.YELLOW
                 + formatNumbers(Amperes * V[mTier])
                 + EnumChatFormatting.RESET

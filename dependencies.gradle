@@ -17,18 +17,19 @@ dependencies {
     implementation("com.github.GTNewHorizons:Universal-Singularities:8.7.0:dev")
 
     // worldedit modified
-    implementation("com.github.GTNewHorizons:worldedit-gtnh:v0.0.7:dev")
+    implementation("com.github.GTNewHorizons:worldedit-gtnh:v0.0.7:dev") { transitive = false }
 
     // lunch box plus
     implementation("com.github.GTNewHorizons:SpiceOfLife:2.1.12-carrot:dev")
 
     // jabba
-    implementation("com.github.GTNewHorizons:Jabba:1.3.5:dev")
+    implementation("com.github.GTNewHorizons:Jabba:1.3.5:dev") { transitive = false }
 
     // debug info & nbtEdit
-    runtimeOnly("com.github.GTNewHorizons:ServerUtilities:2.0.66:dev")
-    runtimeOnly files("libs/ForgeNBTEdit.jar")
-    runtimeOnly files("libs/inventorytweaks-1.7.0-dev.jar")
+    runtimeOnlyNonPublishable("com.github.GTNewHorizons:ServerUtilities:2.0.66:dev")
+    runtimeOnlyNonPublishable files("libs/ForgeNBTEdit.jar")
+    runtimeOnlyNonPublishable files("libs/inventorytweaks-1.7.0-dev.jar")
+    runtimeOnlyNonPublishable("com.github.GTNewHorizons:BlockRenderer6343:1.2.14:dev") { transitive = false }
 
     // Thaumcraft things
     implementation('com.github.GTNewHorizons:ThaumicTinkerer:2.9.4:dev')

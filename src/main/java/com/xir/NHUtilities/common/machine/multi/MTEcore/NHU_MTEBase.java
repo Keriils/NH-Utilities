@@ -1,7 +1,5 @@
 package com.xir.NHUtilities.common.machine.multi.MTEcore;
 
-import static com.xir.NHUtilities.utils.CommonUtil.trans;
-
 import java.util.Collection;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -17,18 +15,17 @@ import org.jetbrains.annotations.NotNull;
 import com.gtnewhorizon.structurelib.alignment.constructable.IConstructable;
 import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructable;
 import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
-import com.gtnewhorizons.modularui.api.drawable.UITexture;
-import com.gtnewhorizons.modularui.api.math.Pos2d;
+import com.xir.NHUtilities.utils.CommonUtil;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.logic.ProcessingLogic;
-import gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBase;
+import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_ExtendedPowerMultiBlockBase;
 import gregtech.api.recipe.RecipeMap;
 import gregtech.api.recipe.check.CheckRecipeResult;
 
-public abstract class NHU_MTEBase<T extends NHU_MTEBase<T>> extends MTEExtendedPowerMultiBlockBase<T>
+public abstract class NHU_MTEBase<T extends NHU_MTEBase<T>> extends GT_MetaTileEntity_ExtendedPowerMultiBlockBase<T>
     implements IConstructable, ISurvivalConstructable {
 
     // region Constructor
@@ -45,7 +42,7 @@ public abstract class NHU_MTEBase<T extends NHU_MTEBase<T>> extends MTEExtendedP
     @Override
     @ApiStatus.OverrideOnly
     protected ProcessingLogic createProcessingLogic() {
-        return new ProcessingLogic().setOverclock(isEnablePerfectOverclock() ? 4.0d : 2.0d, 4.0d)
+        return new ProcessingLogic().setOverclock(isEnablePerfectOverclock() ? 4 : 2, 4)
             .setSpeedBonus(getSpeedBonus())
             .setEuModifier(getEuModifier())
             .setMaxParallelSupplier(this::getMaxParallel);
@@ -77,13 +74,13 @@ public abstract class NHU_MTEBase<T extends NHU_MTEBase<T>> extends MTEExtendedP
      * This method is called on each recipe process, to get the eu modifier dynamically.
      */
     @ApiStatus.OverrideOnly
-    protected abstract double getEuModifier();
+    protected abstract float getEuModifier();
 
     /**
      * This method is called on each recipe process, to get the speed bonus dynamically.
      */
     @ApiStatus.OverrideOnly
-    protected abstract double getSpeedBonus();
+    protected abstract float getSpeedBonus();
 
     /**
      * This method is called to get the max parallel dynamically.
@@ -209,15 +206,15 @@ public abstract class NHU_MTEBase<T extends NHU_MTEBase<T>> extends MTEExtendedP
         String[] reInfo = new String[rawInfo.length + 3];
         System.arraycopy(rawInfo, 0, reInfo, 0, rawInfo.length);
 
-        reInfo[rawInfo.length + 2] = EnumChatFormatting.AQUA + trans("Machine.InfoData.EuModifier")
+        reInfo[rawInfo.length + 2] = EnumChatFormatting.AQUA + CommonUtil.trans("Machine.InfoData.EuModifier")
             + ": "
             + EnumChatFormatting.GOLD
             + euModify;
-        reInfo[rawInfo.length + 1] = EnumChatFormatting.AQUA + trans("Machine.InfoData.SpeedMultiplier")
+        reInfo[rawInfo.length + 1] = EnumChatFormatting.AQUA + CommonUtil.trans("Machine.InfoData.SpeedMultiplier")
             + ": "
             + EnumChatFormatting.GOLD
             + speedBonus;
-        reInfo[rawInfo.length] = EnumChatFormatting.AQUA + trans("Machine.InfoData.Parallel")
+        reInfo[rawInfo.length] = EnumChatFormatting.AQUA + CommonUtil.trans("Machine.InfoData.Parallel")
             + ": "
             + EnumChatFormatting.GOLD
             + getMaxParallel();
@@ -230,48 +227,6 @@ public abstract class NHU_MTEBase<T extends NHU_MTEBase<T>> extends MTEExtendedP
 
     @Override
     public abstract int survivalConstruct(ItemStack stackSize, int elementBudget, ISurvivalBuildEnvironment env);
-    // endregion
-
-    // region Standardize the setting of machine mode
-    @Override
-    public boolean supportsMachineModeSwitch() {
-        return super.supportsMachineModeSwitch();
-    }
-
-    @Override
-    public void setMachineMode(int index) {
-        super.setMachineMode(index);
-    }
-
-    @Override
-    public int nextMachineMode() {
-        return super.nextMachineMode();
-    }
-
-    @Override
-    public int getMachineMode() {
-        return super.getMachineMode();
-    }
-
-    @Override
-    public void setMachineModeIcons() {
-        super.setMachineModeIcons();
-    }
-
-    @Override
-    public UITexture getMachineModeIcon(int index) {
-        return super.getMachineModeIcon(index);
-    }
-
-    @Override
-    public Pos2d getMachineModeSwitchButtonPos() {
-        return super.getMachineModeSwitchButtonPos();
-    }
-
-    @Override
-    public String getMachineModeName() {
-        return super.getMachineModeName();
-    }
     // endregion
 
     // region Machine maintenance setting

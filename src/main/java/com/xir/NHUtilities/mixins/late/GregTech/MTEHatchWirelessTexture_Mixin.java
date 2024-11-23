@@ -5,12 +5,13 @@ import static com.xir.NHUtilities.common.api.enums.TexturesSets.getWirelessTex;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-import gregtech.api.interfaces.ITexture;
-import tectech.thing.metaTileEntity.hatch.MTEHatchEnergyMulti;
-import tectech.thing.metaTileEntity.hatch.MTEHatchWirelessMulti;
+import com.github.technus.tectech.thing.metaTileEntity.hatch.GT_MetaTileEntity_Hatch_EnergyMulti;
+import com.github.technus.tectech.thing.metaTileEntity.hatch.GT_MetaTileEntity_Hatch_WirelessMulti;
 
-@Mixin(value = MTEHatchWirelessMulti.class, remap = false)
-public abstract class MTEHatchWirelessTexture_Mixin extends MTEHatchEnergyMulti {
+import gregtech.api.interfaces.ITexture;
+
+@Mixin(value = GT_MetaTileEntity_Hatch_WirelessMulti.class, remap = false)
+public abstract class MTEHatchWirelessTexture_Mixin extends GT_MetaTileEntity_Hatch_EnergyMulti {
 
     // no use
     public MTEHatchWirelessTexture_Mixin(int aID, String aName, String aNameRegional, int aTier, int aAmp) {

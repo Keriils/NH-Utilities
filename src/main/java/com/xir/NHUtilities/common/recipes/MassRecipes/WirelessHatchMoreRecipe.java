@@ -1,27 +1,27 @@
 package com.xir.NHUtilities.common.recipes.MassRecipes;
 
+import static com.github.technus.tectech.loader.recipe.BaseRecipeLoader.getItemContainer;
 import static goodgenerator.api.recipe.GoodGeneratorRecipeMaps.preciseAssemblerRecipes;
 import static gregtech.api.enums.Mods.NewHorizonsCoreMod;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
-import static gregtech.api.util.GTRecipeBuilder.SECONDS;
-import static gregtech.api.util.GTRecipeConstants.PRECISE_ASSEMBLER_CASING_TIER;
+import static gregtech.api.util.GT_RecipeBuilder.SECONDS;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
+import com.github.technus.tectech.thing.CustomItemList;
+import com.github.technus.tectech.thing.item.TeslaCoilCapacitor;
 import com.xir.NHUtilities.common.api.enums.WirelessHatchMore;
 
-import gregtech.api.enums.GTValues;
+import gregtech.api.enums.GT_Values;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.TierEU;
-import gregtech.api.util.GTModHandler;
-import gregtech.api.util.GTOreDictUnificator;
-import gregtech.api.util.GTUtility;
-import tectech.thing.CustomItemList;
-import tectech.thing.item.ItemTeslaCoilCapacitor;
+import gregtech.api.util.GT_ModHandler;
+import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.GT_Utility;
 
 @SuppressWarnings("unused")
 public class WirelessHatchMoreRecipe {
@@ -34,8 +34,9 @@ public class WirelessHatchMoreRecipe {
         ItemStack[] energyHatches_2A = { ItemList.Hatch_Energy_ULV.get(1), ItemList.Hatch_Energy_LV.get(1),
             ItemList.Hatch_Energy_MV.get(1), ItemList.Hatch_Energy_HV.get(1), ItemList.Hatch_Energy_EV.get(1),
             ItemList.Hatch_Energy_IV.get(1), ItemList.Hatch_Energy_LuV.get(1), ItemList.Hatch_Energy_ZPM.get(1),
-            ItemList.Hatch_Energy_UV.get(1), ItemList.Hatch_Energy_UHV.get(1), ItemList.Hatch_Energy_UEV.get(1),
-            ItemList.Hatch_Energy_UIV.get(1), ItemList.Hatch_Energy_UMV.get(1), ItemList.Hatch_Energy_UXV.get(1) };
+            ItemList.Hatch_Energy_UV.get(1), ItemList.Hatch_Energy_MAX.get(1),
+            getItemContainer("Hatch_Energy_UEV").get(1L), getItemContainer("Hatch_Energy_UIV").get(1L),
+            getItemContainer("Hatch_Energy_UMV").get(1L), getItemContainer("Hatch_Energy_UXV").get(1L) };
 
         ItemStack[] wirelessEnergyHatches_2A = { ItemList.Wireless_Hatch_Energy_ULV.get(1),
             ItemList.Wireless_Hatch_Energy_LV.get(1), ItemList.Wireless_Hatch_Energy_MV.get(1),
@@ -166,8 +167,9 @@ public class WirelessHatchMoreRecipe {
         ItemStack[] dynamoHatches_2A = { ItemList.Hatch_Dynamo_ULV.get(1), ItemList.Hatch_Dynamo_LV.get(1),
             ItemList.Hatch_Dynamo_MV.get(1), ItemList.Hatch_Dynamo_HV.get(1), ItemList.Hatch_Dynamo_EV.get(1),
             ItemList.Hatch_Dynamo_IV.get(1), ItemList.Hatch_Dynamo_LuV.get(1), ItemList.Hatch_Dynamo_ZPM.get(1),
-            ItemList.Hatch_Dynamo_UV.get(1), ItemList.Hatch_Dynamo_UHV.get(1), ItemList.Hatch_Dynamo_UEV.get(1),
-            ItemList.Hatch_Dynamo_UIV.get(1), ItemList.Hatch_Dynamo_UMV.get(1), ItemList.Hatch_Dynamo_UXV.get(1) };
+            ItemList.Hatch_Dynamo_UV.get(1), ItemList.Hatch_Dynamo_MAX.get(1),
+            getItemContainer("Hatch_Dynamo_UEV").get(1L), getItemContainer("Hatch_Dynamo_UIV").get(1L),
+            getItemContainer("Hatch_Dynamo_UMV").get(1L), getItemContainer("Hatch_Dynamo_UXV").get(1L) };
 
         ItemStack[] wirelessDynamoHatches_2A = { ItemList.Wireless_Dynamo_Energy_ULV.get(1),
             ItemList.Wireless_Dynamo_Energy_LV.get(1), ItemList.Wireless_Dynamo_Energy_MV.get(1),
@@ -284,18 +286,18 @@ public class WirelessHatchMoreRecipe {
             ItemList.Emitter_UHV.get(1), ItemList.Emitter_UEV.get(1), ItemList.Emitter_UIV.get(1),
             ItemList.Emitter_UMV.get(1), ItemList.Emitter_UXV.get(1), ItemList.Emitter_MAX.get(1) };
 
-        ItemStack[] calInput_2 = { new ItemStack(ItemTeslaCoilCapacitor.INSTANCE, 1, 0),
-            new ItemStack(ItemTeslaCoilCapacitor.INSTANCE, 1, 0), new ItemStack(ItemTeslaCoilCapacitor.INSTANCE, 1, 1),
-            new ItemStack(ItemTeslaCoilCapacitor.INSTANCE, 1, 2), new ItemStack(ItemTeslaCoilCapacitor.INSTANCE, 1, 3),
-            new ItemStack(ItemTeslaCoilCapacitor.INSTANCE, 1, 4), new ItemStack(ItemTeslaCoilCapacitor.INSTANCE, 1, 5),
-            new ItemStack(ItemTeslaCoilCapacitor.INSTANCE, 1, 6),
-            GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Osmiridium, 1),
-            GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Osmiridium, 2),
-            GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Osmiridium, 4),
-            GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Osmiridium, 8),
-            GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Osmiridium, 16),
-            GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Osmiridium, 32),
-            GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Osmiridium, 64) };
+        ItemStack[] calInput_2 = { new ItemStack(TeslaCoilCapacitor.INSTANCE, 1, 0),
+            new ItemStack(TeslaCoilCapacitor.INSTANCE, 1, 0), new ItemStack(TeslaCoilCapacitor.INSTANCE, 1, 1),
+            new ItemStack(TeslaCoilCapacitor.INSTANCE, 1, 2), new ItemStack(TeslaCoilCapacitor.INSTANCE, 1, 3),
+            new ItemStack(TeslaCoilCapacitor.INSTANCE, 1, 4), new ItemStack(TeslaCoilCapacitor.INSTANCE, 1, 5),
+            new ItemStack(TeslaCoilCapacitor.INSTANCE, 1, 6),
+            GT_OreDictUnificator.get(OrePrefixes.plateDense, Materials.Osmiridium, 1),
+            GT_OreDictUnificator.get(OrePrefixes.plateDense, Materials.Osmiridium, 2),
+            GT_OreDictUnificator.get(OrePrefixes.plateDense, Materials.Osmiridium, 4),
+            GT_OreDictUnificator.get(OrePrefixes.plateDense, Materials.Osmiridium, 8),
+            GT_OreDictUnificator.get(OrePrefixes.plateDense, Materials.Osmiridium, 16),
+            GT_OreDictUnificator.get(OrePrefixes.plateDense, Materials.Osmiridium, 32),
+            GT_OreDictUnificator.get(OrePrefixes.plateDense, Materials.Osmiridium, 64) };
 
         ItemStack[] calInput_3 = { ItemList.Circuit_Parts_Crystal_Chip_Master.get(1),
             ItemList.Circuit_Parts_Crystal_Chip_Master.get(2), ItemList.Circuit_Parts_Crystal_Chip_Master.get(4),
@@ -303,14 +305,15 @@ public class WirelessHatchMoreRecipe {
             ItemList.Circuit_Parts_Crystal_Chip_Master.get(32), ItemList.Circuit_Parts_Crystal_Chip_Master.get(48),
             ItemList.Circuit_Parts_Crystal_Chip_Master.get(64), };
 
-        ItemStack[] calInput_4 = { GTModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedDiamondCrystalChip", 1),
-            GTModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedDiamondCrystalChip", 1),
-            GTModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedDiamondCrystalChip", 2),
-            GTModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedDiamondCrystalChip", 4),
-            GTModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedDiamondCrystalChip", 8),
-            GTModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedManyullynCrystalChip", 2),
-            GTModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedManyullynCrystalChip", 8),
-            GTModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedManyullynCrystalChip", 16) };
+        ItemStack[] calInput_4 = {
+            GT_ModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedDiamondCrystalChip", 1),
+            GT_ModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedDiamondCrystalChip", 1),
+            GT_ModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedDiamondCrystalChip", 2),
+            GT_ModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedDiamondCrystalChip", 4),
+            GT_ModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedDiamondCrystalChip", 8),
+            GT_ModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedManyullynCrystalChip", 2),
+            GT_ModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedManyullynCrystalChip", 8),
+            GT_ModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedManyullynCrystalChip", 16) };
 
         Integer[] energySkip = { 0, 4, 4, 4, 5, 6, 7, 8, 9, 10, 11 };
         ItemStack[][] energyHatchAll = { energyHatches_2A, energyHatches_4A, energyHatches_16A, energyHatches_64A,
@@ -352,31 +355,11 @@ public class WirelessHatchMoreRecipe {
                 calInput_4);
         }
 
-        var indalloy140 = FluidRegistry.getFluid("molten.indalloy140");
-
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                allSensor[WirelessHatchMore.energyMulti_UMV_4194304.aTier],
-                calInput_2[WirelessHatchMore.energyMulti_UMV_4194304.aTier],
-                CustomItemList.eM_energyTunnel8_UMV.get(1),
-                GTModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedManyullynCrystalChip", 64))
-            .fluidInputs(
-                Materials.Radon.getGas(16000),
-                Materials.Polytetrafluoroethylene.getMolten(16000),
-                new FluidStack(indalloy140, 21 * 144),
-                Materials.BorosilicateGlass.getMolten(21 * 144L))
-            .itemOutputs(WirelessHatchMore.energyMulti_UMV_4194304.get(1))
-            .duration(60 * SECONDS)
-            .eut(TierEU.RECIPE_UMV)
-            .noOptimize()
-            .metadata(PRECISE_ASSEMBLER_CASING_TIER, 1)
-            .addTo(preciseAssemblerRecipes);
-
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(
                 ItemList.Wireless_Hatch_Energy_HV.get(1),
                 ItemList.Circuit_Parts_Crystal_Chip_Master.get(4),
-                GTUtility.getIntegratedCircuit(24))
+                GT_Utility.getIntegratedCircuit(24))
             .fluidInputs(Materials.Radon.getGas(4000))
             .itemOutputs(WirelessHatchMore.energyMulti_HV_4.get(1))
             .duration(60 * SECONDS)
@@ -384,11 +367,11 @@ public class WirelessHatchMoreRecipe {
             .noOptimize()
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(
                 WirelessHatchMore.energyMulti_HV_4.get(1),
                 ItemList.Circuit_Parts_Crystal_Chip_Master.get(4),
-                GTUtility.getIntegratedCircuit(24))
+                GT_Utility.getIntegratedCircuit(24))
             .fluidInputs(Materials.Radon.getGas(4000))
             .itemOutputs(WirelessHatchMore.energyMulti_HV_16.get(1))
             .duration(60 * SECONDS)
@@ -396,11 +379,11 @@ public class WirelessHatchMoreRecipe {
             .noOptimize()
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
+        GT_Values.RA.stdBuilder()
             .itemInputs(
                 WirelessHatchMore.energyMulti_HV_16.get(1),
                 ItemList.Circuit_Parts_Crystal_Chip_Master.get(4),
-                GTUtility.getIntegratedCircuit(24))
+                GT_Utility.getIntegratedCircuit(24))
             .fluidInputs(Materials.Radon.getGas(4000))
             .itemOutputs(WirelessHatchMore.energyMulti_HV_64.get(1))
             .duration(60 * SECONDS)
@@ -416,7 +399,7 @@ public class WirelessHatchMoreRecipe {
             var offset = i + offsetID;
 
             if (offset <= 7) {
-                GTValues.RA.stdBuilder()
+                GT_Values.RA.stdBuilder()
                     .itemInputs(allSensor[offset], calInput_2[offset], input[i], calInput_3[offset], calInput_4[offset])
                     .fluidInputs(Materials.Radon.getGas(8000))
                     .itemOutputs(output[i])
@@ -425,12 +408,12 @@ public class WirelessHatchMoreRecipe {
                     .noOptimize()
                     .addTo(assemblerRecipes);
             } else {
-                GTValues.RA.stdBuilder()
+                GT_Values.RA.stdBuilder()
                     .itemInputs(
                         allSensor[offset],
                         calInput_2[offset],
                         input[i],
-                        GTModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedManyullynCrystalChip", 64))
+                        GT_ModHandler.getModItem(NewHorizonsCoreMod.ID, "item.EngravedManyullynCrystalChip", 64))
                     .fluidInputs(
                         Materials.Radon.getGas(16000),
                         Materials.Polytetrafluoroethylene.getMolten(16000),
@@ -440,7 +423,7 @@ public class WirelessHatchMoreRecipe {
                     .duration(60 * SECONDS)
                     .eut(TierEU.ZPM)
                     .noOptimize()
-                    .metadata(PRECISE_ASSEMBLER_CASING_TIER, 1)
+                    .specialValue(1)
                     .addTo(preciseAssemblerRecipes);
             }
         }
