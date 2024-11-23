@@ -7,7 +7,9 @@ import static com.xir.NHUtilities.config.Config.enableAccelerateGregTechMachine;
 import static com.xir.NHUtilities.config.Config.enableEnhancedTeleporterMKII;
 import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
 import static com.xir.NHUtilities.config.Config.enableModifyEnderIoCapBankIO;
+import static com.xir.NHUtilities.config.Config.enableModifyWirelessHatchTexture;
 import static com.xir.NHUtilities.config.Config.enableWEToolWithExuHealingAxe;
+import static com.xir.NHUtilities.config.Config.enableWirelessHatchMore;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,6 +50,8 @@ public enum Mixins {
         TargetMod.GregTech),
     DisableDollyDebuff_Mixin(Category.DisableDollyDebuff, Side.BOTH, Phase.LATE, "JABBA.DisableDollyDebuff_Mixin",
         TargetMod.JABBA),
+    ModifyWirelessHatchTextureMixin(Category.ModifyWirelessHatchTexture, Side.BOTH, Phase.LATE,
+        "GregTech.MTEHatchWirelessTexture_Mixin", TargetMod.GregTech),
 
     ;
 
@@ -61,6 +65,7 @@ public enum Mixins {
         LunchBoxPlus(enableLunchBoxPlus),
         DisableSuperTankOrChestDebuff(disableSuperChestOrTankDebuff),
         DisableDollyDebuff(disableDollyDebuff),
+        ModifyWirelessHatchTexture(enableModifyWirelessHatchTexture && enableWirelessHatchMore),
 
         ;
 
