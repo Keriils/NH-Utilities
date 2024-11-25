@@ -7,6 +7,7 @@ itemGroup.metaBlock=NHU Block
 
 # Tooltips For NHU Logotype
 nhu.logotype.gt.logo=§6Added by §dNH Utilities
+nhu.author.prefix=§6Author:
 
 #Error
 nhutilities.null.name=§cError
@@ -188,6 +189,19 @@ nhu.tooltips.eggMachine.info12=§b- Dragon Core: 4x
 nhu.tooltips.eggMachine.info13=§b- Wyvern Core: 8x
 nhu.tooltips.eggMachine.info14=§b- Awakened Dragon Core: 16x
 nhu.tooltips.eggMachine.info15=§b- Chaos Dragon Core: 32x
+
+# Wireless Hatch More
+Lang.helper.local.lang=en_US
+Hatch.wireless.energy.name=%s %sA Wireless Energy Hatch
+Hatch.wireless.dynamo.name=%s %sA Wireless Dynamo Hatch
+
+# Machine InfoData
+Machine.InfoData.EuModifier=Eu Modifier
+Machine.InfoData.SpeedMultiplier=Speed Multiplier
+Machine.InfoData.Parallel=Parallel
+Hatch.InfoData.desc.wireless.1=Stores energy globally in a network, up to 2^(2^31) EU.
+Hatch.InfoData.desc.wireless.2=Does not connect to wires. This block withdraws EU from the network.
+Hatch.InfoData.desc.wireless.3=Throughput:
 
 # Chat In Game
 chat.nhutilities.1=It seems like nothing happened...

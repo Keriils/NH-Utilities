@@ -15,7 +15,9 @@ import static gregtech.api.util.GTRecipeConstants.COIL_HEAT;
 import static gregtech.api.util.GTRecipeConstants.UniversalChemical;
 import static tectech.thing.CustomItemList.hatch_CreativeMaintenance;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
@@ -44,6 +46,7 @@ public class NHURecipes {
         initFuelRodRecipe();
         initEggMachineRecipe();
         initEternityTimeVialRecipe();
+        WirelessHatchMoreRecipe.initWirelessHatchMore();
 
         // for adding debug maintenance recipe
         GTValues.RA.stdBuilder()
@@ -275,7 +278,7 @@ public class NHURecipes {
 
         for (int i = 0; i < eggMachineList.length - 1; i++) {
             GTValues.RA.stdBuilder()
-                .itemInputs(eggMachineList[i].get(3))
+                .itemInputs(eggMachineList[i].get(3), new ItemStack(Item.getItemFromBlock(Blocks.dragon_egg), 1))
                 .itemOutputs(eggMachineList[i + 1].get(1))
                 .fluidInputs(Materials.Radon.getGas(4000 << i))
                 .duration((20 << i) * SECONDS)
