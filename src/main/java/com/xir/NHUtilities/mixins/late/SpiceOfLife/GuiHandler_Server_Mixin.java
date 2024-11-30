@@ -13,6 +13,7 @@ import squeek.spiceoflife.helpers.GuiHelper;
 import squeek.spiceoflife.inventory.ContainerFoodContainer;
 import squeek.spiceoflife.inventory.FoodContainerInventory;
 
+@SuppressWarnings("UnusedMixin")
 @Mixin(value = GuiHelper.class, remap = false)
 public class GuiHandler_Server_Mixin {
 

@@ -21,6 +21,7 @@ import baubles.api.IBauble;
 import cpw.mods.fml.common.Optional;
 
 @Mixin(value = TeleporterMKII.class)
+@SuppressWarnings("UnusedMixin")
 @Optional.Interface(iface = "baubles.api.IBauble", modid = "Baubles")
 public class TeleporterMKII_Mixin implements IBauble {
 

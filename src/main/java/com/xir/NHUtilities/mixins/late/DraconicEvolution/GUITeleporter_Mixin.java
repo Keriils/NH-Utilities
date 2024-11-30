@@ -23,6 +23,7 @@ import com.brandon3055.draconicevolution.common.items.tools.TeleporterMKII;
 import com.brandon3055.draconicevolution.common.utills.InventoryUtils;
 
 @Mixin(value = GUITeleporter.class)
+@SuppressWarnings("UnusedMixin")
 public abstract class GUITeleporter_Mixin {
 
     @Shadow(remap = false)

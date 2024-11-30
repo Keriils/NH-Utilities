@@ -14,6 +14,7 @@ import gregtech.api.metatileentity.implementations.MTEMultiBlockBase;
 import gregtech.common.tileentities.machines.multi.MTEPrimitiveBlastFurnace;
 import tectech.thing.metaTileEntity.multi.MTEResearchStation;
 
+@SuppressWarnings("UnusedMixin")
 @Mixin(BaseMetaTileEntity.class)
 public abstract class BaseMetaTileEntityAcceleration_Mixin implements ITileEntityTickAcceleration {
 
@@ -30,6 +31,7 @@ public abstract class BaseMetaTileEntityAcceleration_Mixin implements ITileEntit
     public abstract boolean isActive();
 
     @Override
+    @SuppressWarnings("AddedMixinMembersNamePattern")
     public boolean tickAcceleration(int tickAcceleratedRate) {
         if (this.isActive()) {
             // safely calling

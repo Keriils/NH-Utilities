@@ -7,6 +7,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import crazypants.enderio.machine.capbank.BlockItemCapBank;
 import crazypants.enderio.machine.capbank.CapBankType;
 
+@SuppressWarnings("UnusedMixin")
 @Mixin(value = BlockItemCapBank.class, remap = false)
 public class Modify_CapBankMaxIO_Mixin {
 
