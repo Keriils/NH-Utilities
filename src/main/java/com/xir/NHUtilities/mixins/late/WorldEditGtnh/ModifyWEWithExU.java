@@ -13,6 +13,7 @@ import com.sk89q.worldedit.extension.platform.PlatformManager;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
+@SuppressWarnings("UnusedMixin")
 @Mixin(value = PlatformManager.class, remap = false)
 public class ModifyWEWithExU {
 

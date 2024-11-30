@@ -9,6 +9,7 @@ import com.xir.NHUtilities.common.api.interfaces.ITileEntityTickAcceleration;
 import crazypants.enderio.machine.AbstractPoweredMachineEntity;
 import crazypants.enderio.power.ICapacitor;
 
+@SuppressWarnings("UnusedMixin")
 @Mixin(value = AbstractPoweredMachineEntity.class, remap = false)
 public class AccelerateEnergyRecive_Mixin {
 

@@ -7,6 +7,7 @@ import org.spongepowered.asm.mixin.Unique;
 import com.enderio.core.common.TileEntityEnder;
 import com.xir.NHUtilities.common.api.interfaces.ITileEntityTickAcceleration;
 
+@SuppressWarnings("UnusedMixin")
 @Mixin(value = TileEntityEnder.class, remap = false)
 public abstract class AccelerateTileEntity_Mixin implements ITileEntityTickAcceleration {
 

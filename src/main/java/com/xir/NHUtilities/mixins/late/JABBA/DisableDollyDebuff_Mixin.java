@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import mcp.mobius.betterbarrels.common.items.dolly.ItemBarrelMover;
 
+@SuppressWarnings("UnusedMixin")
 @Mixin(value = ItemBarrelMover.class)
 public class DisableDollyDebuff_Mixin {
 

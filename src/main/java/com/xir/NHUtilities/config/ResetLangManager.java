@@ -16,6 +16,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import com.google.gson.reflect.TypeToken;
 import org.jetbrains.annotations.NotNull;
 
 import com.google.gson.Gson;
@@ -114,6 +115,7 @@ public class ResetLangManager {
         return map;
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static void saveFileToJson(File file, LinkedHashMap<String, String> map) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting()
             .create();
@@ -122,10 +124,11 @@ public class ResetLangManager {
         }
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static LinkedHashMap<String, String> getFileFromJson(File file) throws IOException {
         Gson gson = new GsonBuilder().create();
         try (FileReader reader = new FileReader(file)) {
-            return gson.fromJson(reader, LinkedHashMap.class);
+            return gson.fromJson(reader, new TypeToken<LinkedHashMap<String, String>>(){}.getType());
         }
     }
 

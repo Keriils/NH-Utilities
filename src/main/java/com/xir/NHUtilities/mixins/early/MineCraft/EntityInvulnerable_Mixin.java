@@ -8,12 +8,14 @@ import org.spongepowered.asm.mixin.Shadow;
 import com.xir.NHUtilities.common.api.interfaces.IEntityInvulnerable;
 
 @Mixin(Entity.class)
-public class EntityInvulnerable_Mxin implements IEntityInvulnerable {
+@SuppressWarnings("UnusedMixin")
+public class EntityInvulnerable_Mixin implements IEntityInvulnerable {
 
     @Shadow
     private boolean invulnerable;
 
     @Override
+    @SuppressWarnings("AddedMixinMembersNamePattern")
     public void setEntityInvulnerable(boolean invulnerable) {
         this.invulnerable = invulnerable;
     }

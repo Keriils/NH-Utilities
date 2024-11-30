@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import gregtech.common.blocks.ItemMachines;
 
+@SuppressWarnings("UnusedMixin")
 @Mixin(value = ItemMachines.class)
 public class DisableDebuff_Mixin {
 

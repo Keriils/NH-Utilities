@@ -16,6 +16,7 @@ import com.brandon3055.draconicevolution.common.items.tools.TeleporterMKII;
 import com.brandon3055.draconicevolution.common.network.TeleporterPacket;
 import com.brandon3055.draconicevolution.common.utills.InventoryUtils;
 
+@SuppressWarnings("UnusedMixin")
 @Mixin(value = TeleporterPacket.Handler.class)
 public class TeleporterPacket_Mixin {
 

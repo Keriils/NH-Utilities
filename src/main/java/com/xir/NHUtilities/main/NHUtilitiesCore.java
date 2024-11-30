@@ -21,7 +21,7 @@ public class NHUtilitiesCore implements IFMLLoadingPlugin, IEarlyMixinLoader {
     @Override
     public List<String> getMixins(Set<String> loadedCoreMods) {
         ArrayList<String> mixins = new ArrayList<>();
-        mixins.add("MineCraft.EntityInvulnerable_Mxin");
+        mixins.add("MineCraft.EntityInvulnerable_Mixin");
         return mixins;
     }
 
