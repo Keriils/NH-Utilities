@@ -17,10 +17,24 @@ import gregtech.api.render.TextureFactory;
 @SuppressWarnings("unused")
 public final class TexturesSets {
 
+    // Only static constants are allowed
     public static void init() {}
 
-    // region Wireless Tex
+    // for Test Machine or Common TT machine Texture
+    public static final IIconContainer ScreenOFF = new CustomIcon("iconsets/EM_CONTROLLER");
+    public static final IIconContainer ScreenON = new CustomIcon("iconsets/EM_CONTROLLER_ACTIVE");
 
+    // for Tc EBF Texture
+    public static final IIconContainer TC_EBF_ACTIVE = new CustomIcon(
+        RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_ACTIVE");
+    public static final IIconContainer TC_EBF_ACTIVE_GLOW = new CustomIcon(
+        RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW");
+    public static final IIconContainer TC_EBF_NOT_ACTIVE = new CustomIcon(
+        RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE");
+    public static final IIconContainer TC_EBF_NOT_ACTIVE_GLOW = new CustomIcon(
+        RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_GLOW");
+
+    // region Wireless Tex
     private static final String WIRELESS_DIR = RESOURCE_PATH + "Wireless/";
     public static final IIconContainer OVERLAY_WIRELESS_256A = new CustomIcon(WIRELESS_DIR + "OVERLAY_WIRELESS_256A");
     public static final IIconContainer OVERLAY_WIRELESS_1024A = new CustomIcon(WIRELESS_DIR + "OVERLAY_WIRELESS_1024A");
@@ -61,7 +75,6 @@ public final class TexturesSets {
     public static ITexture getWirelessTex(int aAmperes) {
         return WirelessTextureMap.getOrDefault(aAmperes, WirelessTextureMap.get(-1));
     }
-
     // endregion
 
 }
