@@ -1,6 +1,10 @@
 package com.xir.NHUtilities.common.machine.multi;
 
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.transpose;
+import static com.xir.NHUtilities.common.api.enums.TexturesSets.TC_EBF_ACTIVE;
+import static com.xir.NHUtilities.common.api.enums.TexturesSets.TC_EBF_ACTIVE_GLOW;
+import static com.xir.NHUtilities.common.api.enums.TexturesSets.TC_EBF_NOT_ACTIVE;
+import static com.xir.NHUtilities.common.api.enums.TexturesSets.TC_EBF_NOT_ACTIVE_GLOW;
 import static com.xir.NHUtilities.main.ReferencedInfo.MOD_NAME;
 import static gregtech.api.enums.GTValues.VN;
 import static gregtech.api.enums.HatchElement.Energy;
@@ -39,14 +43,11 @@ import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructa
 import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
 import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
-import com.xir.NHUtilities.common.api.enums.NHUTextEnum;
 
 import gregtech.GTMod;
 import gregtech.api.GregTechAPI;
 import gregtech.api.enums.HeatingCoilLevel;
 import gregtech.api.enums.Materials;
-import gregtech.api.enums.Textures;
-import gregtech.api.interfaces.IIconContainer;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.fluid.IFluidStore;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
@@ -80,14 +81,6 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
         Materials.CarbonMonoxide.getGas(1000), Materials.SulfurDioxide.getGas(1000) };
     protected static final int CASING_INDEX = 11;
     protected static final String STRUCTURE_PIECE_MAIN = "main";
-    private static final IIconContainer Active = new Textures.BlockIcons.CustomIcon(
-        "iconsets/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_ACTIVE");
-    private static final IIconContainer Active_Glow = new Textures.BlockIcons.CustomIcon(
-        "iconsets/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW");
-    private static final IIconContainer Not_Active = new Textures.BlockIcons.CustomIcon(
-        "iconsets/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE");
-    private static final IIconContainer Not_Active_Glow = new Textures.BlockIcons.CustomIcon(
-        "iconsets/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_GLOW");
     private static final IStructureDefinition<TCBlastFurnace> STRUCTURE_DEFINITION = StructureDefinition
         .<TCBlastFurnace>builder()
         .addShape(
@@ -194,7 +187,6 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
             .addOutputHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_10"))
             .addOutputHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_11"), 1)
             .addStructureInfo(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_12"))
-            .addInfo(NHUTextEnum.Author_Tc_traveler.getText())
             .toolTipFinisher(MOD_NAME);
         return tt;
     }
@@ -209,20 +201,20 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
         int colorIndex, boolean aActive, boolean redstoneLevel) {
         if (side == aFacing) {
             if (aActive) return new ITexture[] { casingTexturePages[0][CASING_INDEX], TextureFactory.builder()
-                .addIcon(isNewTexture ? Active : OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE)
+                .addIcon(isNewTexture ? TC_EBF_ACTIVE : OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE)
                 .extFacing()
                 .build(),
                 TextureFactory.builder()
-                    .addIcon(isNewTexture ? Active_Glow : OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW)
+                    .addIcon(isNewTexture ? TC_EBF_ACTIVE_GLOW : OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW)
                     .extFacing()
                     .glow()
                     .build() };
             return new ITexture[] { casingTexturePages[0][CASING_INDEX], TextureFactory.builder()
-                .addIcon(isNewTexture ? Not_Active : OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE)
+                .addIcon(isNewTexture ? TC_EBF_NOT_ACTIVE : OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE)
                 .extFacing()
                 .build(),
                 TextureFactory.builder()
-                    .addIcon(isNewTexture ? Not_Active_Glow : OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_GLOW)
+                    .addIcon(isNewTexture ? TC_EBF_NOT_ACTIVE_GLOW : OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_GLOW)
                     .extFacing()
                     .glow()
                     .build() };
