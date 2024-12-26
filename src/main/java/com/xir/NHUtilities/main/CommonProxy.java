@@ -4,6 +4,7 @@ import static com.xir.NHUtilities.main.NHUtilities.LOG;
 import static com.xir.NHUtilities.main.ReferencedInfo.MOD_NAME;
 
 import com.xir.NHUtilities.common.api.enums.TexturesSets;
+import com.xir.NHUtilities.common.recipes.MassRecipes.IndustrialAlchemicalRecipePool;
 import com.xir.NHUtilities.common.recipes.MassRecipes.NHURecipes;
 import com.xir.NHUtilities.common.research.GTApiResearch;
 import com.xir.NHUtilities.loader.EntityLoader;
@@ -14,6 +15,7 @@ import com.xir.NHUtilities.loader.RecipeLoader;
 import com.xir.NHUtilities.loader.ResearchLoader;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
@@ -66,4 +68,8 @@ public class CommonProxy {
     }
 
     public void serverStarting(FMLServerStartingEvent event) {}
+
+    public void completeInit(FMLLoadCompleteEvent event) {
+        new IndustrialAlchemicalRecipePool().loadRecipes();
+    }
 }
