@@ -67,6 +67,10 @@ public class CommonProxy {
 
     }
 
+    public void completeInit(FMLLoadCompleteEvent event) {
+        new IndustrialAlchemicalRecipePool().loadRecipes();
+    }
+
     public void serverStarting(FMLServerStartingEvent event) {}
 
     public void completeInit(FMLLoadCompleteEvent event) {

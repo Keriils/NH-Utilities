@@ -5,6 +5,8 @@ import java.util.HashMap;
 
 import net.minecraft.item.ItemStack;
 
+import com.xir.NHUtilities.utils.CommonUtil;
+
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -15,32 +17,40 @@ public class TCRecipeTools {
     public static HashMap<String, ArrayList<CrucibleCraftingRecipe>> IAR = new HashMap<>();
 
     public static void getCrucibleCraftingRecipe() {
-        for (Object o : ThaumcraftApi.getCraftingRecipes()) {
-            if (!(o instanceof CrucibleRecipe)) {
-                continue;
-            }
-            if (((CrucibleRecipe) o).getRecipeOutput() instanceof ItemStack
-                && ((CrucibleRecipe) o).getRecipeOutput() != null) {
-                Object input = ((CrucibleRecipe) o).catalyst;
-                String inputItem = input.toString();
+        for (var o : ThaumcraftApi.getCraftingRecipes()) {
+            if (!(o instanceof CrucibleRecipe o1)) continue;
+            if (CommonUtil.isStackValid(o1.getRecipeOutput())) {
+                Object input;
+                Object cat = o1.catalyst;
+                if (cat instanceof ArrayList<?>catalyst1) {
+                    var warped = new ItemStack[catalyst1.size()];
+                    for (int i = 0; i < warped.length; i++) {
+                        warped[i] = CommonUtil.copyAmount(1, (ItemStack) catalyst1.get(i));
+                    }
+                    input = warped;
+                } else if (cat instanceof ItemStack itemStack) {
+                    input = CommonUtil.copyAmount(1,itemStack);
+                } else continue;
+                String inputKey = cat.toString();
                 CrucibleCraftingRecipe p = new CrucibleCraftingRecipe(
                     input,
-                    ((CrucibleRecipe) o).getRecipeOutput(),
-                    ((CrucibleRecipe) o).aspects,
-                    ((CrucibleRecipe) o).key);
-                if (IAR.get(inputItem) == null) {
-                    ArrayList<CrucibleCraftingRecipe> arrayList = new ArrayList<>();
+                    CommonUtil.copy(o1.getRecipeOutput()),
+                    o1.aspects,
+                    o1.key);
+                if (IAR.get(inputKey) == null) {
+                    var arrayList = new ArrayList<CrucibleCraftingRecipe>();
                     arrayList.add(p);
-                    IAR.put(inputItem, arrayList);
+                    IAR.put(inputKey, arrayList);
                 } else {
-                    ArrayList<CrucibleCraftingRecipe> old = IAR.get(inputItem);
+                    var old = IAR.get(inputKey);
                     old.add(p);
-                    IAR.replace(inputItem, old);
+                    IAR.replace(inputKey, old);
                 }
             }
         }
     }
 
+    @SuppressWarnings("unused")
     public static class CrucibleCraftingRecipe {
 
         private final Object InputItem;

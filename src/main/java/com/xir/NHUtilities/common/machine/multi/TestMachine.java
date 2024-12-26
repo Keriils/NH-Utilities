@@ -11,6 +11,7 @@ import static gregtech.api.enums.HatchElement.OutputHatch;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
 import static tectech.thing.casing.TTCasingsContainer.sBlockCasingsTT;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import net.minecraft.item.ItemStack;
@@ -23,6 +24,7 @@ import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 import com.xir.NHUtilities.common.api.enums.NHUTextEnum;
 import com.xir.NHUtilities.common.machine.multi.MTEcore.NHU_MTEBase;
+import com.xir.NHUtilities.common.recipeMap.recipeResult.NHURecipe;
 
 import gregtech.api.enums.Textures;
 import gregtech.api.interfaces.IIconContainer;
@@ -90,7 +92,7 @@ public class TestMachine extends NHU_MTEBase<TestMachine> {
 
     @Override
     public @NotNull Collection<RecipeMap<?>> getAvailableRecipeMaps() {
-        return super.getAvailableRecipeMaps();
+        return Arrays.asList(RecipeMaps.assemblerRecipes, NHURecipe.IndustrialAlchemicalRecipe);
     }
     // endregion
 
