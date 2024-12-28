@@ -38,16 +38,16 @@ public class KamiRing extends ItemBase implements IBauble, IVisDiscountGear {
             entityInvulnerable.setEntityInvulnerable(true);
         }
 
+        // spotless:off
         if (player instanceof EntityPlayer entityPlayer) {
             if (entityPlayer.isDead) entityPlayer.isDead = false;
             if (entityPlayer.worldObj.getTotalWorldTime() % 10 == 0) {
-                if (entityPlayer.getFoodStats()
-                    .getFoodLevel() != 20) {
-                    entityPlayer.getFoodStats()
-                        .addStats(20, 5.0F);
+                if (entityPlayer.getFoodStats().getFoodLevel() != 20) {
+                    entityPlayer.getFoodStats().addStats(20, 5.0F);
                 }
             }
         }
+        // spotless:on
     }
 
     @Override
