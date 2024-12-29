@@ -21,6 +21,9 @@ public class Config {
     public static int wirelessHatchMetaIdOffset = 0;
     public static boolean enableGluttonyRingAndHungerRing = true;
     public static boolean enableWirelessHatchMore = true;
+    public static boolean enableEggMachine = true;
+    public static boolean enableDebugMaintenanceHatchRecipe = true;
+    public static boolean enableTestItem = true;
     // endregion
 
     // region TimeVial
@@ -210,6 +213,15 @@ public class Config {
                 CATEGORY_MIXIN_CONFIG,
                 enableModifyWirelessHatchTexture,
                 "Modify To New Wireless Hatch Texture");
+            enableEggMachine = configuration
+                .getBoolean("enableEggMachine", CATEGORY_MASS, enableEggMachine, "enable Egg Machine");
+            enableDebugMaintenanceHatchRecipe = configuration.getBoolean(
+                "enableDebugMaintenanceHatchRecipe",
+                CATEGORY_MASS,
+                enableDebugMaintenanceHatchRecipe,
+                "enable Debug Maintenance Hatch Recipe");
+            enableTestItem = configuration
+                .getBoolean("enableTestItem", CATEGORY_MASS, enableTestItem, "enable Test Item");
         }
 
         try {

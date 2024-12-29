@@ -1,5 +1,6 @@
 package com.xir.NHUtilities.loader;
 
+import static com.xir.NHUtilities.config.Config.enableEggMachine;
 import static com.xir.NHUtilities.config.Config.enableEnhancedExUHealingAxe;
 import static com.xir.NHUtilities.config.Config.enableGluttonyRingAndHungerRing;
 
@@ -18,7 +19,7 @@ public class EventLoader {
         registerEvent(true, new GluttonyRingEvent(), enableGluttonyRingAndHungerRing);
         registerEvent(false, new EnhanceExUHealingAxe(), enableEnhancedExUHealingAxe);
         registerEvent(true, new WarpWardRingEvent());
-        registerEvent(true, new DragonDeathHandler());
+        registerEvent(true, new DragonDeathHandler(), enableEggMachine);
     }
 
     @SuppressWarnings("SameParameterValue")

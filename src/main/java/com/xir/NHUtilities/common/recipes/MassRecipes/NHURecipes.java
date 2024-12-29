@@ -2,6 +2,10 @@ package com.xir.NHUtilities.common.recipes.MassRecipes;
 
 import static com.brandon3055.draconicevolution.common.ModBlocks.draconiumBlock;
 import static com.brandon3055.draconicevolution.common.ModBlocks.infusedObsidian;
+import static com.xir.NHUtilities.config.Config.enableDebugMaintenanceHatchRecipe;
+import static com.xir.NHUtilities.config.Config.enableEggMachine;
+import static com.xir.NHUtilities.config.Config.enableEternityVial;
+import static com.xir.NHUtilities.config.Config.enableWirelessHatchMore;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.recipe.RecipeMaps.blastFurnaceRecipes;
 import static gregtech.api.recipe.RecipeMaps.centrifugeRecipes;
@@ -44,17 +48,19 @@ public class NHURecipes {
     public static void initNHURecipeCrossMod() {
 
         initFuelRodRecipe();
-        initEggMachineRecipe();
-        initEternityTimeVialRecipe();
-        WirelessHatchMoreRecipe.initWirelessHatchMore();
+        if (enableEggMachine) initEggMachineRecipe();
+        if (enableEternityVial) initEternityTimeVialRecipe();
+        if (enableWirelessHatchMore) WirelessHatchMoreRecipe.initWirelessHatchMore();
 
         // for adding debug maintenance recipe
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.Hull_EV.get(1), ItemList.Duct_Tape.get(1), GTUtility.getIntegratedCircuit(16))
-            .itemOutputs(hatch_CreativeMaintenance.get(1))
-            .duration(25 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .addTo(assemblerRecipes);
+        if (enableDebugMaintenanceHatchRecipe) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.Hull_EV.get(1), ItemList.Duct_Tape.get(1), GTUtility.getIntegratedCircuit(16))
+                .itemOutputs(hatch_CreativeMaintenance.get(1))
+                .duration(25 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .addTo(assemblerRecipes);
+        }
     }
 
     private static void initFuelRodRecipe() {
