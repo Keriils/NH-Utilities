@@ -33,21 +33,18 @@ public class KamiRing extends ItemBase implements IBauble, IVisDiscountGear {
     @Override
     @Optional.Method(modid = "Baubles")
     public void onWornTick(ItemStack itemstack, @NotNull EntityLivingBase player) {
-
         if (!player.isEntityInvulnerable() && (player instanceof IEntityInvulnerable entityInvulnerable)) {
             entityInvulnerable.setEntityInvulnerable(true);
         }
 
+        // spotless:off
         if (player instanceof EntityPlayer entityPlayer) {
             if (entityPlayer.isDead) entityPlayer.isDead = false;
-            if (entityPlayer.worldObj.getTotalWorldTime() % 10 == 0) {
-                if (entityPlayer.getFoodStats()
-                    .getFoodLevel() != 20) {
-                    entityPlayer.getFoodStats()
-                        .addStats(20, 5.0F);
-                }
+            if (entityPlayer.worldObj.getTotalWorldTime() % 20 == 0) {
+                entityPlayer.getFoodStats().addStats(20, 5.0F);
             }
         }
+        // spotless:on
     }
 
     @Override

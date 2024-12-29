@@ -16,11 +16,12 @@ public class EventLoader {
 
     public static void initNHUtilitiesEvents() {
         registerEvent(true, new GluttonyRingEvent(), enableGluttonyRingAndHungerRing);
-        registerEvent(true, new EnhanceExUHealingAxe(), enableEnhancedExUHealingAxe);
+        registerEvent(false, new EnhanceExUHealingAxe(), enableEnhancedExUHealingAxe);
         registerEvent(true, new WarpWardRingEvent());
         registerEvent(true, new DragonDeathHandler());
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static void registerEvent(boolean isMinecraftForgeEvent, Object event) {
         registerEvent(isMinecraftForgeEvent, event, true);
     }

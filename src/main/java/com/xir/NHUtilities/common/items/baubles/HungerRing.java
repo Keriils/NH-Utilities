@@ -11,6 +11,7 @@ import com.xir.NHUtilities.common.items.aItemCore.ItemBase;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 @Optional.Interface(iface = "baubles.api.IBauble", modid = "Baubles")
 public class HungerRing extends ItemBase implements IBauble {
@@ -30,7 +31,11 @@ public class HungerRing extends ItemBase implements IBauble {
     @Override
     @Optional.Method(modid = "Baubles")
     public void onWornTick(ItemStack itemstack, @NotNull EntityLivingBase player) {
-        if (player.worldObj.getTotalWorldTime() % 10 == 0 && player instanceof EntityPlayer entityPlayer) {
+        if (player.worldObj.getTotalWorldTime() % 20 != 0) return;
+        if (player instanceof EntityPlayer entityPlayer) {
+            var heldItem = entityPlayer.getHeldItem();
+            if (heldItem != null && heldItem.getItem() == GameRegistry.findItem("ExtraUtilities", "defoliageAxe"))
+                return;
             int foodLevel = -entityPlayer.getFoodStats()
                 .getFoodLevel();
             float saturationLevel = -entityPlayer.getFoodStats()

@@ -20,6 +20,7 @@ import gregtech.api.metatileentity.BaseMetaTileEntity;
 import shukaro.warptheory.util.ChatHelper;
 import shukaro.warptheory.util.FormatCodes;
 
+@SuppressWarnings("unused")
 public class WarpWardRingEvent {
 
     @SubscribeEvent
@@ -45,7 +46,6 @@ public class WarpWardRingEvent {
                         player,
                         FormatCodes.Purple.code + FormatCodes.Italic.code
                             + StatCollector.translateToLocal("chat.nhutilities.1"));
-                    return;
                 } else {
                     int amount = random.nextInt(10) + 1;
                     if (warpCounter <= amount) {
@@ -83,8 +83,6 @@ public class WarpWardRingEvent {
                             + StatCollector.translateToLocal("chat.nhutilities.3"));
                 }
             }
-        } else {
-            return;
         }
     }
 }
