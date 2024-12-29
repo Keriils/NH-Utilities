@@ -1,12 +1,13 @@
 package com.xir.NHUtilities.mixins.late.DraconicEvolution;
 
-import java.util.ArrayList;
+import static com.xir.NHUtilities.utils.InventoryUtils.getItemInPlayerBaublesInventory;
+
 import java.util.List;
 import java.util.Optional;
 
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -24,7 +25,7 @@ import com.brandon3055.draconicevolution.common.utills.InventoryUtils;
 
 @Mixin(value = GUITeleporter.class)
 @SuppressWarnings("UnusedMixin")
-public abstract class GUITeleporter_Mixin {
+public abstract class GUITeleporter_Mixin extends GuiScreen {
 
     @Shadow(remap = false)
     private ItemStack teleporterItem;
@@ -33,22 +34,19 @@ public abstract class GUITeleporter_Mixin {
     private EntityPlayer player;
 
     @Shadow(remap = false)
-    protected List<Teleporter.TeleportLocation> locations = new ArrayList<>(0);
+    protected List<Teleporter.TeleportLocation> locations;
 
     @Shadow(remap = false)
-    private int tick = 0;
+    private int tick;
 
     @Shadow(remap = false)
-    private int selected = 0;
+    private int selected;
 
     @Shadow(remap = false)
-    private int selectionOffset = 0;
+    private int selectionOffset;
 
     @Shadow(remap = false)
-    private boolean showFuelLight = true;
-
-    @Unique
-    private final GUITeleporter NHUtilities$theGUITeleporter = (GUITeleporter) (Object) this;
+    private boolean showFuelLight;
 
     @Unique
     private boolean NHUtilities$isBaubles = false;
@@ -56,24 +54,20 @@ public abstract class GUITeleporter_Mixin {
     @Shadow(remap = false)
     protected abstract void readDataFromItem(ItemStack teleporter);
 
-    @Unique
-    private Teleporter.TeleportLocation NHUtilities$getLocationSafely(int index) {
-        if (index < locations.size() && index >= 0) return locations.get(index);
-        return new Teleporter.TeleportLocation(0, 0, 0, 0, 0, 0, EnumChatFormatting.DARK_RED + "[Index Error]");
-    }
+    @Shadow(remap = false)
+    protected abstract Teleporter.TeleportLocation getLocationSafely(int index);
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void NHUtilities$setBaubles(EntityPlayer player, CallbackInfo ci) {
-        Optional<ItemStack> playerBaublesInventory = InventoryUtils
-            .getItemInPlayerBaublesInventory(player, TeleporterMKII.class);
-        if (player.getHeldItem() != null && player.getHeldItem()
-            .getItem() == ModItems.teleporterMKII) {
-            NHUtilities$isBaubles = false;
-        } else if (playerBaublesInventory.isPresent()) {
+        ItemStack heldItem = player.getHeldItem();
+        if (heldItem != null && heldItem.getItem() == ModItems.teleporterMKII) return;
+        var playerBaublesInventory = getItemInPlayerBaublesInventory(player, TeleporterMKII.class);
+        if (playerBaublesInventory.isPresent()) {
             teleporterItem = playerBaublesInventory.get();
             readDataFromItem(playerBaublesInventory.get());
             NHUtilities$isBaubles = true;
         }
+
     }
 
     /**
@@ -83,12 +77,12 @@ public abstract class GUITeleporter_Mixin {
     @Overwrite
     public void updateScreen() {
         if (NHUtilities$handOrBaubles()) {
-            NHUtilities$theGUITeleporter.mc.displayGuiScreen(null);
-            NHUtilities$theGUITeleporter.mc.setIngameFocus();
+            this.mc.displayGuiScreen(null);
+            this.mc.setIngameFocus();
         }
 
         if (tick % 5 == 0 && !locations.isEmpty()
-            && NHUtilities$getLocationSafely(selected + selectionOffset).getDimensionName()
+            && getLocationSafely(selected + selectionOffset).getDimensionName()
                 .isEmpty()
             && NHUtilities$banHand()) {
             if (NHUtilities$isBaubles) {

@@ -21,11 +21,13 @@ public abstract class AccelerateTileEntity_Mixin implements ITileEntityTickAccel
     private int NHUtilities$tickAcceleratedRate = 1;
 
     @Override
+    @SuppressWarnings("AddedMixinMembersNamePattern")
     public int getTickAcceleratedRate() {
         return this.NHUtilities$tickAcceleratedRate;
     }
 
     @Override
+    @SuppressWarnings("AddedMixinMembersNamePattern")
     public boolean tickAcceleration(int tickAcceleratedRate) {
         this.NHUtilities$tickAcceleratedRate = tickAcceleratedRate;
         for (int i = 0; i < tickAcceleratedRate; i++) {
