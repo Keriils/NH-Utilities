@@ -1,5 +1,6 @@
 package com.xir.NHUtilities.loader;
 
+import static com.xir.NHUtilities.config.Config.enableEggMachine;
 import static com.xir.NHUtilities.config.Config.enableEternityVial;
 import static com.xir.NHUtilities.config.Config.enableGluttonyRingAndHungerRing;
 import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
@@ -108,8 +109,10 @@ public class ItemsLoader {
         // endregion
 
         // region Common Block
-        NHUItemList.ChaosDragonEgg.setAndRegister(new CustomDragonEgg("ChaosDragonEgg"));
-        NHUItemList.AncientDragonEgg.setAndRegister(new CustomDragonEgg("AncientDragonEgg"));
+        if (enableEggMachine) {
+            NHUItemList.ChaosDragonEgg.setAndRegister(new CustomDragonEgg("ChaosDragonEgg"));
+            NHUItemList.AncientDragonEgg.setAndRegister(new CustomDragonEgg("AncientDragonEgg"));
+        }
         // endregion
 
         // region Meta Item

@@ -25,6 +25,8 @@ import static com.xir.NHUtilities.common.api.enums.NHUItemList.Egg_Machine_UXV;
 import static com.xir.NHUtilities.common.api.enums.NHUItemList.Egg_Machine_ZPM;
 import static com.xir.NHUtilities.common.api.enums.NHUItemList.TCBlastFurnace;
 import static com.xir.NHUtilities.common.api.enums.NHUItemList.TestMachine;
+import static com.xir.NHUtilities.config.Config.enableEggMachine;
+import static com.xir.NHUtilities.config.Config.enableWirelessHatchMore;
 import static com.xir.NHUtilities.main.ReferencedInfo.isDevEnvironment;
 import static com.xir.NHUtilities.utils.CommonUtil.trans;
 import static gregtech.api.enums.GTValues.VN;
@@ -53,8 +55,8 @@ public class MachineLoader {
         if (isDevEnvironment) registerMTE(TestMachine, new TestMachine(24999, "TestMachine", "TestMachine"));
         registerMTE(TCBlastFurnace, new TCBlastFurnace(TC_BLAST_FURNACE.ID, trans("nhu.tcebf.machine")));
 
-        initEggMachine();
-        initWirelessHatchMore();
+        if (enableEggMachine) initEggMachine();
+        if (enableWirelessHatchMore) initWirelessHatchMore();
     }
 
     private static void initEggMachine() {
