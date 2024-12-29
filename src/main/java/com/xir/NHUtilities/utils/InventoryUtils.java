@@ -13,6 +13,7 @@ import baubles.common.lib.PlayerHandler;
 /**
  * referenced draconic evolution
  */
+@SuppressWarnings("unused")
 public final class InventoryUtils {
 
     private InventoryUtils() {}
