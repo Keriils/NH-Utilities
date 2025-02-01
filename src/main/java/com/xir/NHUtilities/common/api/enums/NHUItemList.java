@@ -1,5 +1,7 @@
 package com.xir.NHUtilities.common.api.enums;
 
+import java.util.function.Supplier;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -176,6 +178,15 @@ public enum NHUItemList implements IItemContainer {
 
     public IItemContainer setAndRegister(IRegisterProvider register, boolean shouldRegister) {
         return setAndRegister(register, null, shouldRegister);
+    }
+
+    /**
+     * A lazy register.
+     */
+    public IItemContainer setAndRegister(Supplier<IRegisterProvider> supplier, boolean shouldRegister) {
+        if (shouldRegister) {
+            return setAndRegister(supplier.get());
+        } else return null;
     }
 
     @Override

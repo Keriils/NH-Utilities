@@ -21,19 +21,24 @@ import com.xir.NHUtilities.common.items.timeVial.EternityVial;
 import com.xir.NHUtilities.common.items.timeVial.TimeVial;
 import com.xir.NHUtilities.common.items.wand.foci.ItemFocusTape;
 
+import gregtech.api.enums.Mods;
+
 public class ItemsLoader {
+
+    static final boolean testThings = true;
 
     public static void initNHUtilitiesItems() {
 
         // region Common Item
-        NHUItemList.TimeVial.setAndRegister(new TimeVial(), enableTimeVial);
-        NHUItemList.EternityVial.setAndRegister(new EternityVial(), enableEternityVial);
-        NHUItemList.KamiRing.setAndRegister(new KamiRing());
-        NHUItemList.HungerRing.setAndRegister(new HungerRing(), enableGluttonyRingAndHungerRing);
-        NHUItemList.GluttonyRing.setAndRegister(new GluttonyRing(), enableGluttonyRingAndHungerRing);
-        NHUItemList.WarpWardRing.setAndRegister(new WarpWardRing());
-        NHUItemList.FocusTape.setAndRegister(new ItemFocusTape());
-        if (enableLunchBoxPlus) NHUItemList.LunchBoxPlus.setAndRegister(new LunchBoxPlus());
+        NHUItemList.TimeVial.setAndRegister(TimeVial::new, enableTimeVial);
+        NHUItemList.EternityVial.setAndRegister(EternityVial::new, enableEternityVial);
+        NHUItemList.KamiRing.setAndRegister(KamiRing::new, testThings);
+        NHUItemList.HungerRing.setAndRegister(HungerRing::new, enableGluttonyRingAndHungerRing);
+        NHUItemList.GluttonyRing.setAndRegister(GluttonyRing::new, enableGluttonyRingAndHungerRing);
+        NHUItemList.WarpWardRing.setAndRegister(WarpWardRing::new, testThings);
+        NHUItemList.FocusTape.setAndRegister(ItemFocusTape::new, testThings);
+        if (enableLunchBoxPlus && Mods.SpiceOfLife.isModLoaded())
+            NHUItemList.LunchBoxPlus.setAndRegister(new LunchBoxPlus());
         // endregion
 
         // region Fuel Rod
@@ -109,10 +114,8 @@ public class ItemsLoader {
         // endregion
 
         // region Common Block
-        if (enableEggMachine) {
-            NHUItemList.ChaosDragonEgg.setAndRegister(new CustomDragonEgg("ChaosDragonEgg"));
-            NHUItemList.AncientDragonEgg.setAndRegister(new CustomDragonEgg("AncientDragonEgg"));
-        }
+        NHUItemList.ChaosDragonEgg.setAndRegister(() -> new CustomDragonEgg("ChaosDragonEgg"), enableEggMachine);
+        NHUItemList.AncientDragonEgg.setAndRegister(() -> new CustomDragonEgg("AncientDragonEgg"), enableEggMachine);
         // endregion
 
         // region Meta Item
