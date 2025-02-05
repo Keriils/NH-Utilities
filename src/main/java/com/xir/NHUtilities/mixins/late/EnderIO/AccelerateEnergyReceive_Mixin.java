@@ -11,7 +11,7 @@ import crazypants.enderio.power.ICapacitor;
 
 @SuppressWarnings("UnusedMixin")
 @Mixin(value = AbstractPoweredMachineEntity.class, remap = false)
-public class AccelerateEnergyRecive_Mixin {
+public class AccelerateEnergyReceive_Mixin {
 
     @Redirect(
         method = "getMaxEnergyRecieved",
