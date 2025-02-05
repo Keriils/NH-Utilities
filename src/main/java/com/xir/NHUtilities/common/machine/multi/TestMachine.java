@@ -1,7 +1,10 @@
 package com.xir.NHUtilities.common.machine.multi;
 
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.ofBlock;
+import static com.xir.NHUtilities.common.api.enums.TexturesSets.ScreenOFF;
+import static com.xir.NHUtilities.common.api.enums.TexturesSets.ScreenON;
 import static com.xir.NHUtilities.main.ReferencedInfo.MOD_NAME;
+import static com.xir.NHUtilities.utils.CommonUtil.StructureDefinitionBuilder;
 import static gregtech.api.enums.HatchElement.Energy;
 import static gregtech.api.enums.HatchElement.ExoticEnergy;
 import static gregtech.api.enums.HatchElement.InputBus;
@@ -20,27 +23,21 @@ import org.jetbrains.annotations.NotNull;
 
 import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
 import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
-import com.gtnewhorizon.structurelib.structure.StructureDefinition;
-import com.xir.NHUtilities.common.api.enums.NHUTextEnum;
 import com.xir.NHUtilities.common.machine.multi.MTEcore.NHU_MTEBase;
 
 import gregtech.api.enums.Textures;
-import gregtech.api.interfaces.IIconContainer;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.logic.ProcessingLogic;
 import gregtech.api.recipe.RecipeMap;
-import gregtech.api.recipe.RecipeMaps;
 import gregtech.api.util.MultiblockTooltipBuilder;
+import tectech.recipe.TecTechRecipeMaps;
 import tectech.thing.casing.BlockGTCasingsTT;
 import tectech.thing.metaTileEntity.multi.base.render.TTRenderedExtendedFacingTexture;
 
 @SuppressWarnings("unused")
 public class TestMachine extends NHU_MTEBase<TestMachine> {
-
-    public static final IIconContainer ScreenOFF = new Textures.BlockIcons.CustomIcon("iconsets/EM_CONTROLLER");
-    public static final IIconContainer ScreenON = new Textures.BlockIcons.CustomIcon("iconsets/EM_CONTROLLER_ACTIVE");
 
     // region Constructor
     protected TestMachine(String aName) {
@@ -59,8 +56,18 @@ public class TestMachine extends NHU_MTEBase<TestMachine> {
 
     // region Logic
     @Override
+    public RecipeMap<?> getRecipeMap() {
+        return TecTechRecipeMaps.eyeOfHarmonyRecipes;
+    }
+
+    @Override
+    public @NotNull Collection<RecipeMap<?>> getAvailableRecipeMaps() {
+        return super.getAvailableRecipeMaps();
+    }
+
+    @Override
     protected ProcessingLogic createProcessingLogic() {
-        return super.createProcessingLogic();
+        return null;
     }
 
     @Override
@@ -82,33 +89,22 @@ public class TestMachine extends NHU_MTEBase<TestMachine> {
     protected int getMaxParallel() {
         return 114514;
     }
-
-    @Override
-    public RecipeMap<?> getRecipeMap() {
-        return RecipeMaps.assemblerRecipes;
-    }
-
-    @Override
-    public @NotNull Collection<RecipeMap<?>> getAvailableRecipeMaps() {
-        return super.getAvailableRecipeMaps();
-    }
     // endregion
 
     // region Common Setting
-    @Override
-    public boolean requiresMaintenance() {
-        return false;
-    }
-
     @Override
     public boolean enableExplosion() {
         return false;
     }
 
     @Override
+    public boolean getDefaultHasMaintenanceChecks() {
+        return false;
+    }
+
+    @Override
     protected MultiblockTooltipBuilder createTooltip() {
         return new MultiblockTooltipBuilder().addMachineType("Test")
-            .addInfo(NHUTextEnum.Author_Keriils.getText())
             .toolTipFinisher(MOD_NAME);
     }
     // endregion
@@ -128,8 +124,7 @@ public class TestMachine extends NHU_MTEBase<TestMachine> {
     // region Structure
     @Override
     public IStructureDefinition<TestMachine> getStructureDefinition() {
-        return StructureDefinition.<TestMachine>builder()
-            .addShape(STRUCTURE_PIECE_MAIN, shape)
+        return StructureDefinitionBuilder(TestMachine.class).addShape(STRUCTURE_PIECE_MAIN, shape)
             .addElement(
                 'A',
                 buildHatchAdder(TestMachine.class)
