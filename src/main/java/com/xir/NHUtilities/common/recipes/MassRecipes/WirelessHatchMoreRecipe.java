@@ -259,8 +259,8 @@ public class WirelessHatchMoreRecipe {
             WirelessHatchMore.dynamoMulti_UEV_65536.get(1), WirelessHatchMore.dynamoMulti_UIV_65536.get(1), };
 
         // dynamo 262144A
-        ItemStack[] dynamoHatches_262144A = { CustomItemList.eM_energyTunnel6_UEV.get(1),
-            CustomItemList.eM_energyTunnel7_UIV.get(1) };
+        ItemStack[] dynamoHatches_262144A = { CustomItemList.eM_dynamoTunnel6_UEV.get(1),
+            CustomItemList.eM_dynamoTunnel6_UIV.get(1) };
 
         ItemStack[] wirelessDynamoHatches_262144A = { WirelessHatchMore.dynamoMulti_UEV_262144.get(1),
             WirelessHatchMore.dynamoMulti_UIV_262144.get(1) };
