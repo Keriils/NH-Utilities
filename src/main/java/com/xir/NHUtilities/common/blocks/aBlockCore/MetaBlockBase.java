@@ -36,23 +36,6 @@ public abstract class MetaBlockBase extends BlockBase implements IMetaTypeObject
         RegisterUtil.registerBlock(this, this.getItemBlockClass(), this.getRegisterName());
     }
 
-    public ItemStack addMetaItem(String aName, int aMeta) {
-        return addMetaItem(aName, aMeta, null, null);
-    }
-
-    public ItemStack addMetaItem(String aName, int aMeta, String[] tooltips) {
-        return addMetaItem(aName, aMeta, null, tooltips);
-    }
-
-    public ItemStack addMetaItem(String aName, int aMeta, String aExtraFolder) {
-        return addMetaItem(aName, aMeta, aExtraFolder, null);
-    }
-
-    @Override
-    public ItemStack addMetaItem(String aName, int aMeta, String aExtraFolder, String[] tooltips) {
-        return MetaObjectUtil.addMetaItemUtil(getMTManager(), this, aName, aMeta, aExtraFolder, tooltips);
-    }
-
     public abstract Class<? extends ItemBlock> getItemBlockClass();
 
     /**
@@ -127,7 +110,6 @@ public abstract class MetaBlockBase extends BlockBase implements IMetaTypeObject
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> itemStackList) {
-        getMTManager().getNameMap()
-            .forEach((meta, name) -> itemStackList.add(new ItemStack(this, 1, meta)));
+        getMTManager().NAME_MAP.forEach((meta, name) -> itemStackList.add(new ItemStack(this, 1, meta)));
     }
 }

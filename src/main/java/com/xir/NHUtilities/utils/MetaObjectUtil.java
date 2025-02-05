@@ -16,7 +16,9 @@ import com.xir.NHUtilities.common.api.MetaTypeManager;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class MetaObjectUtil {
+public final class MetaObjectUtil {
+
+    private MetaObjectUtil() {}
 
     @Contract("_, _, _, _, _, _ -> new")
     public static @NotNull ItemStack addMetaItemUtil(MetaTypeManager manager, Item item, String aName, int aMeta,
@@ -34,19 +36,19 @@ public class MetaObjectUtil {
 
     private static void mapUtil(@NotNull MetaTypeManager manager, String aName, int aMeta, String aExtraFolder,
         String[] tooltips) {
-        manager.getNameMap()
-            .put(aMeta, aName);
-        if (aExtraFolder != null) manager.getGroupFoldersMap()
-            .put(aMeta, aExtraFolder);
-        if (tooltips != null && tooltips.length >= 1) manager.getTooltipsMap()
-            .put(aMeta, tooltips);
+        var nameMap = manager.NAME_MAP;
+        if (nameMap.containsKey(aMeta))
+            throw new IllegalArgumentException("This meta value has benn set to " + nameMap.get(aMeta));
+        nameMap.put(aMeta, aName);
+        if (aExtraFolder != null) manager.GROUP_FOLDERS_MAP.put(aMeta, aExtraFolder);
+        if (tooltips != null && tooltips.length >= 1) manager.TOOLTIPS_MAP.put(aMeta, tooltips);
     }
 
     @SideOnly(Side.CLIENT)
     public static void registerIconUtil(@NotNull MetaTypeManager manager, String iconPathName, IIconRegister register) {
-        Map<Integer, IIcon> iconMap = manager.getIconMap();
-        Map<Integer, String> nameMap = manager.getNameMap();
-        Map<Integer, String> groupFoldersMap = manager.getGroupFoldersMap();
+        Map<Integer, IIcon> iconMap = manager.ICON_MAP;
+        Map<Integer, String> nameMap = manager.NAME_MAP;
+        Map<Integer, String> groupFoldersMap = manager.GROUP_FOLDERS_MAP;
 
         for (Map.Entry<Integer, String> entry : nameMap.entrySet()) {
             int meta = entry.getKey();

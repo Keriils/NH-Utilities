@@ -17,8 +17,10 @@ import gregtech.api.util.GTLanguageManager;
 
 public abstract class MetaItemBlockBase extends ItemBlock implements IMetaObjectProvider {
 
+    @SuppressWarnings("SpellCheckingInspection")
     public final String mNoMobsToolTip = GTLanguageManager
         .addStringLocalization("gt.nomobspawnsonthisblock", "Mobs cannot Spawn on this Block");
+    @SuppressWarnings("SpellCheckingInspection")
     public final String mNoTileEntityToolTip = GTLanguageManager
         .addStringLocalization("gt.notileentityinthisblock", "This is NOT a TileEntity!");
 
