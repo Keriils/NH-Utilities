@@ -1,14 +1,18 @@
 package com.xir.NHUtilities.mixins.late.GregTech;
 
 import static com.xir.NHUtilities.config.Config.accelerateGregTechMachineDiscount;
+import static com.xir.NHUtilities.main.NHUtilities.LOG;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
+import com.xir.NHUtilities.common.api.interfaces.IAccelerationState;
 import com.xir.NHUtilities.common.api.interfaces.ITileEntityTickAcceleration;
 
+import ggfab.mte.MTEAdvAssLine;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.metatileentity.BaseMetaTileEntity;
+import gregtech.api.metatileentity.CommonMetaTileEntity;
 import gregtech.api.metatileentity.implementations.MTEBasicMachine;
 import gregtech.api.metatileentity.implementations.MTEMultiBlockBase;
 import gregtech.common.tileentities.machines.multi.MTEPrimitiveBlastFurnace;
@@ -16,7 +20,8 @@ import tectech.thing.metaTileEntity.multi.MTEResearchStation;
 
 @SuppressWarnings("UnusedMixin")
 @Mixin(BaseMetaTileEntity.class)
-public abstract class BaseMetaTileEntityAcceleration_Mixin implements ITileEntityTickAcceleration {
+public abstract class BaseMetaTileEntityAcceleration_Mixin extends CommonMetaTileEntity
+    implements ITileEntityTickAcceleration {
 
     @Shadow(remap = false)
     public abstract int getProgress();
@@ -29,6 +34,9 @@ public abstract class BaseMetaTileEntityAcceleration_Mixin implements ITileEntit
 
     @Shadow(remap = false)
     public abstract boolean isActive();
+
+    @Shadow
+    public abstract void updateEntity();
 
     @Override
     @SuppressWarnings("AddedMixinMembersNamePattern")
@@ -45,6 +53,38 @@ public abstract class BaseMetaTileEntityAcceleration_Mixin implements ITileEntit
                     resAte.tickAcceleration(tickAcceleratedRate);
                 }
                 return true;
+            }
+
+            // for accelerating Adv Ass Line
+            if (metaTileEntity instanceof MTEAdvAssLine advAssLine) {
+                if (advAssLine instanceof IAccelerationState accelerationState) {
+                    tickAcceleratedRate = (int) (tickAcceleratedRate * accelerateGregTechMachineDiscount);
+                    accelerationState.setAccelerationState(true);
+                    try {
+
+                        // Referenced GTNH to control the performance in 1ms
+                        long tMaxTime = System.nanoTime() + 1000000;
+
+                        for (int i = 0; i < tickAcceleratedRate; i++) {
+                            // skip if assLine stuck
+                            if (accelerationState.getMachineAccelerationState()) break;
+                            this.updateEntity();
+                            if (System.nanoTime() > tMaxTime) {
+                                break;
+                            }
+                        }
+
+                    } catch (Exception e) {
+                        LOG.warn(
+                            "An error occurred accelerating TileEntity at ( {}, {}, {}, {})",
+                            this.xCoord,
+                            this.yCoord,
+                            this.zCoord,
+                            e.getMessage());
+                    } finally {
+                        accelerationState.setAccelerationState(false);
+                    }
+                }
             }
 
             if (maxProgress >= 2) { // obviously

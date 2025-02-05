@@ -11,6 +11,7 @@ public enum TargetMod {
     ExtraUtilities("Extra Utilities", "ExtraUtilities"),
     SpiceOfLife("SpiceOfLife", "SpiceOfLife"),
     JABBA("JABBA", "JABBA"),
+    GigaGramFab("GigaGramFab", "ggfab"),
 
     ;
 
