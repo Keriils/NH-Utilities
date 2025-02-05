@@ -36,23 +36,6 @@ public abstract class MetaItemBase extends ItemBase implements IMetaTypeObject {
         RegisterUtil.registerItem(this);
     }
 
-    public ItemStack addMetaItem(String aName, int aMeta) {
-        return addMetaItem(aName, aMeta, null, null);
-    }
-
-    public ItemStack addMetaItem(String aName, int aMeta, String[] tooltips) {
-        return addMetaItem(aName, aMeta, null, tooltips);
-    }
-
-    public ItemStack addMetaItem(String aName, int aMeta, String aExtraFolder) {
-        return addMetaItem(aName, aMeta, aExtraFolder, null);
-    }
-
-    @Override
-    public ItemStack addMetaItem(String aName, int aMeta, String aExtraFolder, String[] tooltips) {
-        return MetaObjectUtil.addMetaItemUtil(getMTManager(), this, aName, aMeta, aExtraFolder, tooltips);
-    }
-
     @Override
     public String getUnlocalizedName() {
         return unlocalizedName;
@@ -106,16 +89,14 @@ public abstract class MetaItemBase extends ItemBase implements IMetaTypeObject {
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item item, CreativeTabs creativeTabs, List<ItemStack> itemStackList) {
-        getMTManager().getNameMap()
-            .forEach((meta, name) -> itemStackList.add(new ItemStack(this, 1, meta)));
+        getMTManager().NAME_MAP.forEach((meta, name) -> itemStackList.add(new ItemStack(this, 1, meta)));
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List<String> aList, boolean b3h) {
         int meta = itemStack.getItemDamage();
-        String[] tooltip = getMTManager().getTooltipsMap()
-            .get(meta);
+        String[] tooltip = getMTManager().getTooltips(meta);
         if (tooltip != null) aList.addAll(Arrays.asList(tooltip));
     }
 }

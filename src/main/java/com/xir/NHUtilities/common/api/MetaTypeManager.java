@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
 import org.jetbrains.annotations.Contract;
@@ -31,16 +32,23 @@ public class MetaTypeManager {
     // region Manager
     private IMetaTypeObject metaObject;
     /**
+     * The name map which is the name of the meta item.
+     */
+    public final Map<Integer, String> NAME_MAP = new LinkedHashMap<>();
+    /**
+     * The tooltips map.
+     */
+    public final Map<Integer, String[]> TOOLTIPS_MAP = new HashMap<>();
+    /**
      * IconMap only called in Client side.
      */
-    private final Map<Integer, IIcon> iconMap = CommonUtil.isClientSide() ? new HashMap<>() : null;
+    public final Map<Integer, IIcon> ICON_MAP = CommonUtil.isClientSide() ? new HashMap<>() : null;
     /**
+     * <li>The extra group folders map, but in server side should be null.
      * <li>Called on the client side to set up groups for items or blocks.
      * <li>Used to manage extra group folders for a series of items or blocks of the same type.
      */
-    private final Map<Integer, String> groupFoldersMap = CommonUtil.isClientSide() ? new HashMap<>() : null;
-    private final Map<Integer, String> nameMap = new LinkedHashMap<>();
-    private final Map<Integer, String[]> tooltipsMap = new HashMap<>();
+    public final Map<Integer, String> GROUP_FOLDERS_MAP = CommonUtil.isClientSide() ? new HashMap<>() : null;
 
     private MetaTypeManager() {}
 
@@ -50,33 +58,34 @@ public class MetaTypeManager {
     }
 
     /**
-     * Gets the icon map.
-     *
-     * @return the icon map
+     * An additional method to add meta item, but should after the metaObject is initialized or
+     * {@link IMetaTypeObject#initializeMetaTypeObject()}.
      */
-    @Contract(pure = true)
-    public Map<Integer, IIcon> getIconMap() {
-        return this.iconMap;
+    public ItemStack addMetaItem(String aName, int aMeta, String aExtraFolder, String[] tooltips) {
+        if (metaObject == null) throw new IllegalStateException("MetaObject has been set in this time.");
+        return metaObject.addMetaItem(aName, aMeta, aExtraFolder, tooltips);
     }
 
+    public ItemStack addMetaItem(String aName, int aMeta) {
+        return addMetaItem(aName, aMeta, null, null);
+    }
+
+    public ItemStack addMetaItem(String aName, int aMeta, String[] tooltips) {
+        return addMetaItem(aName, aMeta, null, tooltips);
+    }
+
+    public ItemStack addMetaItem(String aName, int aMeta, String aExtraFolder) {
+        return addMetaItem(aName, aMeta, aExtraFolder, null);
+    }
+
+    // region Getter
     /**
      * Gets the icon for a meta value.
      *
      * @return the icon
      */
     public IIcon getIcon(int aMeta) {
-        return this.getIconMap()
-            .get(aMeta);
-    }
-
-    /**
-     * Gets the extra group folders map
-     *
-     * @return the group folders map
-     */
-    @Contract(pure = true)
-    public Map<Integer, String> getGroupFoldersMap() {
-        return this.groupFoldersMap;
+        return this.ICON_MAP.get(aMeta);
     }
 
     /**
@@ -85,18 +94,7 @@ public class MetaTypeManager {
      * @return the extra group folder for a series of items or blocks of the same type
      */
     public String getFolderName(int aMeta) {
-        return this.getGroupFoldersMap()
-            .get(aMeta);
-    }
-
-    /**
-     * Gets the name map.
-     *
-     * @return the name map
-     */
-    @Contract(pure = true)
-    public Map<Integer, String> getNameMap() {
-        return this.nameMap;
+        return this.GROUP_FOLDERS_MAP.get(aMeta);
     }
 
     /**
@@ -105,18 +103,7 @@ public class MetaTypeManager {
      * @return the item or block name
      */
     public String getName(int aMeta) {
-        return this.getNameMap()
-            .get(aMeta);
-    }
-
-    /**
-     * Gets the tooltips map.
-     *
-     * @return the tooltips map
-     */
-    @Contract(pure = true)
-    public Map<Integer, String[]> getTooltipsMap() {
-        return this.tooltipsMap;
+        return this.NAME_MAP.get(aMeta);
     }
 
     /**
@@ -125,8 +112,7 @@ public class MetaTypeManager {
      * @return the tooltips
      */
     public String[] getTooltips(int aMeta) {
-        return this.getTooltipsMap()
-            .get(aMeta);
+        return this.TOOLTIPS_MAP.get(aMeta);
     }
 
     /**
@@ -138,11 +124,13 @@ public class MetaTypeManager {
     public IMetaTypeObject getMetaObject() {
         return this.metaObject;
     }
+    // endregion
 
     /**
      * Sets the meta object of item or block which implements {@link IMetaTypeObject}.
      */
     public void setMetaObject(IMetaTypeObject object) {
+        if (metaObject != null) throw new IllegalStateException("MetaObject has been set.");
         this.metaObject = object;
     }
     // endregion
