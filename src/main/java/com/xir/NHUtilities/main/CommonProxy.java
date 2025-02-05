@@ -14,6 +14,7 @@ import com.xir.NHUtilities.loader.RecipeLoader;
 import com.xir.NHUtilities.loader.ResearchLoader;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
@@ -63,6 +64,10 @@ public class CommonProxy {
         GTApiResearch.addGTApiResearchAndRecipes();
         LOG.info("Loaded TC_Researches and TC_Recipes through GTAPI");
 
+    }
+
+    public void completeInit(FMLLoadCompleteEvent event) {
+        LOG.info("Complete-initializing " + MOD_NAME + "!");
     }
 
     public void serverStarting(FMLServerStartingEvent event) {}

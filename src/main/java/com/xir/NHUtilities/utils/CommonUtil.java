@@ -4,6 +4,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
+import com.gtnewhorizon.structurelib.structure.StructureDefinition;
+
 import cpw.mods.fml.common.FMLCommonHandler;
 
 @SuppressWarnings("unused")
@@ -54,6 +59,11 @@ public class CommonUtil {
         return FMLCommonHandler.instance()
             .getSide()
             .isServer();
+    }
+
+    @Contract(value = "_ -> new", pure = true)
+    public static <T> StructureDefinition.@NotNull Builder<T> StructureDefinitionBuilder(Class<T> typeToken) {
+        return StructureDefinition.builder();
     }
 
 }
