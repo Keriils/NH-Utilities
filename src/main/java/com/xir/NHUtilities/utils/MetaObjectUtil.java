@@ -11,7 +11,7 @@ import net.minecraft.util.IIcon;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import com.xir.NHUtilities.common.api.MetaTypeManager;
+import com.xir.NHUtilities.common.api.MTOData;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -21,20 +21,20 @@ public final class MetaObjectUtil {
     private MetaObjectUtil() {}
 
     @Contract("_, _, _, _, _, _ -> new")
-    public static @NotNull ItemStack addMetaItemUtil(MetaTypeManager manager, Item item, String aName, int aMeta,
+    public static @NotNull ItemStack addMetaItemUtil(MTOData<?> manager, Item item, String aName, int aMeta,
         String aExtraFolder, String[] tooltips) {
         mapUtil(manager, aName, aMeta, aExtraFolder, tooltips);
         return new ItemStack(item, 1, aMeta);
     }
 
     @Contract("_, _, _, _, _, _ -> new")
-    public static @NotNull ItemStack addMetaItemUtil(MetaTypeManager manager, Block block, String aName, int aMeta,
+    public static @NotNull ItemStack addMetaItemUtil(MTOData<?> manager, Block block, String aName, int aMeta,
         String aExtraFolder, String[] tooltips) {
         mapUtil(manager, aName, aMeta, aExtraFolder, tooltips);
         return new ItemStack(block, 1, aMeta);
     }
 
-    private static void mapUtil(@NotNull MetaTypeManager manager, String aName, int aMeta, String aExtraFolder,
+    private static void mapUtil(@NotNull MTOData<?> manager, String aName, int aMeta, String aExtraFolder,
         String[] tooltips) {
         var nameMap = manager.NAME_MAP;
         if (nameMap.containsKey(aMeta))
@@ -45,7 +45,7 @@ public final class MetaObjectUtil {
     }
 
     @SideOnly(Side.CLIENT)
-    public static void registerIconUtil(@NotNull MetaTypeManager manager, String iconPathName, IIconRegister register) {
+    public static void registerIconUtil(@NotNull MTOData<?> manager, String iconPathName, IIconRegister register) {
         Map<Integer, IIcon> iconMap = manager.ICON_MAP;
         Map<Integer, String> nameMap = manager.NAME_MAP;
         Map<Integer, String> groupFoldersMap = manager.GROUP_FOLDERS_MAP;

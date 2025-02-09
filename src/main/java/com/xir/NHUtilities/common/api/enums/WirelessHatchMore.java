@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
+import com.xir.NHUtilities.common.api.NHUCreativeTabs;
 import com.xir.NHUtilities.common.api.interfaces.IItemContainer;
 import com.xir.NHUtilities.common.api.interfaces.IRegisterProvider;
 import com.xir.NHUtilities.utils.CommonUtil;
@@ -178,7 +179,7 @@ public enum WirelessHatchMore implements IItemContainer {
         if (CommonUtil.isStackInvalid(mStack)) {
             GTLog.out.println("Object in the ItemList is null at:");
             new NullPointerException().printStackTrace(GTLog.out);
-            return new ItemStack(Blocks.fire);
+            return CommonUtil.aErrorStack();
         }
         return CommonUtil.copyAmount(aAmount, mStack);
     }
@@ -190,17 +191,20 @@ public enum WirelessHatchMore implements IItemContainer {
 
     @Override
     public IItemContainer set(Item aItem) {
-        mHasNotBeenSet = false;
         if (aItem == null) return this;
-        mStack = CommonUtil.copyAmount(1, aItem);
-        return this;
+        return set(CommonUtil.newItemStack(aItem));
     }
 
     @Override
     public IItemContainer set(ItemStack aItemStack) {
-        mHasNotBeenSet = false;
         if (aItemStack == null) return this;
+        mHasNotBeenSet = false;
         mStack = CommonUtil.copyAmount(1, aItemStack);
+        Item item = mStack.getItem();
+        if (item == null) return this;
+        else if (item.getCreativeTab() == null) {
+            NHUCreativeTabs.addToDefaultCreativeTab(mStack.copy());
+        }
         return this;
     }
 
@@ -221,7 +225,6 @@ public enum WirelessHatchMore implements IItemContainer {
     @Override
     public IItemContainer setAndRegister(Object aObject, String aRegisterName, Class<? extends ItemBlock> aItemClass,
         boolean shouldRegister) {
-        mHasNotBeenSet = false;
         if (aObject instanceof Block aBlock) {
             RegisterUtil.registerBlock(aBlock, aItemClass, aRegisterName, shouldRegister);
             return set(aBlock);

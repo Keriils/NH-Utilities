@@ -24,6 +24,8 @@ public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
 
+        TexturesSets.init();
+
         LOG.info("Pre-initializing " + MOD_NAME + "!");
 
         ItemsLoader.initNHUtilitiesItems();
@@ -31,8 +33,6 @@ public class CommonProxy {
 
         EventLoader.initNHUtilitiesEvents();
         LOG.info("Loaded Events.");
-
-        TexturesSets.init();
 
     }
 

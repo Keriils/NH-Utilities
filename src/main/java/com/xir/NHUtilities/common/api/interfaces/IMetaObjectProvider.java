@@ -1,12 +1,9 @@
 package com.xir.NHUtilities.common.api.interfaces;
 
-import com.xir.NHUtilities.common.api.MetaTypeManager;
+import com.xir.NHUtilities.common.api.MTOData;
 
 public interface IMetaObjectProvider {
 
-    /**
-     * return the MetaTypeManager registered in {@link MetaTypeManager}
-     */
-    MetaTypeManager getMTManager();
+    MTOData<?> getMTOData();
 
 }
