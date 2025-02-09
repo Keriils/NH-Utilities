@@ -10,7 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
-import com.xir.NHUtilities.common.api.MetaTypeManager;
+import com.xir.NHUtilities.common.api.MTOData;
 import com.xir.NHUtilities.common.api.interfaces.IMetaTypeObject;
 import com.xir.NHUtilities.utils.CommonUtil;
 import com.xir.NHUtilities.utils.MetaObjectUtil;
@@ -20,10 +20,12 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SuppressWarnings({ "unused", "UnusedReturnValue" })
-public abstract class MetaItemBase extends ItemBase implements IMetaTypeObject {
+public class MetaItemBase extends ItemBase implements IMetaTypeObject {
 
     @SideOnly(Side.CLIENT)
     private String iconPathName;
+
+    protected MTOData<? extends IMetaTypeObject> mtoData;
 
     protected final String unlocalizedName;
 
@@ -44,27 +46,20 @@ public abstract class MetaItemBase extends ItemBase implements IMetaTypeObject {
     @Override
     public String getUnlocalizedName(ItemStack itemStack) {
         int meta = itemStack.getItemDamage();
-        return getMTManager().getName(meta) != null ? (getUnlocalizedName() + "." + meta) : "nhutilities.null";
+        return mtoData.getName(meta) != null ? (getUnlocalizedName() + "." + meta) : "nhutilities.null";
     }
 
-    /**
-     * Loads the meta items or blocks.
-     * This method is called within {@link IMetaTypeObject#initializeMetaTypeObject()}
-     */
     @Override
-    public abstract void loadMetaItem();
+    public MTOData<?> getMTOData() {
+        return this.mtoData;
+    }
 
-    /**
-     * return the item registered name
-     */
     @Override
-    public abstract String getRegisterName();
-
-    /**
-     * return the MetaTypeManager registered in {@link MetaTypeManager}
-     */
-    @Override
-    public abstract MetaTypeManager getMTManager();
+    public <T extends IMetaTypeObject> IMetaTypeObject setMtoData(MTOData<T> mtoData) {
+        if (this.mtoData != null) throw new IllegalStateException();
+        this.mtoData = mtoData;
+        return this;
+    }
 
     /**
      * Returns the icon folder path for this meta type.
@@ -72,31 +67,33 @@ public abstract class MetaItemBase extends ItemBase implements IMetaTypeObject {
      */
     @Override
     @SideOnly(Side.CLIENT)
-    public abstract String getIconFolderName();
+    public String getIconFolderName() {
+        return this.name;
+    }
 
     @Override
     @SideOnly(Side.CLIENT)
     public IIcon getIconFromDamage(int meta) {
-        return getMTManager().getIcon(meta);
+        return mtoData.getIcon(meta);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister register) {
-        MetaObjectUtil.registerIconUtil(getMTManager(), iconPathName, register);
+        MetaObjectUtil.registerIconUtil(mtoData, iconPathName, register);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item item, CreativeTabs creativeTabs, List<ItemStack> itemStackList) {
-        getMTManager().NAME_MAP.forEach((meta, name) -> itemStackList.add(new ItemStack(this, 1, meta)));
+        mtoData.NAME_MAP.forEach((meta, name) -> itemStackList.add(new ItemStack(this, 1, meta)));
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List<String> aList, boolean b3h) {
         int meta = itemStack.getItemDamage();
-        String[] tooltip = getMTManager().getTooltips(meta);
+        String[] tooltip = mtoData.getTooltips(meta);
         if (tooltip != null) aList.addAll(Arrays.asList(tooltip));
     }
 }

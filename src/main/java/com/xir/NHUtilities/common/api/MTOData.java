@@ -8,29 +8,20 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 
 import com.xir.NHUtilities.common.api.interfaces.IMetaTypeObject;
 import com.xir.NHUtilities.utils.CommonUtil;
 
 /**
+ * <li>MetaTypeObjectData
  * <li>Manages meta-able objects and registers all meta items or blocks.
  * <li>This class is designed to handle the registration and management of meta items or blocks,
  * including their icons, metaData, and tooltips.
  */
-@SuppressWarnings("unused")
-public class MetaTypeManager {
+@SuppressWarnings({ "unused", "UnusedReturnValue" })
+public class MTOData<T extends IMetaTypeObject> {
 
-    // region Meta Item
-    public static final MetaTypeManager MetaItem = create();
-    // endregion
-
-    // region Meta Block
-    public static final MetaTypeManager MetaBlock = create();
-    // endregion
-
-    // region Manager
-    private IMetaTypeObject metaObject;
+    private T metaObject;
     /**
      * The name map which is the name of the meta item.
      */
@@ -50,17 +41,6 @@ public class MetaTypeManager {
      */
     public final Map<Integer, String> GROUP_FOLDERS_MAP = CommonUtil.isClientSide() ? new HashMap<>() : null;
 
-    private MetaTypeManager() {}
-
-    @Contract(" -> new")
-    private static @NotNull MetaTypeManager create() {
-        return new MetaTypeManager();
-    }
-
-    /**
-     * An additional method to add meta item, but should after the metaObject is initialized or
-     * {@link IMetaTypeObject#initializeMetaTypeObject()}.
-     */
     public ItemStack addMetaItem(String aName, int aMeta, String aExtraFolder, String[] tooltips) {
         if (metaObject == null) throw new IllegalStateException("MetaObject has been set in this time.");
         return metaObject.addMetaItem(aName, aMeta, aExtraFolder, tooltips);
@@ -129,9 +109,10 @@ public class MetaTypeManager {
     /**
      * Sets the meta object of item or block which implements {@link IMetaTypeObject}.
      */
-    public void setMetaObject(IMetaTypeObject object) {
+    public MTOData<T> setMetaObject(T object) {
         if (metaObject != null) throw new IllegalStateException("MetaObject has been set.");
         this.metaObject = object;
+        return this;
     }
     // endregion
 }

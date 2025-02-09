@@ -12,7 +12,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import com.xir.NHUtilities.common.api.MetaTypeManager;
+import com.xir.NHUtilities.common.api.MTOData;
 import com.xir.NHUtilities.common.api.interfaces.IMetaTypeObject;
 import com.xir.NHUtilities.utils.CommonUtil;
 import com.xir.NHUtilities.utils.MetaObjectUtil;
@@ -22,12 +22,17 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SuppressWarnings({ "unused", "UnusedReturnValue" })
-public abstract class MetaBlockBase extends BlockBase implements IMetaTypeObject {
+public class MetaBlockBase extends BlockBase implements IMetaTypeObject {
 
     @SideOnly(Side.CLIENT)
     private String iconPathName;
 
     protected final String unlocalizedName;
+
+    protected MTOData<? extends IMetaTypeObject> mtoData;
+
+    // default class
+    protected Class<? extends ItemBlock> itemBlockClass = MetaItemBlockBase.class;
 
     public MetaBlockBase(String aUnlocalizedName) {
         this.name = aUnlocalizedName;
@@ -36,34 +41,31 @@ public abstract class MetaBlockBase extends BlockBase implements IMetaTypeObject
         RegisterUtil.registerBlock(this, this.getItemBlockClass(), this.getRegisterName());
     }
 
-    public abstract Class<? extends ItemBlock> getItemBlockClass();
+    public Class<? extends ItemBlock> getItemBlockClass() {
+        return this.itemBlockClass;
+    }
 
-    /**
-     * Loads the meta items or blocks.
-     * This method is called within {@link IMetaTypeObject#initializeMetaTypeObject()}
-     */
+    public void setItemBlockClass(Class<? extends MetaItemBlockBase> itemBlockClass) {
+        this.itemBlockClass = itemBlockClass;
+    }
+
     @Override
-    public abstract void loadMetaItem();
+    public <T extends IMetaTypeObject> IMetaTypeObject setMtoData(MTOData<T> mtoData) {
+        if (this.mtoData != null) throw new IllegalStateException();
+        this.mtoData = mtoData;
+        return this;
+    }
 
-    /**
-     * return the block registered name
-     */
     @Override
-    public abstract String getRegisterName();
+    public MTOData<?> getMTOData() {
+        return this.mtoData;
+    }
 
-    /**
-     * return the MetaTypeManager registered in {@link MetaTypeManager}
-     */
-    @Override
-    public abstract MetaTypeManager getMTManager();
-
-    /**
-     * Returns the icon folder path for this meta type.
-     * Each meta type has its specific icon location.
-     */
     @Override
     @SideOnly(Side.CLIENT)
-    public abstract String getIconFolderName();
+    public String getIconFolderName() {
+        return this.name;
+    }
 
     @Override
     public String getUnlocalizedName() {
@@ -98,18 +100,18 @@ public abstract class MetaBlockBase extends BlockBase implements IMetaTypeObject
     @Override
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta) {
-        return getMTManager().getIcon(meta);
+        return mtoData.getIcon(meta);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister register) {
-        MetaObjectUtil.registerIconUtil(getMTManager(), iconPathName, register);
+        MetaObjectUtil.registerIconUtil(mtoData, iconPathName, register);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> itemStackList) {
-        getMTManager().NAME_MAP.forEach((meta, name) -> itemStackList.add(new ItemStack(this, 1, meta)));
+        mtoData.NAME_MAP.forEach((meta, name) -> itemStackList.add(new ItemStack(this, 1, meta)));
     }
 }

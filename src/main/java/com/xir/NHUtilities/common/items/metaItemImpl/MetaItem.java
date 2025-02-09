@@ -8,7 +8,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
-import com.xir.NHUtilities.common.api.MetaTypeManager;
 import com.xir.NHUtilities.common.api.NHUCreativeTabs;
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.common.items.aItemCore.MetaItemBase;
@@ -26,7 +25,6 @@ public class MetaItem extends MetaItemBase implements ICosmicRenderItem {
         this.setCreativeTab(NHUCreativeTabs.MetaItemTab);
     }
 
-    @Override
     public void loadMetaItem() {
 
         NHUItemList.IchorFuelRod.set(addMetaItem("IchorFuelRod", 0));
@@ -64,21 +62,6 @@ public class MetaItem extends MetaItemBase implements ICosmicRenderItem {
             NHUItemList.PlateCrystal9_Hot.set(addMetaItem("PlateCrystal9_Hot", 131));
         }
 
-    }
-
-    @Override
-    public String getRegisterName() {
-        return "MetaItem";
-    }
-
-    @Override
-    public MetaTypeManager getMTManager() {
-        return MetaTypeManager.MetaItem;
-    }
-
-    @Override
-    public String getIconFolderName() {
-        return "MetaItem";
     }
 
     @Override

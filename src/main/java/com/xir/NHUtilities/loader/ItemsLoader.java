@@ -6,6 +6,7 @@ import static com.xir.NHUtilities.config.Config.enableGluttonyRingAndHungerRing;
 import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
 import static com.xir.NHUtilities.config.Config.enableTimeVial;
 
+import com.xir.NHUtilities.common.api.MTOBuilder;
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.common.blocks.CustomDragonEgg;
 import com.xir.NHUtilities.common.blocks.metaBlockImpl.MetaBlock;
@@ -119,10 +120,14 @@ public class ItemsLoader {
         // endregion
 
         // region Meta Item
-        // spotless:off
-        NHUItemList.MetaItem.setMetaObject(new MetaItem()).initializeMetaTypeObject();
-        NHUItemList.MetaBlock.setMetaObject(new MetaBlock()).initializeMetaTypeObject();
-        // spotless:on
+        NHUItemList.MetaItem.setMetaObject(
+            MTOBuilder.newBuilder(new MetaItem())
+                .addRegisterAction(MetaItem::loadMetaItem)
+                .build());
+        NHUItemList.MetaBlock.setMetaObject(
+            MTOBuilder.newBuilder(new MetaBlock())
+                .addRegisterAction(MetaBlock::loadMetaItem)
+                .build());
         // endregion
 
     }
