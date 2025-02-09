@@ -168,10 +168,12 @@ public enum NHUItemList implements IItemContainer {
         if (aItemStack == null) return this;
         mHasNotBeenSet = false;
         mStack = CommonUtil.copyAmount(1, aItemStack);
-        Item item = mStack.getItem();
-        if (item == null) return this;
-        else if (item.getCreativeTab() == null) {
-            NHUCreativeTabs.addToDefaultCreativeTab(mStack.copy());
+        if (CommonUtil.isClientSide()) {
+            Item item = mStack.getItem();
+            if (item == null) return this;
+            else if (item.getCreativeTab() == null) {
+                NHUCreativeTabs.addToDefaultCreativeTab(mStack.copy());
+            }
         }
         return this;
     }
