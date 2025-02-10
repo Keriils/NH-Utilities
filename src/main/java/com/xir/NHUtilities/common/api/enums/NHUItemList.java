@@ -22,6 +22,7 @@ public enum NHUItemList implements IItemContainer {
     // region Meta Object
     MetaItem,
     MetaBlock,
+    WirelessCoverItems,
     // endregion
 
     // region Material Mass
@@ -51,6 +52,37 @@ public enum NHUItemList implements IItemContainer {
     PlateCrystal7_Hot,
     PlateCrystal8_Hot,
     PlateCrystal9_Hot,
+    // endregion
+
+    // region Wireless Cover Things
+    Cover_Wireless_Dynamo_LV,
+    Cover_Wireless_Dynamo_MV,
+    Cover_Wireless_Dynamo_HV,
+    Cover_Wireless_Dynamo_EV,
+    Cover_Wireless_Dynamo_IV,
+    Cover_Wireless_Dynamo_LuV,
+    Cover_Wireless_Dynamo_ZPM,
+    Cover_Wireless_Dynamo_UV,
+    Cover_Wireless_Dynamo_UHV,
+    Cover_Wireless_Dynamo_UEV,
+    Cover_Wireless_Dynamo_UIV,
+    Cover_Wireless_Dynamo_UMV,
+    Cover_Wireless_Dynamo_UXV,
+    Cover_Wireless_Dynamo_MAX,
+    Cover_Wireless_Energy_LV,
+    Cover_Wireless_Energy_MV,
+    Cover_Wireless_Energy_HV,
+    Cover_Wireless_Energy_EV,
+    Cover_Wireless_Energy_IV,
+    Cover_Wireless_Energy_LuV,
+    Cover_Wireless_Energy_ZPM,
+    Cover_Wireless_Energy_UV,
+    Cover_Wireless_Energy_UHV,
+    Cover_Wireless_Energy_UEV,
+    Cover_Wireless_Energy_UIV,
+    Cover_Wireless_Energy_UMV,
+    Cover_Wireless_Energy_UXV,
+    Cover_Wireless_Energy_MAX,
     // endregion
 
     // region Material Block
@@ -110,6 +142,17 @@ public enum NHUItemList implements IItemContainer {
     Egg_Machine_MAX,
     // endregion
     ;
+
+    // region helper
+    public static final NHUItemList[] WIRELESS_DYNAMO_COVERS = { Cover_Wireless_Dynamo_LV, Cover_Wireless_Dynamo_MV,
+        Cover_Wireless_Dynamo_HV, Cover_Wireless_Dynamo_EV, Cover_Wireless_Dynamo_IV, Cover_Wireless_Dynamo_LuV,
+        Cover_Wireless_Dynamo_ZPM, Cover_Wireless_Dynamo_UV, Cover_Wireless_Dynamo_UHV, Cover_Wireless_Dynamo_UEV,
+        Cover_Wireless_Dynamo_UIV, Cover_Wireless_Dynamo_UMV, Cover_Wireless_Dynamo_UXV, Cover_Wireless_Dynamo_MAX },
+        WIRELESS_ENERGY_COVERS = { Cover_Wireless_Energy_LV, Cover_Wireless_Energy_MV, Cover_Wireless_Energy_HV,
+            Cover_Wireless_Energy_EV, Cover_Wireless_Energy_IV, Cover_Wireless_Energy_LuV, Cover_Wireless_Energy_ZPM,
+            Cover_Wireless_Energy_UV, Cover_Wireless_Energy_UHV, Cover_Wireless_Energy_UEV, Cover_Wireless_Energy_UIV,
+            Cover_Wireless_Energy_UMV, Cover_Wireless_Energy_UXV, Cover_Wireless_Energy_MAX };
+    // endregion
 
     private ItemStack mStack;
     private boolean mWarned = false;
