@@ -1,5 +1,7 @@
 package com.xir.NHUtilities.common.recipes.MassRecipes;
 
+import static com.xir.NHUtilities.common.api.enums.NHUItemList.WIRELESS_DYNAMO_COVERS;
+import static com.xir.NHUtilities.common.api.enums.NHUItemList.WIRELESS_ENERGY_COVERS;
 import static goodgenerator.api.recipe.GoodGeneratorRecipeMaps.preciseAssemblerRecipes;
 import static gregtech.api.enums.Mods.NewHorizonsCoreMod;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
@@ -407,6 +409,28 @@ public class WirelessHatchMoreRecipe {
             .eut(TierEU.RECIPE_HV)
             .noOptimize()
             .addTo(assemblerRecipes);
+
+        for (int i = 0; i < 13; i++) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTUtility.getIntegratedCircuit(16), dynamoHatches_2A[i + 1].copy())
+                .fluidInputs(Materials.Rubber.getMolten(144 * (i + 1)))
+                .itemOutputs(WIRELESS_DYNAMO_COVERS[i].get(1))
+                .eut(TierEU.LV)
+                .duration(60 * SECONDS * i)
+                .noOptimize()
+                .addTo(assemblerRecipes);
+        }
+
+        for (int i = 0; i < 13; i++) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTUtility.getIntegratedCircuit(16), energyHatches_2A[i + 1].copy())
+                .fluidInputs(Materials.Rubber.getMolten(144 * (i + 1)))
+                .itemOutputs(WIRELESS_ENERGY_COVERS[i].get(1))
+                .eut(TierEU.LV)
+                .duration(60 * SECONDS * i)
+                .noOptimize()
+                .addTo(assemblerRecipes);
+        }
     }
 
     private static void recipeArc(ItemStack[] input, ItemStack[] output, int offsetID, ItemStack[] allSensor,
