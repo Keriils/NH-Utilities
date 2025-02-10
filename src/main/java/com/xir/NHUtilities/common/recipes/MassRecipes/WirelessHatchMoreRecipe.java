@@ -12,7 +12,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
+import com.xir.NHUtilities.common.api.NHUCreativeTabs;
 import com.xir.NHUtilities.common.api.enums.WirelessHatchMore;
+import com.xir.NHUtilities.utils.CommonUtil;
 
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.ItemList;
@@ -221,7 +223,7 @@ public class WirelessHatchMoreRecipe {
 
         ItemStack[] wirelessDynamoHatches_256A = { WirelessHatchMore.dynamoMulti_IV_256.get(1),
             WirelessHatchMore.dynamoMulti_LuV_256.get(1), WirelessHatchMore.dynamoMulti_ZPM_256.get(1),
-            WirelessHatchMore.dynamoMulti_UV_256.get(1), WirelessHatchMore.dynamoMulti_UHV_256.get(2),
+            WirelessHatchMore.dynamoMulti_UV_256.get(1), WirelessHatchMore.dynamoMulti_UHV_256.get(1),
             WirelessHatchMore.dynamoMulti_UEV_256.get(1), WirelessHatchMore.dynamoMulti_UIV_256.get(1) };
 
         // dynamo 1024A
@@ -332,6 +334,18 @@ public class WirelessHatchMoreRecipe {
             wirelessDynamoHatches_1024A, wirelessDynamoHatches_4096A, wirelessDynamoHatches_16384A,
             wirelessDynamoHatches_65536A, wirelessDynamoHatches_262144A, wirelessDynamoHatches_1048576A };
 
+        if (CommonUtil.isClientSide()) {
+            for (ItemStack[] isa : wirelessEnergyHatchAll) {
+                for (ItemStack hatch : isa) {
+                    NHUCreativeTabs.addToWirelessThingsCreativeTab(hatch.copy());
+                }
+            }
+            for (ItemStack[] isa : wirelessDynamoHatchAll) {
+                for (ItemStack hatch : isa) {
+                    NHUCreativeTabs.addToWirelessThingsCreativeTab(hatch.copy());
+                }
+            }
+        }
         for (int i = 0; i < energyHatchAll.length; i++) {
             recipeArc(
                 energyHatchAll[i],
