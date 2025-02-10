@@ -208,3 +208,34 @@ chat.nhutilities.2=你感觉一身轻松
 chat.nhutilities.3=一些沉重的东西离开了...
 
 GT5U.machines.isnewtexture=是否为新材质?
+
+# Wireless Covers
+item.WirelessCoverItem.1.name=无线动力覆盖板(LV)
+item.WirelessCoverItem.2.name=无线动力覆盖板(MV)
+item.WirelessCoverItem.3.name=无线动力覆盖板(HV)
+item.WirelessCoverItem.4.name=无线动力覆盖板(EV)
+item.WirelessCoverItem.5.name=无线动力覆盖板(IV)
+item.WirelessCoverItem.6.name=无线动力覆盖板(LuV)
+item.WirelessCoverItem.7.name=无线动力覆盖板(ZPM)
+item.WirelessCoverItem.8.name=无线动力覆盖板(UV)
+item.WirelessCoverItem.9.name=无线动力覆盖板(UHV)
+item.WirelessCoverItem.10.name=无线动力覆盖板(UEV)
+item.WirelessCoverItem.11.name=无线动力覆盖板(UIV)
+item.WirelessCoverItem.12.name=无线动力覆盖板(UMV)
+item.WirelessCoverItem.13.name=无线动力覆盖板(UXV)
+item.WirelessCoverItem.14.name=无线动力覆盖板(MAX)
+
+item.WirelessCoverItem.15.name=无线能源覆盖板(LV)
+item.WirelessCoverItem.16.name=无线能源覆盖板(MV)
+item.WirelessCoverItem.17.name=无线能源覆盖板(HV)
+item.WirelessCoverItem.18.name=无线能源覆盖板(EV)
+item.WirelessCoverItem.19.name=无线能源覆盖板(IV)
+item.WirelessCoverItem.20.name=无线能源覆盖板(LuV)
+item.WirelessCoverItem.21.name=无线能源覆盖板(ZPM)
+item.WirelessCoverItem.22.name=无线能源覆盖板(UV)
+item.WirelessCoverItem.23.name=无线能源覆盖板(UHV)
+item.WirelessCoverItem.24.name=无线能源覆盖板(UEV)
+item.WirelessCoverItem.25.name=无线能源覆盖板(UIV)
+item.WirelessCoverItem.26.name=无线能源覆盖板(UMV)
+item.WirelessCoverItem.27.name=无线能源覆盖板(UXV)
+item.WirelessCoverItem.28.name=无线能源覆盖板(MAX)
