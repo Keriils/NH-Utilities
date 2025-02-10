@@ -12,6 +12,7 @@ import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+@SuppressWarnings("unused")
 public class NHUCreativeTabs {
 
     private static final List<ItemStack> defaultMiscStack = new ArrayList<>();
@@ -42,6 +43,34 @@ public class NHUCreativeTabs {
         @SideOnly(Side.CLIENT)
         public Item getTabIconItem() {
             return NHUItemList.MetaItem.getItem();
+        }
+    };
+
+    private static final List<ItemStack> wirelessThings = new ArrayList<>();
+
+    public static void addToWirelessThingsCreativeTab(ItemStack stack) {
+        wirelessThings.add(stack);
+    }
+
+    public static final CreativeTabs WirelessMisc = new CreativeTabs("wirelessThings") {
+
+        @Override
+        @SideOnly(Side.CLIENT)
+        public Item getTabIconItem() {
+            return NHUItemList.WirelessCoverItems.getItem();
+        }
+
+        @Override
+        @SideOnly(Side.CLIENT)
+        public void displayAllReleventItems(List<ItemStack> itemStackList) {
+            itemStackList.addAll(wirelessThings);
+            super.displayAllReleventItems(itemStackList);
+        }
+
+        @Override
+        @SideOnly(Side.CLIENT)
+        public int func_151243_f() {
+            return 14;
         }
     };
 

@@ -209,3 +209,34 @@ chat.nhutilities.2=You feel like you've left all your worries behind
 chat.nhutilities.3=Something heavy has left...
 
 GT5U.machines.isnewtexture=Is new texture?
+
+# Wireless Covers
+item.WirelessCoverItem.1.name=Wireless Dynamo Cover(LV)
+item.WirelessCoverItem.2.name=Wireless Dynamo Cover(MV)
+item.WirelessCoverItem.3.name=Wireless Dynamo Cover(HV)
+item.WirelessCoverItem.4.name=Wireless Dynamo Cover(EV)
+item.WirelessCoverItem.5.name=Wireless Dynamo Cover(IV)
+item.WirelessCoverItem.6.name=Wireless Dynamo Cover(LuV)
+item.WirelessCoverItem.7.name=Wireless Dynamo Cover(ZPM)
+item.WirelessCoverItem.8.name=Wireless Dynamo Cover(UV)
+item.WirelessCoverItem.9.name=Wireless Dynamo Cover(UHV)
+item.WirelessCoverItem.10.name=Wireless Dynamo Cover(UEV)
+item.WirelessCoverItem.11.name=Wireless Dynamo Cover(UIV)
+item.WirelessCoverItem.12.name=Wireless Dynamo Cover(UMV)
+item.WirelessCoverItem.13.name=Wireless Dynamo Cover(UXV)
+item.WirelessCoverItem.14.name=Wireless Dynamo Cover(MAX)
+
+item.WirelessCoverItem.15.name=Wireless Energy Cover(LV)
+item.WirelessCoverItem.16.name=Wireless Energy Cover(MV)
+item.WirelessCoverItem.17.name=Wireless Energy Cover(HV)
+item.WirelessCoverItem.18.name=Wireless Energy Cover(EV)
+item.WirelessCoverItem.19.name=Wireless Energy Cover(IV)
+item.WirelessCoverItem.20.name=Wireless Energy Cover(LuV)
+item.WirelessCoverItem.21.name=Wireless Energy Cover(ZPM)
+item.WirelessCoverItem.22.name=Wireless Energy Cover(UV)
+item.WirelessCoverItem.23.name=Wireless Energy Cover(UHV)
+item.WirelessCoverItem.24.name=Wireless Energy Cover(UEV)
+item.WirelessCoverItem.25.name=Wireless Energy Cover(UIV)
+item.WirelessCoverItem.26.name=Wireless Energy Cover(UMV)
+item.WirelessCoverItem.27.name=Wireless Energy Cover(UXV)
+item.WirelessCoverItem.28.name=Wireless Energy Cover(MAX)
