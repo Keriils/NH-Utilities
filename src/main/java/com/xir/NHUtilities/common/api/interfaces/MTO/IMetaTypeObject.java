@@ -1,4 +1,4 @@
-package com.xir.NHUtilities.common.api.interfaces;
+package com.xir.NHUtilities.common.api.interfaces.MTO;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

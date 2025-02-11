@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.xir.NHUtilities.common.api.interfaces.IAccelerationState;
+import com.xir.NHUtilities.common.api.interfaces.mixinHelper.IAccelerationState;
 
 import ggfab.mte.MTEAdvAssLine;
 

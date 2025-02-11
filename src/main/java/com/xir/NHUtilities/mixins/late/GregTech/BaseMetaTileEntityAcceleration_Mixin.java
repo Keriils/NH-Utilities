@@ -6,8 +6,8 @@ import static com.xir.NHUtilities.main.NHUtilities.LOG;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
-import com.xir.NHUtilities.common.api.interfaces.IAccelerationState;
 import com.xir.NHUtilities.common.api.interfaces.ITileEntityTickAcceleration;
+import com.xir.NHUtilities.common.api.interfaces.mixinHelper.IAccelerationState;
 
 import ggfab.mte.MTEAdvAssLine;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;

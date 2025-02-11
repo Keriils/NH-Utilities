@@ -5,6 +5,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
+import com.xir.NHUtilities.common.api.interfaces.MTO.IMetaTypeObject;
+
 @SuppressWarnings({ "unused", "UnusedReturnValue" })
 public interface IItemContainer {
 
