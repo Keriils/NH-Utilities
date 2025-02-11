@@ -9,7 +9,7 @@ import net.minecraft.util.IIcon;
 
 import org.jetbrains.annotations.Contract;
 
-import com.xir.NHUtilities.common.api.interfaces.IMetaTypeObject;
+import com.xir.NHUtilities.common.api.interfaces.MTO.IMetaTypeObject;
 import com.xir.NHUtilities.utils.CommonUtil;
 
 /**

@@ -1,4 +1,4 @@
-package com.xir.NHUtilities.common.api.interfaces;
+package com.xir.NHUtilities.common.api.interfaces.MTO;
 
 import com.xir.NHUtilities.common.api.MTOData;
 

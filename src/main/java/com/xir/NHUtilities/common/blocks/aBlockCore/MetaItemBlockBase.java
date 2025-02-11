@@ -12,8 +12,8 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 import com.xir.NHUtilities.common.api.MTOData;
-import com.xir.NHUtilities.common.api.interfaces.IMetaObjectProvider;
-import com.xir.NHUtilities.common.api.interfaces.IMetaTypeObject;
+import com.xir.NHUtilities.common.api.interfaces.MTO.IMetaObjectProvider;
+import com.xir.NHUtilities.common.api.interfaces.MTO.IMetaTypeObject;
 
 import gregtech.api.util.GTLanguageManager;
 

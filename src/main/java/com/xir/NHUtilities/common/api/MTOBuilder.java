@@ -7,7 +7,7 @@ import java.util.function.Consumer;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import com.xir.NHUtilities.common.api.interfaces.IMetaTypeObject;
+import com.xir.NHUtilities.common.api.interfaces.MTO.IMetaTypeObject;
 
 @SuppressWarnings("unused")
 public class MTOBuilder<T extends IMetaTypeObject> {

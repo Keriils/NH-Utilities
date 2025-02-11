@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
 import com.xir.NHUtilities.common.api.MTOData;
-import com.xir.NHUtilities.common.api.interfaces.IMetaTypeObject;
+import com.xir.NHUtilities.common.api.interfaces.MTO.IMetaTypeObject;
 import com.xir.NHUtilities.utils.CommonUtil;
 import com.xir.NHUtilities.utils.MetaObjectUtil;
 import com.xir.NHUtilities.utils.RegisterUtil;

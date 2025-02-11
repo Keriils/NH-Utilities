@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.xir.NHUtilities.common.api.interfaces.IEntityInvulnerable;
+import com.xir.NHUtilities.common.api.interfaces.mixinHelper.IEntityInvulnerable;
 import com.xir.NHUtilities.common.items.aItemCore.ItemBase;
 
 import baubles.api.BaubleType;

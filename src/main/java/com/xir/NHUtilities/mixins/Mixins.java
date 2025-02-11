@@ -36,6 +36,8 @@ public enum Mixins {
         "GregTech.ResearchStationAcceleration_Mixin", TargetMod.GregTech),
     GT_AdvAssLine_Mixin(Category.BaseMetaTileEntityAcceleration, Side.BOTH, Phase.LATE,
         "GregTech.MTEAdvAssLineAcceleration_Mixin", TargetMod.GregTech, TargetMod.GigaGramFab),
+    GT_BaseMetaTileEntity_WirelessCover_Mixin(Category.WirelessHatchMoreFeature, Side.BOTH, Phase.LATE,
+        "GregTech.BaseMetaTileEntityWirelessCover_Mixin", TargetMod.GregTech),
     EnderIO_Modify_CapBankMaxIO_Mixin(Category.ModifyCapBankMaxIO, Side.BOTH, Phase.LATE,
         "EnderIO.Modify_CapBankMaxIO_Mixin", TargetMod.EnderIO),
     WE_ModifyWithExuHealingAxe_Mixin(Category.WEToolWithExuHealingAxe, Side.BOTH, Phase.LATE,
@@ -68,6 +70,7 @@ public enum Mixins {
         DisableSuperTankOrChestDebuff(disableSuperChestOrTankDebuff),
         DisableDollyDebuff(disableDollyDebuff),
         ModifyWirelessHatchTexture(enableModifyWirelessHatchTexture && enableWirelessHatchMore),
+        WirelessHatchMoreFeature(enableWirelessHatchMore),
 
         ;
 
