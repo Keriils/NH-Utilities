@@ -16,7 +16,7 @@ import com.xir.NHUtilities.common.items.covers.WirelessCovers;
 import gregtech.api.metatileentity.BaseMetaTileEntity;
 import gregtech.api.metatileentity.CommonMetaTileEntity;
 
-@Mixin(value = BaseMetaTileEntity.class, remap = false)
+@Mixin(value = BaseMetaTileEntity.class)
 @SuppressWarnings({ "UnusedMixin", "DiscouragedShift" })
 public abstract class BaseMetaTileEntityWirelessCover_Mixin extends CommonMetaTileEntity
     implements IWirelessCoverEnergyProvider {
@@ -34,10 +34,10 @@ public abstract class BaseMetaTileEntityWirelessCover_Mixin extends CommonMetaTi
         this.NHUtilities$wirelessEnergyCache = value;
     }
 
-    @Accessor("mStoredEnergy")
+    @Accessor(value = "mStoredEnergy", remap = false)
     public abstract long getFieldStoredEnergy();
 
-    @Accessor("mStoredEnergy")
+    @Accessor(value = "mStoredEnergy", remap = false)
     public abstract void setFieldStoredEnergy(long value);
 
     @Unique
@@ -48,7 +48,8 @@ public abstract class BaseMetaTileEntityWirelessCover_Mixin extends CommonMetaTi
         at = @At(
             value = "INVOKE",
             target = "Lgregtech/api/metatileentity/MetaTileEntity;onPreTick(Lgregtech/api/interfaces/tileentity/IGregTechTileEntity;J)V",
-            shift = At.Shift.BEFORE),
+            shift = At.Shift.BEFORE,
+            remap = false),
         require = 1)
     private void NHUtilities$wirelessCover(CallbackInfo ci) {
         for (ForgeDirection side : ForgeDirection.VALID_DIRECTIONS) {
@@ -74,8 +75,7 @@ public abstract class BaseMetaTileEntityWirelessCover_Mixin extends CommonMetaTi
             target = "Lnet/minecraft/nbt/NBTTagCompound;setLong(Ljava/lang/String;J)V",
             ordinal = 1,
             shift = At.Shift.BEFORE),
-        require = 1,
-        remap = true)
+        require = 1)
     private void NHUtilities$saveNBT(NBTTagCompound nbt, CallbackInfo ci) {
         nbt.setLong("wirelessEnergyCache", NHUtilities$wirelessEnergyCache);
     }
@@ -87,8 +87,7 @@ public abstract class BaseMetaTileEntityWirelessCover_Mixin extends CommonMetaTi
             target = "Lnet/minecraft/nbt/NBTTagCompound;getLong(Ljava/lang/String;)J",
             ordinal = 1,
             shift = At.Shift.BEFORE),
-        require = 1,
-        remap = true)
+        require = 1)
     private void NHUtilities$readNBT(NBTTagCompound aNBT, short aID, CallbackInfo ci) {
         NHUtilities$wirelessEnergyCache = aNBT.getLong("wirelessEnergyCache");
     }
