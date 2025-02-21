@@ -6,6 +6,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 import com.xir.NHUtilities.common.api.interfaces.MTO.IMetaTypeObject;
+import com.xir.NHUtilities.utils.CommonUtil;
 
 @SuppressWarnings({ "unused", "UnusedReturnValue" })
 public interface IItemContainer {
@@ -18,9 +19,14 @@ public interface IItemContainer {
 
     ItemStack get(int aAmount);
 
-    IItemContainer set(Item aItem);
+    default IItemContainer set(Block aBlock) {
+        return set(Item.getItemFromBlock(aBlock));
+    }
 
-    IItemContainer set(Block aBlock);
+    default IItemContainer set(Item aItem) {
+        if (aItem == null) return this;
+        return set(CommonUtil.newItemStack(aItem));
+    }
 
     IItemContainer set(ItemStack aItemStack);
 

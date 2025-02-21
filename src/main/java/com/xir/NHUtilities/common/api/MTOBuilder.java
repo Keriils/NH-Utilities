@@ -16,7 +16,7 @@ public class MTOBuilder<T extends IMetaTypeObject> {
 
     private MTOData<T> mtoData;
 
-    private final List<Consumer<T>> action = new ArrayList<>();
+    private List<Consumer<T>> actions = new ArrayList<>();
 
     public MTOBuilder(T mtoObj) {
         if (mtoObj == null) throw new IllegalArgumentException();
@@ -37,7 +37,7 @@ public class MTOBuilder<T extends IMetaTypeObject> {
 
     public MTOBuilder<T> addRegisterAction(Consumer<T> action) {
         if (action == null) throw new IllegalArgumentException();
-        this.action.add(action);
+        this.actions.add(action);
         return this;
     }
 
@@ -45,7 +45,9 @@ public class MTOBuilder<T extends IMetaTypeObject> {
         if (mtoData == null) this.mtoData = new MTOData<>();
         this.mtoObj.setMtoData(mtoData);
         this.mtoData.setMetaObject(mtoObj);
-        for (Consumer<T> tConsumer : action) tConsumer.accept(mtoObj);
+        for (Consumer<T> tConsumer : actions) tConsumer.accept(mtoObj);
+        actions.clear();
+        actions = null;
         return mtoObj;
     }
 }

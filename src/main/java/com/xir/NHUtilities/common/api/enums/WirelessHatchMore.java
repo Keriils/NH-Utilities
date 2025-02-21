@@ -185,17 +185,6 @@ public enum WirelessHatchMore implements IItemContainer {
     }
 
     @Override
-    public IItemContainer set(Block aBlock) {
-        return set(Item.getItemFromBlock(aBlock));
-    }
-
-    @Override
-    public IItemContainer set(Item aItem) {
-        if (aItem == null) return this;
-        return set(CommonUtil.newItemStack(aItem));
-    }
-
-    @Override
     public IItemContainer set(ItemStack aItemStack) {
         if (aItemStack == null) return this;
         mHasNotBeenSet = false;
