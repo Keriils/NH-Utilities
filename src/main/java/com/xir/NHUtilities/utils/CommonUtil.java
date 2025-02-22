@@ -1,5 +1,8 @@
 package com.xir.NHUtilities.utils;
 
+import static net.minecraft.init.Items.feather;
+import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -24,6 +27,15 @@ public class CommonUtil {
         return StatCollector.translateToLocal(langKey);
     }
 
+    public static boolean simpleMetaEqual(ItemStack is1, ItemStack is2) {
+        if (is1 == null || is2 == null) return false;
+        if (is1.getItem() != is2.getItem()) return false;
+        int is1_meta = feather.getDamage(is1);
+        int is2_meta = feather.getDamage(is2);
+        if (is1_meta == is2_meta) return true;
+        return is1_meta == WILDCARD_VALUE || is2_meta == WILDCARD_VALUE;
+    }
+
     @Contract(value = "_ -> new", pure = true)
     public static @NotNull ItemStack newItemStack(Item aItem) {
         return new ItemStack(aItem, 1, 0);
@@ -32,6 +44,16 @@ public class CommonUtil {
     @Contract(value = "_ -> new", pure = true)
     public static @NotNull ItemStack newItemStack(Block aBlock) {
         return new ItemStack(aBlock, 1, 0);
+    }
+
+    @Contract(value = "_, _ -> new", pure = true)
+    public static @NotNull ItemStack newItemStack(Item aItem, int aMeta) {
+        return new ItemStack(aItem, 1, aMeta);
+    }
+
+    @Contract("_, _ -> new")
+    public static @NotNull ItemStack newItemStack(Block aBlock, int aMeta) {
+        return new ItemStack(aBlock, 1, aMeta);
     }
 
     public static @NotNull ItemStack aErrorStack() {

@@ -1,5 +1,9 @@
 package com.xir.NHUtilities.common.machine.single;
 
+import static com.xir.NHUtilities.config.Config.debugMode;
+import static com.xir.NHUtilities.main.ReferencedInfo.OTH_MOD_IS_LOADED;
+import static com.xir.NHUtilities.utils.CommonUtil.newItemStack;
+import static com.xir.NHUtilities.utils.CommonUtil.simpleMetaEqual;
 import static gregtech.api.enums.GTValues.GT;
 import static gregtech.api.enums.GTValues.V;
 import static gregtech.api.enums.Textures.BlockIcons.MACHINE_CASING_DRAGONEGG;
@@ -20,7 +24,10 @@ import static tectech.thing.metaTileEntity.Textures.OVERLAYS_ENERGY_IN_WIRELESS_
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import net.minecraft.block.Block;
@@ -37,9 +44,11 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidStack;
 
 import com.brandon3055.draconicevolution.common.ModItems;
+import com.brandon3055.draconicevolution.common.entity.EntityChaosVortex;
 import com.gtnewhorizons.modularui.api.screen.ModularWindow;
 import com.gtnewhorizons.modularui.api.screen.UIBuildContext;
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
+import com.xir.NHUtilities.main.NHUtilities;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -50,6 +59,7 @@ import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.metatileentity.implementations.MTEBasicGenerator;
 import gregtech.api.recipe.RecipeMap;
 import gregtech.api.render.TextureFactory;
+import gregtech.api.util.GTModHandler;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.WorldSpawnedEventBuilder;
 import mcp.mobius.waila.api.IWailaConfigHandler;
@@ -68,10 +78,14 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
     private ITexture[][][] newTexture;
     private boolean shouldUpdateTexture = false;
     // this field for display common texture
+    @SuppressWarnings("UnusedAssignment")
     private boolean isPlaced = false;
-    private static final ItemStack[] CORE_MATERIAL = new ItemStack[] { new ItemStack(ModItems.dragonHeart, 1, 0),
-        new ItemStack(ModItems.draconicCore, 1, 0), new ItemStack(ModItems.wyvernCore, 1, 0),
-        new ItemStack(ModItems.awakenedCore, 1, 0), new ItemStack(ModItems.chaoticCore, 1, 0) };
+    private static List<ItemStack> CORE_MATERIAL = null;
+    private static Block othModel = null;
+    private static ItemStack othDust = null;
+    // public static final Map<UUID, MTEMagicalEggMachine> OTH_EGG_HUNT_LIST_C = OTH_MOD_IS_LOADED ? new HashMap<>() :
+    // null;
+    public static final Map<UUID, MTEMagicalEggMachine> OTH_EGG_HUNT_LIST_C = new HashMap<>();
 
     // region Constructor
     public MTEMagicalEggMachine(int aID, String aNameRegional, int aTier) {
@@ -144,6 +158,28 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
     public void onFirstTick(IGregTechTileEntity aBaseMetaTileEntity) {
         super.onFirstTick(aBaseMetaTileEntity);
         ownerUUID = aBaseMetaTileEntity.getOwnerUuid();
+        if (CORE_MATERIAL == null) {
+            CORE_MATERIAL = Arrays.asList(
+                newItemStack(ModItems.dragonHeart),
+                newItemStack(ModItems.draconicCore),
+                newItemStack(ModItems.wyvernCore),
+                newItemStack(ModItems.awakenedCore),
+                newItemStack(ModItems.chaoticCore));
+        }
+
+        if (OTH_MOD_IS_LOADED) {
+            if (othModel == null && othDust == null) {
+                ItemStack c = GTModHandler.getModItem("123Technology", "modelAyanami", 1);
+                othModel = Block.getBlockFromItem(c == null ? null : c.getItem());
+                othDust = GTModHandler.getModItem("123Technology", "MetaItemOTH", 1, 0);
+                if (debugMode) {
+                    NHUtilities.LOG.info("Load a model block, Class: {} .", othModel.getClass());
+                    NHUtilities.LOG.info("Load an item, Class: {} .", othDust.getClass());
+                    if (othModel == null || othModel == Blocks.air) throw new NullPointerException("???>>>ha...");
+                    if (othDust == null) throw new NullPointerException("???>>>ha...");
+                }
+            }
+        }
     }
 
     private void clearBuffer() {
@@ -165,6 +201,14 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
                 eggBonus = getEggBonus();
                 MaterialBonus = getMaterialBonus();
                 currentAmperes = calculateAmp();
+                if (currentAmperes == 123) {
+                    // should pass.... ? ha...
+                    if (ownerUUID != null) {
+                        if (OTH_EGG_HUNT_LIST_C.containsKey(ownerUUID)) {
+                            if (OTH_EGG_HUNT_LIST_C.get(ownerUUID) != this) doExplosion();
+                        } else OTH_EGG_HUNT_LIST_C.put(ownerUUID, this);
+                    }
+                }
             }
         }
 
@@ -188,11 +232,27 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
         }
     }
 
+    private void doExplosion() {
+        IGregTechTileEntity metaTileEntity = getBaseMetaTileEntity();
+        World world = metaTileEntity.getWorld();
+        EntityChaosVortex vortex = new EntityChaosVortex(world);
+        vortex.setPosition(
+            metaTileEntity.getXCoord() + 0.5,
+            metaTileEntity.getYCoord() + 2.5,
+            metaTileEntity.getZCoord() + 0.5);
+        world.spawnEntityInWorld(vortex);
+    }
+
     private int getMaterialBonus() {
         ItemStack item = mInventory[0];
         if (item == null) return 1;
-        for (int i = 0; i < CORE_MATERIAL.length; i++) {
-            if (GTUtility.areStacksEqual(item, CORE_MATERIAL[i], true)) {
+        if (OTH_MOD_IS_LOADED && simpleMetaEqual(item, othDust)) {
+            if (getBaseMetaTileEntity().getBlockAtSide(ForgeDirection.UP) == othModel) {
+                return 41;
+            }
+        }
+        for (int i = 0; i < CORE_MATERIAL.size(); i++) {
+            if (simpleMetaEqual(item, CORE_MATERIAL.get(i))) {
                 return 2 << i;
             }
         }
@@ -204,6 +264,7 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
         if (block == null) return false;
         if (block == Blocks.air) return false;
         if (block == Blocks.dragon_egg) return true;
+        if (OTH_MOD_IS_LOADED && block == othModel) return true;
         return block instanceof BlockDragonEgg;
     }
 
@@ -216,6 +277,7 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
         if (block.getUnlocalizedName()
             .contains("infinityegg")) return 64;
         if (block == NHUItemList.AncientDragonEgg.getBlock()) return 256;
+        if (OTH_MOD_IS_LOADED && block == othModel) return 3;
         return 0;
     }
 
@@ -355,6 +417,7 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
         list.add(translateToLocal("nhu.tooltips.eggMachine.info13"));
         list.add(translateToLocal("nhu.tooltips.eggMachine.info14"));
         list.add(translateToLocal("nhu.tooltips.eggMachine.info15"));
+        list.add(translateToLocal("nhu.tooltips.eggMachine.info16"));
         list.add(translateToLocal("nhu.tooltips.eggMachine.line"));
         list.add(translateToLocal("nhu.logotype.gt.logo"));
         list.add(translateToLocal("nhu.tooltips.eggMachine.line"));

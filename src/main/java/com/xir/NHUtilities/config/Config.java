@@ -16,6 +16,10 @@ public class Config {
 
     static final Logger ConfigLog = LogManager.getLogger("NHUtilities_Config");
 
+    // region Debug
+    public static boolean debugMode = false;
+    // endregion
+
     // region register massItems key !!!
     public static int metaIdOffset = 0;
     public static int wirelessHatchMetaIdOffset = 0;
@@ -63,6 +67,7 @@ public class Config {
     private static final String CATEGORY_Manager = "Lang_Manger";
     private static final String CATEGORY_MASS = "Mass_Config";
     private static final String CATEGORY_TIME_VIAL = "Time_Vial";
+    private static final String CATEGORY_DEBUG = "DEBUG_CONFIG";
     // endregion
 
     // region cfgFile
@@ -222,6 +227,7 @@ public class Config {
                 "enable Debug Maintenance Hatch Recipe");
             enableTestItem = configuration
                 .getBoolean("enableTestItem", CATEGORY_MASS, enableTestItem, "enable Test Item");
+            debugMode = configuration.getBoolean("debugMode", CATEGORY_DEBUG, debugMode, "is enable debug mode");
         }
 
         try {
@@ -243,5 +249,6 @@ public class Config {
             "List the mod IDs here to manage your GTNH language files.\nIf you don't know the mod ID, please write a different name instead.");
         configuration.addCustomCategoryComment(CATEGORY_MASS, "A config region to Mass!./I need!!");
         configuration.addCustomCategoryComment(CATEGORY_TIME_VIAL, "The TimeVial config setting");
+        configuration.addCustomCategoryComment(CATEGORY_DEBUG, "The Debug config setting");
     }
 }
