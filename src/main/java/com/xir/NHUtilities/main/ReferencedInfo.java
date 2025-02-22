@@ -39,4 +39,6 @@ public final class ReferencedInfo {
 
     // For Interaction With Other Mod
     public static final boolean BAUBLES_MOD_IS_LOADED = Loader.isModLoaded("Baubles");
+
+    public static final boolean OTH_MOD_IS_LOADED = Loader.isModLoaded("123Technology");
 }
