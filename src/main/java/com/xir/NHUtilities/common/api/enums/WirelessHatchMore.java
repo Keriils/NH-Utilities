@@ -19,6 +19,7 @@ import gregtech.api.util.GTLog;
 @SuppressWarnings({ "unused", "UnusedReturnValue" })
 public enum WirelessHatchMore implements IItemContainer {
 
+    // region Enum
     // spotless:off
 
     energyMulti_HV_4            (   1,      3,      4,          HatchType.EnergyHatch   ),
@@ -130,9 +131,10 @@ public enum WirelessHatchMore implements IItemContainer {
     //dynamoMulti_UMV_4194304     (   99,    12,      4194304,    HatchType.DynamoHatch   ),
 
     // spotless:on
-
+    // endregion
     ;
 
+    // region Misc
     private ItemStack mStack;
     private boolean mWarned = false;
     private boolean mDeprecated = false;
@@ -246,4 +248,5 @@ public enum WirelessHatchMore implements IItemContainer {
         EnergyHatch,
         DynamoHatch
     }
+    // endregion
 }

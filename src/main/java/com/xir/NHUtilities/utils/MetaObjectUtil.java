@@ -55,7 +55,7 @@ public final class MetaObjectUtil {
             String baseIconPath = entry.getValue();
             String groupFolder = groupFoldersMap.get(meta);
 
-            String fullIconPath = groupFolder != null ? iconPathName + "/" + groupFolder + "/" + baseIconPath
+            String fullIconPath = groupFolder != null ? iconPathName + groupFolder + "/" + baseIconPath
                 : iconPathName + baseIconPath;
 
             iconMap.put(meta, register.registerIcon(fullIconPath));

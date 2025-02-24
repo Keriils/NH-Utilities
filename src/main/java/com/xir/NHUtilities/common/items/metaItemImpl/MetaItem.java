@@ -16,7 +16,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.avaritia.render.ICosmicRenderItem;
 
-public class MetaItem extends MetaItemBase implements ICosmicRenderItem {
+public class MetaItem extends MetaItemBase implements ICosmicRenderItem, ILoadMetaItem {
 
     private IIcon cosmicCys;
 
@@ -25,6 +25,7 @@ public class MetaItem extends MetaItemBase implements ICosmicRenderItem {
         this.setCreativeTab(NHUCreativeTabs.MetaItemTab);
     }
 
+    @Override
     public void loadMetaItem() {
 
         NHUItemList.IchorFuelRod.set(addMetaItem("IchorFuelRod", 0));

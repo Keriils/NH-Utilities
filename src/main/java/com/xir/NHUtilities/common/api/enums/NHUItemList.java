@@ -22,7 +22,7 @@ public enum NHUItemList implements IItemContainer {
     // region Meta Object
     MetaItem,
     MetaBlock,
-    WirelessCoverItems,
+    WirelessCoverItem,
     // endregion
 
     // region Material Mass
@@ -55,34 +55,123 @@ public enum NHUItemList implements IItemContainer {
     // endregion
 
     // region Wireless Cover Things
-    Cover_Wireless_Dynamo_LV,
-    Cover_Wireless_Dynamo_MV,
-    Cover_Wireless_Dynamo_HV,
-    Cover_Wireless_Dynamo_EV,
-    Cover_Wireless_Dynamo_IV,
-    Cover_Wireless_Dynamo_LuV,
-    Cover_Wireless_Dynamo_ZPM,
-    Cover_Wireless_Dynamo_UV,
-    Cover_Wireless_Dynamo_UHV,
-    Cover_Wireless_Dynamo_UEV,
-    Cover_Wireless_Dynamo_UIV,
-    Cover_Wireless_Dynamo_UMV,
-    Cover_Wireless_Dynamo_UXV,
-    Cover_Wireless_Dynamo_MAX,
-    Cover_Wireless_Energy_LV,
-    Cover_Wireless_Energy_MV,
-    Cover_Wireless_Energy_HV,
-    Cover_Wireless_Energy_EV,
-    Cover_Wireless_Energy_IV,
-    Cover_Wireless_Energy_LuV,
-    Cover_Wireless_Energy_ZPM,
-    Cover_Wireless_Energy_UV,
-    Cover_Wireless_Energy_UHV,
-    Cover_Wireless_Energy_UEV,
-    Cover_Wireless_Energy_UIV,
-    Cover_Wireless_Energy_UMV,
-    Cover_Wireless_Energy_UXV,
-    Cover_Wireless_Energy_MAX,
+    // 2A cover
+    Cover_Wireless_Dynamo_2A_LV,
+    Cover_Wireless_Dynamo_2A_MV,
+    Cover_Wireless_Dynamo_2A_HV,
+    Cover_Wireless_Dynamo_2A_EV,
+    Cover_Wireless_Dynamo_2A_IV,
+    Cover_Wireless_Dynamo_2A_LuV,
+    Cover_Wireless_Dynamo_2A_ZPM,
+    Cover_Wireless_Dynamo_2A_UV,
+    Cover_Wireless_Dynamo_2A_UHV,
+    Cover_Wireless_Dynamo_2A_UEV,
+    Cover_Wireless_Dynamo_2A_UIV,
+    Cover_Wireless_Dynamo_2A_UMV,
+    Cover_Wireless_Dynamo_2A_UXV,
+    Cover_Wireless_Dynamo_2A_MAX,
+    Cover_Wireless_Energy_2A_LV,
+    Cover_Wireless_Energy_2A_MV,
+    Cover_Wireless_Energy_2A_HV,
+    Cover_Wireless_Energy_2A_EV,
+    Cover_Wireless_Energy_2A_IV,
+    Cover_Wireless_Energy_2A_LuV,
+    Cover_Wireless_Energy_2A_ZPM,
+    Cover_Wireless_Energy_2A_UV,
+    Cover_Wireless_Energy_2A_UHV,
+    Cover_Wireless_Energy_2A_UEV,
+    Cover_Wireless_Energy_2A_UIV,
+    Cover_Wireless_Energy_2A_UMV,
+    Cover_Wireless_Energy_2A_UXV,
+    Cover_Wireless_Energy_2A_MAX,
+    // 4A cover
+    Cover_Wireless_Dynamo_Multi_4A_LV,
+    Cover_Wireless_Dynamo_Multi_4A_MV,
+    Cover_Wireless_Dynamo_Multi_4A_HV,
+    Cover_Wireless_Dynamo_Multi_4A_EV,
+    Cover_Wireless_Dynamo_Multi_4A_IV,
+    Cover_Wireless_Dynamo_Multi_4A_LuV,
+    Cover_Wireless_Dynamo_Multi_4A_ZPM,
+    Cover_Wireless_Dynamo_Multi_4A_UV,
+    Cover_Wireless_Dynamo_Multi_4A_UHV,
+    Cover_Wireless_Dynamo_Multi_4A_UEV,
+    Cover_Wireless_Dynamo_Multi_4A_UIV,
+    Cover_Wireless_Dynamo_Multi_4A_UMV,
+    Cover_Wireless_Dynamo_Multi_4A_UXV,
+    Cover_Wireless_Dynamo_Multi_4A_MAX,
+    Cover_Wireless_Energy_Multi_4A_LV,
+    Cover_Wireless_Energy_Multi_4A_MV,
+    Cover_Wireless_Energy_Multi_4A_HV,
+    Cover_Wireless_Energy_Multi_4A_EV,
+    Cover_Wireless_Energy_Multi_4A_IV,
+    Cover_Wireless_Energy_Multi_4A_LuV,
+    Cover_Wireless_Energy_Multi_4A_ZPM,
+    Cover_Wireless_Energy_Multi_4A_UV,
+    Cover_Wireless_Energy_Multi_4A_UHV,
+    Cover_Wireless_Energy_Multi_4A_UEV,
+    Cover_Wireless_Energy_Multi_4A_UIV,
+    Cover_Wireless_Energy_Multi_4A_UMV,
+    Cover_Wireless_Energy_Multi_4A_UXV,
+    Cover_Wireless_Energy_Multi_4A_MAX,
+    // 16A cover
+    Cover_Wireless_Dynamo_Multi_16A_LV,
+    Cover_Wireless_Dynamo_Multi_16A_MV,
+    Cover_Wireless_Dynamo_Multi_16A_HV,
+    Cover_Wireless_Dynamo_Multi_16A_EV,
+    Cover_Wireless_Dynamo_Multi_16A_IV,
+    Cover_Wireless_Dynamo_Multi_16A_LuV,
+    Cover_Wireless_Dynamo_Multi_16A_ZPM,
+    Cover_Wireless_Dynamo_Multi_16A_UV,
+    Cover_Wireless_Dynamo_Multi_16A_UHV,
+    Cover_Wireless_Dynamo_Multi_16A_UEV,
+    Cover_Wireless_Dynamo_Multi_16A_UIV,
+    Cover_Wireless_Dynamo_Multi_16A_UMV,
+    Cover_Wireless_Dynamo_Multi_16A_UXV,
+    Cover_Wireless_Dynamo_Multi_16A_MAX,
+    Cover_Wireless_Energy_Multi_16A_LV,
+    Cover_Wireless_Energy_Multi_16A_MV,
+    Cover_Wireless_Energy_Multi_16A_HV,
+    Cover_Wireless_Energy_Multi_16A_EV,
+    Cover_Wireless_Energy_Multi_16A_IV,
+    Cover_Wireless_Energy_Multi_16A_LuV,
+    Cover_Wireless_Energy_Multi_16A_ZPM,
+    Cover_Wireless_Energy_Multi_16A_UV,
+    Cover_Wireless_Energy_Multi_16A_UHV,
+    Cover_Wireless_Energy_Multi_16A_UEV,
+    Cover_Wireless_Energy_Multi_16A_UIV,
+    Cover_Wireless_Energy_Multi_16A_UMV,
+    Cover_Wireless_Energy_Multi_16A_UXV,
+    Cover_Wireless_Energy_Multi_16A_MAX,
+    // 64A cover
+    Cover_Wireless_Dynamo_Multi_64A_LV,
+    Cover_Wireless_Dynamo_Multi_64A_MV,
+    Cover_Wireless_Dynamo_Multi_64A_HV,
+    Cover_Wireless_Dynamo_Multi_64A_EV,
+    Cover_Wireless_Dynamo_Multi_64A_IV,
+    Cover_Wireless_Dynamo_Multi_64A_LuV,
+    Cover_Wireless_Dynamo_Multi_64A_ZPM,
+    Cover_Wireless_Dynamo_Multi_64A_UV,
+    Cover_Wireless_Dynamo_Multi_64A_UHV,
+    Cover_Wireless_Dynamo_Multi_64A_UEV,
+    Cover_Wireless_Dynamo_Multi_64A_UIV,
+    Cover_Wireless_Dynamo_Multi_64A_UMV,
+    Cover_Wireless_Dynamo_Multi_64A_UXV,
+    Cover_Wireless_Dynamo_Multi_64A_MAX,
+    Cover_Wireless_Energy_Multi_64A_LV,
+    Cover_Wireless_Energy_Multi_64A_MV,
+    Cover_Wireless_Energy_Multi_64A_HV,
+    Cover_Wireless_Energy_Multi_64A_EV,
+    Cover_Wireless_Energy_Multi_64A_IV,
+    Cover_Wireless_Energy_Multi_64A_LuV,
+    Cover_Wireless_Energy_Multi_64A_ZPM,
+    Cover_Wireless_Energy_Multi_64A_UV,
+    Cover_Wireless_Energy_Multi_64A_UHV,
+    Cover_Wireless_Energy_Multi_64A_UEV,
+    Cover_Wireless_Energy_Multi_64A_UIV,
+    Cover_Wireless_Energy_Multi_64A_UMV,
+    Cover_Wireless_Energy_Multi_64A_UXV,
+    Cover_Wireless_Energy_Multi_64A_MAX,
+
     // endregion
 
     // region Material Block
@@ -144,14 +233,71 @@ public enum NHUItemList implements IItemContainer {
     ;
 
     // region helper
-    public static final NHUItemList[] WIRELESS_DYNAMO_COVERS = { Cover_Wireless_Dynamo_LV, Cover_Wireless_Dynamo_MV,
-        Cover_Wireless_Dynamo_HV, Cover_Wireless_Dynamo_EV, Cover_Wireless_Dynamo_IV, Cover_Wireless_Dynamo_LuV,
-        Cover_Wireless_Dynamo_ZPM, Cover_Wireless_Dynamo_UV, Cover_Wireless_Dynamo_UHV, Cover_Wireless_Dynamo_UEV,
-        Cover_Wireless_Dynamo_UIV, Cover_Wireless_Dynamo_UMV, Cover_Wireless_Dynamo_UXV, Cover_Wireless_Dynamo_MAX },
-        WIRELESS_ENERGY_COVERS = { Cover_Wireless_Energy_LV, Cover_Wireless_Energy_MV, Cover_Wireless_Energy_HV,
-            Cover_Wireless_Energy_EV, Cover_Wireless_Energy_IV, Cover_Wireless_Energy_LuV, Cover_Wireless_Energy_ZPM,
-            Cover_Wireless_Energy_UV, Cover_Wireless_Energy_UHV, Cover_Wireless_Energy_UEV, Cover_Wireless_Energy_UIV,
-            Cover_Wireless_Energy_UMV, Cover_Wireless_Energy_UXV, Cover_Wireless_Energy_MAX };
+
+    // cover_2_A
+    public static final NHUItemList[] WIRELESS_DYNAMO_COVERS_2_A = { Cover_Wireless_Dynamo_2A_LV,
+        Cover_Wireless_Dynamo_2A_MV, Cover_Wireless_Dynamo_2A_HV, Cover_Wireless_Dynamo_2A_EV,
+        Cover_Wireless_Dynamo_2A_IV, Cover_Wireless_Dynamo_2A_LuV, Cover_Wireless_Dynamo_2A_ZPM,
+        Cover_Wireless_Dynamo_2A_UV, Cover_Wireless_Dynamo_2A_UHV, Cover_Wireless_Dynamo_2A_UEV,
+        Cover_Wireless_Dynamo_2A_UIV, Cover_Wireless_Dynamo_2A_UMV, Cover_Wireless_Dynamo_2A_UXV,
+        Cover_Wireless_Dynamo_2A_MAX };
+
+    public static final NHUItemList[] WIRELESS_ENERGY_COVERS_2_A = { Cover_Wireless_Energy_2A_LV,
+        Cover_Wireless_Energy_2A_MV, Cover_Wireless_Energy_2A_HV, Cover_Wireless_Energy_2A_EV,
+        Cover_Wireless_Energy_2A_IV, Cover_Wireless_Energy_2A_LuV, Cover_Wireless_Energy_2A_ZPM,
+        Cover_Wireless_Energy_2A_UV, Cover_Wireless_Energy_2A_UHV, Cover_Wireless_Energy_2A_UEV,
+        Cover_Wireless_Energy_2A_UIV, Cover_Wireless_Energy_2A_UMV, Cover_Wireless_Energy_2A_UXV,
+        Cover_Wireless_Energy_2A_MAX };
+
+    // cover_4_A
+    public static final NHUItemList[] WIRELESS_DYNAMO_COVERS_MULTI_4_A = { Cover_Wireless_Dynamo_Multi_4A_LV,
+        Cover_Wireless_Dynamo_Multi_4A_MV, Cover_Wireless_Dynamo_Multi_4A_HV, Cover_Wireless_Dynamo_Multi_4A_EV,
+        Cover_Wireless_Dynamo_Multi_4A_IV, Cover_Wireless_Dynamo_Multi_4A_LuV, Cover_Wireless_Dynamo_Multi_4A_ZPM,
+        Cover_Wireless_Dynamo_Multi_4A_UV, Cover_Wireless_Dynamo_Multi_4A_UHV, Cover_Wireless_Dynamo_Multi_4A_UEV,
+        Cover_Wireless_Dynamo_Multi_4A_UIV, Cover_Wireless_Dynamo_Multi_4A_UMV, Cover_Wireless_Dynamo_Multi_4A_UXV,
+        Cover_Wireless_Dynamo_Multi_4A_MAX };
+
+    public static final NHUItemList[] WIRELESS_ENERGY_COVERS_MULTI_4_A = { Cover_Wireless_Energy_Multi_4A_LV,
+        Cover_Wireless_Energy_Multi_4A_MV, Cover_Wireless_Energy_Multi_4A_HV, Cover_Wireless_Energy_Multi_4A_EV,
+        Cover_Wireless_Energy_Multi_4A_IV, Cover_Wireless_Energy_Multi_4A_LuV, Cover_Wireless_Energy_Multi_4A_ZPM,
+        Cover_Wireless_Energy_Multi_4A_UV, Cover_Wireless_Energy_Multi_4A_UHV, Cover_Wireless_Energy_Multi_4A_UEV,
+        Cover_Wireless_Energy_Multi_4A_UIV, Cover_Wireless_Energy_Multi_4A_UMV, Cover_Wireless_Energy_Multi_4A_UXV,
+        Cover_Wireless_Energy_Multi_4A_MAX };
+
+    // cover_16A
+    public static final NHUItemList[] WIRELESS_DYNAMO_COVERS_MULTI_16_A = { Cover_Wireless_Dynamo_Multi_16A_LV,
+        Cover_Wireless_Dynamo_Multi_16A_MV, Cover_Wireless_Dynamo_Multi_16A_HV, Cover_Wireless_Dynamo_Multi_16A_EV,
+        Cover_Wireless_Dynamo_Multi_16A_IV, Cover_Wireless_Dynamo_Multi_16A_LuV, Cover_Wireless_Dynamo_Multi_16A_ZPM,
+        Cover_Wireless_Dynamo_Multi_16A_UV, Cover_Wireless_Dynamo_Multi_16A_UHV, Cover_Wireless_Dynamo_Multi_16A_UEV,
+        Cover_Wireless_Dynamo_Multi_16A_UIV, Cover_Wireless_Dynamo_Multi_16A_UMV, Cover_Wireless_Dynamo_Multi_16A_UXV,
+        Cover_Wireless_Dynamo_Multi_16A_MAX };
+    public static final NHUItemList[] WIRELESS_ENERGY_COVERS_MULTI_16_A = { Cover_Wireless_Energy_Multi_16A_LV,
+        Cover_Wireless_Energy_Multi_16A_MV, Cover_Wireless_Energy_Multi_16A_HV, Cover_Wireless_Energy_Multi_16A_EV,
+        Cover_Wireless_Energy_Multi_16A_IV, Cover_Wireless_Energy_Multi_16A_LuV, Cover_Wireless_Energy_Multi_16A_ZPM,
+        Cover_Wireless_Energy_Multi_16A_UV, Cover_Wireless_Energy_Multi_16A_UHV, Cover_Wireless_Energy_Multi_16A_UEV,
+        Cover_Wireless_Energy_Multi_16A_UIV, Cover_Wireless_Energy_Multi_16A_UMV, Cover_Wireless_Energy_Multi_16A_UXV,
+        Cover_Wireless_Energy_Multi_16A_MAX };
+
+    // cover_64A
+    public static final NHUItemList[] WIRELESS_DYNAMO_COVERS_MULTI_64_A = { Cover_Wireless_Dynamo_Multi_64A_LV,
+        Cover_Wireless_Dynamo_Multi_64A_MV, Cover_Wireless_Dynamo_Multi_64A_HV, Cover_Wireless_Dynamo_Multi_64A_EV,
+        Cover_Wireless_Dynamo_Multi_64A_IV, Cover_Wireless_Dynamo_Multi_64A_LuV, Cover_Wireless_Dynamo_Multi_64A_ZPM,
+        Cover_Wireless_Dynamo_Multi_64A_UV, Cover_Wireless_Dynamo_Multi_64A_UHV, Cover_Wireless_Dynamo_Multi_64A_UEV,
+        Cover_Wireless_Dynamo_Multi_64A_UIV, Cover_Wireless_Dynamo_Multi_64A_UMV, Cover_Wireless_Dynamo_Multi_64A_UXV,
+        Cover_Wireless_Dynamo_Multi_64A_MAX };
+    public static final NHUItemList[] WIRELESS_ENERGY_COVERS_MULTI_64_A = { Cover_Wireless_Energy_Multi_64A_LV,
+        Cover_Wireless_Energy_Multi_64A_MV, Cover_Wireless_Energy_Multi_64A_HV, Cover_Wireless_Energy_Multi_64A_EV,
+        Cover_Wireless_Energy_Multi_64A_IV, Cover_Wireless_Energy_Multi_64A_LuV, Cover_Wireless_Energy_Multi_64A_ZPM,
+        Cover_Wireless_Energy_Multi_64A_UV, Cover_Wireless_Energy_Multi_64A_UHV, Cover_Wireless_Energy_Multi_64A_UEV,
+        Cover_Wireless_Energy_Multi_64A_UIV, Cover_Wireless_Energy_Multi_64A_UMV, Cover_Wireless_Energy_Multi_64A_UXV,
+        Cover_Wireless_Energy_Multi_64A_MAX };
+
+    public static final NHUItemList[][] DYNAMO_COVERS = { WIRELESS_ENERGY_COVERS_2_A, WIRELESS_ENERGY_COVERS_MULTI_4_A,
+        WIRELESS_ENERGY_COVERS_MULTI_16_A, WIRELESS_ENERGY_COVERS_MULTI_64_A };
+
+    public static final NHUItemList[][] ENERGY_COVERS = { WIRELESS_DYNAMO_COVERS_2_A, WIRELESS_DYNAMO_COVERS_MULTI_4_A,
+        WIRELESS_DYNAMO_COVERS_MULTI_16_A, WIRELESS_DYNAMO_COVERS_MULTI_64_A };
+
     // endregion
 
     private ItemStack mStack;

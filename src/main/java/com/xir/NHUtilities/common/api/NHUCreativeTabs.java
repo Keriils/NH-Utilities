@@ -57,7 +57,7 @@ public class NHUCreativeTabs {
         @Override
         @SideOnly(Side.CLIENT)
         public Item getTabIconItem() {
-            return NHUItemList.WirelessCoverItems.getItem();
+            return NHUItemList.WirelessCoverItem.getItem();
         }
 
         @Override

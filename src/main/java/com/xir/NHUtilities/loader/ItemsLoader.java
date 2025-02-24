@@ -1,8 +1,5 @@
 package com.xir.NHUtilities.loader;
 
-import static com.xir.NHUtilities.common.api.enums.NHUItemList.WIRELESS_DYNAMO_COVERS;
-import static com.xir.NHUtilities.common.api.enums.NHUItemList.WIRELESS_ENERGY_COVERS;
-import static com.xir.NHUtilities.common.api.enums.TexturesSets.OVERLAY_WIRELESS_1024A;
 import static com.xir.NHUtilities.config.Config.enableEggMachine;
 import static com.xir.NHUtilities.config.Config.enableEternityVial;
 import static com.xir.NHUtilities.config.Config.enableGluttonyRingAndHungerRing;
@@ -10,28 +7,23 @@ import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
 import static com.xir.NHUtilities.config.Config.enableTimeVial;
 
 import com.xir.NHUtilities.common.api.MTOBuilder;
-import com.xir.NHUtilities.common.api.NHUCreativeTabs;
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.common.blocks.CustomDragonEgg;
 import com.xir.NHUtilities.common.blocks.metaBlockImpl.MetaBlock;
-import com.xir.NHUtilities.common.items.aItemCore.MetaItemBase;
 import com.xir.NHUtilities.common.items.baubles.GluttonyRing;
 import com.xir.NHUtilities.common.items.baubles.HungerRing;
 import com.xir.NHUtilities.common.items.baubles.KamiRing;
 import com.xir.NHUtilities.common.items.baubles.WarpWardRing;
-import com.xir.NHUtilities.common.items.covers.WirelessCovers;
 import com.xir.NHUtilities.common.items.itemFuelRod.FuelRod;
 import com.xir.NHUtilities.common.items.itemFuelRod.FuelRodDepleted;
 import com.xir.NHUtilities.common.items.lunchBoxPlus.LunchBoxPlus;
 import com.xir.NHUtilities.common.items.metaItemImpl.MetaItem;
+import com.xir.NHUtilities.common.items.metaItemImpl.WirelessCoverItems;
 import com.xir.NHUtilities.common.items.timeVial.EternityVial;
 import com.xir.NHUtilities.common.items.timeVial.TimeVial;
 import com.xir.NHUtilities.common.items.wand.foci.ItemFocusTape;
 
-import gregtech.api.GregTechAPI;
-import gregtech.api.enums.GTValues;
 import gregtech.api.enums.Mods;
-import gregtech.api.render.TextureFactory;
 
 public class ItemsLoader {
 
@@ -129,51 +121,22 @@ public class ItemsLoader {
         // endregion
 
         // region Meta Item
+        // meta item misc
         NHUItemList.MetaItem.setMetaObject(
             MTOBuilder.newBuilder(new MetaItem())
                 .addRegisterAction(MetaItem::loadMetaItem)
                 .build());
+
+        // meta block misc
         NHUItemList.MetaBlock.setMetaObject(
             MTOBuilder.newBuilder(new MetaBlock())
                 .addRegisterAction(MetaBlock::loadMetaItem)
                 .build());
-        NHUItemList.WirelessCoverItems.setMetaObject(
-            MTOBuilder.newBuilder(new MetaItemBase("WirelessCoverItem"))
-                .addRegisterAction(t -> t.setCreativeTab(NHUCreativeTabs.WirelessMisc))
-                // region meta id 1 -> 14 for wireless dynamo cover
-                // reversed id [0] for wireless cover things
-                // t.addMetaItem("WirelessCoverTest", 0);
-                .addRegisterAction(t -> {
-                    for (int i = 0; i < 14; i++) {
-                        var value = WIRELESS_DYNAMO_COVERS[i];
-                        value.set(t.addMetaItem(value.name(), i + 1));
-                    }
-                })
-                // endregion
-                // region meta id 15 -> 28 for wireless energy cover
-                .addRegisterAction(t -> {
-                    for (int i = 0; i < 14; i++) {
-                        var value = WIRELESS_ENERGY_COVERS[i];
-                        value.set(t.addMetaItem(value.name(), i + 14 + 1));
-                    }
-                })
-                // endregion
-                .addRegisterAction(t -> {
-                    var coverTexture = TextureFactory
-                        .of(TextureFactory.of(OVERLAY_WIRELESS_1024A, new short[] { 255, 255, 255, 0 }));
-                    for (int i = 0; i < 14; i++) {
-                        GregTechAPI.registerCover(
-                            WIRELESS_DYNAMO_COVERS[i].get(1),
-                            coverTexture,
-                            new WirelessCovers.CoverWirelessDynamo((int) GTValues.V[i + 1]));
-                    }
-                    for (int i = 0; i < 14; i++) {
-                        GregTechAPI.registerCover(
-                            WIRELESS_ENERGY_COVERS[i].get(1),
-                            coverTexture,
-                            new WirelessCovers.CoverWirelessEnergy((int) GTValues.V[i + 1]));
-                    }
-                })
+
+        // wireless cover things
+        NHUItemList.WirelessCoverItem.setMetaObject(
+            MTOBuilder.newBuilder(new WirelessCoverItems())
+                .addRegisterAction(WirelessCoverItems::loadMetaItem)
                 .build());
         // endregion
 

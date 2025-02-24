@@ -2,6 +2,7 @@ package com.xir.NHUtilities.common.api.enums;
 
 import static com.xir.NHUtilities.main.ReferencedInfo.RESOURCE_PATH;
 import static gregtech.api.enums.Textures.BlockIcons.CustomIcon;
+import static gregtech.api.enums.Textures.BlockIcons.OVERLAYS_ENERGY_IN_MULTI_WIRELESS_ON;
 import static tectech.thing.metaTileEntity.Textures.OVERLAYS_ENERGY_IN_WIRELESS_LASER;
 import static tectech.thing.metaTileEntity.Textures.OVERLAYS_ENERGY_IN_WIRELESS_MULTI_16A;
 import static tectech.thing.metaTileEntity.Textures.OVERLAYS_ENERGY_IN_WIRELESS_MULTI_4A;
@@ -56,6 +57,7 @@ public final class TexturesSets {
             var args = new short[] { 255, 255, 255, 0 };
             var spaceTime = TextureFactory.of(OVERLAY_WIRELESS_SPACETIME, args);
             put(-1, spaceTime);
+            put(2, OVERLAYS_ENERGY_IN_MULTI_WIRELESS_ON[1]);
             put(4, OVERLAYS_ENERGY_IN_WIRELESS_MULTI_4A[1]);
             put(16, OVERLAYS_ENERGY_IN_WIRELESS_MULTI_16A[1]);
             put(64, OVERLAYS_ENERGY_IN_WIRELESS_MULTI_64A[1]);
