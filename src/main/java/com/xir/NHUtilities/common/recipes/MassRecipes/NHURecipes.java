@@ -25,6 +25,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
+import com.xir.NHUtilities.common.recipes.MassRecipes.CoverEnergyHatches.WirelessCoverRecipes;
 
 import bartworks.system.material.WerkstoffLoader;
 import fox.spiteful.avaritia.crafting.ExtremeCraftingManager;
@@ -50,6 +51,7 @@ public class NHURecipes {
         initFuelRodRecipe();
         if (enableEggMachine) initEggMachineRecipe();
         if (enableEternityVial) initEternityTimeVialRecipe();
+        if (enableWirelessHatchMore) WirelessCoverRecipes.initWirelessCover();
         if (enableWirelessHatchMore) WirelessHatchMoreRecipe.initWirelessHatchMore();
 
         // for adding debug maintenance recipe
