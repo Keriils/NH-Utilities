@@ -55,6 +55,11 @@ public class CommonProxy {
 
         LOG.info("Post-initializing " + MOD_NAME + "!");
 
+    }
+
+    public void completeInit(FMLLoadCompleteEvent event) {
+        LOG.info("Complete-initializing " + MOD_NAME + "!");
+
         ResearchLoader.initNHUtilitiesResearch();
         LOG.info("Loaded Researches");
 
@@ -63,11 +68,6 @@ public class CommonProxy {
 
         GTApiResearch.addGTApiResearchAndRecipes();
         LOG.info("Loaded TC_Researches and TC_Recipes through GTAPI");
-
-    }
-
-    public void completeInit(FMLLoadCompleteEvent event) {
-        LOG.info("Complete-initializing " + MOD_NAME + "!");
     }
 
     public void serverStarting(FMLServerStartingEvent event) {}
