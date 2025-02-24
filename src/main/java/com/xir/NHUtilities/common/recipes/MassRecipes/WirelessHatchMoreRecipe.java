@@ -334,6 +334,7 @@ public class WirelessHatchMoreRecipe {
             wirelessDynamoHatches_1024A, wirelessDynamoHatches_4096A, wirelessDynamoHatches_16384A,
             wirelessDynamoHatches_65536A, wirelessDynamoHatches_262144A, wirelessDynamoHatches_1048576A };
 
+        // add to nhu wireless things CreativeTab
         if (CommonUtil.isClientSide()) {
             for (ItemStack[] isa : wirelessEnergyHatchAll) {
                 for (ItemStack hatch : isa) {

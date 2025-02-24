@@ -1,5 +1,6 @@
 package com.xir.NHUtilities.main;
 
+import com.xir.NHUtilities.utils.CommonUtil;
 import net.minecraft.launchwrapper.Launch;
 
 import cpw.mods.fml.common.Loader;
@@ -26,6 +27,10 @@ public final class ReferencedInfo {
     public static final String MOD_NAME_LOWER = "nh utilities";
 
     public static final String RESOURCE_PATH = MOD_ID_LOWER + ":";
+
+    public static final boolean IS_CLIENT_SIDE = CommonUtil.isClientSide();
+
+    public static final boolean IS_SERVER_SIDE = CommonUtil.isServerSide();
 
     // For Mod dependencies
     public static final String DEPENDENCIES = " after:gregtech;" + " after:Avaritia;"

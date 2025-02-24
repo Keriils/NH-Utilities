@@ -16,6 +16,8 @@ import com.xir.NHUtilities.common.api.MTOData;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import static com.xir.NHUtilities.main.ReferencedInfo.IS_CLIENT_SIDE;
+
 public final class MetaObjectUtil {
 
     private MetaObjectUtil() {}
@@ -40,7 +42,7 @@ public final class MetaObjectUtil {
         if (nameMap.containsKey(aMeta))
             throw new IllegalArgumentException("This meta value has benn set to " + nameMap.get(aMeta));
         nameMap.put(aMeta, aName);
-        if (aExtraFolder != null) manager.GROUP_FOLDERS_MAP.put(aMeta, aExtraFolder);
+        if (aExtraFolder != null && IS_CLIENT_SIDE) manager.GROUP_FOLDERS_MAP.put(aMeta, aExtraFolder);
         if (tooltips != null && tooltips.length >= 1) manager.TOOLTIPS_MAP.put(aMeta, tooltips);
     }
 
