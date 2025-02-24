@@ -6,6 +6,7 @@ import static com.xir.NHUtilities.config.Config.enableGluttonyRingAndHungerRing;
 import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
 import static com.xir.NHUtilities.config.Config.enableTimeVial;
 import static com.xir.NHUtilities.config.Config.enableWirelessHatchMore;
+import static gregtech.api.enums.Mods.SpiceOfLife;
 
 import com.xir.NHUtilities.common.api.MTOBuilder;
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
@@ -24,8 +25,6 @@ import com.xir.NHUtilities.common.items.timeVial.EternityVial;
 import com.xir.NHUtilities.common.items.timeVial.TimeVial;
 import com.xir.NHUtilities.common.items.wand.foci.ItemFocusTape;
 
-import gregtech.api.enums.Mods;
-
 public class ItemsLoader {
 
     static final boolean testThings = true;
@@ -40,8 +39,7 @@ public class ItemsLoader {
         NHUItemList.GluttonyRing.setAndRegister(GluttonyRing::new, enableGluttonyRingAndHungerRing);
         NHUItemList.WarpWardRing.setAndRegister(WarpWardRing::new, testThings);
         NHUItemList.FocusTape.setAndRegister(ItemFocusTape::new, testThings);
-        if (enableLunchBoxPlus && Mods.SpiceOfLife.isModLoaded())
-            NHUItemList.LunchBoxPlus.setAndRegister(new LunchBoxPlus());
+        NHUItemList.LunchBoxPlus.setAndRegister(LunchBoxPlus::new, enableLunchBoxPlus && SpiceOfLife.isModLoaded());
         // endregion
 
         // region Fuel Rod
