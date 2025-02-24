@@ -1,7 +1,7 @@
 package com.xir.NHUtilities.common.recipes.MassRecipes;
 
-import static com.xir.NHUtilities.common.api.enums.NHUItemList.WIRELESS_DYNAMO_COVERS;
-import static com.xir.NHUtilities.common.api.enums.NHUItemList.WIRELESS_ENERGY_COVERS;
+import static com.xir.NHUtilities.common.api.enums.NHUItemList.WIRELESS_DYNAMO_COVERS_2_A;
+import static com.xir.NHUtilities.common.api.enums.NHUItemList.WIRELESS_ENERGY_COVERS_2_A;
 import static goodgenerator.api.recipe.GoodGeneratorRecipeMaps.preciseAssemblerRecipes;
 import static gregtech.api.enums.Mods.NewHorizonsCoreMod;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
@@ -334,6 +334,7 @@ public class WirelessHatchMoreRecipe {
             wirelessDynamoHatches_1024A, wirelessDynamoHatches_4096A, wirelessDynamoHatches_16384A,
             wirelessDynamoHatches_65536A, wirelessDynamoHatches_262144A, wirelessDynamoHatches_1048576A };
 
+        // add to nhu wireless things CreativeTab
         if (CommonUtil.isClientSide()) {
             for (ItemStack[] isa : wirelessEnergyHatchAll) {
                 for (ItemStack hatch : isa) {
@@ -428,7 +429,7 @@ public class WirelessHatchMoreRecipe {
             GTValues.RA.stdBuilder()
                 .itemInputs(GTUtility.getIntegratedCircuit(16), dynamoHatches_2A[i + 1].copy())
                 .fluidInputs(Materials.Rubber.getMolten(144 * (i + 1)))
-                .itemOutputs(WIRELESS_DYNAMO_COVERS[i].get(1))
+                .itemOutputs(WIRELESS_DYNAMO_COVERS_2_A[i].get(1))
                 .eut(TierEU.LV)
                 .duration(60 * SECONDS * i)
                 .noOptimize()
@@ -439,7 +440,7 @@ public class WirelessHatchMoreRecipe {
             GTValues.RA.stdBuilder()
                 .itemInputs(GTUtility.getIntegratedCircuit(16), energyHatches_2A[i + 1].copy())
                 .fluidInputs(Materials.Rubber.getMolten(144 * (i + 1)))
-                .itemOutputs(WIRELESS_ENERGY_COVERS[i].get(1))
+                .itemOutputs(WIRELESS_ENERGY_COVERS_2_A[i].get(1))
                 .eut(TierEU.LV)
                 .duration(60 * SECONDS * i)
                 .noOptimize()

@@ -24,8 +24,8 @@ public class WirelessCovers {
     // region Wireless Dynamo
     public static class CoverWirelessDynamo extends AbstractWirelessCover {
 
-        public CoverWirelessDynamo(int voltage) {
-            super(voltage);
+        public CoverWirelessDynamo(int voltage, int ampere) {
+            super(voltage, ampere);
         }
 
         @Override
@@ -51,15 +51,15 @@ public class WirelessCovers {
     // region Wireless Energy
     public static class CoverWirelessEnergy extends AbstractWirelessCover {
 
-        public CoverWirelessEnergy(int voltage) {
-            super(voltage);
+        public CoverWirelessEnergy(int voltage, int ampere) {
+            super(voltage, ampere);
         }
 
         @Override
         protected void tryOperate(ICoverable tileEntity) {
             if (tileEntity instanceof BaseMetaTileEntity bmt && bmt.getMetaTileEntity() instanceof MetaTileEntity mte) {
                 var currentEU = mte.getEUVar();
-                long euToTransfer = min(transferred_energy_per_operation - currentEU, transferred_energy_per_operation);
+                var euToTransfer = min(transferred_energy_per_operation - currentEU, transferred_energy_per_operation);
                 if (euToTransfer <= 0) return; // nothing to transfer
                 if (addEUToGlobalEnergyMap(bmt.getOwnerUuid(), -euToTransfer)) {
                     bmt.increaseStoredEnergyUnits(euToTransfer, true);
@@ -75,8 +75,8 @@ public class WirelessCovers {
 
         protected final long transferred_energy_per_operation;
 
-        public AbstractWirelessCover(int voltage) {
-            this.transferred_energy_per_operation = 2 * voltage * ticks_between_energy_addition;
+        public AbstractWirelessCover(int voltage, int ampere) {
+            this.transferred_energy_per_operation = ticks_between_energy_addition * (long) ampere * (long) voltage;
         }
 
         @Override

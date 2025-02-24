@@ -19,6 +19,7 @@ import gregtech.api.util.GTLog;
 @SuppressWarnings({ "unused", "UnusedReturnValue" })
 public enum WirelessHatchMore implements IItemContainer {
 
+    // region Enum
     // spotless:off
 
     energyMulti_HV_4            (   1,      3,      4,          HatchType.EnergyHatch   ),
@@ -117,22 +118,25 @@ public enum WirelessHatchMore implements IItemContainer {
     energyMulti_UMV_262144      (   86,    12,      262144,     HatchType.EnergyHatch   ),
     energyMulti_UMV_1048576     (   87,    12,      1048576,    HatchType.EnergyHatch   ),
     energyMulti_UMV_4194304     (   88,    12,      4194304,    HatchType.EnergyHatch   ),
-    //dynamoMulti_UMV_4           (   89,    12,      4,          HatchType.DynamoHatch   ),
-    //dynamoMulti_UMV_16          (   90,    12,      16,         HatchType.DynamoHatch   ),
-    //dynamoMulti_UMV_64          (   91,    12,      64,         HatchType.DynamoHatch   ),
-    //dynamoMulti_UMV_256         (   92,    12,      256,        HatchType.DynamoHatch   ),
-    //dynamoMulti_UMV_1024        (   93,    12,      1024,       HatchType.DynamoHatch   ),
-    //dynamoMulti_UMV_4096        (   94,    12,      4096,       HatchType.DynamoHatch   ),
-    //dynamoMulti_UMV_16384       (   95,    12,      16384,      HatchType.DynamoHatch   ),
-    //dynamoMulti_UMV_65536       (   96,    12,      65536,      HatchType.DynamoHatch   ),
-    //dynamoMulti_UMV_262144      (   97,    12,      262144,     HatchType.DynamoHatch   ),
-    //dynamoMulti_UMV_1048576     (   98,    12,      1048576,    HatchType.DynamoHatch   ),
-    //dynamoMulti_UMV_4194304     (   99,    12,      4194304,    HatchType.DynamoHatch   ),
+
+    energyMulti_MAX_256         (   89,    14,      256,        HatchType.EnergyHatch   ),
+    energyMulti_MAX_1024        (   90,    14,      1024,       HatchType.EnergyHatch   ),
+    energyMulti_MAX_4096        (   91,    14,      4096,       HatchType.EnergyHatch   ),
+    energyMulti_MAX_16384       (   92,    14,      16384,      HatchType.EnergyHatch   ),
+    energyMulti_MAX_65536       (   93,    14,      65536,      HatchType.EnergyHatch   ),
+    energyMulti_MAX_262144      (   94,    14,      262144,     HatchType.EnergyHatch   ),
+    energyMulti_MAX_1048576     (   95,    14,      1048576,    HatchType.EnergyHatch   ),
+    energyMulti_MAX_4194304     (   96,    14,      4194304,    HatchType.EnergyHatch   ),
+    energyMulti_MAX_16777216    (   97,    14,      16777216,   HatchType.EnergyHatch   ),
+    energyMulti_MAX_67108864    (   98,    14,      67108864,   HatchType.EnergyHatch   ),
+
+
 
     // spotless:on
-
+    // endregion
     ;
 
+    // region Misc
     private ItemStack mStack;
     private boolean mWarned = false;
     private boolean mDeprecated = false;
@@ -246,4 +250,5 @@ public enum WirelessHatchMore implements IItemContainer {
         EnergyHatch,
         DynamoHatch
     }
+    // endregion
 }

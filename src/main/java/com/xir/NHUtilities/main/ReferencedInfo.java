@@ -2,6 +2,7 @@ package com.xir.NHUtilities.main;
 
 import net.minecraft.launchwrapper.Launch;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 
 @SuppressWarnings("unused")
@@ -26,6 +27,14 @@ public final class ReferencedInfo {
     public static final String MOD_NAME_LOWER = "nh utilities";
 
     public static final String RESOURCE_PATH = MOD_ID_LOWER + ":";
+
+    public static final boolean IS_CLIENT_SIDE = FMLCommonHandler.instance()
+        .getSide()
+        .isClient();
+
+    public static final boolean IS_SERVER_SIDE = FMLCommonHandler.instance()
+        .getSide()
+        .isServer();
 
     // For Mod dependencies
     public static final String DEPENDENCIES = " after:gregtech;" + " after:Avaritia;"

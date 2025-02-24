@@ -1,5 +1,7 @@
 package com.xir.NHUtilities.utils;
 
+import static com.xir.NHUtilities.main.ReferencedInfo.IS_CLIENT_SIDE;
+
 import java.util.Map;
 
 import net.minecraft.block.Block;
@@ -40,7 +42,7 @@ public final class MetaObjectUtil {
         if (nameMap.containsKey(aMeta))
             throw new IllegalArgumentException("This meta value has benn set to " + nameMap.get(aMeta));
         nameMap.put(aMeta, aName);
-        if (aExtraFolder != null) manager.GROUP_FOLDERS_MAP.put(aMeta, aExtraFolder);
+        if (aExtraFolder != null && IS_CLIENT_SIDE) manager.GROUP_FOLDERS_MAP.put(aMeta, aExtraFolder);
         if (tooltips != null && tooltips.length >= 1) manager.TOOLTIPS_MAP.put(aMeta, tooltips);
     }
 
@@ -55,7 +57,7 @@ public final class MetaObjectUtil {
             String baseIconPath = entry.getValue();
             String groupFolder = groupFoldersMap.get(meta);
 
-            String fullIconPath = groupFolder != null ? iconPathName + "/" + groupFolder + "/" + baseIconPath
+            String fullIconPath = groupFolder != null ? iconPathName + groupFolder + "/" + baseIconPath
                 : iconPathName + baseIconPath;
 
             iconMap.put(meta, register.registerIcon(fullIconPath));
