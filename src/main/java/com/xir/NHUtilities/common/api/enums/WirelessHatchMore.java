@@ -130,13 +130,13 @@ public enum WirelessHatchMore implements IItemContainer {
     energyMulti_MAX_16777216    (   97,    14,      16777216,   HatchType.EnergyHatch   ),
     energyMulti_MAX_67108864    (   98,    14,      67108864,   HatchType.EnergyHatch   ),
 
-    energyMulti_LV_4            (   1,      1,      4,          HatchType.EnergyHatch   ),
-    energyMulti_LV_16           (   2,      1,      16,         HatchType.EnergyHatch   ),
-    energyMulti_LV_64           (   3,      1,      64,         HatchType.EnergyHatch   ),
+    energyMulti_LV_4            (   99,      1,      4,          HatchType.EnergyHatch   ),
+    energyMulti_LV_16           (   100,     1,      16,         HatchType.EnergyHatch   ),
+    energyMulti_LV_64           (   101,     1,      64,         HatchType.EnergyHatch   ),
 
-    energyMulti_MV_4            (   1,      2,      4,          HatchType.EnergyHatch   ),
-    energyMulti_MV_16           (   2,      2,      16,         HatchType.EnergyHatch   ),
-    energyMulti_MV_64           (   3,      2,      64,         HatchType.EnergyHatch   ),
+    energyMulti_MV_4            (   102,     2,      4,          HatchType.EnergyHatch   ),
+    energyMulti_MV_16           (   103,     2,      16,         HatchType.EnergyHatch   ),
+    energyMulti_MV_64           (   104,     2,      64,         HatchType.EnergyHatch   ),
 
     // spotless:on
     // endregion
