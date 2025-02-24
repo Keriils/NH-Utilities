@@ -19,6 +19,7 @@ import static gregtech.api.util.GTRecipeConstants.COIL_HEAT;
 import static gregtech.api.util.GTRecipeConstants.UniversalChemical;
 import static tectech.thing.CustomItemList.hatch_CreativeMaintenance;
 
+import com.xir.NHUtilities.common.recipes.MassRecipes.CoverEnergyHatches.WirelessCoverRecipes;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -51,6 +52,7 @@ public class NHURecipes {
         if (enableEggMachine) initEggMachineRecipe();
         if (enableEternityVial) initEternityTimeVialRecipe();
         if (enableWirelessHatchMore) WirelessHatchMoreRecipe.initWirelessHatchMore();
+        if (enableWirelessHatchMore) WirelessCoverRecipes.initWirelessCover();
 
         // for adding debug maintenance recipe
         if (enableDebugMaintenanceHatchRecipe) {
