@@ -1,5 +1,7 @@
 package com.xir.NHUtilities.utils;
 
+import static com.xir.NHUtilities.main.ReferencedInfo.IS_CLIENT_SIDE;
+
 import java.util.Map;
 
 import net.minecraft.block.Block;
@@ -15,8 +17,6 @@ import com.xir.NHUtilities.common.api.MTOData;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
-import static com.xir.NHUtilities.main.ReferencedInfo.IS_CLIENT_SIDE;
 
 public final class MetaObjectUtil {
 

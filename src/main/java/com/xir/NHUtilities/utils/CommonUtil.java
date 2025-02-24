@@ -15,8 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
-
-import cpw.mods.fml.common.FMLCommonHandler;
+import com.xir.NHUtilities.main.ReferencedInfo;
 
 @SuppressWarnings({ "unused", "UnusedReturnValue" })
 public class CommonUtil {
@@ -92,15 +91,11 @@ public class CommonUtil {
     }
 
     public static boolean isClientSide() {
-        return FMLCommonHandler.instance()
-            .getSide()
-            .isClient();
+        return ReferencedInfo.IS_CLIENT_SIDE;
     }
 
     public static boolean isServerSide() {
-        return FMLCommonHandler.instance()
-            .getSide()
-            .isServer();
+        return ReferencedInfo.IS_SERVER_SIDE;
     }
 
     @Contract(value = "_ -> new", pure = true)
