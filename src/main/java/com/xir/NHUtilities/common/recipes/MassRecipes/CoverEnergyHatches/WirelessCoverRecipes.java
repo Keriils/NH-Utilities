@@ -263,7 +263,7 @@ public class WirelessCoverRecipes {
                 ItemList.UHV_Coil.get(64),
                 CustomItemList.PicoWafer.get(1),
                 GTOreDictUnificator.get(OrePrefixes.wireGt01, MaterialsUEVplus.SpaceTime, 2),
-                GTOreDictUnificator.get(OrePrefixes.cableGt01, Materials.BatteryAlloy, 2),
+                GTOreDictUnificator.get(OrePrefixes.cableGt01, Materials.RedAlloy, 2),
                 GTOreDictUnificator
                     .get(OrePrefixes.plate, MaterialsUEVplus.MagnetohydrodynamicallyConstrainedStarMatter, 4))
             .fluidInputs(Materials.SolderingAlloy.getMolten(144))
