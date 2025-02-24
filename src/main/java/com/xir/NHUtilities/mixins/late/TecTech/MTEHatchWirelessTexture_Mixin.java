@@ -1,4 +1,4 @@
-package com.xir.NHUtilities.mixins.late.GregTech;
+package com.xir.NHUtilities.mixins.late.TecTech;
 
 import static com.xir.NHUtilities.common.api.enums.TexturesSets.getWirelessTex;
 
