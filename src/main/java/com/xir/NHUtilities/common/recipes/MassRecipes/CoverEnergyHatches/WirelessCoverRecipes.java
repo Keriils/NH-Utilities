@@ -1,8 +1,12 @@
 package com.xir.NHUtilities.common.recipes.MassRecipes.CoverEnergyHatches;
 
-import bartworks.system.material.WerkstoffLoader;
+import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
+import static gregtech.api.util.GTRecipeBuilder.SECONDS;
+
 import com.dreammaster.gthandler.CustomItemList;
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
+
+import bartworks.system.material.WerkstoffLoader;
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
@@ -10,9 +14,6 @@ import gregtech.api.enums.MaterialsUEVplus;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.TierEU;
 import gregtech.api.util.GTOreDictUnificator;
-
-import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
-import static gregtech.api.util.GTRecipeBuilder.SECONDS;
 
 public class WirelessCoverRecipes {
 
@@ -263,7 +264,8 @@ public class WirelessCoverRecipes {
                 CustomItemList.PicoWafer.get(1),
                 GTOreDictUnificator.get(OrePrefixes.wireGt01, MaterialsUEVplus.SpaceTime, 2),
                 GTOreDictUnificator.get(OrePrefixes.cableGt01, Materials.BatteryAlloy, 2),
-                GTOreDictUnificator.get(OrePrefixes.plate, MaterialsUEVplus.MagnetohydrodynamicallyConstrainedStarMatter, 4))
+                GTOreDictUnificator
+                    .get(OrePrefixes.plate, MaterialsUEVplus.MagnetohydrodynamicallyConstrainedStarMatter, 4))
             .fluidInputs(Materials.SolderingAlloy.getMolten(144))
             .itemOutputs(NHUItemList.Cover_Wireless_Energy_2A_MAX.get(1))
             .duration(10 * SECONDS)
@@ -516,7 +518,8 @@ public class WirelessCoverRecipes {
                 CustomItemList.PicoWafer.get(1),
                 GTOreDictUnificator.get(OrePrefixes.wireGt01, MaterialsUEVplus.SpaceTime, 2),
                 GTOreDictUnificator.get(OrePrefixes.cableGt01, Materials.RedAlloy, 2),
-                GTOreDictUnificator.get(OrePrefixes.plate, MaterialsUEVplus.MagnetohydrodynamicallyConstrainedStarMatter, 4))
+                GTOreDictUnificator
+                    .get(OrePrefixes.plate, MaterialsUEVplus.MagnetohydrodynamicallyConstrainedStarMatter, 4))
             .fluidInputs(Materials.SolderingAlloy.getMolten(144))
             .itemOutputs(NHUItemList.Cover_Wireless_Dynamo_2A_MAX.get(1))
             .duration(10 * SECONDS)
