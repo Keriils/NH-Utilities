@@ -1,11 +1,12 @@
 package com.xir.NHUtilities.mixins;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({ "unused", "SpellCheckingInspection" })
 public enum TargetMod {
 
     DraconicEvolution("Draconic Evolution", "DraconicEvolution"),
     Baubles("Baubles", "Baubles"),
     GregTech("GregTech", "gregtech"),
+    TecTech("TecTech - Tec Technology!", "tectech"),
     EnderIO("Ender IO", "EnderIO"),
     WorldEdit("WorldEdit", "worldedit"),
     ExtraUtilities("Extra Utilities", "ExtraUtilities"),
