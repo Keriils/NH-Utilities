@@ -5,6 +5,7 @@ import static com.xir.NHUtilities.config.Config.enableEternityVial;
 import static com.xir.NHUtilities.config.Config.enableGluttonyRingAndHungerRing;
 import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
 import static com.xir.NHUtilities.config.Config.enableTimeVial;
+import static com.xir.NHUtilities.config.Config.enableWirelessHatchMore;
 
 import com.xir.NHUtilities.common.api.MTOBuilder;
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
@@ -123,19 +124,20 @@ public class ItemsLoader {
         // region Meta Item
         // meta item misc
         NHUItemList.MetaItem.setMetaObject(
-            MTOBuilder.newBuilder(new MetaItem())
+            () -> MTOBuilder.newBuilder(new MetaItem())
                 .addRegisterAction(MetaItem::loadMetaItem)
                 .build());
 
         // meta block misc
         NHUItemList.MetaBlock.setMetaObject(
-            MTOBuilder.newBuilder(new MetaBlock())
+            () -> MTOBuilder.newBuilder(new MetaBlock())
                 .addRegisterAction(MetaBlock::loadMetaItem)
                 .build());
 
         // wireless cover things
         NHUItemList.WirelessCoverItem.setMetaObject(
-            MTOBuilder.newBuilder(new WirelessCoverItems())
+            enableWirelessHatchMore,
+            () -> MTOBuilder.newBuilder(new WirelessCoverItems())
                 .addRegisterAction(WirelessCoverItems::loadMetaItem)
                 .build());
         // endregion
