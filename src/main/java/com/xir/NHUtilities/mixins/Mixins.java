@@ -38,6 +38,8 @@ public enum Mixins {
         "GregTech.MTEAdvAssLineAcceleration_Mixin", TargetMod.GregTech, TargetMod.GigaGramFab),
     GT_BaseMetaTileEntity_WirelessCover_Mixin(Category.WirelessHatchMoreFeature, Side.BOTH, Phase.LATE,
         "GregTech.BaseMetaTileEntityWirelessCover_Mixin", TargetMod.GregTech),
+    GT_BanOriginalWirelessRecipes_Mixin(Category.WirelessHatchMoreFeature, Side.BOTH, Phase.LATE,
+        "GregTech.BanOriginalWirelessRecipes_Mixin", TargetMod.GregTech, TargetMod.TecTech),
     EnderIO_Modify_CapBankMaxIO_Mixin(Category.ModifyCapBankMaxIO, Side.BOTH, Phase.LATE,
         "EnderIO.Modify_CapBankMaxIO_Mixin", TargetMod.EnderIO),
     WE_ModifyWithExuHealingAxe_Mixin(Category.WEToolWithExuHealingAxe, Side.BOTH, Phase.LATE,
