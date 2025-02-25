@@ -4,6 +4,7 @@ import static com.xir.NHUtilities.config.Config.disableDollyDebuff;
 import static com.xir.NHUtilities.config.Config.disableSuperChestOrTankDebuff;
 import static com.xir.NHUtilities.config.Config.enableAccelerateEnderIoMachine;
 import static com.xir.NHUtilities.config.Config.enableAccelerateGregTechMachine;
+import static com.xir.NHUtilities.config.Config.enableBanOriginalWirelessRecipes;
 import static com.xir.NHUtilities.config.Config.enableEnhancedTeleporterMKII;
 import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
 import static com.xir.NHUtilities.config.Config.enableModifyEnderIoCapBankIO;
@@ -96,6 +97,26 @@ public enum Mixins {
             .addTargetMod(TargetMod.TecTech)
             .addTargetMod(TargetMod.GregTech)
             .addCondition(enableWirelessHatchMore)
+            .addCondition(enableBanOriginalWirelessRecipes),
+        newMixinClass("Modify_Wireless_Hatch_Textures")
+            .setClass("MTEHatchWirelessTexture_Mixin")
+            .setPackagePath(PackagePath.TecTech)
+            .setPhase(Phase.LATE)
+            .addTargetMod(TargetMod.TecTech)
+            .addTargetMod(TargetMod.GregTech)
+            .addCondition(enableModifyWirelessHatchTexture)
+            .addCondition(enableWirelessHatchMore)
+
+    ),
+
+    GregTech_Modifications(
+
+        newMixinClass("Disable_SuperChestOrTank_Debuff")
+            .setClass("DisableDebuff_Mixin")
+            .setPackagePath(PackagePath.GregTech)
+            .setPhase(Phase.LATE)
+            .addTargetMod(TargetMod.GregTech)
+            .addCondition(disableSuperChestOrTankDebuff)
 
     ),
 
@@ -119,25 +140,6 @@ public enum Mixins {
             .setPhase(Phase.LATE)
             .addTargetMod(TargetMod.EnderIO)
             .addCondition(enableAccelerateEnderIoMachine)
-
-    ),
-
-    GregTech_Modifications(
-
-        newMixinClass("Disable_SuperChestOrTank_Debuff")
-            .setClass("DisableDebuff_Mixin")
-            .setPackagePath(PackagePath.GregTech)
-            .setPhase(Phase.LATE)
-            .addTargetMod(TargetMod.GregTech)
-            .addCondition(disableSuperChestOrTankDebuff),
-        newMixinClass("Modify_Wireless_Hatch_Textures")
-            .setClass("MTEHatchWirelessTexture_Mixin")
-            .setPackagePath(PackagePath.TecTech)
-            .setPhase(Phase.LATE)
-            .addTargetMod(TargetMod.TecTech)
-            .addTargetMod(TargetMod.GregTech)
-            .addCondition(enableModifyWirelessHatchTexture)
-            .addCondition(enableWirelessHatchMore)
 
     ),
 
@@ -204,7 +206,7 @@ public enum Mixins {
             if (!value.shouldApplyThisMixinGroup.get()) continue;
             for (MixinClass mixinClass : value.MIXIN_CLASS) {
                 if (mixinClass.mClass.equals(ERROR)) continue;
-                if (mixinClass.phase.equals(Phase.ERROR_PHASE)) continue;
+                if (!mixinClass.phase.equals(Phase.LATE)) continue;
                 if (!shouldApply(mixinClass.side)) continue;
                 if (!mixinClass.classPredicate.test(mixinClass)) continue;
                 if (!loadedMods.containsAll(
