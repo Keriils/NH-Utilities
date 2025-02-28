@@ -56,7 +56,7 @@ public class WirelessHatchRecipe {
         GTRecipeBuilder.builder()
             .itemInputsUnsafe(
                 ItemList.Energy_Module.get(1),
-                GTOreDictUnificator.get(OrePrefixes.lens, Materials.Sapphire, 0))
+                copyAmount(GTOreDictUnificator.get(OrePrefixes.lens, Materials.Sapphire, 1), 0))
             .fluidInputs(Materials.BorosilicateGlass.getMolten(32 * 144))
             .itemOutputs(NHUItemList.Chip_EnergyModule.get(3))
             .requiresCleanRoom()
