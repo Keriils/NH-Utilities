@@ -6,6 +6,7 @@ import static com.xir.NHUtilities.config.Config.enableTimeVial;
 
 import net.minecraftforge.client.MinecraftForgeClient;
 
+import com.xir.NHUtilities.client.NEIAllHatchSort;
 import com.xir.NHUtilities.client.key.KeyBindings;
 import com.xir.NHUtilities.client.key.KeyInputHandler;
 import com.xir.NHUtilities.client.render.MetaAbleCosmicItemRenderer;
@@ -14,6 +15,7 @@ import com.xir.NHUtilities.loader.RenderLoader;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
 import fox.spiteful.avaritia.render.CosmicItemRenderer;
 
 @SuppressWarnings("unused")
@@ -41,5 +43,11 @@ public class ClientProxy extends CommonProxy {
             RenderLoader.registerNHUtilitiesEntityRendering();
         }
 
+    }
+
+    @Override
+    public void completeInit(FMLLoadCompleteEvent event) {
+        super.completeInit(event);
+        NEIAllHatchSort.init();
     }
 }

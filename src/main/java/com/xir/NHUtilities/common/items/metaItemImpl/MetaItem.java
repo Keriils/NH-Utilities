@@ -36,6 +36,7 @@ public class MetaItem extends MetaItemBase implements ICosmicRenderItem, ILoadMe
             NHUItemList.ChaosDraconiumEgg.set(addMetaItem("ChaosDraconiumEgg", 4));
             NHUItemList.AncientDraconiumEgg.set(addMetaItem("AncientDraconiumEgg", 5));
         }
+        NHUItemList.Chip_EnergyModule.set(addMetaItem("Chip_EnergyModule", 8));
         if (enableTestItem) {
             NHUItemList.TestItem.set(addMetaItem("TestItem", 6));
             NHUItemList.TestItem2.set(addMetaItem("TestItem2", 7));

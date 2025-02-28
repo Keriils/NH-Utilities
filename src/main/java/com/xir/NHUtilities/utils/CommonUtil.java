@@ -3,12 +3,17 @@ package com.xir.NHUtilities.utils;
 import static net.minecraft.init.Items.feather;
 import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
 
+import java.util.Arrays;
+import java.util.function.Function;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -55,25 +60,84 @@ public class CommonUtil {
         return new ItemStack(aBlock, 1, aMeta);
     }
 
+    public static ItemStack newItemStack(ItemStack itemStack, @NotNull Function<ItemStack, ItemStack> mapper) {
+        return mapper.apply(itemStack);
+    }
+
+    public static ItemStack[] copyItemStackArray(int multipleSize, ItemStack... itemStacks) {
+        return copyItemStackArray(fluidStack -> {
+            ItemStack c = fluidStack.copy();
+            c.stackSize *= multipleSize;
+            return c;
+        }, itemStacks);
+    }
+
+    public static ItemStack[] copyItemStackArray(Function<ItemStack, ItemStack> copyFunction, ItemStack... itemStacks) {
+        if (itemStacks == null || itemStacks.length == 0 || copyFunction == null) return null;
+        if (itemStacks.length == 1) return new ItemStack[] { copyFunction.apply(itemStacks[0]) };
+        return Arrays.stream(itemStacks)
+            .map(copyFunction)
+            .toArray(ItemStack[]::new);
+    }
+
+    @Contract("_, _ -> new")
+    public static @NotNull FluidStack newFluidStack(Fluid fluid, int amount) {
+        return new FluidStack(fluid, amount);
+    }
+
+    @Contract("_, _ -> new")
+    public static @NotNull FluidStack newFluidStack(@NotNull FluidStack fluidStack, int amount) {
+        return new FluidStack(fluidStack.getFluid(), amount);
+    }
+
+    public static FluidStack newFluidStack(FluidStack fluidStack, @NotNull Function<FluidStack, FluidStack> mapper) {
+        return mapper.apply(fluidStack);
+    }
+
+    public static FluidStack[] newFluidStackArray(FluidStack... fluidStack) {
+        return fluidStack;
+    }
+
+    public static FluidStack[] copyFluidStackArray(int multipleSize, FluidStack... fluidStacks) {
+        return copyFluidStackArray(fluidStack -> {
+            FluidStack c = fluidStack.copy();
+            c.amount *= multipleSize;
+            return c;
+        }, fluidStacks);
+    }
+
+    public static FluidStack[] copyFluidStackArray(Function<FluidStack, FluidStack> copyFunction,
+        FluidStack... fluidStacks) {
+        if (fluidStacks == null || fluidStacks.length == 0 || copyFunction == null) return null;
+        if (fluidStacks.length == 1) return new FluidStack[] { copyFunction.apply(fluidStacks[0]) };
+        return Arrays.stream(fluidStacks)
+            .map(copyFunction)
+            .toArray(FluidStack[]::new);
+    }
+
     public static @NotNull ItemStack aErrorStack() {
         return newItemStack(Blocks.fire).setStackDisplayName(EnumChatFormatting.DARK_RED + "ERROR_STACK!!!");
     }
 
     public static ItemStack copyAmount(int aAmount, Item aItem) {
-        return copyAmount(aAmount, new ItemStack(aItem, 1, 0));
+        return copyAmount(new ItemStack(aItem, 1, 0), aAmount);
     }
 
-    public static ItemStack copyAmount(int aAmount, ItemStack aItemStack) {
+    public static ItemStack copyAmount(ItemStack aItemStack, int aAmount) {
+        return copyAmount(aAmount, aItemStack, true);
+    }
+
+    public static ItemStack copyAmount(int aAmount, ItemStack aItemStack, boolean isUnsafe) {
         ItemStack rStack = copy(aItemStack);
         if (rStack == null)
             return aErrorStack().setStackDisplayName(EnumChatFormatting.YELLOW + "ERROR_STACK_DURING_COPY_STACK!!!");
-        if (aAmount > 64 || aAmount < 0) aAmount = 111;
+        if (!isUnsafe && (aAmount > 64 || aAmount < 0)) aAmount = 111;
         return setItemStackSize(aAmount, rStack);
     }
 
     @Contract("_, _ -> param2")
     public static @NotNull ItemStack setItemStackSize(int aAmount, @NotNull ItemStack aItemStack) {
-        aItemStack.stackSize = (byte) aAmount;
+        aItemStack.stackSize = aAmount;
         return aItemStack;
     }
 

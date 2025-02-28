@@ -7,7 +7,9 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import com.xir.NHUtilities.client.NEIAllHatchSort;
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
+import com.xir.NHUtilities.config.Config;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -63,8 +65,9 @@ public class NHUCreativeTabs {
         @Override
         @SideOnly(Side.CLIENT)
         public void displayAllReleventItems(List<ItemStack> itemStackList) {
-            itemStackList.addAll(wirelessThings);
             super.displayAllReleventItems(itemStackList);
+            if (NEIAllHatchSort.isInited) itemStackList.addAll(NEIAllHatchSort.ALL_SORTED_HATCH_ITEM_STACK);
+            if (Config.enableOldRecipesOfWirelessHatch) itemStackList.addAll(wirelessThings);
         }
 
         @Override

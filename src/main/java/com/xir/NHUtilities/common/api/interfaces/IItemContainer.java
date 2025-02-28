@@ -10,6 +10,8 @@ import net.minecraft.item.ItemStack;
 import com.xir.NHUtilities.common.api.interfaces.MTO.IMetaTypeObject;
 import com.xir.NHUtilities.utils.CommonUtil;
 
+import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
+
 @SuppressWarnings({ "unused", "UnusedReturnValue" })
 public interface IItemContainer {
 
@@ -31,6 +33,11 @@ public interface IItemContainer {
     }
 
     IItemContainer set(ItemStack aItemStack);
+
+    default IItemContainer set(IMetaTileEntity metaTileEntity) {
+        if (metaTileEntity == null) throw new IllegalArgumentException();
+        return set(metaTileEntity.getStackForm(1));
+    }
 
     default IItemContainer setAndRegister(IRegisterProvider register, Class<? extends ItemBlock> aItemClass,
         boolean shouldRegister) {
