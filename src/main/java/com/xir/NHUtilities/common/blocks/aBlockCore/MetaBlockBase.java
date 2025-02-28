@@ -1,5 +1,7 @@
 package com.xir.NHUtilities.common.blocks.aBlockCore;
 
+import static com.xir.NHUtilities.utils.CommonUtil.newItemStack;
+
 import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -112,6 +114,6 @@ public class MetaBlockBase extends BlockBase implements IMetaTypeObject {
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> itemStackList) {
-        mtoData.NAME_MAP.forEach((meta, name) -> itemStackList.add(new ItemStack(this, 1, meta)));
+        mtoData.NAME_MAP.forEach((meta, name) -> itemStackList.add(newItemStack(this, meta)));
     }
 }

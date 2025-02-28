@@ -5,6 +5,7 @@ import static com.xir.NHUtilities.config.Config.disableSuperChestOrTankDebuff;
 import static com.xir.NHUtilities.config.Config.enableAccelerateEnderIoMachine;
 import static com.xir.NHUtilities.config.Config.enableAccelerateGregTechMachine;
 import static com.xir.NHUtilities.config.Config.enableBanOriginalWirelessRecipes;
+import static com.xir.NHUtilities.config.Config.enableCustomSortOfHatch;
 import static com.xir.NHUtilities.config.Config.enableEnhancedTeleporterMKII;
 import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
 import static com.xir.NHUtilities.config.Config.enableModifyEnderIoCapBankIO;
@@ -105,7 +106,15 @@ public enum Mixins {
             .addTargetMod(TargetMod.TecTech)
             .addTargetMod(TargetMod.GregTech)
             .addCondition(enableModifyWirelessHatchTexture)
+            .addCondition(enableWirelessHatchMore),
+        newMixinClass("Modify_All_Hatch_Handle_Sort")
+            .setClass("ModifyMachineNEIHandleSort")
+            .setPackagePath(PackagePath.GregTech)
+            .setPhase(Phase.LATE)
+            .setSide(Side.CLIENT)
+            .addTargetMod(TargetMod.GregTech)
             .addCondition(enableWirelessHatchMore)
+            .addCondition(enableCustomSortOfHatch)
 
     ),
 

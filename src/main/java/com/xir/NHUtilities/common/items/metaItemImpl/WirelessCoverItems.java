@@ -5,6 +5,7 @@ import static com.xir.NHUtilities.common.api.enums.NHUItemList.ENERGY_COVERS;
 import static com.xir.NHUtilities.common.api.enums.TexturesSets.getWirelessTex;
 import static gregtech.api.util.GTUtility.formatNumbers;
 
+import com.google.common.collect.ImmutableList;
 import com.xir.NHUtilities.common.api.NHUCreativeTabs;
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.common.items.aItemCore.MetaItemBase;
@@ -45,8 +46,9 @@ public class WirelessCoverItems extends MetaItemBase implements ILoadMetaItem {
             "Cover_Wireless_Energy_UMV", "Cover_Wireless_Energy_UXV", "Cover_Wireless_Energy_MAX" };
         var meta = 1;
         for (int i = 0; i < 4; i++) {
-            for (int j1 = 0; j1 < DYNAMO_COVERS[i].length; j1++) {
-                dynamoValue = DYNAMO_COVERS[i][j1];
+            ImmutableList<NHUItemList> dynamoList = DYNAMO_COVERS.get(i);
+            for (int j1 = 0; j1 < dynamoList.size(); j1++) {
+                dynamoValue = dynamoList.get(j1);
                 dynamoValue.set(
                     addMetaItem(
                         dynamoIconString[j1],
@@ -59,8 +61,9 @@ public class WirelessCoverItems extends MetaItemBase implements ILoadMetaItem {
                     tex[i],
                     new WirelessCovers.CoverWirelessDynamo((int) GTValues.V[j1 + 1], 2 << ac[i]));
             }
-            for (int j2 = 0; j2 < ENERGY_COVERS[i].length; j2++) {
-                energyValue = ENERGY_COVERS[i][j2];
+            ImmutableList<NHUItemList> energyList = ENERGY_COVERS.get(i);
+            for (int j2 = 0; j2 < energyList.size(); j2++) {
+                energyValue = energyList.get(j2);
                 energyValue.set(
                     addMetaItem(
                         energyIconString[j2],
@@ -76,4 +79,5 @@ public class WirelessCoverItems extends MetaItemBase implements ILoadMetaItem {
         }
 
     }
+
 }

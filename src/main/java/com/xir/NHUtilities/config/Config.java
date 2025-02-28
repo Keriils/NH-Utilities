@@ -31,8 +31,10 @@ public class Config {
     // region WirelessHatchMore
     public static int wirelessHatchMetaIdOffset = 0;
     public static boolean enableWirelessHatchMore = true;
+    public static boolean enableCustomSortOfHatch = true;
     public static boolean enableModifyWirelessHatchTexture = true;
     public static boolean enableBanOriginalWirelessRecipes = true;
+    public static boolean enableOldRecipesOfWirelessHatch = false;
     // endregion
 
     // region TimeVial
@@ -270,6 +272,18 @@ public class Config {
                 CATEGORY_WIRELESS,
                 enableBanOriginalWirelessRecipes,
                 "Ban Original Wireless Recipes");
+
+            enableCustomSortOfHatch = configuration.getBoolean(
+                "enableCustomSortOfHatch",
+                CATEGORY_WIRELESS,
+                enableCustomSortOfHatch,
+                "enable Custom Sort Of Hatch");
+
+            enableOldRecipesOfWirelessHatch = configuration.getBoolean(
+                "enableOldRecipesOfWirelessHatch",
+                CATEGORY_WIRELESS,
+                enableOldRecipesOfWirelessHatch,
+                "enable Old Recipes Of Wireless Hatch");
         }
 
         try {

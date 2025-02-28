@@ -5,6 +5,7 @@ import static com.brandon3055.draconicevolution.common.ModBlocks.infusedObsidian
 import static com.xir.NHUtilities.config.Config.enableDebugMaintenanceHatchRecipe;
 import static com.xir.NHUtilities.config.Config.enableEggMachine;
 import static com.xir.NHUtilities.config.Config.enableEternityVial;
+import static com.xir.NHUtilities.config.Config.enableOldRecipesOfWirelessHatch;
 import static com.xir.NHUtilities.config.Config.enableWirelessHatchMore;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.recipe.RecipeMaps.blastFurnaceRecipes;
@@ -51,8 +52,11 @@ public class NHURecipes {
         initFuelRodRecipe();
         if (enableEggMachine) initEggMachineRecipe();
         if (enableEternityVial) initEternityTimeVialRecipe();
-        if (enableWirelessHatchMore) WirelessCoverRecipes.initWirelessCover();
-        if (enableWirelessHatchMore) WirelessHatchMoreRecipe.initWirelessHatchMore();
+        if (enableWirelessHatchMore) {
+            WirelessCoverRecipes.loadRecipes();
+            if (enableOldRecipesOfWirelessHatch) WirelessHatchMoreRecipe.initWirelessHatchMore();
+            WirelessHatchRecipe.loadRecipes();
+        }
 
         // for adding debug maintenance recipe
         if (enableDebugMaintenanceHatchRecipe) {
