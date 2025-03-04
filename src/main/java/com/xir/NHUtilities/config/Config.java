@@ -64,8 +64,13 @@ public class Config {
     public static boolean disableDollyDebuff = true;
     public static boolean enableLunchBoxPlus = true;
     public static boolean enableSimpleTimeVialRecipe = false;
+    @SuppressWarnings("SpellCheckingInspection")
     public static String[] listeningMods = new String[] { "NHUtilities", "TwistSpaceTechnology", "boxplusplus",
-        "programmablehatches" };
+        "programmablehatches", "123Technology", "eyeofharmonybuffer", "ScienceNotLeisure", "thinktech", "ae2thing",
+        "gtnn", "TakoTech", "gtnothard", "cheapervoidminers" };
+    public static boolean enableAlwaysDisplayRecipeOwner = true;
+    public static boolean enableAlwaysDisplayWailaAverageNS = true;
+    public static boolean enableAlwaysDisplayNEIOriginalVoltage = true;
     // endregion
 
     // region category
@@ -284,6 +289,24 @@ public class Config {
                 CATEGORY_WIRELESS,
                 enableOldRecipesOfWirelessHatch,
                 "enable Old Recipes Of Wireless Hatch");
+
+            enableAlwaysDisplayRecipeOwner = configuration.getBoolean(
+                "enableAlwaysDisplayRecipeOwner",
+                CATEGORY_MIXIN_CONFIG,
+                enableAlwaysDisplayRecipeOwner,
+                "Always Display Recipe Owner");
+
+            enableAlwaysDisplayWailaAverageNS = configuration.getBoolean(
+                "enableAlwaysDisplayWailaAverageNS",
+                CATEGORY_MIXIN_CONFIG,
+                enableAlwaysDisplayWailaAverageNS,
+                "Always Display Waila AverageNS");
+
+            enableAlwaysDisplayNEIOriginalVoltage = configuration.getBoolean(
+                "enableAlwaysDisplayNEIOriginalVoltage",
+                CATEGORY_MIXIN_CONFIG,
+                enableAlwaysDisplayNEIOriginalVoltage,
+                "Always Display NEI Recipe Original Voltage");
         }
 
         try {
