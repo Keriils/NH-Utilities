@@ -64,8 +64,10 @@ public class Config {
     public static boolean disableDollyDebuff = true;
     public static boolean enableLunchBoxPlus = true;
     public static boolean enableSimpleTimeVialRecipe = false;
+    @SuppressWarnings("SpellCheckingInspection")
     public static String[] listeningMods = new String[] { "NHUtilities", "TwistSpaceTechnology", "boxplusplus",
-        "programmablehatches" };
+        "programmablehatches", "123Technology", "eyeofharmonybuffer", "ScienceNotLeisure", "thinktech", "ae2thing",
+        "gtnn", "TakoTech", "gtnothard", "cheapervoidminers" };
     public static boolean enableAlwaysDisplayRecipeOwner = true;
     public static boolean enableAlwaysDisplayWailaAverageNS = true;
     public static boolean enableAlwaysDisplayNEIOriginalVoltage = true;

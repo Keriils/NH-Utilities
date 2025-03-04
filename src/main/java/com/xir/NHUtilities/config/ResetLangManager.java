@@ -85,6 +85,7 @@ public class ResetLangManager {
             if (key || value) {
                 ConfigLog.info("Need to reset lang file");
                 toResetLang(loadedMods);
+                return;
             }
         }
 
