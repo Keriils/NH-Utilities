@@ -35,6 +35,7 @@ public class Config {
     public static boolean enableModifyWirelessHatchTexture = true;
     public static boolean enableBanOriginalWirelessRecipes = true;
     public static boolean enableOldRecipesOfWirelessHatch = false;
+    public static boolean enableWirelessDataHatchOrComputationHatch = true;
     // endregion
 
     // region TimeVial
@@ -307,6 +308,12 @@ public class Config {
                 CATEGORY_MIXIN_CONFIG,
                 enableAlwaysDisplayNEIOriginalVoltage,
                 "Always Display NEI Recipe Original Voltage");
+
+            enableWirelessDataHatchOrComputationHatch = configuration.getBoolean(
+                "enableWirelessDataHatchOrComputationHatch",
+                CATEGORY_WIRELESS,
+                enableWirelessDataHatchOrComputationHatch,
+                "enable modify the Wireless Data Hatch Or Computation Hatch recipes");
         }
 
         try {

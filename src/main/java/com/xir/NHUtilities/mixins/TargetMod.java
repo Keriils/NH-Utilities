@@ -13,6 +13,7 @@ public enum TargetMod {
     SpiceOfLife("SpiceOfLife", "SpiceOfLife"),
     JABBA("JABBA", "JABBA"),
     GigaGramFab("GigaGramFab", "ggfab"),
+    NewHorizonsCoreMod("GT: New Horizons", "dreamcraft"),
 
     ;
 
