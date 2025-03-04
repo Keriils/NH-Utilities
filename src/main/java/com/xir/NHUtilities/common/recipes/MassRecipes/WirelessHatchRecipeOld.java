@@ -26,9 +26,9 @@ import tectech.thing.CustomItemList;
 import tectech.thing.item.ItemTeslaCoilCapacitor;
 
 @SuppressWarnings("unused")
-public class WirelessHatchMoreRecipe {
+public class WirelessHatchRecipeOld {
 
-    public static void initWirelessHatchMore() {
+    public static void loadRecipes() {
 
         // region Energy
 

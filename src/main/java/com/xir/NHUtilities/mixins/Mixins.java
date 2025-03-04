@@ -14,6 +14,7 @@ import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
 import static com.xir.NHUtilities.config.Config.enableModifyEnderIoCapBankIO;
 import static com.xir.NHUtilities.config.Config.enableModifyWirelessHatchTexture;
 import static com.xir.NHUtilities.config.Config.enableWEToolWithExuHealingAxe;
+import static com.xir.NHUtilities.config.Config.enableWirelessDataHatchOrComputationHatch;
 import static com.xir.NHUtilities.config.Config.enableWirelessHatchMore;
 import static com.xir.NHUtilities.main.ReferencedInfo.IS_CLIENT_SIDE;
 import static com.xir.NHUtilities.main.ReferencedInfo.IS_SERVER_SIDE;
@@ -206,6 +207,17 @@ public enum Mixins {
 
     ),
 
+    NewHorizonsCoreMod_Modifications(
+
+        newMixinClass("Ban_Original_Wireless_DataOrComputation_Hatch_Recipes_Mixin")
+            .setClass("BanOriginalWirelessDataOrComputationHatchRecipes_Mixin")
+            .setPackagePath(PackagePath.NewHorizonsCoreMod)
+            .setPhase(Phase.LATE)
+            .addTargetMod(TargetMod.NewHorizonsCoreMod)
+            .addCondition(enableWirelessDataHatchOrComputationHatch)
+
+    ),
+
     ;
     // spotless:on
 
@@ -256,6 +268,7 @@ public enum Mixins {
         SpiceOfLife,
         WorldEditGtnh,
         DraconicEvolution,
+        NewHorizonsCoreMod,
 
         ;
 
