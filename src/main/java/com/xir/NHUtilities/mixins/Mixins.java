@@ -4,6 +4,9 @@ import static com.xir.NHUtilities.config.Config.disableDollyDebuff;
 import static com.xir.NHUtilities.config.Config.disableSuperChestOrTankDebuff;
 import static com.xir.NHUtilities.config.Config.enableAccelerateEnderIoMachine;
 import static com.xir.NHUtilities.config.Config.enableAccelerateGregTechMachine;
+import static com.xir.NHUtilities.config.Config.enableAlwaysDisplayNEIOriginalVoltage;
+import static com.xir.NHUtilities.config.Config.enableAlwaysDisplayRecipeOwner;
+import static com.xir.NHUtilities.config.Config.enableAlwaysDisplayWailaAverageNS;
 import static com.xir.NHUtilities.config.Config.enableBanOriginalWirelessRecipes;
 import static com.xir.NHUtilities.config.Config.enableCustomSortOfHatch;
 import static com.xir.NHUtilities.config.Config.enableEnhancedTeleporterMKII;
@@ -125,7 +128,16 @@ public enum Mixins {
             .setPackagePath(PackagePath.GregTech)
             .setPhase(Phase.LATE)
             .addTargetMod(TargetMod.GregTech)
-            .addCondition(disableSuperChestOrTankDebuff)
+            .addCondition(disableSuperChestOrTankDebuff),
+        newMixinClass("Modify_Some_Configs")
+            .setClass("ModifySomeConfigs")
+            .setPackagePath(PackagePath.GregTech)
+            .setPhase(Phase.LATE)
+            .addTargetMod(TargetMod.GregTech)
+            .addCondition(x -> original -> false)
+            .addCondition(x -> x.or(other -> enableAlwaysDisplayRecipeOwner))
+            .addCondition(x -> x.or(other -> enableAlwaysDisplayWailaAverageNS))
+            .addCondition(x -> x.or(other -> enableAlwaysDisplayNEIOriginalVoltage))
 
     ),
 
