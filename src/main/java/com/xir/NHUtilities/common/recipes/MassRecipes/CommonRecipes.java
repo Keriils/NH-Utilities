@@ -5,6 +5,7 @@ import static com.xir.NHUtilities.config.Config.enableGluttonyRingAndHungerRing;
 import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
 import static com.xir.NHUtilities.config.Config.enableSimpleTimeVialRecipe;
 import static com.xir.NHUtilities.config.Config.enableTimeVial;
+import static gregtech.api.enums.Mods.SpiceOfLife;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -77,7 +78,7 @@ public class CommonRecipes {
                 EternalSingularityItem.instance);
         }
 
-        if (enableLunchBoxPlus) {
+        if (enableLunchBoxPlus && SpiceOfLife.isModLoaded()) {
             GameRegistry.addShapedRecipe(
                 NHUItemList.LunchBoxPlus.get(1),
                 "IDI",

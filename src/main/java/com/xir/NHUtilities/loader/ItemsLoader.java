@@ -39,7 +39,9 @@ public class ItemsLoader {
         NHUItemList.GluttonyRing.setAndRegister(GluttonyRing::new, enableGluttonyRingAndHungerRing);
         NHUItemList.WarpWardRing.setAndRegister(WarpWardRing::new, testThings);
         NHUItemList.FocusTape.setAndRegister(ItemFocusTape::new, testThings);
-        NHUItemList.LunchBoxPlus.setAndRegister(LunchBoxPlus::new, enableLunchBoxPlus && SpiceOfLife.isModLoaded());
+        // noinspection Convert2MethodRef
+        NHUItemList.LunchBoxPlus
+            .setAndRegister(() -> new LunchBoxPlus(), enableLunchBoxPlus && SpiceOfLife.isModLoaded());
         // endregion
 
         // region Fuel Rod
