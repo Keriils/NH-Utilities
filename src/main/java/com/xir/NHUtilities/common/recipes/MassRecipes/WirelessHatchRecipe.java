@@ -249,7 +249,7 @@ public class WirelessHatchRecipe {
                 .itemInputsUnsafe(energy_2A.get(i), sensor.get(i), circuit.get(i), chips.get(i))
                 .fluidInputs(fluids.get(i))
                 .itemOutputs(wirelessEnergy_2A.get(i))
-                .eut(GTValues.VP[i])
+                .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
                 .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 12 ? i < 9 ? 1 : 2 : 3)
@@ -260,7 +260,7 @@ public class WirelessHatchRecipe {
                 .itemInputsUnsafe(dynamo_2A.get(i), emitter.get(i), circuit.get(i), chips.get(i))
                 .fluidInputs(fluids.get(i))
                 .itemOutputs(wirelessDynamo_2A.get(i))
-                .eut(GTValues.VP[i])
+                .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
                 .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 12 ? i < 9 ? 1 : 2 : 3)
@@ -349,7 +349,7 @@ public class WirelessHatchRecipe {
                     .itemOutputs(
                         wirelessEnergyAll.get(z)
                             .get(i))
-                    .eut(GTValues.VP[tier])
+                    .eut(GTValues.VP[tier - 1])
                     .duration(10 * SECONDS * (tier + 1))
                     .noOptimize()
                     .metadata(PRECISE_ASSEMBLER_CASING_TIER, tier < 12 ? tier < 9 ? 1 : 2 : 3)
@@ -454,7 +454,7 @@ public class WirelessHatchRecipe {
                     .itemOutputs(
                         hatch_4A_64A.get(wirelessIndex)
                             .get(realIndex))
-                    .eut(GTValues.VP[i])
+                    .eut(GTValues.VP[i - 1])
                     .duration(10 * SECONDS * (i + 1))
                     .noOptimize();
 
@@ -525,7 +525,7 @@ public class WirelessHatchRecipe {
                 .itemOutputs(
                     hatch_256A.get(wirelessEnergyIndex)
                         .get(realIndex))
-                .eut(GTValues.VP[i])
+                .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
                 .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 12 ? i < 9 ? 1 : 2 : 3)
@@ -545,7 +545,7 @@ public class WirelessHatchRecipe {
                 .itemOutputs(
                     hatch_256A.get(wirelessDynamoIndex)
                         .get(realIndex))
-                .eut(GTValues.VP[i])
+                .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
                 .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, 1)
@@ -607,7 +607,7 @@ public class WirelessHatchRecipe {
                 .itemOutputs(
                     hatch_1024A.get(wirelessEnergyIndex)
                         .get(realIndex))
-                .eut(GTValues.VP[i])
+                .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
                 .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 12 ? i < 9 ? 1 : 2 : 3)
@@ -627,7 +627,7 @@ public class WirelessHatchRecipe {
                 .itemOutputs(
                     hatch_1024A.get(wirelessDynamoIndex)
                         .get(realIndex))
-                .eut(GTValues.VP[i])
+                .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
                 .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, 2)
@@ -689,7 +689,7 @@ public class WirelessHatchRecipe {
                 .itemOutputs(
                     hatch_4096A.get(wirelessEnergyIndex)
                         .get(realIndex))
-                .eut(GTValues.VP[i])
+                .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
                 .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 12 ? i < 9 ? 1 : 2 : 3)
@@ -709,7 +709,7 @@ public class WirelessHatchRecipe {
                 .itemOutputs(
                     hatch_4096A.get(wirelessDynamoIndex)
                         .get(realIndex))
-                .eut(GTValues.VP[i])
+                .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
                 .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, 2)
@@ -771,7 +771,7 @@ public class WirelessHatchRecipe {
                 .itemOutputs(
                     hatch_16384A.get(wirelessEnergyIndex)
                         .get(realIndex))
-                .eut(GTValues.VP[i])
+                .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
                 .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 12 ? i < 9 ? 1 : 2 : 3)
@@ -791,7 +791,7 @@ public class WirelessHatchRecipe {
                 .itemOutputs(
                     hatch_16384A.get(wirelessDynamoIndex)
                         .get(realIndex))
-                .eut(GTValues.VP[i])
+                .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
                 .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, 2)
@@ -853,7 +853,7 @@ public class WirelessHatchRecipe {
                 .itemOutputs(
                     hatch_65536A.get(wirelessEnergyIndex)
                         .get(realIndex))
-                .eut(GTValues.VP[i])
+                .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
                 .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 12 ? 2 : 3)
@@ -873,7 +873,7 @@ public class WirelessHatchRecipe {
                 .itemOutputs(
                     hatch_65536A.get(wirelessDynamoIndex)
                         .get(realIndex))
-                .eut(GTValues.VP[i])
+                .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
                 .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, 3)
@@ -935,7 +935,7 @@ public class WirelessHatchRecipe {
                 .itemOutputs(
                     hatch_262144A.get(wirelessEnergyIndex)
                         .get(realIndex))
-                .eut(GTValues.VP[i])
+                .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
                 .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 12 ? 2 : 3)
@@ -955,7 +955,7 @@ public class WirelessHatchRecipe {
                 .itemOutputs(
                     hatch_262144A.get(wirelessDynamoIndex)
                         .get(realIndex))
-                .eut(GTValues.VP[i])
+                .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
                 .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, 3)
@@ -1017,7 +1017,7 @@ public class WirelessHatchRecipe {
                 .itemOutputs(
                     hatch_1048576A.get(wirelessEnergyIndex)
                         .get(realIndex))
-                .eut(GTValues.VP[i])
+                .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
                 .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 12 ? 2 : 3)
@@ -1037,7 +1037,7 @@ public class WirelessHatchRecipe {
                 .itemOutputs(
                     hatch_1048576A.get(wirelessDynamoIndex)
                         .get(realIndex))
-                .eut(GTValues.VP[i])
+                .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
                 .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, 3)
@@ -1081,7 +1081,7 @@ public class WirelessHatchRecipe {
                 .itemOutputs(
                     hatch_4194304A.get(wirelessEnergyIndex)
                         .get(realIndex))
-                .eut(GTValues.VP[i])
+                .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
                 .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, 3)
@@ -1125,7 +1125,7 @@ public class WirelessHatchRecipe {
                 .itemOutputs(
                     hatch_16777216A.get(wirelessEnergyIndex)
                         .get(realIndex))
-                .eut(GTValues.VP[i])
+                .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
                 .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, 4)
@@ -1169,7 +1169,7 @@ public class WirelessHatchRecipe {
         // / .itemOutputs(
         // / hatch_67108864A.get(wirelessEnergyIndex)
         // / .get(realIndex))
-        // / .eut(GTValues.VP[i])
+        // / .eut(GTValues.VP[i - 1])
         // / .duration(10 * SECONDS * (i + 1))
         // / .noOptimize()
         // / .metadata(PRECISE_ASSEMBLER_CASING_TIER, 3)
