@@ -121,7 +121,6 @@ public final class LazyHatchHelper {
                 buildHatchBoxed(    VoltageTier.LV,         NHUItemList.Hatch_EnergyMulti64_LV.get(1),                    HatchAmperes.AMP_64_A,      HatchType.EnergyHatch),
                 buildHatchBoxed(    VoltageTier.MV,         NHUItemList.Hatch_EnergyMulti64_MV.get(1),                    HatchAmperes.AMP_64_A,      HatchType.EnergyHatch),
                 buildHatchBoxed(    VoltageTier.HV,         NHUItemList.Hatch_EnergyMulti64_HV.get(1),                    HatchAmperes.AMP_64_A,      HatchType.EnergyHatch),
-                buildHatchBoxed(    VoltageTier.EV,         CustomItemList.eM_energyMulti16_EV.get(1),           HatchAmperes.AMP_16_A,      HatchType.EnergyHatch),
                 buildHatchBoxed(    VoltageTier.EV,         CustomItemList.eM_energyMulti64_EV.get(1),           HatchAmperes.AMP_64_A,      HatchType.EnergyHatch),
                 buildHatchBoxed(    VoltageTier.IV,         CustomItemList.eM_energyMulti64_IV.get(1),           HatchAmperes.AMP_64_A,      HatchType.EnergyHatch),
                 buildHatchBoxed(    VoltageTier.LuV,        CustomItemList.eM_energyMulti64_LuV.get(1),          HatchAmperes.AMP_64_A,      HatchType.EnergyHatch),

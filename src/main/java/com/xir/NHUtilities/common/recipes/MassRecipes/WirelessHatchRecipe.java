@@ -459,7 +459,7 @@ public class WirelessHatchRecipe {
                     .noOptimize();
 
                 if (i >= 7) {
-                    builder.metadata(PRECISE_ASSEMBLER_CASING_TIER, z + 1)
+                    builder.metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 9 ? 1 : 2)
                         .addTo(preciseAssemblerRecipes);
                 } else {
                     builder.addTo(assemblerRecipes);
@@ -601,7 +601,7 @@ public class WirelessHatchRecipe {
                     newItemStack(sensor.get(i), itemToDouble),
                     hatch_1024A.get(energyIndex)
                         .get(realIndex),
-                    copyAmount(higherMaterialWires.get(i), 4),
+                    copyAmount(higherMaterialWires.get(i), 8),
                     newItemStack(chips.get(i), itemToDouble))
                 .fluidInputs(copyFluidStackArray(2, fluids.get(i)))
                 .itemOutputs(
@@ -683,7 +683,7 @@ public class WirelessHatchRecipe {
                     newItemStack(sensor.get(i), itemToDouble),
                     hatch_4096A.get(energyIndex)
                         .get(realIndex),
-                    copyAmount(higherMaterialWires.get(i), 4),
+                    copyAmount(higherMaterialWires.get(i), 24),
                     newItemStack(chips.get(i), itemToDouble))
                 .fluidInputs(copyFluidStackArray(2, fluids.get(i)))
                 .itemOutputs(
@@ -703,7 +703,7 @@ public class WirelessHatchRecipe {
                     newItemStack(emitter.get(i), itemToDouble),
                     hatch_4096A.get(dynamoIndex)
                         .get(realIndex),
-                    copyAmount(higherMaterialWires.get(i), 4),
+                    copyAmount(higherMaterialWires.get(i), 24),
                     newItemStack(chips.get(i), itemToDouble))
                 .fluidInputs(copyFluidStackArray(2, fluids.get(i)))
                 .itemOutputs(
@@ -765,7 +765,7 @@ public class WirelessHatchRecipe {
                     newItemStack(sensor.get(i), itemToQuadruple),
                     hatch_16384A.get(energyIndex)
                         .get(realIndex),
-                    copyAmount(higherMaterialWires.get(i), 8),
+                    copyAmount(higherMaterialWires.get(i), 48),
                     newItemStack(chips.get(i), itemToQuadruple))
                 .fluidInputs(copyFluidStackArray(4, fluids.get(i)))
                 .itemOutputs(
@@ -785,7 +785,7 @@ public class WirelessHatchRecipe {
                     newItemStack(emitter.get(i), itemToQuadruple),
                     hatch_16384A.get(dynamoIndex)
                         .get(realIndex),
-                    copyAmount(higherMaterialWires.get(i), 8),
+                    copyAmount(higherMaterialWires.get(i), 48),
                     newItemStack(chips.get(i), itemToQuadruple))
                 .fluidInputs(copyFluidStackArray(4, fluids.get(i)))
                 .itemOutputs(
@@ -847,7 +847,7 @@ public class WirelessHatchRecipe {
                     newItemStack(sensor.get(i), itemToQuadruple),
                     hatch_65536A.get(energyIndex)
                         .get(realIndex),
-                    copyAmount(higherMaterialWires.get(i), 8),
+                    copyAmount(higherMaterialWires.get(i), 96),
                     newItemStack(chips.get(i), itemToQuadruple))
                 .fluidInputs(copyFluidStackArray(4, fluids.get(i)))
                 .itemOutputs(
@@ -867,7 +867,7 @@ public class WirelessHatchRecipe {
                     newItemStack(emitter.get(i), itemToQuadruple),
                     hatch_65536A.get(dynamoIndex)
                         .get(realIndex),
-                    copyAmount(higherMaterialWires.get(i), 8),
+                    copyAmount(higherMaterialWires.get(i), 96),
                     newItemStack(chips.get(i), itemToQuadruple))
                 .fluidInputs(copyFluidStackArray(4, fluids.get(i)))
                 .itemOutputs(
@@ -929,7 +929,7 @@ public class WirelessHatchRecipe {
                     newItemStack(sensor.get(i), itemToQuadruple),
                     hatch_262144A.get(energyIndex)
                         .get(realIndex),
-                    copyAmount(higherMaterialWires.get(i), 8),
+                    copyAmount(higherMaterialWires.get(i), 144),
                     newItemStack(chips.get(i), itemToQuadruple))
                 .fluidInputs(copyFluidStackArray(4, fluids.get(i)))
                 .itemOutputs(
@@ -949,7 +949,7 @@ public class WirelessHatchRecipe {
                     newItemStack(emitter.get(i), itemToQuadruple),
                     hatch_262144A.get(dynamoIndex)
                         .get(realIndex),
-                    copyAmount(higherMaterialWires.get(i), 8),
+                    copyAmount(higherMaterialWires.get(i), 144),
                     newItemStack(chips.get(i), itemToQuadruple))
                 .fluidInputs(copyFluidStackArray(4, fluids.get(i)))
                 .itemOutputs(
@@ -1011,7 +1011,7 @@ public class WirelessHatchRecipe {
                     newItemStack(sensor.get(i), itemToQuadruple),
                     hatch_1048576A.get(energyIndex)
                         .get(realIndex),
-                    copyAmount(higherMaterialWires.get(i), 8),
+                    copyAmount(higherMaterialWires.get(i), 288),
                     newItemStack(chips.get(i), itemToQuadruple))
                 .fluidInputs(copyFluidStackArray(4, fluids.get(i)))
                 .itemOutputs(
@@ -1031,7 +1031,7 @@ public class WirelessHatchRecipe {
                     newItemStack(emitter.get(i), itemToQuadruple),
                     hatch_1048576A.get(dynamoIndex)
                         .get(realIndex),
-                    copyAmount(higherMaterialWires.get(i), 8),
+                    copyAmount(higherMaterialWires.get(i), 288),
                     newItemStack(chips.get(i), itemToQuadruple))
                 .fluidInputs(copyFluidStackArray(4, fluids.get(i)))
                 .itemOutputs(
@@ -1075,7 +1075,7 @@ public class WirelessHatchRecipe {
                     newItemStack(sensor.get(i), itemToUltimate),
                     hatch_4194304A.get(energyIndex)
                         .get(realIndex),
-                    copyAmount(higherMaterialWires.get(i), 16),
+                    copyAmount(higherMaterialWires.get(i), 326),
                     newItemStack(chips.get(i), itemToUltimate))
                 .fluidInputs(copyFluidStackArray(8, fluids.get(i)))
                 .itemOutputs(
@@ -1119,7 +1119,7 @@ public class WirelessHatchRecipe {
                     newItemStack(sensor.get(i), itemToUltimate),
                     hatch_16777216A.get(energyIndex)
                         .get(realIndex),
-                    copyAmount(higherMaterialWires.get(i), 16),
+                    copyAmount(higherMaterialWires.get(i), 728),
                     newItemStack(chips.get(i), itemToUltimate))
                 .fluidInputs(copyFluidStackArray(8, fluids.get(i)))
                 .itemOutputs(
