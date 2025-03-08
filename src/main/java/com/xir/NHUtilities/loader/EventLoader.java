@@ -40,7 +40,7 @@ public class EventLoader {
         if (eventType == EventType.FmlEvent) {
             FMLCommonHandler.instance()
                 .bus()
-                .register(event);
+                .register(event.get());
         }
     }
 
