@@ -9,6 +9,7 @@ import static com.xir.NHUtilities.config.Config.enableAlwaysDisplayRecipeOwner;
 import static com.xir.NHUtilities.config.Config.enableAlwaysDisplayWailaAverageNS;
 import static com.xir.NHUtilities.config.Config.enableBanOriginalWirelessRecipes;
 import static com.xir.NHUtilities.config.Config.enableCustomSortOfHatch;
+import static com.xir.NHUtilities.config.Config.enableEnhanceOvenGlove;
 import static com.xir.NHUtilities.config.Config.enableEnhancedTeleporterMKII;
 import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
 import static com.xir.NHUtilities.config.Config.enableModifyEnderIoCapBankIO;
@@ -214,7 +215,13 @@ public enum Mixins {
             .setPackagePath(PackagePath.NewHorizonsCoreMod)
             .setPhase(Phase.LATE)
             .addTargetMod(TargetMod.NewHorizonsCoreMod)
-            .addCondition(enableWirelessDataHatchOrComputationHatch)
+            .addCondition(enableWirelessDataHatchOrComputationHatch),
+        newMixinClass("Enhance_Oven_Glove")
+            .setClass("EnhanceOvenGlove_Mixin")
+            .setPackagePath(PackagePath.NewHorizonsCoreMod)
+            .setPhase(Phase.LATE)
+            .addTargetMod(TargetMod.NewHorizonsCoreMod)
+            .addCondition(enableEnhanceOvenGlove)
 
     ),
 
