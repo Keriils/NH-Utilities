@@ -26,6 +26,7 @@ public class Config {
     public static boolean enableGluttonyRingAndHungerRing = true;
     public static boolean enableDebugMaintenanceHatchRecipe = true;
     public static boolean enableTestItem = true;
+    public static boolean enableEnhanceOvenGlove = true;
     // endregion
 
     // region WirelessHatchMore
@@ -314,6 +315,12 @@ public class Config {
                 CATEGORY_WIRELESS,
                 enableWirelessDataHatchOrComputationHatch,
                 "enable modify the Wireless Data Hatch Or Computation Hatch recipes");
+
+            enableEnhanceOvenGlove = configuration.getBoolean(
+                "enableEnhanceOvenGlove",
+                CATEGORY_MASS,
+                enableEnhanceOvenGlove,
+                "enable Enhance Oven Glove");
         }
 
         try {
