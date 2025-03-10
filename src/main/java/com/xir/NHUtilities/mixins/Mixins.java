@@ -10,6 +10,7 @@ import static com.xir.NHUtilities.config.Config.enableAlwaysDisplayWailaAverageN
 import static com.xir.NHUtilities.config.Config.enableBanOriginalWirelessRecipes;
 import static com.xir.NHUtilities.config.Config.enableCustomSortOfHatch;
 import static com.xir.NHUtilities.config.Config.enableEnhanceOvenGlove;
+import static com.xir.NHUtilities.config.Config.enableEnhancedExUHealingAxe;
 import static com.xir.NHUtilities.config.Config.enableEnhancedTeleporterMKII;
 import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
 import static com.xir.NHUtilities.config.Config.enableModifyEnderIoCapBankIO;
@@ -189,6 +190,17 @@ public enum Mixins {
 
     ),
 
+    ExtraUtilities_Modifications(
+
+        newMixinClass("Enhance_Healing_Axe")
+            .setClass("EnhanceExUHealingAxe_Mixin")
+            .setPackagePath(PackagePath.ExtraUtilities)
+            .setPhase(Phase.LATE)
+            .addTargetMod(TargetMod.ExtraUtilities)
+            .addCondition(enableEnhancedExUHealingAxe)
+
+    ),
+
     SpiceOfLife_Modifications(
 
         newMixinClass("Modify_ServerSide_GuiHandler")
@@ -276,6 +288,7 @@ public enum Mixins {
         WorldEditGtnh,
         DraconicEvolution,
         NewHorizonsCoreMod,
+        ExtraUtilities,
 
         ;
 
