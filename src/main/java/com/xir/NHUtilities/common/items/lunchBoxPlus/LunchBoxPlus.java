@@ -1,12 +1,12 @@
 package com.xir.NHUtilities.common.items.lunchBoxPlus;
 
+import net.minecraft.item.ItemStack;
+
 import com.xir.NHUtilities.common.api.NHUCreativeTabs;
 import com.xir.NHUtilities.common.api.interfaces.IRegisterProvider;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import squeek.spiceoflife.inventory.NBTInventory;
 import squeek.spiceoflife.items.ItemFoodContainer;
 
