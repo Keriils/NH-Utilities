@@ -86,7 +86,7 @@ public class NHURecipes {
             .itemOutputs(CustomItemList.dataIn_Wireless_Hatch.get(1))
             .eut(TierEU.RECIPE_ZPM)
             .duration(256 * SECONDS)
-            .noOptimize()
+
             .metadata(PRECISE_ASSEMBLER_CASING_TIER, 2)
             .addTo(preciseAssemblerRecipes);
 
@@ -104,7 +104,7 @@ public class NHURecipes {
             .itemOutputs(CustomItemList.dataOut_Wireless_Hatch.get(1))
             .eut(TierEU.RECIPE_ZPM)
             .duration(256 * SECONDS)
-            .noOptimize()
+
             .metadata(PRECISE_ASSEMBLER_CASING_TIER, 2)
             .addTo(preciseAssemblerRecipes);
 
@@ -122,7 +122,7 @@ public class NHURecipes {
             .itemOutputs(CustomItemList.dataInAss_Wireless_Hatch.get(1))
             .eut(TierEU.RECIPE_UV)
             .duration(256 * SECONDS)
-            .noOptimize()
+
             .metadata(PRECISE_ASSEMBLER_CASING_TIER, 2)
             .addTo(preciseAssemblerRecipes);
 
@@ -140,7 +140,7 @@ public class NHURecipes {
             .itemOutputs(CustomItemList.dataOutAss_Wireless_Hatch.get(1))
             .eut(TierEU.RECIPE_UV)
             .duration(256 * SECONDS)
-            .noOptimize()
+
             .metadata(PRECISE_ASSEMBLER_CASING_TIER, 2)
             .addTo(preciseAssemblerRecipes);
     }
@@ -174,7 +174,7 @@ public class NHURecipes {
                 GTUtility.getIntegratedCircuit(2))
             .itemOutputs(NHUItemList.RodPrimordialPearlPlutonium2.get(1))
             .duration(10 * SECONDS)
-            .noOptimize()
+
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
@@ -185,7 +185,7 @@ public class NHURecipes {
                 GTUtility.getIntegratedCircuit(4))
             .itemOutputs(NHUItemList.RodPrimordialPearlPlutonium4.get(1))
             .duration(10 * SECONDS)
-            .noOptimize()
+
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
@@ -196,7 +196,7 @@ public class NHURecipes {
                 GTUtility.getIntegratedCircuit(5))
             .itemOutputs(NHUItemList.RodPrimordialPearlPlutonium4.get(1))
             .duration(10 * SECONDS)
-            .noOptimize()
+
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
@@ -218,7 +218,7 @@ public class NHURecipes {
                 GTUtility.getIntegratedCircuit(2))
             .itemOutputs(NHUItemList.RodRadianceUranium2.get(1))
             .duration(10 * SECONDS)
-            .noOptimize()
+
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
@@ -229,7 +229,7 @@ public class NHURecipes {
                 GTUtility.getIntegratedCircuit(4))
             .itemOutputs(NHUItemList.RodRadianceUranium4.get(1))
             .duration(10 * SECONDS)
-            .noOptimize()
+
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
@@ -240,7 +240,7 @@ public class NHURecipes {
                 GTUtility.getIntegratedCircuit(5))
             .itemOutputs(NHUItemList.RodRadianceUranium4.get(1))
             .duration(10 * SECONDS)
-            .noOptimize()
+
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
 
