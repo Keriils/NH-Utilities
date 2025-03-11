@@ -3,6 +3,10 @@ package com.xir.NHUtilities.common.items.lunchBoxPlus;
 import com.xir.NHUtilities.common.api.NHUCreativeTabs;
 import com.xir.NHUtilities.common.api.interfaces.IRegisterProvider;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import squeek.spiceoflife.inventory.NBTInventory;
 import squeek.spiceoflife.items.ItemFoodContainer;
 
@@ -24,6 +28,12 @@ public class LunchBoxPlus extends ItemFoodContainer implements IRegisterProvider
     @Override
     public int getInventoryStackLimit(NBTInventory inventory) {
         return 64;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean hasEffect(ItemStack par1ItemStack, int pass) {
+        return pass == 0;
     }
 
     @Override
