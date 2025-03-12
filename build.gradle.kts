@@ -1,6 +1,26 @@
+import com.diffplug.gradle.spotless.BaseKotlinExtension
+import com.diffplug.gradle.spotless.FormatExtension
+
 plugins {
     id("com.gtnewhorizons.gtnhconvention")
     id("com.diffplug.spotless") version "7.0.2"
+}
+
+fun FormatExtension.applyCommonFormatSteps() {
+    toggleOffOn()
+    trimTrailingWhitespace()
+    endWithNewline()
+}
+
+@Suppress("SpellCheckingInspection")
+fun BaseKotlinExtension.applyCustomKtfmtConfig() {
+    ktfmt("0.54").googleStyle().configure {
+        it.setMaxWidth(120)
+        it.setBlockIndent(4)
+        it.setContinuationIndent(4)
+        it.setRemoveUnusedImports(true)
+        it.setManageTrailingCommas(true)
+    }
 }
 
 spotless {
@@ -8,52 +28,39 @@ spotless {
 
     format("misc") {
         target(".gitignore")
-
-        trimTrailingWhitespace()
         leadingSpacesToTabs()
-        endWithNewline()
+        applyCommonFormatSteps()
     }
 
     java {
         target("src/*/java/**/*.java", "src/*/scala/**/*.java")
 
-        toggleOffOn()
-        importOrder("java", "javax", "net", "org", "com")
-        removeUnusedImports()
-        eclipse("4.19").configFile(file("SpotlessPlugin/spotless.eclipseFormat.xml"))
         formatAnnotations()
+        removeUnusedImports()
+        applyCommonFormatSteps()
+        importOrder("java", "javax", "net", "org", "com")
+        eclipse("4.19").configFile(file("SpotlessPlugin/spotless.eclipseFormat.xml"))
     }
 
     kotlin {
         target("src/*/kotlin/**/*.kt")
-
-        toggleOffOn()
-        ktfmt("0.54").googleStyle().configure {
-            it.setMaxWidth(120)
-            it.setBlockIndent(4)
-            it.setContinuationIndent(4)
-            it.setRemoveUnusedImports(true)
-            it.setManageTrailingCommas(true)
-        }
-
-        trimTrailingWhitespace()
         leadingSpacesToTabs()
-        endWithNewline()
+        applyCustomKtfmtConfig()
+        applyCommonFormatSteps()
     }
 
     kotlinGradle {
         target("*.gradle.kts")
+        applyCustomKtfmtConfig()
+        applyCommonFormatSteps()
+    }
 
-        toggleOffOn()
-        ktfmt("0.54").googleStyle().configure {
-            it.setMaxWidth(120)
-            it.setBlockIndent(4)
-            it.setContinuationIndent(4)
-            it.setRemoveUnusedImports(true)
-            it.setManageTrailingCommas(true)
-        }
+    groovyGradle {
+        target("*.gradle")
 
-        trimTrailingWhitespace()
-        endWithNewline()
+        removeSemicolons()
+        applyCommonFormatSteps()
+        importOrder("java", "javax", "net", "org", "com")
+        greclipse().configFile(file("SpotlessPlugin/spotless.eclipseFormat.xml"))
     }
 }

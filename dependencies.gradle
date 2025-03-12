@@ -1,3 +1,4 @@
+//file:noinspection DependencyNotationArgument
 
 dependencies {
 
@@ -30,7 +31,6 @@ dependencies {
     runtimeOnlyNonPublishable('com.github.GTNewHorizons:ServerUtilities:2.0.88:dev') { transitive = false }
     runtimeOnlyNonPublishable('com.github.GTNewHorizons:Angelica:1.0.0-beta28:dev') { transitive = false }
     runtimeOnlyNonPublishable('com.github.GTNewHorizons:BlockRenderer6343:1.2.16:dev') { transitive = false }
-
 }
 
 
