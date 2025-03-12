@@ -32,7 +32,7 @@ spotless {
         applyCommonFormatSteps()
     }
 
-                java {
+    java {
         target("src/*/java/**/*.java", "src/*/scala/**/*.java")
 
         formatAnnotations()
@@ -42,7 +42,7 @@ spotless {
         eclipse("4.19").configFile(file("SpotlessPlugin/spotless.eclipseFormat.xml"))
     }
 
-                  kotlin {
+    kotlin {
         target("src/*/kotlin/**/*.kt")
         leadingSpacesToTabs()
         applyCustomKtfmtConfig()
