@@ -61,6 +61,5 @@ spotless {
         removeSemicolons()
         applyCommonFormatSteps()
         importOrder("java", "javax", "net", "org", "com")
-        greclipse().configFile(file("SpotlessPlugin/spotless.eclipseFormat.xml"))
     }
 }
