@@ -90,6 +90,6 @@ tasks.register<Copy>("initGitHooks") {
     doLast { println("Task : Inited git-hooks executed done.") }
 }
 
-tasks.build { dependsOn(tasks.spotlessApply) }
+tasks.jar { dependsOn(tasks.spotlessApply) }
 
 tasks.prepareKotlinBuildScriptModel { dependsOn("initGitHooks") }
