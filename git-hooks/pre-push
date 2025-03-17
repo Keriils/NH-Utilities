@@ -1,0 +1,14 @@
+#!/bin/sh
+# .git/hooks/pre-push
+
+# Run spotlessApply
+echo "Running spotlessApply..."
+./gradlew spotlessApply
+
+# Check if spotlessApply made any changes
+if git diff --quiet; then
+  echo "No formatting changes needed."
+else
+  echo "Formatting changes applied. Please commit and push again."
+  exit 1
+fi
