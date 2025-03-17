@@ -9,7 +9,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
 
 import com.xir.NHUtilities.common.api.MTOData;
 import com.xir.NHUtilities.common.api.interfaces.MTO.IMetaTypeObject;
@@ -60,11 +59,6 @@ public class MetaItemBase extends ItemBase implements IMetaTypeObject {
         if (this.mtoData != null) throw new IllegalStateException();
         this.mtoData = mtoData;
         return this;
-    }
-
-    @Override
-    public boolean doesSneakBypassUse(World world, int x, int y, int z, EntityPlayer player) {
-        return true;
     }
 
     /**

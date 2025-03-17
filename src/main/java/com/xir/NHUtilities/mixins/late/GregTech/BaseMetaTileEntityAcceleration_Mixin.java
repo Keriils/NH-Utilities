@@ -12,15 +12,15 @@ import com.xir.NHUtilities.common.api.interfaces.mixinHelper.IAccelerationState;
 import ggfab.mte.MTEAdvAssLine;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.metatileentity.BaseMetaTileEntity;
-import gregtech.api.metatileentity.CommonBaseMetaTileEntity;
+import gregtech.api.metatileentity.CommonMetaTileEntity;
 import gregtech.api.metatileentity.implementations.MTEBasicMachine;
 import gregtech.api.metatileentity.implementations.MTEMultiBlockBase;
-import gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace;
+import gregtech.common.tileentities.machines.multi.MTEPrimitiveBlastFurnace;
 import tectech.thing.metaTileEntity.multi.MTEResearchStation;
 
 @SuppressWarnings("UnusedMixin")
 @Mixin(BaseMetaTileEntity.class)
-public abstract class BaseMetaTileEntityAcceleration_Mixin extends CommonBaseMetaTileEntity
+public abstract class BaseMetaTileEntityAcceleration_Mixin extends CommonMetaTileEntity
     implements ITileEntityTickAcceleration {
 
     @Shadow(remap = false)
@@ -105,7 +105,7 @@ public abstract class BaseMetaTileEntityAcceleration_Mixin extends CommonBaseMet
                 }
 
                 // for accelerating primitive blast furnace
-                if (metaTileEntity instanceof MTEBrickedBlastFurnace primitiveBlastFurnace) {
+                if (metaTileEntity instanceof MTEPrimitiveBlastFurnace primitiveBlastFurnace) {
                     primitiveBlastFurnace.mProgresstime = NHUtilities$modify;
                     return true;
                 }

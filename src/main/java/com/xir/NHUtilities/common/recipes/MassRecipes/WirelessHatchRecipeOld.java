@@ -14,13 +14,13 @@ import com.xir.NHUtilities.common.api.NHUCreativeTabs;
 import com.xir.NHUtilities.common.api.enums.WirelessHatchMore;
 import com.xir.NHUtilities.utils.CommonUtil;
 
+import gregtech.api.enums.GTValues;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.TierEU;
 import gregtech.api.util.GTModHandler;
 import gregtech.api.util.GTOreDictUnificator;
-import gregtech.api.util.GTRecipeBuilder;
 import gregtech.api.util.GTUtility;
 import tectech.thing.CustomItemList;
 import tectech.thing.item.ItemTeslaCoilCapacitor;
@@ -369,7 +369,7 @@ public class WirelessHatchRecipeOld {
 
         var indalloy140 = FluidRegistry.getFluid("molten.indalloy140");
 
-        GTRecipeBuilder.builder()
+        GTValues.RA.stdBuilder()
             .itemInputs(
                 allSensor[WirelessHatchMore.energyMulti_UMV_4194304.aTier],
                 calInput_2[WirelessHatchMore.energyMulti_UMV_4194304.aTier],
@@ -383,11 +383,11 @@ public class WirelessHatchRecipeOld {
             .itemOutputs(WirelessHatchMore.energyMulti_UMV_4194304.get(1))
             .duration(60 * SECONDS)
             .eut(TierEU.RECIPE_UMV)
-
+            .noOptimize()
             .metadata(PRECISE_ASSEMBLER_CASING_TIER, 1)
             .addTo(preciseAssemblerRecipes);
 
-        GTRecipeBuilder.builder()
+        GTValues.RA.stdBuilder()
             .itemInputs(
                 ItemList.Wireless_Hatch_Energy_HV.get(1),
                 ItemList.Circuit_Parts_Crystal_Chip_Master.get(4),
@@ -396,10 +396,10 @@ public class WirelessHatchRecipeOld {
             .itemOutputs(WirelessHatchMore.energyMulti_HV_4.get(1))
             .duration(60 * SECONDS)
             .eut(TierEU.RECIPE_HV)
-
+            .noOptimize()
             .addTo(assemblerRecipes);
 
-        GTRecipeBuilder.builder()
+        GTValues.RA.stdBuilder()
             .itemInputs(
                 WirelessHatchMore.energyMulti_HV_4.get(1),
                 ItemList.Circuit_Parts_Crystal_Chip_Master.get(4),
@@ -408,10 +408,10 @@ public class WirelessHatchRecipeOld {
             .itemOutputs(WirelessHatchMore.energyMulti_HV_16.get(1))
             .duration(60 * SECONDS)
             .eut(TierEU.RECIPE_HV)
-
+            .noOptimize()
             .addTo(assemblerRecipes);
 
-        GTRecipeBuilder.builder()
+        GTValues.RA.stdBuilder()
             .itemInputs(
                 WirelessHatchMore.energyMulti_HV_16.get(1),
                 ItemList.Circuit_Parts_Crystal_Chip_Master.get(4),
@@ -420,7 +420,7 @@ public class WirelessHatchRecipeOld {
             .itemOutputs(WirelessHatchMore.energyMulti_HV_64.get(1))
             .duration(60 * SECONDS)
             .eut(TierEU.RECIPE_HV)
-
+            .noOptimize()
             .addTo(assemblerRecipes);
     }
 
@@ -431,16 +431,16 @@ public class WirelessHatchRecipeOld {
             var offset = i + offsetID;
 
             if (offset <= 7) {
-                GTRecipeBuilder.builder()
+                GTValues.RA.stdBuilder()
                     .itemInputs(allSensor[offset], calInput_2[offset], input[i], calInput_3[offset], calInput_4[offset])
                     .fluidInputs(Materials.Radon.getGas(8000))
                     .itemOutputs(output[i])
                     .duration(60 * SECONDS)
                     .eut(TierEU.RECIPE_EV)
-
+                    .noOptimize()
                     .addTo(assemblerRecipes);
             } else {
-                GTRecipeBuilder.builder()
+                GTValues.RA.stdBuilder()
                     .itemInputs(
                         allSensor[offset],
                         calInput_2[offset],
@@ -454,7 +454,7 @@ public class WirelessHatchRecipeOld {
                     .itemOutputs(output[i])
                     .duration(60 * SECONDS)
                     .eut(TierEU.ZPM)
-
+                    .noOptimize()
                     .metadata(PRECISE_ASSEMBLER_CASING_TIER, 1)
                     .addTo(preciseAssemblerRecipes);
             }

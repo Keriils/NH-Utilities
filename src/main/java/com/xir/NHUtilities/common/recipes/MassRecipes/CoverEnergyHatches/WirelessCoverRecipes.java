@@ -24,7 +24,6 @@ import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.util.GTOreDictUnificator;
-import gregtech.api.util.GTRecipeBuilder;
 
 public class WirelessCoverRecipes {
 
@@ -117,7 +116,7 @@ public class WirelessCoverRecipes {
         // LV -> MAX 2A
         for (int i = 0; i < 14; i++) {
             // energy
-            GTRecipeBuilder.builder()
+            GTValues.RA.stdBuilder()
                 .itemInputs(
                     allSensor.get(i),
                     machineHousingPlate.get(i),
@@ -132,11 +131,11 @@ public class WirelessCoverRecipes {
                         .get(1))
                 .duration(10 * SECONDS)
                 .eut(GTValues.VP[i])
-
+                .noOptimize()
                 .addTo(assemblerRecipes);
 
             // dynamo
-            GTRecipeBuilder.builder()
+            GTValues.RA.stdBuilder()
                 .itemInputs(
                     allEmitter.get(i),
                     machineHousingPlate.get(i),
@@ -151,7 +150,7 @@ public class WirelessCoverRecipes {
                         .get(1))
                 .duration(10 * SECONDS)
                 .eut(GTValues.VP[i])
-
+                .noOptimize()
                 .addTo(assemblerRecipes);
         }
 
@@ -233,7 +232,7 @@ public class WirelessCoverRecipes {
         for (int i = 0; i < 14; i++) {
 
             // 2A -> 4A
-            GTRecipeBuilder.builder()
+            GTValues.RA.stdBuilder()
                 .itemInputsUnsafe(
                     NHUItemList.WIRELESS_ENERGY_COVERS_2_A.get(i)
                         .get(1),
@@ -247,10 +246,10 @@ public class WirelessCoverRecipes {
                         .get(1))
                 .duration(10 * SECONDS)
                 .eut(GTValues.VP[i])
-
+                .noOptimize()
                 .addTo(assemblerRecipes);
 
-            GTRecipeBuilder.builder()
+            GTValues.RA.stdBuilder()
                 .itemInputsUnsafe(
                     NHUItemList.WIRELESS_DYNAMO_COVERS_2_A.get(i)
                         .get(1),
@@ -264,11 +263,11 @@ public class WirelessCoverRecipes {
                         .get(1))
                 .duration(10 * SECONDS)
                 .eut(GTValues.VP[i])
-
+                .noOptimize()
                 .addTo(assemblerRecipes);
 
             // 4A -> 16A
-            GTRecipeBuilder.builder()
+            GTValues.RA.stdBuilder()
                 .itemInputsUnsafe(
                     NHUItemList.WIRELESS_ENERGY_COVERS_MULTI_4_A.get(i)
                         .get(1),
@@ -282,10 +281,10 @@ public class WirelessCoverRecipes {
                         .get(1))
                 .duration(10 * SECONDS)
                 .eut(GTValues.VP[i])
-
+                .noOptimize()
                 .addTo(assemblerRecipes);
 
-            GTRecipeBuilder.builder()
+            GTValues.RA.stdBuilder()
                 .itemInputsUnsafe(
                     NHUItemList.WIRELESS_DYNAMO_COVERS_MULTI_4_A.get(i)
                         .get(1),
@@ -299,11 +298,11 @@ public class WirelessCoverRecipes {
                         .get(1))
                 .duration(10 * SECONDS)
                 .eut(GTValues.VP[i])
-
+                .noOptimize()
                 .addTo(assemblerRecipes);
 
             // 16A -> 64A
-            GTRecipeBuilder.builder()
+            GTValues.RA.stdBuilder()
                 .itemInputsUnsafe(
                     NHUItemList.WIRELESS_ENERGY_COVERS_MULTI_16_A.get(i)
                         .get(1),
@@ -317,10 +316,10 @@ public class WirelessCoverRecipes {
                         .get(1))
                 .duration(20 * SECONDS)
                 .eut(GTValues.VP[i])
-
+                .noOptimize()
                 .addTo(assemblerRecipes);
 
-            GTRecipeBuilder.builder()
+            GTValues.RA.stdBuilder()
                 .itemInputsUnsafe(
                     NHUItemList.WIRELESS_DYNAMO_COVERS_MULTI_16_A.get(i)
                         .get(1),
@@ -334,7 +333,7 @@ public class WirelessCoverRecipes {
                         .get(1))
                 .duration(20 * SECONDS)
                 .eut(GTValues.VP[i])
-
+                .noOptimize()
                 .addTo(assemblerRecipes);
 
         }

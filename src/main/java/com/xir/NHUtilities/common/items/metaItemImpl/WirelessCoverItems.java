@@ -12,7 +12,7 @@ import com.xir.NHUtilities.common.items.aItemCore.MetaItemBase;
 import com.xir.NHUtilities.common.items.covers.WirelessCovers;
 import com.xir.NHUtilities.utils.CommonUtil;
 
-import gregtech.api.covers.CoverRegistry;
+import gregtech.api.GregTechAPI;
 import gregtech.api.enums.GTValues;
 import gregtech.api.interfaces.ITexture;
 
@@ -56,15 +56,10 @@ public class WirelessCoverItems extends MetaItemBase implements ILoadMetaItem {
                         amp[i],
                         new String[] {
                             CommonUtil.trans("tooltip.amp.info") + " " + formatNumbers(2 << ac[i]) + " A" }));
-                int finalJ = j1;
-                int finalI1 = i;
-                CoverRegistry.registerCover(
+                GregTechAPI.registerCover(
                     dynamoValue.get(1),
                     tex[i],
-                    context -> new WirelessCovers.CoverWirelessDynamo(
-                        context,
-                        (int) GTValues.V[finalJ + 1],
-                        2 << ac[finalI1]));
+                    new WirelessCovers.CoverWirelessDynamo((int) GTValues.V[j1 + 1], 2 << ac[i]));
             }
             ImmutableList<NHUItemList> energyList = ENERGY_COVERS.get(i);
             for (int j2 = 0; j2 < energyList.size(); j2++) {
@@ -76,15 +71,10 @@ public class WirelessCoverItems extends MetaItemBase implements ILoadMetaItem {
                         amp[i],
                         new String[] {
                             CommonUtil.trans("tooltip.amp.info") + " " + formatNumbers(2 << ac[i]) + " A" }));
-                int finalJ = j2;
-                int finalI = i;
-                CoverRegistry.registerCover(
+                GregTechAPI.registerCover(
                     energyValue.get(1),
                     tex[i],
-                    context -> new WirelessCovers.CoverWirelessEnergy(
-                        context,
-                        (int) GTValues.V[finalJ + 1],
-                        2 << ac[finalI]));
+                    new WirelessCovers.CoverWirelessEnergy((int) GTValues.V[j2 + 1], 2 << ac[i]));
             }
         }
 

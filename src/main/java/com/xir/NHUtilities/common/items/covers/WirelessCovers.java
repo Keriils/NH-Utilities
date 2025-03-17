@@ -1,18 +1,20 @@
 package com.xir.NHUtilities.common.items.covers;
 
 import static gregtech.common.misc.WirelessNetworkManager.addEUToGlobalEnergyMap;
-import static gregtech.common.misc.WirelessNetworkManager.ticks_between_energy_addition;
 import static java.lang.Long.min;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 
 import com.xir.NHUtilities.common.api.interfaces.mixinHelper.IWirelessCoverEnergyProvider;
 
-import gregtech.api.covers.CoverContext;
 import gregtech.api.interfaces.tileentity.ICoverable;
+import gregtech.api.interfaces.tileentity.IWirelessEnergyHatchInformation;
 import gregtech.api.metatileentity.BaseMetaTileEntity;
+import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.util.CoverBehavior;
 import gregtech.api.util.ISerializableObject;
-import gregtech.common.covers.CoverBehavior;
 
 @SuppressWarnings("unused")
 public class WirelessCovers {
@@ -22,16 +24,16 @@ public class WirelessCovers {
     // region Wireless Dynamo
     public static class CoverWirelessDynamo extends AbstractWirelessCover {
 
-        public CoverWirelessDynamo(CoverContext context, int voltage, int ampere) {
-            super(context, voltage, ampere);
+        public CoverWirelessDynamo(int voltage, int ampere) {
+            super(voltage, ampere);
         }
 
         @Override
         protected void tryOperate(ICoverable tileEntity) {
-            if (tileEntity instanceof BaseMetaTileEntity bmt) {
+            if (tileEntity instanceof BaseMetaTileEntity bmt && bmt.getMetaTileEntity() instanceof MetaTileEntity mte) {
                 var isEnergyProvider = bmt instanceof IWirelessCoverEnergyProvider provider;
                 var currentEU = isEnergyProvider ? ((IWirelessCoverEnergyProvider) bmt).getEnergyToTransfer()
-                    : bmt.getStoredEUuncapped();
+                    : mte.getEUVar();
                 if (currentEU <= 0) return; // nothing to transfer
                 var euToTransfer = min(currentEU, transferred_energy_per_operation);
                 if (addEUToGlobalEnergyMap(bmt.getOwnerUuid(), euToTransfer)) {
@@ -49,14 +51,14 @@ public class WirelessCovers {
     // region Wireless Energy
     public static class CoverWirelessEnergy extends AbstractWirelessCover {
 
-        public CoverWirelessEnergy(CoverContext context, int voltage, int ampere) {
-            super(context, voltage, ampere);
+        public CoverWirelessEnergy(int voltage, int ampere) {
+            super(voltage, ampere);
         }
 
         @Override
         protected void tryOperate(ICoverable tileEntity) {
-            if (tileEntity instanceof BaseMetaTileEntity bmt) {
-                var currentEU = bmt.getStoredEUuncapped();
+            if (tileEntity instanceof BaseMetaTileEntity bmt && bmt.getMetaTileEntity() instanceof MetaTileEntity mte) {
+                var currentEU = mte.getEUVar();
                 var euToTransfer = min(transferred_energy_per_operation - currentEU, transferred_energy_per_operation);
                 if (euToTransfer <= 0) return; // nothing to transfer
                 if (addEUToGlobalEnergyMap(bmt.getOwnerUuid(), -euToTransfer)) {
@@ -68,40 +70,42 @@ public class WirelessCovers {
     // endregion
 
     // region AbstractWirelessCover
-    public static abstract class AbstractWirelessCover extends CoverBehavior {
+    public static abstract class AbstractWirelessCover extends CoverBehavior
+        implements IWirelessEnergyHatchInformation {
 
         protected final long transferred_energy_per_operation;
 
-        public AbstractWirelessCover(CoverContext context, int voltage, int ampere) {
-            super(context);
+        public AbstractWirelessCover(int voltage, int ampere) {
             this.transferred_energy_per_operation = ticks_between_energy_addition * (long) ampere * (long) voltage;
         }
 
         @Override
-        public ISerializableObject.LegacyCoverData doCoverThings(byte aInputRedStone, long aTimer) {
-            if (coverData.get() == 0 || aTimer % ticks_between_energy_addition == 0) {
-                tryOperate(coveredTile.get());
+        public int doCoverThings(ForgeDirection side, byte aInputRedStone, int aCoverID, int aCoverVariable,
+            ICoverable aTileEntity, long aTimer) {
+            if (aCoverVariable == 0 || aTimer % ticks_between_energy_addition == 0) {
+                tryOperate(aTileEntity);
             }
-            return ISerializableObject.LegacyCoverData.of(1);
+            return 1;
         }
 
         @Override
-        public void onBaseTEDestroyed() {
-            tryOperate(coveredTile.get());
-            super.onBaseTEDestroyed();
+        protected void onBaseTEDestroyedImpl(ForgeDirection side, int aCoverID,
+            ISerializableObject.LegacyCoverData aCoverVariable, ICoverable aTileEntity) {
+            tryOperate(aTileEntity);
         }
 
         @Override
-        public void onCoverRemoval() {
-            tryOperate(coveredTile.get());
-            super.onCoverRemoval();
+        protected boolean onCoverRemovalImpl(ForgeDirection side, int aCoverID,
+            ISerializableObject.LegacyCoverData aCoverVariable, ICoverable aTileEntity, boolean aForced) {
+            tryOperate(aTileEntity);
+            return super.onCoverRemovalImpl(side, aCoverID, aCoverVariable, aTileEntity, aForced);
         }
 
         protected abstract void tryOperate(ICoverable tileEntity);
 
         @Override
-        protected int getMinimumTickRate() {
-            return 20;
+        public int getTickRate(ForgeDirection side, int aCoverID, int aCoverVariable, ICoverable aTileEntity) {
+            return 10;
         }
 
         @Override
@@ -115,42 +119,63 @@ public class WirelessCovers {
         }
 
         @Override
-        public boolean isRedstoneSensitive(long aTimer) {
+        public boolean isRedstoneSensitive(ForgeDirection side, int aCoverID, int aCoverVariable,
+            ICoverable aTileEntity, long aTimer) {
             return false;
         }
 
         @Override
-        public boolean alwaysLookConnected() {
+        protected boolean onCoverRightClickImpl(ForgeDirection side, int aCoverID,
+            ISerializableObject.LegacyCoverData aCoverVariable, ICoverable aTileEntity, EntityPlayer aPlayer, float aX,
+            float aY, float aZ) {
+            return false;
+        }
+
+        @Override
+        public boolean alwaysLookConnected(ForgeDirection side, int aCoverID, int aCoverVariable,
+            ICoverable aTileEntity) {
             return true;
         }
 
         @Override
-        public boolean letsEnergyIn() {
+        protected boolean isGUIClickableImpl(ForgeDirection side, int aCoverID,
+            ISerializableObject.LegacyCoverData aCoverVariable, ICoverable aTileEntity) {
             return true;
         }
 
         @Override
-        public boolean letsEnergyOut() {
+        protected boolean letsEnergyOutImpl(ForgeDirection side, int aCoverID,
+            ISerializableObject.LegacyCoverData aCoverVariable, ICoverable aTileEntity) {
             return true;
         }
 
         @Override
-        public boolean letsFluidIn(Fluid fluid) {
+        protected boolean letsEnergyInImpl(ForgeDirection side, int aCoverID,
+            ISerializableObject.LegacyCoverData aCoverVariable, ICoverable aTileEntity) {
             return true;
         }
 
         @Override
-        public boolean letsFluidOut(Fluid fluid) {
+        protected boolean letsItemsInImpl(ForgeDirection side, int aCoverID,
+            ISerializableObject.LegacyCoverData aCoverVariable, int aSlot, ICoverable aTileEntity) {
             return true;
         }
 
         @Override
-        public boolean letsItemsIn(int slot) {
+        protected boolean letsItemsOutImpl(ForgeDirection side, int aCoverID,
+            ISerializableObject.LegacyCoverData aCoverVariable, int aSlot, ICoverable aTileEntity) {
             return true;
         }
 
         @Override
-        public boolean letsItemsOut(int slot) {
+        protected boolean letsFluidInImpl(ForgeDirection side, int aCoverID,
+            ISerializableObject.LegacyCoverData aCoverVariable, Fluid aFluid, ICoverable aTileEntity) {
+            return true;
+        }
+
+        @Override
+        protected boolean letsFluidOutImpl(ForgeDirection side, int aCoverID,
+            ISerializableObject.LegacyCoverData aCoverVariable, Fluid aFluid, ICoverable aTileEntity) {
             return true;
         }
     }
