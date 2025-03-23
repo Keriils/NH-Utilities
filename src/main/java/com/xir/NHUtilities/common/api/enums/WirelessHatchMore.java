@@ -21,6 +21,9 @@ public enum WirelessHatchMore implements IItemContainer {
 
     // region Enum
     // spotless:off
+    dynamoMulti_EV_4            (   1,      4,      4,          HatchType.WirelessDynamoHatch),
+    dynamoMulti_EV_16           (   2,      4,      16,         HatchType.WirelessDynamoHatch),
+    dynamoMulti_EV_64           (   3,      4,      64,         HatchType.WirelessDynamoHatch),
 
     energyMulti_IV_256          (   4,      5,      256,        HatchType.WirelessEnergyHatch),
     dynamoMulti_IV_4            (   5,      5,      4,          HatchType.WirelessDynamoHatch),
