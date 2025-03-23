@@ -390,7 +390,7 @@ public class WirelessHatchRecipe {
             LazyHatchHelper.allCommonHatch.get()
                 .stream()
                 .filter(v -> v.hatchAmperes.equals(HatchAmperes.AMP_4_A))
-                .filter(v -> v.voltageTier.ordinal() >= VoltageTier.IV.ordinal())
+                .filter(v -> v.voltageTier.ordinal() >= VoltageTier.EV.ordinal())
                 .filter(v -> v.hatchType.equals(HatchType.DynamoHatch))
                 .sorted(Comparator.comparingInt(sortByVoltageTier))
                 .map(v -> copyAmount(v.hatchStack, 1))
@@ -398,7 +398,7 @@ public class WirelessHatchRecipe {
             LazyHatchHelper.allWirelessHatch.get()
                 .stream()
                 .filter(v -> v.hatchAmperes.equals(HatchAmperes.AMP_4_A))
-                .filter(v -> v.voltageTier.ordinal() >= VoltageTier.IV.ordinal())
+                .filter(v -> v.voltageTier.ordinal() >= VoltageTier.EV.ordinal())
                 .filter(v -> v.hatchType.equals(HatchType.WirelessDynamoHatch))
                 .sorted(Comparator.comparingInt(sortByVoltageTier))
                 .map(v -> copyAmount(v.hatchStack, 1))
@@ -406,7 +406,7 @@ public class WirelessHatchRecipe {
             LazyHatchHelper.allCommonHatch.get()
                 .stream()
                 .filter(v -> v.hatchAmperes.equals(HatchAmperes.AMP_16_A))
-                .filter(v -> v.voltageTier.ordinal() >= VoltageTier.IV.ordinal())
+                .filter(v -> v.voltageTier.ordinal() >= VoltageTier.EV.ordinal())
                 .filter(v -> v.hatchType.equals(HatchType.DynamoHatch))
                 .sorted(Comparator.comparingInt(sortByVoltageTier))
                 .map(v -> copyAmount(v.hatchStack, 1))
@@ -414,7 +414,7 @@ public class WirelessHatchRecipe {
             LazyHatchHelper.allWirelessHatch.get()
                 .stream()
                 .filter(v -> v.hatchAmperes.equals(HatchAmperes.AMP_16_A))
-                .filter(v -> v.voltageTier.ordinal() >= VoltageTier.IV.ordinal())
+                .filter(v -> v.voltageTier.ordinal() >= VoltageTier.EV.ordinal())
                 .filter(v -> v.hatchType.equals(HatchType.WirelessDynamoHatch))
                 .sorted(Comparator.comparingInt(sortByVoltageTier))
                 .map(v -> copyAmount(v.hatchStack, 1))
@@ -422,7 +422,7 @@ public class WirelessHatchRecipe {
             LazyHatchHelper.allCommonHatch.get()
                 .stream()
                 .filter(v -> v.hatchAmperes.equals(HatchAmperes.AMP_64_A))
-                .filter(v -> v.voltageTier.ordinal() >= VoltageTier.IV.ordinal())
+                .filter(v -> v.voltageTier.ordinal() >= VoltageTier.EV.ordinal())
                 .filter(v -> v.hatchType.equals(HatchType.DynamoHatch))
                 .sorted(Comparator.comparingInt(sortByVoltageTier))
                 .map(v -> copyAmount(v.hatchStack, 1))
@@ -430,13 +430,13 @@ public class WirelessHatchRecipe {
             LazyHatchHelper.allWirelessHatch.get()
                 .stream()
                 .filter(v -> v.hatchAmperes.equals(HatchAmperes.AMP_64_A))
-                .filter(v -> v.voltageTier.ordinal() >= VoltageTier.IV.ordinal())
+                .filter(v -> v.voltageTier.ordinal() >= VoltageTier.EV.ordinal())
                 .filter(v -> v.hatchType.equals(HatchType.WirelessDynamoHatch))
                 .sorted(Comparator.comparingInt(sortByVoltageTier))
                 .map(v -> copyAmount(v.hatchStack, 1))
                 .collect(Collectors.collectingAndThen(Collectors.toList(), ImmutableList::copyOf)));
 
-        var startIndexIVc = 5;
+        var startIndexIVc = 4;
         var commonIndex = 0;
         var wirelessIndex = 1;
         for (int z = 0; z < 3; z++) {
