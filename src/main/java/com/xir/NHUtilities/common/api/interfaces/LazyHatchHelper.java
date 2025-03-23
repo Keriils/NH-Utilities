@@ -368,6 +368,7 @@ public final class LazyHatchHelper {
                 buildHatchBoxed(    VoltageTier.MAX,        CustomItemList.eM_energyWirelessMulti4_MAX.get(1),        HatchAmperes.AMP_4_A,     HatchType.WirelessEnergyHatch ),
 
                 // 4A dynamo
+                buildHatchBoxed(    VoltageTier.EV,         WirelessHatchMore.dynamoMulti_EV_4.get(1),          HatchAmperes.AMP_4_A,     HatchType.WirelessDynamoHatch),
                 buildHatchBoxed(    VoltageTier.IV,         WirelessHatchMore.dynamoMulti_IV_4.get(1),          HatchAmperes.AMP_4_A,     HatchType.WirelessDynamoHatch),
                 buildHatchBoxed(    VoltageTier.LuV,        WirelessHatchMore.dynamoMulti_LuV_4.get(1),         HatchAmperes.AMP_4_A,     HatchType.WirelessDynamoHatch),
                 buildHatchBoxed(    VoltageTier.ZPM,        WirelessHatchMore.dynamoMulti_ZPM_4.get(1),         HatchAmperes.AMP_4_A,     HatchType.WirelessDynamoHatch),
@@ -393,6 +394,7 @@ public final class LazyHatchHelper {
                 buildHatchBoxed(    VoltageTier.MAX,        CustomItemList.eM_energyWirelessMulti16_MAX.get(1),        HatchAmperes.AMP_16_A,       HatchType.WirelessEnergyHatch),
 
                 // 16A dynamo
+                buildHatchBoxed(    VoltageTier.EV,         WirelessHatchMore.dynamoMulti_EV_16.get(1),          HatchAmperes.AMP_16_A,     HatchType.WirelessDynamoHatch),
                 buildHatchBoxed(    VoltageTier.IV,         WirelessHatchMore.dynamoMulti_IV_16.get(1),          HatchAmperes.AMP_16_A,     HatchType.WirelessDynamoHatch),
                 buildHatchBoxed(    VoltageTier.LuV,        WirelessHatchMore.dynamoMulti_LuV_16.get(1),         HatchAmperes.AMP_16_A,     HatchType.WirelessDynamoHatch),
                 buildHatchBoxed(    VoltageTier.ZPM,        WirelessHatchMore.dynamoMulti_ZPM_16.get(1),         HatchAmperes.AMP_16_A,     HatchType.WirelessDynamoHatch),
@@ -418,6 +420,7 @@ public final class LazyHatchHelper {
                 buildHatchBoxed(    VoltageTier.MAX,        CustomItemList.eM_energyWirelessMulti64_MAX.get(1),        HatchAmperes.AMP_64_A,       HatchType.WirelessEnergyHatch),
 
                 // 64A dynamo
+                buildHatchBoxed(    VoltageTier.EV,         WirelessHatchMore.dynamoMulti_EV_64.get(1),          HatchAmperes.AMP_64_A,     HatchType.WirelessDynamoHatch),
                 buildHatchBoxed(    VoltageTier.IV,         WirelessHatchMore.dynamoMulti_IV_64.get(1),          HatchAmperes.AMP_64_A,     HatchType.WirelessDynamoHatch),
                 buildHatchBoxed(    VoltageTier.LuV,        WirelessHatchMore.dynamoMulti_LuV_64.get(1),         HatchAmperes.AMP_64_A,     HatchType.WirelessDynamoHatch),
                 buildHatchBoxed(    VoltageTier.ZPM,        WirelessHatchMore.dynamoMulti_ZPM_64.get(1),         HatchAmperes.AMP_64_A,     HatchType.WirelessDynamoHatch),
