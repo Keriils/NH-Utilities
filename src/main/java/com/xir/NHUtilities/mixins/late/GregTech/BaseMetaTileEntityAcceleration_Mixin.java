@@ -35,8 +35,8 @@ public abstract class BaseMetaTileEntityAcceleration_Mixin extends CommonBaseMet
     @Shadow(remap = false)
     public abstract boolean isActive();
 
-    @Shadow
-    public abstract void updateEntity();
+    @Shadow(remap = false)
+    public abstract void updateEntityProfiled();
 
     @Override
     @SuppressWarnings("AddedMixinMembersNamePattern")
@@ -68,7 +68,7 @@ public abstract class BaseMetaTileEntityAcceleration_Mixin extends CommonBaseMet
                         for (int i = 0; i < tickAcceleratedRate; i++) {
                             // skip if assLine stuck
                             if (accelerationState.getMachineAccelerationState()) break;
-                            this.updateEntity();
+                            this.updateEntityProfiled();
                             if (System.nanoTime() > tMaxTime) {
                                 break;
                             }

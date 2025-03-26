@@ -44,7 +44,8 @@ public abstract class BaseMetaTileEntityWirelessCover_Mixin extends CommonBaseMe
     private long NHUtilities$wirelessEnergyCache = 0;
 
     @Inject(
-        method = "updateEntity",
+        method = "updateEntityProfiled",
+        remap = false,
         at = @At(
             value = "INVOKE",
             target = "Lgregtech/api/metatileentity/MetaTileEntity;onPreTick(Lgregtech/api/interfaces/tileentity/IGregTechTileEntity;J)V",
