@@ -352,3 +352,6 @@ item.WirelessCoverItem.110.name=UMV 64A Wireless Energy Cover
 item.WirelessCoverItem.111.name=UXV 64A Wireless Energy Cover
 item.WirelessCoverItem.112.name=MAX 64A Wireless Energy Cover
 
+# For StructureLib
+tooltip.nhu.line=§e================================================
+tooltip.nhu.buildSizeChannel.Info.1=§b supports use of §6 'nhu_build_size' §b channel build structure size
