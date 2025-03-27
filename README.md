@@ -1,63 +1,149 @@
-# NH-Utilities
- Add something utilities
+<h1 align="center">NH Utilities</h1>
+<p align="center"><em>A collection of utilities for GTNH modpack</em></p>
 
----
+<p align="center">
+  <a href="https://github.com/Keriils/NH-Utilities/releases">
+    <img src="https://img.shields.io/github/v/release/Keriils/NH-Utilities" alt="Latest Release">
+  </a>
+  <a href="https://github.com/Keriils/NH-Utilities/stargazers">
+    <img src="https://img.shields.io/github/stars/Keriils/NH-Utilities?logo=github" alt="GitHub Stars">
+  </a>
+  <a href="https://github.com/Keriils/NH-Utilities/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/Keriils/NH-Utilities?logo=apache" alt="License">
+  </a>
+</p>
+
 ## 介绍
-本模组是GTNH整合包的社区模组，修改和添加了一些东西来帮助玩家更好的渡过前中期。<br/>
-**注意**，该MOD并非GTNH整合包内的官方MOD，讨论此MOD时请注意场合。
-## 当前已增加内容
-### 添加
-<details><summary>- ✔ 移植了高版本的时间瓶，默认支持加速GT机器具体看tooltips详细说明。</summary><p>
-<img src="pics/1.png" alt=""/><img src="pics/2.png" alt=""/>
-</p></details>
+本模组是为GTNH整合包制作的社区模组
 
-  - ✔ 移植类似高版本暴食魔符 -> 暴食指环以及饥饿指环。<br/>
+通过添加和修改游戏内容帮助玩家更顺畅地度过前中期发展阶段?(或许是老登玩具...)
 
-<details><summary>- ✔ 为神秘侧添加了一个mv后期解锁的工业高炉，同时计算电和节点提供的厘魔，最高提供4并行、80%能量减免和100%加速(可以在游戏内使用螺丝刀切换原版高炉和邪术之眼材质)。</summary><p>
-<img src="pics/10.png" alt=""/>
-</p></details>
+> [!WARNING]
+> 本模组非GTNH官方模组，请勿在官方场合讨论相关内容
 
-  <details><summary>- ✔ 添加了超级午餐盒，内置54个格子。</summary><p>
-<img src="pics/3.png" alt=""/>
-</p></details>
+## 当前内容
 
-  <details><summary>- ✔ 添加了神秘侧的注魔燃料棒：闪耀系列和元始珍珠系列。(图示配方对应的数值错误的,以实际为主)</summary><p>
-<img src="pics/4.png" alt=""/><br/><img src="pics/5.png" alt=""/><br/><img src="pics/8.png" alt=""/><br/><img src="pics/9.png" alt=""/>
-</p></details>
+### ✨ 新增内容
 
-  - ✔ 默认添加debug维护仓的简单合成。
-  - ✔ 添加Kami神环，类似无尽的防御。
+<details>
+<summary><b>⚡ 时间瓶 (GT机器加速)</b></summary>
+<div align="center">
+  <img src="pics/timevial1.png" width="45%" alt="时间瓶界面"/>
+  <img src="pics/timevial2.png" width="45%" alt="加速效果演示"/>
+</div>
+<ul>
+  <li>支持加速GT机器与EnderIO机器</li>
+  <li>提升EIO机器能量接收速率</li>
+  <li>具体机制详见物品说明</li>
+</ul>
+</details>
 
-  <details><summary>- ✔ 添加新的法杖核心，比emt那个维护法杖核心更强，更实用。</summary><p>
-<img src="pics/6.png" alt=""/>
-</p></details>
+<details>
+<summary><b>🍔 生存辅助套装(憋😀</b></summary>
+<div align="center">
+  <img src="pics/lunchboxpuls.png" alt="超级午餐盒" width="40%"/>
+</div>
+<ul>
+  <li>暴食指环 & 饥饿指环 - 移植高版本暴食魔符机制</li>
+  <li>超级午餐盒 - 54格超大容量</li>
+  <li>Kami神环 - 类无尽防御系统</li>
+</ul>
+</details>
 
-  <details><summary>- ✔ 添加净化之戒，佩戴后不再触发任何扭曲事件，并且放置某些gt方块的时候能清除些微扭曲。</summary><p>
-<img src="pics/7.png" alt=""/>
-</p></details>
+<details>
+<summary><b>🔮 神秘时代扩展</b></summary>
+<div align="center">
+  <img src="pics/tcebf.png" width="30%" alt="奥术工业高炉"/>
+  <img src="pics/maintancefocus.png" width="30%" alt="维护法杖核心"/>
+  <img src="pics/warpring.png" width="30%" alt="净化之戒"/>
+  <br/>
+  <img src="pics/fuelrod1.png" width="45%" alt="燃料棒界面1"/>
+  <img src="pics/fuelrod2.png"width="45%" alt="燃料棒界面2"/>
+</div>
+<ul>
+  <li>新增神秘侧奥术工业高炉 (MV后期解锁)</li>
+  <li>更好的维护法杖核心,比Emt的更好！</li>
+  <li>净化之戒 - 抑制扭曲效果,申必人也能进工业区了！</li>
+  <li>注魔燃料棒系列 (闪耀/元始珍珠)</li>
+</ul>
+</details>
 
-  <details><summary>- ✔ 添加了更多的无线仓室，并且大幅削减了无线仓室的造价。</summary><p>
-<img src="pics/11.png" alt=""/><br/><img src="pics/12.png" alt=""/>
-</p></details>
+<details>
+<summary><b>⚙️ GT扩展</b></summary>
+<div align="center">
+  <img src="pics/wireless.png" width="45%" alt="无线覆盖板"/>
+  <img src="pics/eggmachine.png" width="45%" alt="蛋机界面"/>
+</div>
+<ul>
+  <li>新增投影蓝图'nhu_build_size'信道,以定义多方快构建尺寸</li>
+  <li>扩展和修改原版无线系统：
+    <ul>
+      <li>更多无线覆盖板</li>
+      <li>更多无线仓室 (多安能源/动力仓)</li>
+      <li>成本优化 - 总体造价降低 - 全局飞无线</li>
+      <li>云端算力仓/装配线数据仓成本优化</li>
+    </ul>
+  </li>
+  <li>Debug维护仓简易合成配方</li>
+  <li>新增<del>逆天</del>蛋机系统 (与123科技有联动憋憋)</li>
+</ul>
+</details>
 
-  <details><summary>- ✔ 添加了更多<del>逆天</del>的蛋机和新的龙蛋</summary><p>
-<img src="pics/13.png" alt=""/><br/><img src="pics/14.png" alt=""/>
-</p></details>
+### 🛠️ 系统优化
 
-### 修改
-  - ✔ 增强了龙研**高级传送器MKII**——支持放入饰品栏/快捷键打开。
-  - ✔ lang文件自动重置: 主要是mod版本改变后自动重置备份的lang文件
-  可以在config/NHUtilities/NHUtilities.cfg文件下配置
-  默认支持TST BOX 可编程舱室 等mod
-  需要在和config的同级别路径下(和config在同一个文件夹就行了)
-  创建`Lang_Backup`(区分大小写 默认自动生成)这个文件夹
-  将你没装私活的lang文件丢进去就行了
-  即你的安装包的lang文件扒过去
-  > 即 GregTech.lang 文件
-  -> GregTech_zh_CN.lang 文件
-  - ✔ 去除了超级缸/箱以及JABBA的小推车debuff。
-  - ✔ 默认修改EIO谐振电容库与能量注入仪的问题(秒充)。
-  - ✔ [默认是关闭的]魔改创世神mod兼容Exu的工具。即治愈之斧也可以当小木斧用，可以在配置文件下开启。
-  - ✔ 默认修改时间瓶子支持加速EnderIO机器，同时加速eio机器接收能量的速率。
----
-  - × 等待新想法中..
+<details>
+<summary><b>🐉 龙之研究改进</b></summary>
+<ul>
+  <li>高级传送器MKII现在支持：
+    <ul>
+      <li>放入饰品栏</li>
+      <li>快捷键快速访问</li>
+    </ul>
+  </li>
+</ul>
+</details>
+
+<details>
+<summary><b>🎮 游戏体验优化</b></summary>
+<ul>
+  <li>披萨手套 - 免疫所有槽位烫伤</li>
+  <li>强化治愈斧 - 瞬间回满生命值</li>
+  <li>移除超级缸/箱及JABBA小推车负面效果</li>
+  <li>WorldEdit与ExtraUtils工具兼容 (默认关闭)</li>
+</ul>
+</details>
+
+<details>
+<summary><b>⚙️ 界面与设置</b></summary>
+<ul>
+  <li>NEI配方来源显示优化</li>
+  <li>超频电压原始值显示</li>
+  <li>WAILA增加AverageNs显示</li>
+  <li>EIO电容库与注入仪秒充机制</li>
+</ul>
+</details>
+
+<details>
+<summary><b>🌐 本地化支持</b></summary>
+<div>
+  <h4>自动语言文件重置功能</h4>
+  <pre>
+config/NHUtilities/NHUtilities.cfg
+└── 支持私货模组列表配置,可随意添加
+
+操作步骤：
+1. 在config同级目录创建 Lang_Backup 文件夹(区分大小写 默认自动生成)
+2. 放入原始语言文件 (GregTech.lang和GregTech_zh_CN.lang 文件)
+3. 需要是未装私货时的lang文件
+4. 游戏每次启动都会执行检查私货版本,如变动则会替换未装私货的lang
+  </pre>
+</div>
+</details>
+
+## 📥 下载与兼容
+
+| GTNH 版本 | NHU 版本       | 下载                                                                                                                                                  | 维护状态 |
+|---------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|------|
+| Nightly | nightly      | [![Nightly Build](https://img.shields.io/badge/Nightly-Passing-brightgreen)](https://github.com/Keriils/NH-Utilities/actions)                       | ✔️   |
+| 2.7+    | 1.3.5+       | [![Latest Release](https://img.shields.io/badge/Download-v1.3.5-blue)](https://github.com/Keriils/NH-Utilities/releases/latest)                     | ✔️   |
+| 2.6+    | 1.3.5-fit261 | [![Legacy Version](https://img.shields.io/badge/Download-v1.3.5--fit261-orange)](https://github.com/Keriils/NH-Utilities/releases/tag/1.3.5-fit261) | ❌    |
