@@ -12,6 +12,7 @@ import static com.xir.NHUtilities.config.Config.enableCustomSortOfHatch;
 import static com.xir.NHUtilities.config.Config.enableEnhanceOvenGlove;
 import static com.xir.NHUtilities.config.Config.enableEnhancedExUHealingAxe;
 import static com.xir.NHUtilities.config.Config.enableEnhancedTeleporterMKII;
+import static com.xir.NHUtilities.config.Config.enableHologramItemChannelFeature;
 import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
 import static com.xir.NHUtilities.config.Config.enableModifyEnderIoCapBankIO;
 import static com.xir.NHUtilities.config.Config.enableModifyWirelessHatchTexture;
@@ -237,6 +238,17 @@ public enum Mixins {
 
     ),
 
+    StructureLib_Modifications(
+
+        newMixinClass("Add_A_Channel_Feature")
+            .setClass("HologramItem_Mixin_Mixin")
+            .setPackagePath(PackagePath.Structurelib)
+            .setPhase(Phase.LATE)
+            .addTargetMod(TargetMod.StructureLib)
+            .addCondition(enableHologramItemChannelFeature)
+
+    ),
+
     ;
     // spotless:on
 
@@ -289,6 +301,7 @@ public enum Mixins {
         DraconicEvolution,
         NewHorizonsCoreMod,
         ExtraUtilities,
+        Structurelib,
 
         ;
 

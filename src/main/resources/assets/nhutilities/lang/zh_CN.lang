@@ -350,3 +350,7 @@ item.WirelessCoverItem.109.name=64安UIV无线能源覆盖板
 item.WirelessCoverItem.110.name=64安UMV无线能源覆盖板
 item.WirelessCoverItem.111.name=64安UXV无线能源覆盖板
 item.WirelessCoverItem.112.name=64安MAX无线能源覆盖板
+
+# For StructureLib
+tooltip.nhu.line=§e================================================
+tooltip.nhu.buildSizeChannel.Info.1=§b支持使用 §6'nhu_build_size' §b信道定义构建尺寸
