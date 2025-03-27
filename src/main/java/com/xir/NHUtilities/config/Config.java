@@ -27,6 +27,7 @@ public class Config {
     public static boolean enableDebugMaintenanceHatchRecipe = true;
     public static boolean enableTestItem = true;
     public static boolean enableEnhanceOvenGlove = true;
+    public static boolean enableHologramItemChannelFeature = true;
     // endregion
 
     // region WirelessHatchMore
@@ -321,6 +322,12 @@ public class Config {
                 CATEGORY_MASS,
                 enableEnhanceOvenGlove,
                 "enable Enhance Oven Glove");
+
+            enableHologramItemChannelFeature = configuration.getBoolean(
+                "enableHologramItemChannelFeature",
+                CATEGORY_MASS,
+                enableHologramItemChannelFeature,
+                "enable Hologram Item Channel Feature");
         }
 
         try {
