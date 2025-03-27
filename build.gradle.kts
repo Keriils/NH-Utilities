@@ -3,34 +3,11 @@ plugins {
     id("online.keriils.plugins.spotless-wrapper") version "0.1.1"
 }
 
-wrapperSpotless { spotlessConfigGroovyGradle = false }
+spotless { isEnforceCheck = false }
 
-tasks.register<Copy>("initGitHooks") {
-    val scriptsFile = File(rootDir, "git-hooks")
-    val gitHooksDir = File(rootDir, ".git/hooks")
+val alwaysApplySpotless = project.properties["alwaysApplySpotless"] == "true"
+val isCiEnvironment = System.getenv("CI") == "true" || System.getenv("GITHUB_ACTIONS") == "true"
 
-    onlyIf {
-        if (!gitHooksDir.exists()) {
-            println("No .git/hooks directory found. Skipping hooks installation.")
-            false
-        } else {
-            true
-        }
-    }
+tasks.compileJava { if (alwaysApplySpotless) dependsOn(tasks.spotlessApply) }
 
-    from(scriptsFile) { include("**/*") }
-
-    filesMatching("**/*") {
-        filePermissions {
-            // 0b111_101_101
-            unix(493)
-        }
-    }
-    into(gitHooksDir)
-
-    doLast { println("Task : Inited git-hooks executed done.") }
-}
-
-tasks.jar { dependsOn(tasks.spotlessApply) }
-
-tasks.prepareKotlinBuildScriptModel { dependsOn("initGitHooks") }
+tasks.compileJava { if (isCiEnvironment) dependsOn(tasks.spotlessCheck) }
