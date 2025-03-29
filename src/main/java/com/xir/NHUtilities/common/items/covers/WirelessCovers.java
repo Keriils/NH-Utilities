@@ -11,8 +11,7 @@ import com.xir.NHUtilities.common.api.interfaces.mixinHelper.IWirelessCoverEnerg
 import gregtech.api.covers.CoverContext;
 import gregtech.api.interfaces.tileentity.ICoverable;
 import gregtech.api.metatileentity.BaseMetaTileEntity;
-import gregtech.api.util.ISerializableObject;
-import gregtech.common.covers.CoverBehavior;
+import gregtech.common.covers.CoverLegacyData;
 
 @SuppressWarnings("unused")
 public class WirelessCovers {
@@ -68,7 +67,7 @@ public class WirelessCovers {
     // endregion
 
     // region AbstractWirelessCover
-    public static abstract class AbstractWirelessCover extends CoverBehavior {
+    public static abstract class AbstractWirelessCover extends CoverLegacyData {
 
         protected final long transferred_energy_per_operation;
 
@@ -78,11 +77,10 @@ public class WirelessCovers {
         }
 
         @Override
-        public ISerializableObject.LegacyCoverData doCoverThings(byte aInputRedStone, long aTimer) {
-            if (coverData.get() == 0 || aTimer % ticks_between_energy_addition == 0) {
+        public void doCoverThings(byte aInputRedStone, long aTimer) {
+            if (coverData == 0 || aTimer % ticks_between_energy_addition == 0) {
                 tryOperate(coveredTile.get());
             }
-            return ISerializableObject.LegacyCoverData.of(1);
         }
 
         @Override
@@ -100,7 +98,7 @@ public class WirelessCovers {
         protected abstract void tryOperate(ICoverable tileEntity);
 
         @Override
-        protected int getMinimumTickRate() {
+        public int getMinimumTickRate() {
             return 20;
         }
 
