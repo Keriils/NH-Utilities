@@ -3,6 +3,7 @@ package com.xir.NHUtilities.main;
 import static com.xir.NHUtilities.config.Config.enableEnhancedTeleporterMKII;
 import static com.xir.NHUtilities.config.Config.enableEternityVialCosmicRender;
 import static com.xir.NHUtilities.config.Config.enableTimeVial;
+import static com.xir.NHUtilities.config.Config.enableWirelessHatchMore;
 
 import net.minecraftforge.client.MinecraftForgeClient;
 
@@ -48,6 +49,6 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void completeInit(FMLLoadCompleteEvent event) {
         super.completeInit(event);
-        NEIAllHatchSort.init();
+        if (enableWirelessHatchMore) NEIAllHatchSort.init();
     }
 }
