@@ -9,6 +9,7 @@ import static com.xir.NHUtilities.config.Config.enableAlwaysDisplayRecipeOwner;
 import static com.xir.NHUtilities.config.Config.enableAlwaysDisplayWailaAverageNS;
 import static com.xir.NHUtilities.config.Config.enableBanOriginalWirelessRecipes;
 import static com.xir.NHUtilities.config.Config.enableCustomSortOfHatch;
+import static com.xir.NHUtilities.config.Config.enableDenseMEChannelMTEHatches;
 import static com.xir.NHUtilities.config.Config.enableEnhanceOvenGlove;
 import static com.xir.NHUtilities.config.Config.enableEnhancedExUHealingAxe;
 import static com.xir.NHUtilities.config.Config.enableEnhancedTeleporterMKII;
@@ -141,7 +142,13 @@ public enum Mixins {
             .addCondition(x -> original -> false)
             .addCondition(x -> x.or(other -> enableAlwaysDisplayRecipeOwner))
             .addCondition(x -> x.or(other -> enableAlwaysDisplayWailaAverageNS))
-            .addCondition(x -> x.or(other -> enableAlwaysDisplayNEIOriginalVoltage))
+            .addCondition(x -> x.or(other -> enableAlwaysDisplayNEIOriginalVoltage)),
+        newMixinClass("Dense_ME_Channel_MTE_Hatches")
+            .setClass("MEHatchesDenseChannel_Mixin")
+            .setPackagePath(PackagePath.GregTech)
+            .setPhase(Phase.LATE)
+            .addTargetMod(TargetMod.GregTech)
+            .addCondition(enableDenseMEChannelMTEHatches)
 
     ),
 
