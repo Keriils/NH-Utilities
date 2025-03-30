@@ -28,6 +28,7 @@ public class Config {
     public static boolean enableTestItem = true;
     public static boolean enableEnhanceOvenGlove = true;
     public static boolean enableHologramItemChannelFeature = true;
+    public static boolean enableDenseMEChannelMTEHatches = true;
     // endregion
 
     // region WirelessHatchMore
@@ -328,6 +329,12 @@ public class Config {
                 CATEGORY_MASS,
                 enableHologramItemChannelFeature,
                 "enable Hologram Item Channel Feature");
+
+            enableDenseMEChannelMTEHatches = configuration.getBoolean(
+                "enableDenseMEChannelMTEHatches",
+                CATEGORY_MASS,
+                enableDenseMEChannelMTEHatches,
+                "enable Dense ME Channel MTEHatches");
         }
 
         try {
