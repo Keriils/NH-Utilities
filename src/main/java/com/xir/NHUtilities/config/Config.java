@@ -75,6 +75,7 @@ public class Config {
     public static boolean enableAlwaysDisplayRecipeOwner = true;
     public static boolean enableAlwaysDisplayWailaAverageNS = true;
     public static boolean enableAlwaysDisplayNEIOriginalVoltage = true;
+    public static boolean enableRemovePollutionEffectForPlayer = true;
     // endregion
 
     // region category
@@ -335,6 +336,12 @@ public class Config {
                 CATEGORY_MASS,
                 enableDenseMEChannelMTEHatches,
                 "enable Dense ME Channel MTEHatches");
+
+            enableRemovePollutionEffectForPlayer = configuration.getBoolean(
+                "enableRemovePollutionEffectForPlayer",
+                CATEGORY_MASS,
+                enableRemovePollutionEffectForPlayer,
+                "enable Remove Pollution Effect For Player");
         }
 
         try {
