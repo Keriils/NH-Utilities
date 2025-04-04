@@ -66,6 +66,7 @@ public class Config {
     public static boolean enableEnhancedExUHealingAxe = true;
     public static boolean enableAccelerateEnderIoMachine = true;
     public static boolean disableSuperChestOrTankDebuff = true;
+    public static boolean disableChestCoverStacksizeLimit = true;
     public static boolean disableDollyDebuff = true;
     public static boolean enableLunchBoxPlus = true;
     public static boolean enableSimpleTimeVialRecipe = false;
@@ -238,6 +239,12 @@ public class Config {
                 CATEGORY_MIXIN_CONFIG,
                 disableSuperChestOrTankDebuff,
                 "disable Super Chest Or Tank Debuff");
+
+            disableChestCoverStacksizeLimit = configuration.getBoolean(
+                "disableChestCoverStacksizeLimit",
+                CATEGORY_MIXIN_CONFIG,
+                disableChestCoverStacksizeLimit,
+                "disable Chest Cover (Item Holder) Stack Size Limit");
 
             disableDollyDebuff = configuration
                 .getBoolean("disableDollyDebuff", CATEGORY_MIXIN_CONFIG, disableDollyDebuff, "disable Dolly Debuff");
