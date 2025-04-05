@@ -112,6 +112,7 @@
   <li>强化治愈斧 - 瞬间回满生命值</li>
   <li>移除超级缸/箱及JABBA小推车负面效果</li>
   <li>WorldEdit与ExtraUtils工具兼容 (默认关闭)</li>
+  <li>新游戏规则 - doWeatherCycle 天气循环</li>
 </ul>
 </details>
 
