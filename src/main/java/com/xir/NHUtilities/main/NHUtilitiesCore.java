@@ -22,6 +22,8 @@ public class NHUtilitiesCore implements IFMLLoadingPlugin, IEarlyMixinLoader {
     public List<String> getMixins(Set<String> loadedCoreMods) {
         ArrayList<String> mixins = new ArrayList<>();
         mixins.add("MineCraft.EntityInvulnerable_Mixin");
+        mixins.add("MineCraft.WorldGameRule_Mixin");
+        mixins.add("MineCraft.WeatherCycRule_Mixin");
         return mixins;
     }
 
