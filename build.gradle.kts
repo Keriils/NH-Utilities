@@ -1,6 +1,6 @@
 plugins {
     id("com.gtnewhorizons.gtnhconvention")
-    id("online.keriils.plugins.spotless-wrapper") version "0.1.1"
+    id("online.keriils.plugins.spotless-wrapper") version "0.1.3"
 }
 
 spotless { isEnforceCheck = false }
