@@ -1,2 +1,5 @@
+jdk:
+  - zulu-21
+
 before_install:
   - ./gradlew setupCIWorkspace
