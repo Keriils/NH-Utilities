@@ -22,7 +22,8 @@ public class EntityTimeAccelerator extends Entity {
 
     // region Fields
     private int timeRate = enableTimeAcceleratorBoost ? 8 : 4; // must be set in here for texture render init
-    private int remainingTime = 600;
+    public static final int ACCELERATION_TICK = 600;
+    private int remainingTime = ACCELERATION_TICK;
     private boolean isGregTechMachineMode = true;
 
     private int targetIntX;
@@ -44,6 +45,10 @@ public class EntityTimeAccelerator extends Entity {
     public void setTimeRate(int timeRate) {
         this.timeRate = timeRate;
         this.dataWatcher.updateObject(2, timeRate);
+    }
+
+    public void setRemainingTime(int remainingTime) {
+        this.remainingTime = remainingTime;
     }
 
     public int getTimeRateForRender() {
