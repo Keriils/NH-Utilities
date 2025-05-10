@@ -56,6 +56,7 @@ public class Config {
     public static boolean enableAccelerateGregTechMachine = true;
     public static float accelerateGregTechMachineDiscount = 0.8F;
     public static boolean enableNumberMultiplierTexture = false;
+    public static boolean enableResetRemainingTime = false;
     // endregion
 
     // region register mixins category key region
@@ -179,6 +180,12 @@ public class Config {
                 CATEGORY_TIME_VIAL,
                 enableNumberMultiplierTexture,
                 "enable Number Multiplier Texture");
+
+            enableResetRemainingTime = configuration.getBoolean(
+                "enableResetRemainingTime",
+                CATEGORY_TIME_VIAL,
+                enableResetRemainingTime,
+                "enable Reset Remaining Time When Every Apply TimeVial");
 
             accelerateBlockInterval = configuration.getInt(
                 "accelerateBlockInterval",

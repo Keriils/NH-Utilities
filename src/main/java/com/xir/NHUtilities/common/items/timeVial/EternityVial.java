@@ -59,7 +59,7 @@ public class EternityVial extends TimeVial implements ICosmicRenderItem {
     public void onUpdate(ItemStack stack, World worldIn, Entity playerIn, int slot, boolean isHeld) {}
 
     @Override
-    protected boolean shouldAndConsumeTimeData(@NotNull ItemStack stack, int consumedTick) {
+    protected boolean consumeTimeData(@NotNull ItemStack stack, int consumedTick) {
         return true;
     }
 
