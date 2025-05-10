@@ -92,6 +92,12 @@ public class TimeVial extends ItemBase {
         return true;
     }
 
+    @Override
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, @NotNull World world, int x, int y, int z, int side,
+        float hitX, float hitY, float hitZ) {
+        return true;
+    }
+
     protected void applyNextAcceleration(ItemStack stack, EntityTimeAccelerator eta) {
         var currentRate = eta.getTimeRate();
         if (currentRate < MAX_ACCELERATION) {
