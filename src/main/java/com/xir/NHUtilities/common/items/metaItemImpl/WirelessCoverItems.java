@@ -58,7 +58,13 @@ public class WirelessCoverItems extends MetaItemBase implements ILoadMetaItem {
                             CommonUtil.trans("tooltip.amp.info") + " " + formatNumbers(2 << ac[i]) + " A" }));
                 int finalJ = j1;
                 int finalI = i;
-                CoverRegistry.registerCover(dynamoValue.get(1),tex[i], context -> new WirelessCovers.CoverWirelessDynamo((int) GTValues.V[finalJ + 1], 2 << ac[finalI], context));
+                CoverRegistry.registerCover(
+                    dynamoValue.get(1),
+                    tex[i],
+                    context -> new WirelessCovers.CoverWirelessDynamo(
+                        (int) GTValues.V[finalJ + 1],
+                        2 << ac[finalI],
+                        context));
             }
             ImmutableList<NHUItemList> energyList = ENERGY_COVERS.get(i);
             for (int j2 = 0; j2 < energyList.size(); j2++) {
@@ -72,7 +78,13 @@ public class WirelessCoverItems extends MetaItemBase implements ILoadMetaItem {
                             CommonUtil.trans("tooltip.amp.info") + " " + formatNumbers(2 << ac[i]) + " A" }));
                 int finalJ = j2;
                 int finalI1 = i;
-                CoverRegistry.registerCover(energyValue.get(1),tex[i], context -> new WirelessCovers.CoverWirelessDynamo((int) GTValues.V[finalJ + 1], 2 << ac[finalI1], context));
+                CoverRegistry.registerCover(
+                    energyValue.get(1),
+                    tex[i],
+                    context -> new WirelessCovers.CoverWirelessDynamo(
+                        (int) GTValues.V[finalJ + 1],
+                        2 << ac[finalI1],
+                        context));
             }
         }
 

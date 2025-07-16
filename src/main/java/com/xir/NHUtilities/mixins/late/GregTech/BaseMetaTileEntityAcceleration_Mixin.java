@@ -3,8 +3,6 @@ package com.xir.NHUtilities.mixins.late.GregTech;
 import static com.xir.NHUtilities.config.Config.accelerateGregTechMachineDiscount;
 import static com.xir.NHUtilities.main.NHUtilities.LOG;
 
-import gregtech.api.metatileentity.CommonBaseMetaTileEntity;
-import gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
@@ -14,8 +12,10 @@ import com.xir.NHUtilities.common.api.interfaces.mixinHelper.IAccelerationState;
 import ggfab.mte.MTEAdvAssLine;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.metatileentity.BaseMetaTileEntity;
+import gregtech.api.metatileentity.CommonBaseMetaTileEntity;
 import gregtech.api.metatileentity.implementations.MTEBasicMachine;
 import gregtech.api.metatileentity.implementations.MTEMultiBlockBase;
+import gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace;
 import tectech.thing.metaTileEntity.multi.MTEResearchStation;
 
 @SuppressWarnings("UnusedMixin")

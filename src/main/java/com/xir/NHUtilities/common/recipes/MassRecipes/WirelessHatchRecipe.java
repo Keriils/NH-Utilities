@@ -448,8 +448,7 @@ public class WirelessHatchRecipe {
                         hatch_4A_64A.get(wirelessIndex)
                             .get(realIndex))
                     .eut(GTValues.VP[i - 1])
-                    .duration(10 * SECONDS * (i + 1))
-                    ;
+                    .duration(10 * SECONDS * (i + 1));
 
                 if (i >= 7) {
                     builder.metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 9 ? 1 : 2)
