@@ -4,7 +4,7 @@ import static com.xir.NHUtilities.config.Config.debugMode;
 import static com.xir.NHUtilities.main.ReferencedInfo.OTH_MOD_IS_LOADED;
 import static com.xir.NHUtilities.utils.CommonUtil.newItemStack;
 import static com.xir.NHUtilities.utils.CommonUtil.simpleMetaEqual;
-import static gregtech.api.enums.GTValues.GT;
+import static gregtech.GTMod.GT;
 import static gregtech.api.enums.GTValues.V;
 import static gregtech.api.enums.Textures.BlockIcons.MACHINE_CASING_DRAGONEGG;
 import static gregtech.api.enums.Textures.BlockIcons.MACHINE_CASING_DRAGONEGG_GLOW;

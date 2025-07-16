@@ -1,5 +1,6 @@
 package com.xir.NHUtilities.mixins.late.GregTech;
 
+import gregtech.api.metatileentity.CommonBaseMetaTileEntity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -14,11 +15,10 @@ import com.xir.NHUtilities.common.api.interfaces.mixinHelper.IWirelessCoverEnerg
 import com.xir.NHUtilities.common.items.covers.WirelessCovers;
 
 import gregtech.api.metatileentity.BaseMetaTileEntity;
-import gregtech.api.metatileentity.CommonMetaTileEntity;
 
 @Mixin(value = BaseMetaTileEntity.class)
 @SuppressWarnings({ "UnusedMixin", "DiscouragedShift" })
-public abstract class BaseMetaTileEntityWirelessCover_Mixin extends CommonMetaTileEntity
+public abstract class BaseMetaTileEntityWirelessCover_Mixin extends CommonBaseMetaTileEntity
     implements IWirelessCoverEnergyProvider {
 
     @Override
