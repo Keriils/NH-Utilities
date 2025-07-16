@@ -53,7 +53,7 @@ public abstract class BaseMetaTileEntityWirelessCover_Mixin extends CommonBaseMe
         require = 1)
     private void NHUtilities$wirelessCover(CallbackInfo ci) {
         for (ForgeDirection side : ForgeDirection.VALID_DIRECTIONS) {
-            if (getCoverInfoAtSide(side).getCoverBehavior() instanceof WirelessCovers.CoverWirelessDynamo) {
+            if (getCoverAtSide(side) instanceof WirelessCovers.CoverWirelessDynamo) {
                 NHUtilities$dumpEnergyToWirelessCache();
                 break;
             }

@@ -62,7 +62,6 @@ public class WirelessHatchRecipe {
             .requiresCleanRoom()
             .duration(100 * SECONDS)
             .eut(TierEU.UHV)
-            .noOptimize()
             .addTo(laserEngraverRecipes);
 
         Predicate<HatchesBoxed> filterEnergy = v -> v.hatchType.equals(HatchType.EnergyHatch);
@@ -222,7 +221,6 @@ public class WirelessHatchRecipe {
                 .itemOutputs(wirelessEnergy_2A.get(i))
                 .eut(GTValues.VP[i])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
                 .addTo(assemblerRecipes);
 
             // dynamo
@@ -239,7 +237,6 @@ public class WirelessHatchRecipe {
                 .itemOutputs(wirelessDynamo_2A.get(i))
                 .eut(GTValues.VP[i])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
                 .addTo(assemblerRecipes);
         }
 
@@ -251,7 +248,6 @@ public class WirelessHatchRecipe {
                 .itemOutputs(wirelessEnergy_2A.get(i))
                 .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 12 ? i < 9 ? 1 : 2 : 3)
                 .addTo(preciseAssemblerRecipes);
 
@@ -262,7 +258,6 @@ public class WirelessHatchRecipe {
                 .itemOutputs(wirelessDynamo_2A.get(i))
                 .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 12 ? i < 9 ? 1 : 2 : 3)
                 .addTo(preciseAssemblerRecipes);
         }
@@ -331,7 +326,6 @@ public class WirelessHatchRecipe {
                             .get(i))
                     .eut(GTValues.VP[tier])
                     .duration(10 * SECONDS * (tier + 1))
-                    .noOptimize()
                     .addTo(assemblerRecipes);
             }
 
@@ -351,7 +345,6 @@ public class WirelessHatchRecipe {
                             .get(i))
                     .eut(GTValues.VP[tier - 1])
                     .duration(10 * SECONDS * (tier + 1))
-                    .noOptimize()
                     .metadata(PRECISE_ASSEMBLER_CASING_TIER, tier < 12 ? tier < 9 ? 1 : 2 : 3)
                     .addTo(preciseAssemblerRecipes);
             }
@@ -456,7 +449,7 @@ public class WirelessHatchRecipe {
                             .get(realIndex))
                     .eut(GTValues.VP[i - 1])
                     .duration(10 * SECONDS * (i + 1))
-                    .noOptimize();
+                    ;
 
                 if (i >= 7) {
                     builder.metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 9 ? 1 : 2)
@@ -527,7 +520,7 @@ public class WirelessHatchRecipe {
                         .get(realIndex))
                 .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
+
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 12 ? i < 9 ? 1 : 2 : 3)
                 .addTo(preciseAssemblerRecipes);
 
@@ -547,7 +540,7 @@ public class WirelessHatchRecipe {
                         .get(realIndex))
                 .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
+
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, 1)
                 .addTo(preciseAssemblerRecipes);
         }
@@ -609,7 +602,7 @@ public class WirelessHatchRecipe {
                         .get(realIndex))
                 .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
+
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 12 ? i < 9 ? 1 : 2 : 3)
                 .addTo(preciseAssemblerRecipes);
 
@@ -629,7 +622,7 @@ public class WirelessHatchRecipe {
                         .get(realIndex))
                 .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
+
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, 2)
                 .addTo(preciseAssemblerRecipes);
         }
@@ -691,7 +684,7 @@ public class WirelessHatchRecipe {
                         .get(realIndex))
                 .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
+
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 12 ? i < 9 ? 1 : 2 : 3)
                 .addTo(preciseAssemblerRecipes);
 
@@ -711,7 +704,7 @@ public class WirelessHatchRecipe {
                         .get(realIndex))
                 .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
+
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, 2)
                 .addTo(preciseAssemblerRecipes);
         }
@@ -773,7 +766,7 @@ public class WirelessHatchRecipe {
                         .get(realIndex))
                 .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
+
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 12 ? i < 9 ? 1 : 2 : 3)
                 .addTo(preciseAssemblerRecipes);
 
@@ -793,7 +786,7 @@ public class WirelessHatchRecipe {
                         .get(realIndex))
                 .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
+
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, 2)
                 .addTo(preciseAssemblerRecipes);
         }
@@ -855,7 +848,7 @@ public class WirelessHatchRecipe {
                         .get(realIndex))
                 .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
+
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 12 ? 2 : 3)
                 .addTo(preciseAssemblerRecipes);
 
@@ -875,7 +868,7 @@ public class WirelessHatchRecipe {
                         .get(realIndex))
                 .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
+
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, 3)
                 .addTo(preciseAssemblerRecipes);
         }
@@ -937,7 +930,7 @@ public class WirelessHatchRecipe {
                         .get(realIndex))
                 .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
+
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 12 ? 2 : 3)
                 .addTo(preciseAssemblerRecipes);
 
@@ -957,7 +950,7 @@ public class WirelessHatchRecipe {
                         .get(realIndex))
                 .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
+
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, 3)
                 .addTo(preciseAssemblerRecipes);
         }
@@ -1019,7 +1012,7 @@ public class WirelessHatchRecipe {
                         .get(realIndex))
                 .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
+
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, i < 12 ? 2 : 3)
                 .addTo(preciseAssemblerRecipes);
 
@@ -1039,7 +1032,7 @@ public class WirelessHatchRecipe {
                         .get(realIndex))
                 .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
+
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, 3)
                 .addTo(preciseAssemblerRecipes);
         }
@@ -1083,7 +1076,7 @@ public class WirelessHatchRecipe {
                         .get(realIndex))
                 .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
+
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, 3)
                 .addTo(preciseAssemblerRecipes);
         }
@@ -1127,7 +1120,7 @@ public class WirelessHatchRecipe {
                         .get(realIndex))
                 .eut(GTValues.VP[i - 1])
                 .duration(10 * SECONDS * (i + 1))
-                .noOptimize()
+
                 .metadata(PRECISE_ASSEMBLER_CASING_TIER, 4)
                 .addTo(preciseAssemblerRecipes);
         }
@@ -1171,7 +1164,7 @@ public class WirelessHatchRecipe {
         // / .get(realIndex))
         // / .eut(GTValues.VP[i - 1])
         // / .duration(10 * SECONDS * (i + 1))
-        // / .noOptimize()
+        // /
         // / .metadata(PRECISE_ASSEMBLER_CASING_TIER, 3)
         // / .addTo(preciseAssemblerRecipes);
         // / }
