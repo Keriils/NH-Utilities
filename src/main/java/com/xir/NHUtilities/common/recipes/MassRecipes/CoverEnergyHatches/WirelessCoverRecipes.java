@@ -131,7 +131,6 @@ public class WirelessCoverRecipes {
                         .get(1))
                 .duration(10 * SECONDS)
                 .eut(GTValues.VP[i])
-                .noOptimize()
                 .addTo(assemblerRecipes);
 
             // dynamo
@@ -150,7 +149,6 @@ public class WirelessCoverRecipes {
                         .get(1))
                 .duration(10 * SECONDS)
                 .eut(GTValues.VP[i])
-                .noOptimize()
                 .addTo(assemblerRecipes);
         }
 
@@ -246,7 +244,6 @@ public class WirelessCoverRecipes {
                         .get(1))
                 .duration(10 * SECONDS)
                 .eut(GTValues.VP[i])
-                .noOptimize()
                 .addTo(assemblerRecipes);
 
             GTValues.RA.stdBuilder()
@@ -263,7 +260,6 @@ public class WirelessCoverRecipes {
                         .get(1))
                 .duration(10 * SECONDS)
                 .eut(GTValues.VP[i])
-                .noOptimize()
                 .addTo(assemblerRecipes);
 
             // 4A -> 16A
@@ -281,7 +277,6 @@ public class WirelessCoverRecipes {
                         .get(1))
                 .duration(10 * SECONDS)
                 .eut(GTValues.VP[i])
-                .noOptimize()
                 .addTo(assemblerRecipes);
 
             GTValues.RA.stdBuilder()
@@ -298,7 +293,6 @@ public class WirelessCoverRecipes {
                         .get(1))
                 .duration(10 * SECONDS)
                 .eut(GTValues.VP[i])
-                .noOptimize()
                 .addTo(assemblerRecipes);
 
             // 16A -> 64A
@@ -316,7 +310,6 @@ public class WirelessCoverRecipes {
                         .get(1))
                 .duration(20 * SECONDS)
                 .eut(GTValues.VP[i])
-                .noOptimize()
                 .addTo(assemblerRecipes);
 
             GTValues.RA.stdBuilder()
@@ -333,7 +326,6 @@ public class WirelessCoverRecipes {
                         .get(1))
                 .duration(20 * SECONDS)
                 .eut(GTValues.VP[i])
-                .noOptimize()
                 .addTo(assemblerRecipes);
 
         }

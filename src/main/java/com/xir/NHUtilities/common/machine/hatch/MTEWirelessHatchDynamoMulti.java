@@ -6,6 +6,8 @@ import static gregtech.api.enums.GTValues.V;
 import static gregtech.api.util.GTUtility.formatNumbers;
 import static gregtech.common.misc.WirelessNetworkManager.addEUToGlobalEnergyMap;
 import static gregtech.common.misc.WirelessNetworkManager.strongCheckOrAddUser;
+import static gregtech.common.misc.WirelessNetworkManager.ticks_between_energy_addition;
+import static gregtech.common.misc.WirelessNetworkManager.totalStorage;
 
 import java.util.UUID;
 
@@ -14,11 +16,10 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
-import gregtech.api.interfaces.tileentity.IWirelessEnergyHatchInformation;
 import gregtech.api.metatileentity.MetaTileEntity;
 import tectech.thing.metaTileEntity.hatch.MTEHatchDynamoMulti;
 
-public class MTEWirelessHatchDynamoMulti extends MTEHatchDynamoMulti implements IWirelessEnergyHatchInformation {
+public class MTEWirelessHatchDynamoMulti extends MTEHatchDynamoMulti {
 
     // region Constructor
     public MTEWirelessHatchDynamoMulti(int aID, String aName, String aNameRegional, int aTier, int aAmp) {

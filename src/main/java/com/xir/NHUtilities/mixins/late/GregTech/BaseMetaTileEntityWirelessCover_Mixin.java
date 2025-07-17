@@ -14,11 +14,11 @@ import com.xir.NHUtilities.common.api.interfaces.mixinHelper.IWirelessCoverEnerg
 import com.xir.NHUtilities.common.items.covers.WirelessCovers;
 
 import gregtech.api.metatileentity.BaseMetaTileEntity;
-import gregtech.api.metatileentity.CommonMetaTileEntity;
+import gregtech.api.metatileentity.CommonBaseMetaTileEntity;
 
 @Mixin(value = BaseMetaTileEntity.class)
 @SuppressWarnings({ "UnusedMixin", "DiscouragedShift" })
-public abstract class BaseMetaTileEntityWirelessCover_Mixin extends CommonMetaTileEntity
+public abstract class BaseMetaTileEntityWirelessCover_Mixin extends CommonBaseMetaTileEntity
     implements IWirelessCoverEnergyProvider {
 
     @Override
@@ -44,16 +44,17 @@ public abstract class BaseMetaTileEntityWirelessCover_Mixin extends CommonMetaTi
     private long NHUtilities$wirelessEnergyCache = 0;
 
     @Inject(
-        method = "updateEntity",
+        method = "updateEntityProfiled",
         at = @At(
             value = "INVOKE",
             target = "Lgregtech/api/metatileentity/MetaTileEntity;onPreTick(Lgregtech/api/interfaces/tileentity/IGregTechTileEntity;J)V",
             shift = At.Shift.BEFORE,
             remap = false),
-        require = 1)
+        require = 1,
+        remap = false)
     private void NHUtilities$wirelessCover(CallbackInfo ci) {
         for (ForgeDirection side : ForgeDirection.VALID_DIRECTIONS) {
-            if (getCoverInfoAtSide(side).getCoverBehavior() instanceof WirelessCovers.CoverWirelessDynamo) {
+            if (getCoverAtSide(side) instanceof WirelessCovers.CoverWirelessDynamo) {
                 NHUtilities$dumpEnergyToWirelessCache();
                 break;
             }

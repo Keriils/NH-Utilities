@@ -383,7 +383,6 @@ public class WirelessHatchRecipeOld {
             .itemOutputs(WirelessHatchMore.energyMulti_UMV_4194304.get(1))
             .duration(60 * SECONDS)
             .eut(TierEU.RECIPE_UMV)
-            .noOptimize()
             .metadata(PRECISE_ASSEMBLER_CASING_TIER, 1)
             .addTo(preciseAssemblerRecipes);
 
@@ -396,7 +395,6 @@ public class WirelessHatchRecipeOld {
             .itemOutputs(WirelessHatchMore.energyMulti_HV_4.get(1))
             .duration(60 * SECONDS)
             .eut(TierEU.RECIPE_HV)
-            .noOptimize()
             .addTo(assemblerRecipes);
 
         GTValues.RA.stdBuilder()
@@ -408,7 +406,6 @@ public class WirelessHatchRecipeOld {
             .itemOutputs(WirelessHatchMore.energyMulti_HV_16.get(1))
             .duration(60 * SECONDS)
             .eut(TierEU.RECIPE_HV)
-            .noOptimize()
             .addTo(assemblerRecipes);
 
         GTValues.RA.stdBuilder()
@@ -420,7 +417,6 @@ public class WirelessHatchRecipeOld {
             .itemOutputs(WirelessHatchMore.energyMulti_HV_64.get(1))
             .duration(60 * SECONDS)
             .eut(TierEU.RECIPE_HV)
-            .noOptimize()
             .addTo(assemblerRecipes);
     }
 
@@ -437,7 +433,6 @@ public class WirelessHatchRecipeOld {
                     .itemOutputs(output[i])
                     .duration(60 * SECONDS)
                     .eut(TierEU.RECIPE_EV)
-                    .noOptimize()
                     .addTo(assemblerRecipes);
             } else {
                 GTValues.RA.stdBuilder()
@@ -454,7 +449,6 @@ public class WirelessHatchRecipeOld {
                     .itemOutputs(output[i])
                     .duration(60 * SECONDS)
                     .eut(TierEU.ZPM)
-                    .noOptimize()
                     .metadata(PRECISE_ASSEMBLER_CASING_TIER, 1)
                     .addTo(preciseAssemblerRecipes);
             }
