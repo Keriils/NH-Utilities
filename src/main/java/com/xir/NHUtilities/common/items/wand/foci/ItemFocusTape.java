@@ -80,7 +80,7 @@ public class ItemFocusTape extends ItemFocusBasic implements IRegisterProvider {
         if (wandCasting != null
             && (mBaseMetaTileEntity.getMetaTileEntity() instanceof MTEHatchMaintenance hatchMaintenance)
             && (!hatchMaintenance.mWrench || !hatchMaintenance.mSolderingTool
-                || !hatchMaintenance.mSoftHammer
+                || !hatchMaintenance.mSoftMallet
                 || !hatchMaintenance.mHardHammer
                 || !hatchMaintenance.mScrewdriver
                 || !hatchMaintenance.mCrowbar
@@ -90,7 +90,7 @@ public class ItemFocusTape extends ItemFocusBasic implements IRegisterProvider {
                 hatchMaintenance.mHardHammer = true;
                 hatchMaintenance.mCrowbar = true;
                 hatchMaintenance.mScrewdriver = true;
-                hatchMaintenance.mSoftHammer = true;
+                hatchMaintenance.mSoftMallet = true;
                 hatchMaintenance.mSolderingTool = true;
                 hatchMaintenance.mWrench = true;
                 hatchMaintenance.getBaseMetaTileEntity()

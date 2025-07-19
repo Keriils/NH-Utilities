@@ -12,6 +12,9 @@
   <a href="https://github.com/Keriils/NH-Utilities/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/Keriils/NH-Utilities?logo=apache" alt="License">
   </a>
+  <a href="https://github.com/Keriils/NH-Utilities">
+   <img src="https://visitor-badge.laobi.icu/badge?page_id=Keriils.NH-Utilities" alt="Visitors">
+  </a>
 </p>
 
 ## 介绍
@@ -145,8 +148,8 @@ config/NHUtilities/NHUtilities.cfg
 
 ## 📥 下载与兼容
 
-| GTNH 版本 | NHU 版本       | 下载                                                                                                                                                                                | 维护状态 |
-|---------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------|
-| Nightly | nightly      | [![Nightly Build](https://img.shields.io/badge/Nightly-Passing-brightgreen)](https://github.com/Keriils/NH-Utilities/actions/workflows/build-and-test.yml?query=branch%3Anightly) | ✔️   |
-| 2.7+    | 1.3.5+       | [![Latest](https://img.shields.io/github/v/release/Keriils/NH-Utilities)](https://github.com/Keriils/NH-Utilities/releases/latest)                                                | ✔️   |
-| 2.6+    | 1.3.5-fit261 | [![1.3.5](https://img.shields.io/badge/release-v1.3.5fit261-orange)](https://github.com/Keriils/NH-Utilities/releases/tag/1.3.5-fit261)                                           | ❌    |
+| GTNH 版本  | NHU 版本       | 下载                                                                                                                                      | 维护状态 |
+|----------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------|------|
+| 280beta1 | 1.5.4        | [![1.5.4](https://img.shields.io/badge/release-v1.5.4-00FF00)](https://github.com/Keriils/NH-Utilities/releases/tag/1.5.4)              | ✔️   |
+| 2.7+     | 1.3.5+       | [![1.5.3](https://img.shields.io/badge/release-v1.5.3-0000FF)](https://github.com/Keriils/NH-Utilities/releases/tag/1.5.3)              | ✔️   |
+| 2.6+     | 1.3.5-fit261 | [![1.3.5](https://img.shields.io/badge/release-v1.3.5fit261-orange)](https://github.com/Keriils/NH-Utilities/releases/tag/1.3.5-fit261) | ❌    |
