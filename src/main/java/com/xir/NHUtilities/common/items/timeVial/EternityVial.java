@@ -1,9 +1,10 @@
 package com.xir.NHUtilities.common.items.timeVial;
 
-import static com.xir.NHUtilities.config.Config.enableEternityVialCosmicRenderDeepening;
-
-import java.util.List;
-
+import com.xir.NHUtilities.utils.TooltipsChroma;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.avaritia.items.LudicrousItems;
+import fox.spiteful.avaritia.render.ICosmicRenderItem;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,15 +13,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-
 import org.jetbrains.annotations.NotNull;
 
-import com.xir.NHUtilities.utils.TooltipsChroma;
+import java.util.List;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.avaritia.items.LudicrousItems;
-import fox.spiteful.avaritia.render.ICosmicRenderItem;
+import static com.xir.NHUtilities.config.Config.enableEternityVialCosmicRenderDeepening;
 
 public class EternityVial extends TimeVial implements ICosmicRenderItem {
 
@@ -36,9 +33,9 @@ public class EternityVial extends TimeVial implements ICosmicRenderItem {
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister register) {
         super.registerIcons(register);
-        this.cosmicMask = register.registerIcon(
-            enableEternityVialCosmicRenderDeepening ? "nhutilities:TimeVial/EternityVial_mask"
-                : "nhutilities:TimeVial/EternityVial_mask2");
+        this.cosmicMask = register.registerIcon(enableEternityVialCosmicRenderDeepening
+            ? "nhutilities:TimeVial/EternityVial_mask"
+            : "nhutilities:TimeVial/EternityVial_mask2");
     }
 
     @Override
@@ -76,5 +73,9 @@ public class EternityVial extends TimeVial implements ICosmicRenderItem {
     @Override
     public boolean hasCustomEntity(ItemStack stack) {
         return true;
+    }
+
+    public String getItemStackDisplayName(ItemStack stack) {
+        return super.getItemStackDisplayName(stack);
     }
 }
