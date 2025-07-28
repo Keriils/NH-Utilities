@@ -77,4 +77,8 @@ public class EternityVial extends TimeVial implements ICosmicRenderItem {
     public boolean hasCustomEntity(ItemStack stack) {
         return true;
     }
+
+    public String getItemStackDisplayName(ItemStack stack) {
+        return super.getItemStackDisplayName(stack);
+    }
 }

@@ -234,4 +234,15 @@ public class TimeVial extends ItemBase {
         int seconds = storedTimeSeconds % 60;
         list.add(I18n.format("text.TimeVial.tips", hours, minutes, seconds));
     }
+
+    public String getItemStackDisplayName(ItemStack stack) {
+        NBTTagCompound nbtTagCompound = stack.getTagCompound();
+        if (nbtTagCompound == null) nbtTagCompound = new NBTTagCompound();
+        int storedTimeSeconds = nbtTagCompound.getInteger(NBT_STORED_TICK) / 20;
+        int hours = storedTimeSeconds / 3600;
+        int minutes = (storedTimeSeconds % 3600) / 60;
+        int seconds = storedTimeSeconds % 60;
+        return I18n.format(this.getUnlocalizedNameInefficiently(stack) + ".name")
+            + I18n.format("text.TimeVial.tips", hours, minutes, seconds);
+    }
 }
