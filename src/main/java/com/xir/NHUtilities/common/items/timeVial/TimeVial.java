@@ -28,8 +28,8 @@ import org.jetbrains.annotations.NotNull;
 import com.github.bsideup.jabel.Desugar;
 import com.xir.NHUtilities.common.entity.EntityTimeAccelerator;
 import com.xir.NHUtilities.common.items.aItemCore.ItemBase;
+import com.xir.NHUtilities.main.ReferencedInfo;
 
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.avaritia.entity.EntityImmortalItem;
@@ -247,9 +247,7 @@ public class TimeVial extends ItemBase {
     }
 
     public String getItemStackDisplayName(ItemStack stack) {
-        if (FMLCommonHandler.instance()
-            .getSide()
-            .isClient()) {
+        if (ReferencedInfo.IS_CLIENT_SIDE) {
             TimeComponents time = getStoredTimeComponents(stack);
             return I18n.format(this.getUnlocalizedNameInefficiently(stack) + ".name") + " "
                 + I18n.format("text.TimeVial.tips", time.hours, time.minutes, time.seconds)

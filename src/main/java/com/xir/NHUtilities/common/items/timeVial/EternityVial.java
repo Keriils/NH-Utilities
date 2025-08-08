@@ -16,9 +16,9 @@ import net.minecraft.world.World;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.xir.NHUtilities.main.ReferencedInfo;
 import com.xir.NHUtilities.utils.TooltipsChroma;
 
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.avaritia.items.LudicrousItems;
@@ -81,9 +81,7 @@ public class EternityVial extends TimeVial implements ICosmicRenderItem {
     }
 
     public String getItemStackDisplayName(ItemStack stack) {
-        if (FMLCommonHandler.instance()
-            .getSide()
-            .isClient()) {
+        if (ReferencedInfo.IS_CLIENT_SIDE) {
             return I18n.format(this.getUnlocalizedNameInefficiently(stack) + ".name")
                 + I18n.format("text.EternityVial.tips")
                 + I18n.format(
