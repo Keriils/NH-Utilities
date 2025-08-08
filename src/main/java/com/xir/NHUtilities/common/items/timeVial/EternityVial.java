@@ -5,6 +5,7 @@ import static com.xir.NHUtilities.config.Config.enableEternityVialCosmicRenderDe
 import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -15,6 +16,7 @@ import net.minecraft.world.World;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.xir.NHUtilities.main.ReferencedInfo;
 import com.xir.NHUtilities.utils.TooltipsChroma;
 
 import cpw.mods.fml.relauncher.Side;
@@ -79,6 +81,14 @@ public class EternityVial extends TimeVial implements ICosmicRenderItem {
     }
 
     public String getItemStackDisplayName(ItemStack stack) {
-        return super.getItemStackDisplayName(stack);
+        if (ReferencedInfo.IS_CLIENT_SIDE) {
+            return I18n.format(this.getUnlocalizedNameInefficiently(stack) + ".name")
+                + I18n.format("text.EternityVial.tips")
+                + I18n.format(
+                    TooltipsChroma.applyChromaEffect(StatCollector.translateToLocal("text.EternityVial.details_0")))
+                + "§r";
+        } else {
+            return super.getItemStackDisplayName(stack);
+        }
     }
 }
