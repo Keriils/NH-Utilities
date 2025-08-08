@@ -252,6 +252,7 @@ public class TimeVial extends ItemBase {
             .isClient()) {
             TimeComponents time = getStoredTimeComponents(stack);
             return I18n.format(this.getUnlocalizedNameInefficiently(stack) + ".name")
+                + " "
                 + I18n.format("text.TimeVial.tips", time.hours, time.minutes, time.seconds);
         } else {
             return super.getItemStackDisplayName(stack);
