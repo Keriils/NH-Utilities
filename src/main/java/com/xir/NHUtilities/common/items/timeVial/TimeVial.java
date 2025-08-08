@@ -25,9 +25,11 @@ import net.minecraft.world.World;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.github.bsideup.jabel.Desugar;
 import com.xir.NHUtilities.common.entity.EntityTimeAccelerator;
 import com.xir.NHUtilities.common.items.aItemCore.ItemBase;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.avaritia.entity.EntityImmortalItem;
@@ -224,25 +226,35 @@ public class TimeVial extends ItemBase {
         }
     }
 
+    @Desugar
+    protected record TimeComponents(int hours, int minutes, int seconds) {}
+
     @SideOnly(Side.CLIENT)
-    protected void getInfoFromNBT(@NotNull ItemStack stack, List<String> list) {
+    protected TimeComponents getStoredTimeComponents(ItemStack stack) {
         NBTTagCompound nbtTagCompound = stack.getTagCompound();
         if (nbtTagCompound == null) nbtTagCompound = new NBTTagCompound();
         int storedTimeSeconds = nbtTagCompound.getInteger(NBT_STORED_TICK) / 20;
         int hours = storedTimeSeconds / 3600;
         int minutes = (storedTimeSeconds % 3600) / 60;
         int seconds = storedTimeSeconds % 60;
-        list.add(I18n.format("text.TimeVial.tips", hours, minutes, seconds));
+        return new TimeComponents(hours, minutes, seconds);
+    }
+
+    @SideOnly(Side.CLIENT)
+    protected void getInfoFromNBT(@NotNull ItemStack stack, List<String> list) {
+        TimeComponents time = getStoredTimeComponents(stack);
+        list.add(I18n.format("text.TimeVial.tips", time.hours, time.minutes, time.seconds));
     }
 
     public String getItemStackDisplayName(ItemStack stack) {
-        NBTTagCompound nbtTagCompound = stack.getTagCompound();
-        if (nbtTagCompound == null) nbtTagCompound = new NBTTagCompound();
-        int storedTimeSeconds = nbtTagCompound.getInteger(NBT_STORED_TICK) / 20;
-        int hours = storedTimeSeconds / 3600;
-        int minutes = (storedTimeSeconds % 3600) / 60;
-        int seconds = storedTimeSeconds % 60;
-        return I18n.format(this.getUnlocalizedNameInefficiently(stack) + ".name")
-            + I18n.format("text.TimeVial.tips", hours, minutes, seconds);
+        if (FMLCommonHandler.instance()
+            .getSide()
+            .isClient()) {
+            TimeComponents time = getStoredTimeComponents(stack);
+            return I18n.format(this.getUnlocalizedNameInefficiently(stack) + ".name")
+                + I18n.format("text.TimeVial.tips", time.hours, time.minutes, time.seconds);
+        } else {
+            return super.getItemStackDisplayName(stack);
+        }
     }
 }

@@ -87,7 +87,8 @@ item.RodPrimordialPearlPlutoniumDepleted4.name=Quad Fuel Rod (Depleted Super Exc
 
 # Tooltips For Time Vial
 text.EternityVial.details_0=Eternity
-text.TimeVial.tips=§ftime: §6%d hours §d%d minutes §a%d seconds 
+text.EternityVial.tips=§f time: 
+text.TimeVial.tips=§f time: §6%d hours §d%d minutes §a%d seconds 
 text.TimeVial.details_0=Possesses 6 acceleration gradients.
 text.TimeVial.details_1=Default adjustable range [4->128].
 text.TimeVial.details_2=Can be modified in the configuration to [8->256].
