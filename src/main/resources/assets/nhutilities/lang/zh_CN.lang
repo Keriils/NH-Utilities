@@ -88,7 +88,7 @@ item.RodPrimordialPearlPlutoniumDepleted4.name=四联枯竭燃料棒(超激发�
 # Tooltips For Time Vial
 text.EternityVial.details_0=Eternity
 text.EternityVial.tips=§f 时间: 
-text.TimeVial.tips=§f时间: §6%d 小时 §d%d 分钟 §a%d 秒  
+text.TimeVial.tips=§f时间: §6%d 小时 §d%d 分钟 §a%d 秒 
 text.TimeVial.details_0=拥有 6 个加速梯度
 text.TimeVial.details_1=默认可调整范围[4->128]
 text.TimeVial.details_2=可在配置修改为[8->256]

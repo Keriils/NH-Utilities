@@ -84,9 +84,11 @@ public class EternityVial extends TimeVial implements ICosmicRenderItem {
         if (FMLCommonHandler.instance()
             .getSide()
             .isClient()) {
-            return I18n.format(this.getUnlocalizedNameInefficiently(stack) + ".name") +
-                I18n.format("text.EternityVial.tips") +
-                I18n.format(TooltipsChroma.applyChromaEffect(StatCollector.translateToLocal("text.EternityVial.details_0")));
+            return I18n.format(this.getUnlocalizedNameInefficiently(stack) + ".name")
+                + I18n.format("text.EternityVial.tips")
+                + I18n.format(
+                    TooltipsChroma.applyChromaEffect(StatCollector.translateToLocal("text.EternityVial.details_0")))
+                + "§r";
         } else {
             return super.getItemStackDisplayName(stack);
         }
