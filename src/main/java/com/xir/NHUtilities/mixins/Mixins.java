@@ -93,12 +93,6 @@ public enum Mixins {
 
     GregTech_Wireless_Things(
 
-        newMixinClass("Modify_BaseMTE_WirelessCover_Feature")
-            .setClass("BaseMetaTileEntityWirelessCover_Mixin")
-            .setPackagePath(PackagePath.GregTech)
-            .setPhase(Phase.LATE)
-            .addTargetMod(TargetMod.GregTech)
-            .addCondition(enableWirelessHatchMore),
         newMixinClass("Ban_Original_Wireless_Recipes")
             .setClass("BanOriginalWirelessRecipes_Mixin")
             .setPackagePath(PackagePath.TecTech)
