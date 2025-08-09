@@ -3,8 +3,9 @@ package com.xir.NHUtilities.mixins.late.GregTech;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
+@SuppressWarnings("UnusedMixin")
 @Mixin(targets = "gregtech.common.covers.CoverChest$LimitingItemStackHandler")
-public abstract class CoverChestStacksize_Mixin {
+public class CoverChestStacksize_Mixin {
 
     /**
      * @author ChromaPIE
