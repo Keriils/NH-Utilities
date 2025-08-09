@@ -1,5 +1,6 @@
 package com.xir.NHUtilities.mixins;
 
+import static com.xir.NHUtilities.config.Config.disableChestCoverStacksizeLimit;
 import static com.xir.NHUtilities.config.Config.disableDollyDebuff;
 import static com.xir.NHUtilities.config.Config.disableSuperChestOrTankDebuff;
 import static com.xir.NHUtilities.config.Config.enableAccelerateEnderIoMachine;
@@ -128,6 +129,12 @@ public enum Mixins {
             .setPhase(Phase.LATE)
             .addTargetMod(TargetMod.GregTech)
             .addCondition(disableSuperChestOrTankDebuff),
+        newMixinClass("Disable_ChestCover_Stacksize_Limit")
+            .setClass("CoverChestStacksize_Mixin")
+            .setPackagePath(PackagePath.GregTech)
+            .setPhase(Phase.LATE)
+            .addTargetMod(TargetMod.GregTech)
+            .addCondition(disableChestCoverStacksizeLimit),
         newMixinClass("Modify_Some_Configs")
             .setClass("ModifySomeConfigs")
             .setPackagePath(PackagePath.GregTech)
