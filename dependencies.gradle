@@ -4,16 +4,16 @@ dependencies {
 
     //    api('com.github.GTNewHorizons:Baubles:1.0.4:dev')
     api('com.github.GTNewHorizons:Baubles-Expanded:2.1.9-GTNH:dev')
-    api('com.github.GTNewHorizons:NewHorizonsCoreMod:2.7.223:dev')
-    api('com.github.GTNewHorizons:GT5-Unofficial:5.09.51.389:dev')
-    api('com.github.GTNewHorizons:EnderIO:2.9.18:dev') { transitive = false }
+    api('com.github.GTNewHorizons:NewHorizonsCoreMod:2.7.232:dev')
+    api('com.github.GTNewHorizons:GT5-Unofficial:5.09.51.418:dev')
+    api('com.github.GTNewHorizons:EnderIO:2.9.22:dev') { transitive = false }
     api('com.github.GTNewHorizons:EnderCore:0.4.8:dev') { transitive = false }
     api('com.github.GTNewHorizons:BrandonsCore:1.2.0-GTNH:dev') { transitive = false }
-    api('com.github.GTNewHorizons:Draconic-Evolution:1.4.23-GTNH:dev') { transitive = false }
+    api('com.github.GTNewHorizons:Draconic-Evolution:1.4.24-GTNH:dev') { transitive = false }
     api('com.github.GTNewHorizons:ae2stuff:0.9.6-GTNH:dev')
-    api('com.github.GTNewHorizons:Botania:1.12.16-GTNH:dev') { transitive = false }
-    api('com.github.GTNewHorizons:Avaritia:1.68:dev') { transitive = false }
-    api('com.github.GTNewHorizons:SpiceOfLife:2.2.1-carrot:dev') { transitive = false }
+    api('com.github.GTNewHorizons:Botania:1.12.21-GTNH:dev') { transitive = false }
+    api('com.github.GTNewHorizons:Avaritia:1.70:dev') { transitive = false }
+    api('com.github.GTNewHorizons:SpiceOfLife:2.2.2-carrot:dev') { transitive = false }
     api('com.github.GTNewHorizons:AppleCore:3.3.5:dev') { transitive = false }
 
     implementation('com.github.GTNewHorizons:Avaritiaddons:1.9.0-GTNH:dev')
@@ -22,14 +22,14 @@ dependencies {
     implementation(rfg.deobf('curse.maven:extra-utilities-225561:2264384'))
     implementation('com.github.GTNewHorizons:worldedit-gtnh:v0.0.7:dev') { transitive = false }
     implementation('com.github.GTNewHorizons:Jabba:1.5.10:dev') { transitive = false }
-    implementation('com.github.GTNewHorizons:ThaumicTinkerer:2.11.16:dev') { transitive = false }
+    implementation('com.github.GTNewHorizons:ThaumicTinkerer:2.11.20:dev') { transitive = false }
     implementation('com.github.GTNewHorizons:WarpTheory:1.5.0-GTNH:dev')
     implementation('com.github.GTNewHorizons:Mobs-Info:0.5.3-GTNH:dev')
 
     // debug info & nbtEdit
     runtimeOnlyNonPublishable fileTree(dir: 'libs', include: ['*.jar'])
-    runtimeOnlyNonPublishable('com.github.GTNewHorizons:ServerUtilities:2.1.55:dev') { transitive = false }
-    runtimeOnlyNonPublishable('com.github.GTNewHorizons:Angelica:1.0.0-beta49:dev') { transitive = false }
+    runtimeOnlyNonPublishable('com.github.GTNewHorizons:ServerUtilities:2.1.57:dev') { transitive = false }
+    runtimeOnlyNonPublishable('com.github.GTNewHorizons:Angelica:1.0.0-beta53:dev') { transitive = false }
     runtimeOnlyNonPublishable('com.github.GTNewHorizons:BlockRenderer6343:1.3.16:dev') { transitive = false }
 
     configurations.configureEach {
