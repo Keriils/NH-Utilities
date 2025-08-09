@@ -68,7 +68,9 @@ public enum CoverEnergyType {
         protected void operate(WirelessEnergyCover cover, long aTickTimer) {
             bmtAction(cover, (bmt, mte) -> {
                 if (aTickTimer % 20 == 0) {
-                    var euToMachineCache = min(bmt.getEUCapacity() - bmt.getStoredEU(), cover.mEUPower * 20L);
+                    var euToMachineCache = min(
+                        bmt.getEUCapacity() - bmt.getStoredEU(),
+                        min(cover.mEUPower * 20L, cover.energyEU));
                     if (euToMachineCache > 0) {
                         cover.energyEU -= euToMachineCache;
                         bmt.increaseStoredEnergyUnits(euToMachineCache, true);
