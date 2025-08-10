@@ -28,15 +28,18 @@ public enum CoverEnergyType {
 
         @Override
         protected void operate(WirelessEnergyCover cover, long aTickTimer) {
+            var timer = aTickTimer % 20 == 0;
+            var operate = aTickTimer % ticks_between_energy_addition == 0;
+            if (!timer && !operate) return;
             bmtAction(cover, (bmt, mte) -> {
-                if (aTickTimer % 20 == 0) {
+                if (timer) {
                     var euToCache = min(mte.getEUVar(), cover.mEUPower * 20L);
                     if (euToCache > 0) {
                         cover.energyEU += euToCache;
                         bmt.decreaseStoredEnergyUnits(euToCache, true);
                     }
                 }
-                if (aTickTimer % ticks_between_energy_addition == 0) {
+                if (operate) {
                     var euToTransfer = min(cover.energyEU, cover.maxEUPerOperation);
                     if (euToTransfer <= 0) return;
                     pushEnergy(bmt, euToTransfer, () -> cover.energyEU = max(cover.energyEU - euToTransfer, 0));
@@ -66,8 +69,11 @@ public enum CoverEnergyType {
 
         @Override
         protected void operate(WirelessEnergyCover cover, long aTickTimer) {
+            var timer = aTickTimer % 20 == 0;
+            var operate = aTickTimer % ticks_between_energy_addition == 0;
+            if (!timer && !operate) return;
             bmtAction(cover, (bmt, mte) -> {
-                if (aTickTimer % 20 == 0) {
+                if (timer) {
                     var euToMachineCache = min(
                         bmt.getEUCapacity() - bmt.getStoredEU(),
                         min(cover.mEUPower * 20L, cover.energyEU));
@@ -76,7 +82,7 @@ public enum CoverEnergyType {
                         bmt.increaseStoredEnergyUnits(euToMachineCache, true);
                     }
                 }
-                if (aTickTimer % ticks_between_energy_addition == 0 && cover.energyEU < cover.maxEUPerOperation) {
+                if (operate && cover.energyEU < cover.maxEUPerOperation) {
                     var euToTransfer = cover.maxEUPerOperation - cover.energyEU;
                     if (euToTransfer <= 0) return;
                     pullEnergy(bmt, euToTransfer, () -> cover.energyEU += euToTransfer);
