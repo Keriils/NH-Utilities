@@ -18,9 +18,9 @@
 </p>
 
 ## 介绍
-本模组是为GTNH整合包制作的社区模组  
-当前主要维护者 Keriils Tc_traveler  
-通过添加和修改游戏内容帮助玩家更顺畅地度过前中期发展阶段?(或许是老登玩具...)  
+本模组是为GTNH整合包制作的社区模组
+当前主要维护者 Keriils Tc_traveler
+通过添加和修改游戏内容帮助玩家更顺畅地度过前中期发展阶段?(或许是老登玩具...)
 
 > [!WARNING]
 > 本模组非GTNH官方模组，请勿在官方场合讨论相关内容
@@ -148,8 +148,9 @@ config/NHUtilities/NHUtilities.cfg
 
 ## 📥 下载与兼容
 
-| GTNH 版本  | NHU 版本       | 下载                                                                                                                                      | 维护状态 |
-|----------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------|------|
-| 280beta1 | 1.5.4        | [![1.5.4](https://img.shields.io/badge/release-v1.5.4-00FF00)](https://github.com/Keriils/NH-Utilities/releases/tag/1.5.4)              | ✔️   |
-| 2.7+     | 1.3.5+       | [![1.5.3](https://img.shields.io/badge/release-v1.5.3-0000FF)](https://github.com/Keriils/NH-Utilities/releases/tag/1.5.3)              | ✔️   |
-| 2.6+     | 1.3.5-fit261 | [![1.3.5](https://img.shields.io/badge/release-v1.3.5fit261-orange)](https://github.com/Keriils/NH-Utilities/releases/tag/1.3.5-fit261) | ❌    |
+| GTNH 版本   | NHU 版本       | 下载                                                                                                                                      | 维护状态 |
+|-----------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------|------|
+| 280-beta2 | 1.5.6        | [![1.5.6](https://img.shields.io/badge/release-v1.5.6-00FF00)](https://github.com/Keriils/NH-Utilities/releases/tag/1.5.6)              | ✔️   |
+| 280-beta1 | 1.5.4        | [![1.5.5](https://img.shields.io/badge/release-v1.5.5-0000FF)](https://github.com/Keriils/NH-Utilities/releases/tag/1.5.5)              | ❌️   |
+| 2.7+      | 1.3.5+       | [![1.5.3](https://img.shields.io/badge/release-v1.5.3-0000FF)](https://github.com/Keriils/NH-Utilities/releases/tag/1.5.3)              | ❌️   |
+| 2.6+      | 1.3.5-fit261 | [![1.3.5](https://img.shields.io/badge/release-v1.3.5fit261-orange)](https://github.com/Keriils/NH-Utilities/releases/tag/1.3.5-fit261) | ❌    |
