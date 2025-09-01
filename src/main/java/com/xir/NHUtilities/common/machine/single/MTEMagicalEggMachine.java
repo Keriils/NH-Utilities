@@ -16,11 +16,11 @@ import static gregtech.api.enums.Textures.BlockIcons.MACHINE_CASING_MAGIC_FRONT_
 import static gregtech.api.enums.Textures.BlockIcons.MACHINE_CASING_MAGIC_FRONT_ACTIVE_GLOW;
 import static gregtech.api.enums.Textures.BlockIcons.MACHINE_CASING_MAGIC_FRONT_GLOW;
 import static gregtech.api.enums.Textures.BlockIcons.MACHINE_CASING_MAGIC_GLOW;
-import static gregtech.api.enums.Textures.BlockIcons.OVERLAYS_ENERGY_OUT_MULTI;
+import static gregtech.api.enums.Textures.BlockIcons.OVERLAYS_ENERGY_IN_MULTI_16A;
+import static gregtech.api.enums.Textures.BlockIcons.OVERLAYS_ENERGY_OUT_MULTI_2A;
 import static gregtech.api.objects.XSTR.XSTR_INSTANCE;
 import static gregtech.common.misc.WirelessNetworkManager.addEUToGlobalEnergyMap;
 import static net.minecraft.util.StatCollector.translateToLocal;
-import static tectech.thing.metaTileEntity.Textures.OVERLAYS_ENERGY_IN_WIRELESS_MULTI_16A;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -456,8 +456,8 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
 
     @Override
     public ITexture[] getFront(byte aColor) {
-        ITexture[] ENERGY_OUT = OVERLAYS_ENERGY_OUT_MULTI;
-        if (isWirelessMode) ENERGY_OUT = OVERLAYS_ENERGY_IN_WIRELESS_MULTI_16A;
+        ITexture[] ENERGY_OUT = OVERLAYS_ENERGY_OUT_MULTI_2A;
+        if (isWirelessMode) ENERGY_OUT = OVERLAYS_ENERGY_IN_MULTI_16A;
         return new ITexture[] { super.getFront(aColor)[0], TextureFactory.of(MACHINE_CASING_MAGIC),
             TextureFactory.builder()
                 .addIcon(MACHINE_CASING_MAGIC_GLOW)
@@ -500,8 +500,8 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
 
     @Override
     public ITexture[] getFrontActive(byte aColor) {
-        ITexture[] ENERGY_OUT = OVERLAYS_ENERGY_OUT_MULTI;
-        if (isWirelessMode) ENERGY_OUT = OVERLAYS_ENERGY_IN_WIRELESS_MULTI_16A;
+        ITexture[] ENERGY_OUT = OVERLAYS_ENERGY_OUT_MULTI_2A;
+        if (isWirelessMode) ENERGY_OUT = OVERLAYS_ENERGY_IN_MULTI_16A;
         return new ITexture[] { super.getFrontActive(aColor)[0], TextureFactory.of(MACHINE_CASING_MAGIC_ACTIVE),
             TextureFactory.builder()
                 .addIcon(MACHINE_CASING_MAGIC_ACTIVE_GLOW)
