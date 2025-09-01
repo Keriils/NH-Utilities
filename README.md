@@ -64,7 +64,7 @@
   <img src="pics/warpring.png" width="30%" alt="净化之戒"/>
   <br/>
   <img src="pics/fuelrod1.png" width="45%" alt="燃料棒界面1"/>
-  <img src="pics/fuelrod2.png"width="45%" alt="燃料棒界面2"/>
+  <img src="pics/fuelrod2.png" width="45%" alt="燃料棒界面2"/>
 </div>
 <ul>
   <li>新增神秘侧奥术工业高炉 (MV后期解锁)</li>
@@ -152,7 +152,8 @@ config/NHUtilities/NHUtilities.cfg
 
 | GTNH 版本   | NHU 版本       | 下载                                                                                                                                      | 维护状态 |
 |-----------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------|------|
-| 280-beta2 | 1.5.6        | [![1.5.6](https://img.shields.io/badge/release-v1.5.6-00FF00)](https://github.com/Keriils/NH-Utilities/releases/tag/1.5.6)              | ✔️   |
+| 280-beta3 | 1.5.7        | [![1.5.7](https://img.shields.io/badge/release-v1.5.7-00FF00)](https://github.com/Keriils/NH-Utilities/releases/tag/1.5.7)              | ✔️   |
+| 280-beta2 | 1.5.6        | [![1.5.6](https://img.shields.io/badge/release-v1.5.6-0000FF)](https://github.com/Keriils/NH-Utilities/releases/tag/1.5.6)              | ❌️   |
 | 280-beta1 | 1.5.4        | [![1.5.5](https://img.shields.io/badge/release-v1.5.5-0000FF)](https://github.com/Keriils/NH-Utilities/releases/tag/1.5.5)              | ❌️   |
 | 2.7+      | 1.3.5+       | [![1.5.3](https://img.shields.io/badge/release-v1.5.3-0000FF)](https://github.com/Keriils/NH-Utilities/releases/tag/1.5.3)              | ❌️   |
 | 2.6+      | 1.3.5-fit261 | [![1.3.5](https://img.shields.io/badge/release-v1.3.5fit261-orange)](https://github.com/Keriils/NH-Utilities/releases/tag/1.3.5-fit261) | ❌    |
