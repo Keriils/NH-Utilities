@@ -11,7 +11,9 @@ import net.minecraftforge.fluids.Fluid;
 import org.jetbrains.annotations.NotNull;
 
 import com.google.common.io.ByteArrayDataInput;
+import com.xir.NHUtilities.utils.CommonUtil;
 
+import cpw.mods.fml.relauncher.Side;
 import gregtech.api.covers.CoverContext;
 import gregtech.api.interfaces.ITexture;
 import gregtech.common.covers.Cover;
@@ -71,12 +73,12 @@ public class WirelessEnergyCover extends Cover {
 
     @Override
     public void onBaseTEDestroyed() {
-        energyType.baseTEDestroyed(this);
+        CommonUtil.sideApply(Side.SERVER, () -> energyType.baseTEDestroyed(this));
     }
 
     @Override
     public void onCoverRemoval() {
-        energyType.onRemoval(this);
+        CommonUtil.sideApply(Side.SERVER, () -> energyType.onRemoval(this));
     }
 
     @Override
