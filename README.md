@@ -152,7 +152,7 @@ config/NHUtilities/NHUtilities.cfg
 
 | GTNH 版本   | NHU 版本       | 下载                                                                                                                                      | 维护状态 |
 |-----------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------|------|
-| 280-beta3 | 1.5.7        | [![1.5.7](https://img.shields.io/badge/release-v1.5.7-00FF00)](https://github.com/Keriils/NH-Utilities/releases/tag/1.5.7)              | ✔️   |
+| 280-beta3 | 1.5.8        | [![1.5.8](https://img.shields.io/badge/release-v1.5.8-00FF00)](https://github.com/Keriils/NH-Utilities/releases/tag/1.5.8)              | ✔️   |
 | 280-beta2 | 1.5.6        | [![1.5.6](https://img.shields.io/badge/release-v1.5.6-0000FF)](https://github.com/Keriils/NH-Utilities/releases/tag/1.5.6)              | ❌️   |
 | 280-beta1 | 1.5.4        | [![1.5.5](https://img.shields.io/badge/release-v1.5.5-0000FF)](https://github.com/Keriils/NH-Utilities/releases/tag/1.5.5)              | ❌️   |
 | 2.7+      | 1.3.5+       | [![1.5.3](https://img.shields.io/badge/release-v1.5.3-0000FF)](https://github.com/Keriils/NH-Utilities/releases/tag/1.5.3)              | ❌️   |
