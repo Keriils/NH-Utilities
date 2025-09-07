@@ -19,6 +19,7 @@ import static gregtech.api.enums.Textures.BlockIcons.OVERLAY_FRONT_ELECTRIC_BLAS
 import static gregtech.api.enums.Textures.BlockIcons.OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW;
 import static gregtech.api.enums.Textures.BlockIcons.OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_GLOW;
 import static gregtech.api.enums.Textures.BlockIcons.casingTexturePages;
+import static gregtech.api.util.GTStructureUtility.activeCoils;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
 import static gregtech.api.util.GTStructureUtility.ofCoil;
 import static gregtech.api.util.GTUtility.filterValidMTEs;
@@ -76,8 +77,8 @@ import thaumcraft.api.visnet.VisNetHandler;
 public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> implements ISurvivalConstructable {
 
     private boolean isNewTexture = true;
-    private double tcSpeedBonus = 1.0 / 1.25;
-    private double tcEuModifier = 1.0 / 1.05;
+    private double tcSpeedBonus = 0.8;
+    private double tcEuModifier = 0.95;
     private int mHeatingCapacity = 0;
     protected final ArrayList<MTEHatchOutput> mPollutionOutputHatches = new ArrayList<>();
     protected final FluidStack[] pollutionFluidStacks = { Materials.CarbonDioxide.getGas(1000),
@@ -100,7 +101,7 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
                 .dot(1)
                 .buildAndChain(GregTechAPI.sBlockCasings1, CASING_INDEX))
         .addElement('m', Muffler.newAny(CASING_INDEX, 2))
-        .addElement('C', ofCoil(TCBlastFurnace::setCoilLevel, TCBlastFurnace::getCoilLevel))
+        .addElement('C',activeCoils(ofCoil(TCBlastFurnace::setCoilLevel, TCBlastFurnace::getCoilLevel)))
         .addElement(
             'b',
             buildHatchAdder(TCBlastFurnace.class)
@@ -163,11 +164,11 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
             .addInfo(
                 StatCollector.translateToLocal("nhu.tcebf.machine.info_4") + ":"
                     + EnumChatFormatting.AQUA
-                    + "100/⌈125+75*fire(cv)*entropy(cv)/(fire(cv)*entropy(cv)+13.5)⌉")
+                    + "⌊80-30*fire(cv)*entropy(cv)/(fire(cv)*entropy(cv)+13.5)⌋/100")
             .addInfo(
                 StatCollector.translateToLocal("nhu.tcebf.machine.info_5") + ":"
                     + EnumChatFormatting.AQUA
-                    + "100/⌈105+15*fire(cv)*order(cv)/(fire(cv)*order(cv)+13.5)⌉")
+                    + "⌊95-15*fire(cv)*order(cv)/(fire(cv)*order(cv)+13.5)⌋/100")
             .addInfo(StatCollector.translateToLocal("nhu.tcebf.machine.info_6"))
             .addInfo(
                 "" + EnumChatFormatting.ITALIC
@@ -476,18 +477,18 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
     }
 
     private void getNode(World world, int x, int y, int z) {
-        int fire = VisNetHandler.drainVis(world, x, y, z, Aspect.FIRE, 999);
-        int entropy = VisNetHandler.drainVis(world, x, y, z, Aspect.ENTROPY, 999);
-        int order = VisNetHandler.drainVis(world, x, y, z, Aspect.ORDER, 999);
+        double fire = VisNetHandler.drainVis(world, x, y, z, Aspect.FIRE, 999);
+        double entropy = VisNetHandler.drainVis(world, x, y, z, Aspect.ENTROPY, 999);
+        double order = VisNetHandler.drainVis(world, x, y, z, Aspect.ORDER, 999);
         if (fire == 0 || entropy == 0) {
             tcSpeedBonus = 0.8F;
         } else {
-            tcSpeedBonus = 100.0 / Math.ceil(125.0 + 75.0 * fire * entropy / (fire * entropy + 13.5F));
+            tcSpeedBonus = Math.floor(80.0 - 30.0*fire*entropy/(fire*entropy+13.5))/100.0;
         }
         if (fire == 0 || order == 0) {
-            tcEuModifier = 1.0 / 1.05;
+            tcEuModifier = 0.95F;
         } else {
-            tcEuModifier = 100.0 / Math.ceil(105 + 15.0 * fire * order / (fire * order + 13.5F));
+            tcEuModifier = Math.floor(95.0 - 15.0*fire*order/(fire*order+13.5))/100.0;
         }
     }
 }
