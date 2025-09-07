@@ -31,9 +31,6 @@ import java.util.List;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import gregtech.api.enums.SoundResource;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -48,10 +45,13 @@ import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
 import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import gregtech.GTMod;
 import gregtech.api.GregTechAPI;
 import gregtech.api.enums.HeatingCoilLevel;
 import gregtech.api.enums.Materials;
+import gregtech.api.enums.SoundResource;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.fluid.IFluidStore;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
@@ -101,7 +101,7 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
                 .dot(1)
                 .buildAndChain(GregTechAPI.sBlockCasings1, CASING_INDEX))
         .addElement('m', Muffler.newAny(CASING_INDEX, 2))
-        .addElement('C',activeCoils(ofCoil(TCBlastFurnace::setCoilLevel, TCBlastFurnace::getCoilLevel)))
+        .addElement('C', activeCoils(ofCoil(TCBlastFurnace::setCoilLevel, TCBlastFurnace::getCoilLevel)))
         .addElement(
             'b',
             buildHatchAdder(TCBlastFurnace.class)
@@ -483,12 +483,12 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
         if (fire == 0 || entropy == 0) {
             tcSpeedBonus = 0.8F;
         } else {
-            tcSpeedBonus = Math.floor(80.0 - 30.0*fire*entropy/(fire*entropy+13.5))/100.0;
+            tcSpeedBonus = Math.floor(80.0 - 30.0 * fire * entropy / (fire * entropy + 13.5)) / 100.0;
         }
         if (fire == 0 || order == 0) {
             tcEuModifier = 0.95F;
         } else {
-            tcEuModifier = Math.floor(95.0 - 15.0*fire*order/(fire*order+13.5))/100.0;
+            tcEuModifier = Math.floor(95.0 - 15.0 * fire * order / (fire * order + 13.5)) / 100.0;
         }
     }
 }
