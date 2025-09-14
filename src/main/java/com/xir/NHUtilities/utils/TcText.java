@@ -19,7 +19,9 @@ public class TcText {
     public static final AspectList resThaumicEBF = new AspectList().add(Aspect.ENERGY, 4)
         .add(Aspect.MECHANISM, 4)
         .add(Aspect.FIRE, 4);
-    public static final AspectList resFocusTape = new AspectList().add(Aspect.ORDER, 10);
+    public static final AspectList resFocusTape = new AspectList().add(Aspect.ORDER, 10)
+        .add(Aspect.ENTROPY, 10)
+        .add(Aspect.TOOL, 10);
     public static final AspectList resWarpWardRing = new AspectList().add(Aspect.ORDER, 4)
         .add(Aspect.FIRE, 4)
         .add(Aspect.WATER, 4)
