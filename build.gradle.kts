@@ -15,7 +15,7 @@ wrapperSpotless {
 
 dependencies {
     dependencyDeclarations {
-        gtnhVersion = "2.8.0-beta-4"
+        gtnhVersion = "2.8.0"
 
         declarationApi {
             declare("GT5-Unofficial")
@@ -56,12 +56,27 @@ dependencies {
     }
 }
 
+val isCiEnvironment = System.getenv("CI") == "true" || System.getenv("GITHUB_ACTIONS") == "true"
+
 // 为 runClient 和 runServer 配置不同的目录
 // 默认是允许的 但是我还是添加了配置 "nhu.runPathIsolation" 去调节
-listOf(tasks.runClient17, tasks.runServer17, tasks.runClient21, tasks.runServer21).forEach {
-    if (properties["nhu.runPathIsolation"] != "true") return@forEach
-    it.configure { workingDir = file("run/${superTask.removePrefix("run").lowercase()}") }
-}
+listOf(tasks.runClient, tasks.runServer, tasks.runClient17, tasks.runServer17, tasks.runClient21, tasks.runServer21)
+    .forEach {
+        if (properties["nhu.runPathIsolation"] == "false" || isCiEnvironment) return@forEach
+        it.configure {
+            // spotless:off
+            workingDir =
+                // runClient[17/21] -> run/client
+                // runServer[17/21] -> run/server
+                file(
+                    it.name
+                        .replace(Regex("\\d+$"), "")
+                        .split(Regex("(?=[A-Z])"))
+                        .joinToString("/") { s -> s.lowercase() }
+                )
+            // spotless:on
+        }
+    }
 
 // 依赖声明相关内容 放最底下.....
 /*
