@@ -28,18 +28,17 @@ public enum CoverEnergyType {
 
         @Override
         protected void operate(WirelessEnergyCover cover, long aTickTimer) {
-            var timer = aTickTimer % 20 == 0;
-            var operate = aTickTimer % ticks_between_energy_addition == 0;
-            if (!timer && !operate) return;
             bmtAction(cover, (bmt, mte) -> {
-                if (timer) {
-                    var euToCache = min(mte.getEUVar(), cover.mEUPower * 20L);
-                    if (euToCache > 0) {
-                        cover.energyEU += euToCache;
-                        bmt.decreaseStoredEnergyUnits(euToCache, true);
-                    }
+
+                // tick operation
+                var euToCache = min(mte.getEUVar(), cover.mEUPower);
+                if (euToCache > 0 && (cover.energyEU + euToCache) <= cover.maxEUPerOperation) {
+                    cover.energyEU += euToCache;
+                    bmt.decreaseStoredEnergyUnits(euToCache, true);
                 }
-                if (operate) {
+
+                // wireless sync
+                if (aTickTimer % ticks_between_energy_addition == 0) {
                     var euToTransfer = min(cover.energyEU, cover.maxEUPerOperation);
                     if (euToTransfer <= 0) return;
                     pushEnergy(bmt, euToTransfer, () -> cover.energyEU = max(cover.energyEU - euToTransfer, 0));
@@ -69,20 +68,19 @@ public enum CoverEnergyType {
 
         @Override
         protected void operate(WirelessEnergyCover cover, long aTickTimer) {
-            var timer = aTickTimer % 20 == 0;
-            var operate = aTickTimer % ticks_between_energy_addition == 0;
-            if (!timer && !operate) return;
             bmtAction(cover, (bmt, mte) -> {
-                if (timer) {
-                    var euToMachineCache = min(
-                        bmt.getEUCapacity() - bmt.getStoredEU(),
-                        min(cover.mEUPower * 20L, cover.energyEU));
-                    if (euToMachineCache > 0) {
-                        cover.energyEU -= euToMachineCache;
-                        bmt.increaseStoredEnergyUnits(euToMachineCache, true);
-                    }
+
+                // tick operation
+                var euToMachineCache = min(
+                    bmt.getEUCapacity() - bmt.getStoredEU(),
+                    min(cover.mEUPower, cover.energyEU));
+                if (euToMachineCache > 0) {
+                    cover.energyEU -= euToMachineCache;
+                    bmt.increaseStoredEnergyUnits(euToMachineCache, true);
                 }
-                if (operate && cover.energyEU < cover.maxEUPerOperation) {
+
+                // wireless sync
+                if (aTickTimer % ticks_between_energy_addition == 0 && cover.energyEU < cover.maxEUPerOperation) {
                     var euToTransfer = cover.maxEUPerOperation - cover.energyEU;
                     if (euToTransfer <= 0) return;
                     pullEnergy(bmt, euToTransfer, () -> cover.energyEU += euToTransfer);
