@@ -28,6 +28,7 @@ import org.jetbrains.annotations.NotNull;
 import com.github.bsideup.jabel.Desugar;
 import com.xir.NHUtilities.common.entity.EntityTimeAccelerator;
 import com.xir.NHUtilities.common.items.aItemCore.ItemBase;
+import com.xir.NHUtilities.config.Config;
 import com.xir.NHUtilities.main.ReferencedInfo;
 
 import cpw.mods.fml.relauncher.Side;
@@ -87,7 +88,7 @@ public class TimeVial extends ItemBase {
             else applyNextAcceleration(stack, eta);
         } else if (consumeTimeData(stack, (int) (TIME_INIT_RATE * 600 * timeVialDiscountValue))) {
             // set the GregTechMachineMode
-            if (player.isSneaking()) eta.setGregTechMachineMode(false);
+            if (player.isSneaking() && !Config.disableShiftModification) eta.setGregTechMachineMode(false);
             world.spawnEntityInWorld(eta);
         }
         etaInteract(eta, world, targetPosX, targetPosY, targetPosZ);
