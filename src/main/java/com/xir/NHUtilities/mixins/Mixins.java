@@ -253,7 +253,13 @@ public enum Mixins {
             .setPackagePath(PackagePath.Structurelib)
             .setPhase(Phase.LATE)
             .addTargetMod(TargetMod.StructureLib)
-            .addCondition(enableHologramItemChannelFeature)
+            .addCondition(enableHologramItemChannelFeature),
+        newMixinClass("MTE_Charcoal_Pit_Util")
+            .setClass("HologramCharcoalPitUtil_Mixin")
+            .setPackagePath(PackagePath.Structurelib)
+            .setPhase(Phase.LATE)
+            .addTargetMod(TargetMod.GregTech, TargetMod.StructureLib)
+            .addCondition(true)
 
     ),
 
