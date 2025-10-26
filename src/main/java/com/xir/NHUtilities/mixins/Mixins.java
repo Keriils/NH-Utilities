@@ -15,7 +15,6 @@ import static com.xir.NHUtilities.config.Config.enableEnhanceOvenGlove;
 import static com.xir.NHUtilities.config.Config.enableEnhancedExUHealingAxe;
 import static com.xir.NHUtilities.config.Config.enableEnhancedTeleporterMKII;
 import static com.xir.NHUtilities.config.Config.enableHologramItemChannelFeature;
-import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
 import static com.xir.NHUtilities.config.Config.enableModifyEnderIoCapBankIO;
 import static com.xir.NHUtilities.config.Config.enableModifyWirelessHatchTexture;
 import static com.xir.NHUtilities.config.Config.enableWEToolWithExuHealingAxe;
@@ -211,14 +210,6 @@ public enum Mixins {
     ),
 
     SpiceOfLife_Modifications(
-
-        newMixinClass("Modify_GuiHandler")
-            .setClass("GuiHandler_Mixin")
-            .setPackagePath(PackagePath.SpiceOfLife)
-            .setPhase(Phase.LATE)
-            .addTargetMod(TargetMod.SpiceOfLife)
-            .addCondition(enableLunchBoxPlus)
-
     ),
 
     NewHorizonsCoreMod_Modifications(

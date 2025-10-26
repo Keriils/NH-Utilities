@@ -6,7 +6,9 @@ import net.minecraft.world.World;
 
 import com.xir.NHUtilities.common.api.NHUCreativeTabs;
 import com.xir.NHUtilities.common.api.interfaces.IRegisterProvider;
+import com.xir.NHUtilities.handler.NHUGuiHandler;
 import com.xir.NHUtilities.inventory.lunchBoxPlus.FoodContainerInventoryPlus;
+import com.xir.NHUtilities.main.NHUtilities;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -26,6 +28,27 @@ public class LunchBoxPlus extends ItemFoodContainer implements IRegisterProvider
 
         setCreativeTab(NHUCreativeTabs.NHUCreativeTab);
 
+    }
+
+    @Override
+    public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player) {
+        if (player.isSneaking()) {
+            setIsOpen(itemStack, !isOpen(itemStack));
+        } else if (canPlayerEatFrom(player, itemStack)) {
+            player.setItemInUse(itemStack, getMaxItemUseDuration(itemStack));
+        } else if (!isOpen(itemStack)) {
+            if (!player.worldObj.isRemote && itemStack.getItem() instanceof LunchBoxPlus) {
+                player.openGui(
+                    NHUtilities.instance,
+                    NHUGuiHandler.lunchBoxPlusGuid,
+                    player.worldObj,
+                    (int) player.posX,
+                    (int) player.posY,
+                    (int) player.posZ);
+            }
+            setIsOpen(itemStack, true);
+        }
+        return itemStack;
     }
 
     @Override
