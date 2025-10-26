@@ -15,9 +15,9 @@ import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 @SuppressWarnings({ "unused", "UnusedReturnValue" })
 public interface IItemContainer {
 
-    Item getItem();
+    <I extends Item> I getItem();
 
-    Block getBlock();
+    <B extends Block> B getBlock();
 
     int getMeta();
 

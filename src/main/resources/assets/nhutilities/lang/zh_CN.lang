@@ -59,6 +59,7 @@ info.teleporterInfBaublesButton.txt=支持使用-按键-打开饰品
 # Common Blocks
 block.ChaosDragonEgg.name=混沌龙蛋
 block.AncientDragonEgg.name=上古末影龙蛋
+block.LunchDispatcher.name=午餐分配器(AE-Wireless)
 
 # Focus
 item.FocusTape.name=法杖核心：航空胶带

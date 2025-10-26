@@ -40,9 +40,15 @@ dependencies {
             declare("Avaritia") { isTransitive = false }
             declare("SpiceOfLife") { isTransitive = false }
             declare("AppleCore") { isTransitive = false }
+            declare("InventoryBogoSorter")
 
             implementation(rfg.deobf("curse.maven:extra-utilities-225561:2264384"))
             implementation("com.github.GTNewHorizons:worldedit-gtnh:v0.0.8:dev") { isTransitive = false }
+        }
+
+        declarationCompileOnly {
+            compileOnly("org.projectlombok:lombok:1.18.42")
+            annotationProcessor("org.projectlombok:lombok:1.18.42")
         }
 
         declarationRuntimeOnlyNonPublishable {

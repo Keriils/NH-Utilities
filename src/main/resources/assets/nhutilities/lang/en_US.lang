@@ -59,6 +59,7 @@ info.teleporterInfBaublesButton.txt=Support the use of-button-to open the bauble
 # Common Blocks
 block.ChaosDragonEgg.name=Chaos Dragon Egg
 block.AncientDragonEgg.name=Ancient Dragon Egg
+block.LunchDispatcher.name=Lunch Dispatcher(AE-Wireless)
 
 # Focus
 item.FocusTape.name=Wand Focus: Tape

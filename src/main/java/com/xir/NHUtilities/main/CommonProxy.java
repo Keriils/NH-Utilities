@@ -6,6 +6,8 @@ import static com.xir.NHUtilities.main.ReferencedInfo.MOD_NAME;
 import com.xir.NHUtilities.common.api.enums.TexturesSets;
 import com.xir.NHUtilities.common.recipes.MassRecipes.NHURecipes;
 import com.xir.NHUtilities.common.research.GTApiResearch;
+import com.xir.NHUtilities.handler.NHUGuiHandler;
+import com.xir.NHUtilities.integration.Integration;
 import com.xir.NHUtilities.loader.EntityLoader;
 import com.xir.NHUtilities.loader.EventLoader;
 import com.xir.NHUtilities.loader.ItemsLoader;
@@ -40,6 +42,8 @@ public class CommonProxy {
 
         LOG.info("Initializing " + MOD_NAME + "!");
 
+        NHUGuiHandler.init();
+
         MachineLoader.initNHUtilitiesMachine();
         LOG.info("Loaded GregTechMachines.");
 
@@ -49,6 +53,7 @@ public class CommonProxy {
         EntityLoader.initNHUtilitiesEntity();
         LOG.info("Loaded Entities.");
 
+        Integration.integrate(event);
     }
 
     public void postInit(FMLPostInitializationEvent event) {

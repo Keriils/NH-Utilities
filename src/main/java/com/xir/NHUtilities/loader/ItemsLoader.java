@@ -11,6 +11,7 @@ import static gregtech.api.enums.Mods.SpiceOfLife;
 import com.xir.NHUtilities.common.api.MTOBuilder;
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.common.blocks.CustomDragonEgg;
+import com.xir.NHUtilities.common.blocks.LunchDispatcher;
 import com.xir.NHUtilities.common.blocks.metaBlockImpl.MetaBlock;
 import com.xir.NHUtilities.common.items.baubles.GluttonyRing;
 import com.xir.NHUtilities.common.items.baubles.HungerRing;
@@ -119,6 +120,7 @@ public class ItemsLoader {
         // region Common Block
         NHUItemList.ChaosDragonEgg.setAndRegister(() -> new CustomDragonEgg("ChaosDragonEgg"), enableEggMachine);
         NHUItemList.AncientDragonEgg.setAndRegister(() -> new CustomDragonEgg("AncientDragonEgg"), enableEggMachine);
+        NHUItemList.LunchDispatcher.setAndRegister(LunchDispatcher::new, true);
         // endregion
 
         // region Meta Item
