@@ -16,20 +16,25 @@ import com.xir.NHUtilities.utils.CommonUtil;
 import cpw.mods.fml.relauncher.Side;
 import gregtech.api.covers.CoverContext;
 import gregtech.api.interfaces.ITexture;
+import gregtech.api.interfaces.tileentity.ICoverable;
 import gregtech.common.covers.Cover;
 import io.netty.buffer.ByteBuf;
 
 public class WirelessEnergyCover extends Cover {
 
     protected long energyEU = 0;
+    protected int coverTimer = 0;
     protected final long mEUPower;
     protected final long maxEUPerOperation;
     protected final CoverEnergyType energyType;
     protected static final String KEY_ENERGY_EU = "energyEU";
+    protected static final String KEY_COVER_TICK = "coverTimer";
+    protected ICoverable coverTile;
 
     public WirelessEnergyCover(int voltage, int ampere, @NotNull CoverEnergyType energyType,
         @NotNull CoverContext context, @NotNull ITexture coverFGTexture) {
         super(context, coverFGTexture);
+        this.coverTile = context.getCoverable();
         this.energyType = energyType;
         this.mEUPower = (long) ampere * (long) voltage;
         this.maxEUPerOperation = ticks_between_energy_addition * mEUPower;
@@ -40,29 +45,34 @@ public class WirelessEnergyCover extends Cover {
     protected void readDataFromNbt(NBTBase nbt) {
         NBTTagCompound tag = (NBTTagCompound) nbt;
         energyEU = tag.getLong(KEY_ENERGY_EU);
+        coverTimer = tag.getInteger(KEY_COVER_TICK);
     }
 
     @Override
     protected void readDataFromPacket(ByteArrayDataInput byteData) {
         energyEU = byteData.readLong();
+        coverTimer = byteData.readInt();
     }
 
     @Override
     protected @NotNull NBTBase saveDataToNbt() {
         NBTTagCompound tag = new NBTTagCompound();
         tag.setLong(KEY_ENERGY_EU, energyEU);
+        tag.setInteger(KEY_COVER_TICK, coverTimer);
         return tag;
     }
 
     @Override
     protected void writeDataToByteBuf(ByteBuf byteBuf) {
         byteBuf.writeLong(energyEU);
+        byteBuf.writeInt(coverTimer);
     }
     // endregion
 
     // region Ticking-logic
     @Override
     public void doCoverThings(byte aRedStone, long aTickTimer) {
+        coverTimer++;
         energyType.operate(this, aTickTimer);
     }
 
