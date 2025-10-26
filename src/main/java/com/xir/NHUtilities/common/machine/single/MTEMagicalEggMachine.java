@@ -173,6 +173,7 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
         }
 
         shouldWork = hasValidEgg();
+        calculateAmp();
     }
 
     private void clearBuffer() {
