@@ -27,7 +27,7 @@ public enum CoverEnergyType {
         }
 
         @Override
-        protected void operate(WirelessEnergyCover cover, long aTickTimer) {
+        protected void operate(WirelessEnergyCover cover, long machineTickTimer) {
             bmtAction(cover, (bmt, mte) -> {
 
                 // tick operation
@@ -38,7 +38,8 @@ public enum CoverEnergyType {
                 }
 
                 // wireless sync
-                if (aTickTimer % ticks_between_energy_addition == 0) {
+                if (cover.coverTimer % ticks_between_energy_addition == 0) {
+                    cover.coverTimer = 0;
                     var euToTransfer = min(cover.energyEU, cover.maxEUPerOperation);
                     if (euToTransfer <= 0) return;
                     pushEnergy(bmt, euToTransfer, () -> cover.energyEU = max(cover.energyEU - euToTransfer, 0));
@@ -48,6 +49,7 @@ public enum CoverEnergyType {
 
         @Override
         public void onRemoval(WirelessEnergyCover cover) {
+            if (cover.coverTile != null) cover.coverTile = null;
             if (cover.energyEU <= 0) return;
             bmtAction(cover, (bmt, mte) -> pushEnergy(bmt, min(cover.energyEU, cover.maxEUPerOperation), () -> {}));
         }
@@ -67,7 +69,7 @@ public enum CoverEnergyType {
         }
 
         @Override
-        protected void operate(WirelessEnergyCover cover, long aTickTimer) {
+        protected void operate(WirelessEnergyCover cover, long machineTickTimer) {
             bmtAction(cover, (bmt, mte) -> {
 
                 // tick operation
@@ -80,7 +82,8 @@ public enum CoverEnergyType {
                 }
 
                 // wireless sync
-                if (aTickTimer % ticks_between_energy_addition == 0 && cover.energyEU < cover.maxEUPerOperation) {
+                if (cover.coverTimer % ticks_between_energy_addition == 0 && cover.energyEU < cover.maxEUPerOperation) {
+                    cover.coverTimer = 0;
                     var euToTransfer = cover.maxEUPerOperation - cover.energyEU;
                     if (euToTransfer <= 0) return;
                     pullEnergy(bmt, euToTransfer, () -> cover.energyEU += euToTransfer);
@@ -90,6 +93,7 @@ public enum CoverEnergyType {
 
         @Override
         public void onRemoval(WirelessEnergyCover cover) {
+            if (cover.coverTile != null) cover.coverTile = null;
             if (cover.energyEU <= 0) return;
             bmtAction(cover, (bmt, mte) -> pushEnergy(bmt, cover.energyEU, () -> {}));
         }
@@ -97,7 +101,7 @@ public enum CoverEnergyType {
 
     protected abstract void placed(WirelessEnergyCover cover, EntityPlayer player, ItemStack coverItem);
 
-    protected abstract void operate(WirelessEnergyCover cover, long aTickTimer);
+    protected abstract void operate(WirelessEnergyCover cover, long machineTickTimer);
 
     protected abstract void onRemoval(WirelessEnergyCover cover);
 
@@ -106,7 +110,7 @@ public enum CoverEnergyType {
     }
 
     protected static void bmtAction(WirelessEnergyCover cover, BiConsumer<BaseMetaTileEntity, MetaTileEntity> action) {
-        if (cover.getTile() instanceof BaseMetaTileEntity bmt
+        if (cover.coverTile instanceof BaseMetaTileEntity bmt
             && bmt.getMetaTileEntity() instanceof MetaTileEntity mte) {
             action.accept(bmt, mte);
         }
