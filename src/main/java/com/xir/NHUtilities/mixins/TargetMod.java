@@ -15,6 +15,7 @@ public enum TargetMod {
     GigaGramFab("GigaGramFab", "ggfab"),
     NewHorizonsCoreMod("GT: New Horizons", "dreamcraft"),
     StructureLib("StructureLib", "structurelib"),
+    AppliedEnergistics2("Applied Energistics 2", "appliedenergistics2"),
 
     ;
 

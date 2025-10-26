@@ -145,10 +145,10 @@ public enum Mixins {
             .addCondition(x -> x.or(other -> enableAlwaysDisplayWailaAverageNS))
             .addCondition(x -> x.or(other -> enableAlwaysDisplayNEIOriginalVoltage)),
         newMixinClass("Dense_ME_Channel_MTE_Hatches")
-            .setClass("MEHatchesDenseChannel_Mixin")
-            .setPackagePath(PackagePath.GregTech)
+            .setClass("GTMEHatchesDenseChannel_Mixin")
+            .setPackagePath(PackagePath.AppliedEnergistics2)
             .setPhase(Phase.LATE)
-            .addTargetMod(TargetMod.GregTech)
+            .addTargetMod(TargetMod.GregTech, TargetMod.AppliedEnergistics2)
             .addCondition(enableDenseMEChannelMTEHatches)
 
     ),
@@ -316,6 +316,7 @@ public enum Mixins {
         NewHorizonsCoreMod,
         ExtraUtilities,
         Structurelib,
+        AppliedEnergistics2,
 
         ;
 
