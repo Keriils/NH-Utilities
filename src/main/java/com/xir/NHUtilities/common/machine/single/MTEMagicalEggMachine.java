@@ -24,8 +24,6 @@ import static net.minecraft.util.StatCollector.translateToLocal;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -45,10 +43,12 @@ import net.minecraftforge.fluids.FluidStack;
 
 import com.brandon3055.draconicevolution.common.ModItems;
 import com.brandon3055.draconicevolution.common.entity.EntityChaosVortex;
+import com.google.common.collect.ImmutableList;
 import com.gtnewhorizons.modularui.api.screen.ModularWindow;
 import com.gtnewhorizons.modularui.api.screen.UIBuildContext;
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.main.NHUtilities;
+import com.xir.NHUtilities.utils.CommonUtil;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -62,6 +62,7 @@ import gregtech.api.render.TextureFactory;
 import gregtech.api.util.GTModHandler;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.WorldSpawnedEventBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 
@@ -80,12 +81,10 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
     // this field for display common texture
     @SuppressWarnings("UnusedAssignment")
     private boolean isPlaced = false;
-    private static List<ItemStack> CORE_MATERIAL = null;
+    private static ImmutableList<ItemStack> CORE_MATERIAL;
     private static Block othModel = null;
     private static ItemStack othDust = null;
-    // public static final Map<UUID, MTEMagicalEggMachine> OTH_EGG_HUNT_LIST_C = OTH_MOD_IS_LOADED ? new HashMap<>() :
-    // null;
-    public static final Map<UUID, MTEMagicalEggMachine> OTH_EGG_HUNT_LIST_C = new HashMap<>();
+    public static final Map<UUID, MTEMagicalEggMachine> OTH_EGG_HUNT_LIST_C = new Object2ObjectOpenHashMap<>();
 
     // region Constructor
     public MTEMagicalEggMachine(int aID, String aNameRegional, int aTier) {
@@ -158,14 +157,6 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
     public void onFirstTick(IGregTechTileEntity aBaseMetaTileEntity) {
         super.onFirstTick(aBaseMetaTileEntity);
         ownerUUID = aBaseMetaTileEntity.getOwnerUuid();
-        if (CORE_MATERIAL == null) {
-            CORE_MATERIAL = Arrays.asList(
-                newItemStack(ModItems.dragonHeart),
-                newItemStack(ModItems.draconicCore),
-                newItemStack(ModItems.wyvernCore),
-                newItemStack(ModItems.awakenedCore),
-                newItemStack(ModItems.chaoticCore));
-        }
 
         if (OTH_MOD_IS_LOADED) {
             if (othModel == null && othDust == null) {
@@ -180,6 +171,9 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
                 }
             }
         }
+
+        shouldWork = hasValidEgg();
+        calculateAmp();
     }
 
     private void clearBuffer() {
@@ -189,47 +183,50 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
     }
 
     @Override
-    public void onPostTick(IGregTechTileEntity aBaseMetaTileEntity, long aTick) {
-        if (!aBaseMetaTileEntity.isServerSide()) return;
-        if (!aBaseMetaTileEntity.isAllowedToWork()) return;
-        if (!isWirelessMode && (aBaseMetaTileEntity.getUniversalEnergyStored() >= aBaseMetaTileEntity.getEUCapacity()))
-            return;
+    public void onRemoval() {
+        OTH_EGG_HUNT_LIST_C.remove(ownerUUID, this);
+        super.onRemoval();
+    }
+
+    @Override
+    public void onBlockDestroyed() {
+        OTH_EGG_HUNT_LIST_C.remove(ownerUUID, this);
+        super.onBlockDestroyed();
+    }
+
+    @Override
+    public void onPostTick(IGregTechTileEntity bmte, long aTick) {
+        if (!bmte.isServerSide()) return;
+        if (!bmte.isAllowedToWork()) return;
+        if (!isWirelessMode && (bmte.getUniversalEnergyStored() >= bmte.getEUCapacity())) return;
 
         if (aTick % 20 == 0) {
-            aBaseMetaTileEntity.setActive(shouldWork = hasValidEgg());
-            if (shouldWork) {
-                eggBonus = getEggBonus();
-                MaterialBonus = getMaterialBonus();
-                currentAmperes = calculateAmp();
-                if (currentAmperes == 123) {
-                    // should pass.... ? ha...
-                    if (ownerUUID != null) {
-                        if (OTH_EGG_HUNT_LIST_C.containsKey(ownerUUID)) {
-                            if (OTH_EGG_HUNT_LIST_C.get(ownerUUID) != this) doExplosion();
-                        } else OTH_EGG_HUNT_LIST_C.put(ownerUUID, this);
-                    }
-                }
+            bmte.setActive(shouldWork = hasValidEgg());
+            if (calculateAmp() == 123 && ownerUUID != null) {
+                // should pass.... ? ha...
+                if (OTH_EGG_HUNT_LIST_C.containsKey(ownerUUID)) {
+                    if (OTH_EGG_HUNT_LIST_C.get(ownerUUID) != this) doExplosion();
+                } else OTH_EGG_HUNT_LIST_C.put(ownerUUID, this);
             }
         }
 
-        if (!shouldWork) {
-            clearBuffer();
-            return;
-        }
+        if (!shouldWork) return;
 
         if (isWirelessMode) {
             totalValidTick++;
             if (aTick % 256 == 0) {
                 if (totalValidTick == 0) return;
-                BigInteger totalEU = BigInteger.valueOf(totalValidTick * V[mTier] * eggBonus * MaterialBonus);
-                if (addEUToGlobalEnergyMap(ownerUUID, totalEU)) {
-                    totalValidTick = 0;
-                }
+                BigInteger totalEU = BigInteger.valueOf(totalValidTick * getCurrentPower());
+                if (addEUToGlobalEnergyMap(ownerUUID, totalEU)) totalValidTick = 0;
             }
         } else {
-            long currentPower = V[mTier] * eggBonus * MaterialBonus;
-            aBaseMetaTileEntity.increaseStoredEnergyUnits(currentPower, true);
+            long currentPower = getCurrentPower();
+            bmte.increaseStoredEnergyUnits(currentPower, true);
         }
+    }
+
+    private long getCurrentPower() {
+        return V[mTier] * eggBonus * MaterialBonus;
     }
 
     private void doExplosion() {
@@ -245,13 +242,13 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
 
     private int getMaterialBonus() {
         ItemStack item = mInventory[0];
-        if (item == null) return 1;
+        if (CommonUtil.isStackInvalid(item)) return 1;
         if (OTH_MOD_IS_LOADED && simpleMetaEqual(item, othDust)) {
-            if (getBaseMetaTileEntity().getBlockAtSide(ForgeDirection.UP) == othModel) {
+            if (getBlockFromTopSide() == othModel) {
                 return 41;
             }
         }
-        for (int i = 0; i < CORE_MATERIAL.size(); i++) {
+        for (int i = 0; i < getCoreMaterials().size(); i++) {
             if (simpleMetaEqual(item, CORE_MATERIAL.get(i))) {
                 return 2 << i;
             }
@@ -259,8 +256,20 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
         return 1;
     }
 
+    public ImmutableList<ItemStack> getCoreMaterials() {
+        if (CORE_MATERIAL == null) {
+            CORE_MATERIAL = ImmutableList.of(
+                newItemStack(ModItems.dragonHeart),
+                newItemStack(ModItems.draconicCore),
+                newItemStack(ModItems.wyvernCore),
+                newItemStack(ModItems.awakenedCore),
+                newItemStack(ModItems.chaoticCore));
+        }
+        return CORE_MATERIAL;
+    }
+
     private boolean hasValidEgg() {
-        Block block = getBaseMetaTileEntity().getBlockAtSide(ForgeDirection.UP);
+        Block block = getBlockFromTopSide();
         if (block == null) return false;
         if (block == Blocks.air) return false;
         if (block == Blocks.dragon_egg) return true;
@@ -269,7 +278,7 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
     }
 
     private int getEggBonus() {
-        Block block = getBaseMetaTileEntity().getBlockAtSide(ForgeDirection.UP);
+        Block block = getBlockFromTopSide();
         if (block.getUnlocalizedName()
             .contains("creeperEgg")) return 1;
         if (block == Blocks.dragon_egg) return 4;
@@ -279,6 +288,10 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
         if (block == NHUItemList.AncientDragonEgg.getBlock()) return 256;
         if (OTH_MOD_IS_LOADED && block == othModel) return 3;
         return 0;
+    }
+
+    private Block getBlockFromTopSide() {
+        return getBaseMetaTileEntity().getBlockAtSide(ForgeDirection.UP);
     }
 
     @Override
@@ -323,7 +336,9 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
     }
 
     private long calculateAmp() {
-        return (long) eggBonus * MaterialBonus << ((mTier - currentTier) * 2);
+        eggBonus = getEggBonus();
+        MaterialBonus = getMaterialBonus();
+        return currentAmperes = (long) eggBonus * MaterialBonus << ((mTier - currentTier) * 2);
     }
     // endregion
 
