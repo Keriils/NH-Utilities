@@ -12,9 +12,11 @@ import com.google.common.collect.ImmutableList;
 import com.xir.NHUtilities.common.api.NHUCreativeTabs;
 import com.xir.NHUtilities.common.api.interfaces.IItemContainer;
 import com.xir.NHUtilities.common.api.interfaces.IRegisterProvider;
+import com.xir.NHUtilities.common.api.interfaces.IRegisterTileProvider;
 import com.xir.NHUtilities.utils.CommonUtil;
 import com.xir.NHUtilities.utils.RegisterUtil;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import gregtech.api.util.GTLog;
 
 @SuppressWarnings({ "unused", "UnusedReturnValue" })
@@ -189,6 +191,10 @@ public enum NHUItemList implements IItemContainer {
     LunchBoxPlus,
     FocusTape,
     WarpWardRing,
+    // endregion
+
+    // region Common Block
+    LunchDispatcher,
     // endregion
 
     // region Fuel Rod
@@ -413,16 +419,18 @@ public enum NHUItemList implements IItemContainer {
     }
 
     @Override
-    public Item getItem() {
+    @SuppressWarnings("unchecked")
+    public <I extends Item> I getItem() {
         sanityCheck();
-        if (CommonUtil.isStackInvalid(mStack)) return Item.getItemFromBlock(Blocks.fire);
-        return mStack.getItem();
+        if (CommonUtil.isStackInvalid(mStack)) return (I) Item.getItemFromBlock(Blocks.fire);
+        return (I) mStack.getItem();
     }
 
     @Override
-    public Block getBlock() {
+    @SuppressWarnings("unchecked")
+    public <B extends Block> B getBlock() {
         sanityCheck();
-        return Block.getBlockFromItem(getItem());
+        return (B) Block.getBlockFromItem(getItem());
     }
 
     @Override
@@ -485,6 +493,9 @@ public enum NHUItemList implements IItemContainer {
         boolean shouldRegister) {
         if (aObject instanceof Block aBlock) {
             RegisterUtil.registerBlock(aBlock, aItemClass, aRegisterName, shouldRegister);
+            if (shouldRegister && aBlock instanceof IRegisterTileProvider<?>provider) {
+                GameRegistry.registerTileEntity(provider.getTeClass(), aRegisterName);
+            }
             return set(aBlock);
         }
         if (aObject instanceof Item aItem) {

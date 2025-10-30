@@ -10,8 +10,10 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -144,6 +146,12 @@ public class CommonUtil {
         return aItemStack;
     }
 
+    @Contract("_, _ -> param2")
+    public static @NotNull ItemStack setItemStackSize(long aAmount, @NotNull ItemStack aItemStack) {
+        aItemStack.stackSize = (int) aAmount;
+        return aItemStack;
+    }
+
     public static @Nullable ItemStack copy(ItemStack aItemStack) {
         if (isStackValid(aItemStack)) return aItemStack.copy();
         return null;
@@ -175,6 +183,18 @@ public class CommonUtil {
     @Contract(value = "_ -> new", pure = true)
     public static <T> StructureDefinition.@NotNull Builder<T> StructureDefinitionBuilder(Class<T> typeToken) {
         return StructureDefinition.builder();
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <TE extends TileEntity> @Nullable TE getWorldTE(World world, int x, int y, int z) {
+        if (world == null) return null;
+        TileEntity te = world.getTileEntity(x, y, z);
+        if (te == null) return null;
+        try {
+            return (TE) te;
+        } catch (ClassCastException e) {
+            return null;
+        }
     }
 
 }

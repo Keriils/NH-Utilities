@@ -11,6 +11,7 @@ import static gregtech.api.enums.Mods.SpiceOfLife;
 import com.xir.NHUtilities.common.api.MTOBuilder;
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.common.blocks.CustomDragonEgg;
+import com.xir.NHUtilities.common.blocks.LunchDispatcher;
 import com.xir.NHUtilities.common.blocks.metaBlockImpl.MetaBlock;
 import com.xir.NHUtilities.common.items.baubles.GluttonyRing;
 import com.xir.NHUtilities.common.items.baubles.HungerRing;
@@ -18,6 +19,7 @@ import com.xir.NHUtilities.common.items.baubles.KamiRing;
 import com.xir.NHUtilities.common.items.baubles.WarpWardRing;
 import com.xir.NHUtilities.common.items.itemFuelRod.FuelRod;
 import com.xir.NHUtilities.common.items.itemFuelRod.FuelRodDepleted;
+import com.xir.NHUtilities.common.items.lunchBoxPlus.ItemLunchDispatcher;
 import com.xir.NHUtilities.common.items.lunchBoxPlus.LunchBoxPlus;
 import com.xir.NHUtilities.common.items.metaItemImpl.MetaItem;
 import com.xir.NHUtilities.common.items.metaItemImpl.WirelessCoverItems;
@@ -119,6 +121,10 @@ public class ItemsLoader {
         // region Common Block
         NHUItemList.ChaosDragonEgg.setAndRegister(() -> new CustomDragonEgg("ChaosDragonEgg"), enableEggMachine);
         NHUItemList.AncientDragonEgg.setAndRegister(() -> new CustomDragonEgg("AncientDragonEgg"), enableEggMachine);
+        if (enableLunchBoxPlus && SpiceOfLife.isModLoaded()) {
+            var c = new LunchDispatcher();
+            NHUItemList.LunchDispatcher.setAndRegister(c, c.getRegisterName(), ItemLunchDispatcher.class, true);
+        }
         // endregion
 
         // region Meta Item

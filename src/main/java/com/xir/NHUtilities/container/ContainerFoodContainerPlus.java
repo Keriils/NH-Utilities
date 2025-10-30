@@ -1,4 +1,4 @@
-package com.xir.NHUtilities.common.items.lunchBoxPlus;
+package com.xir.NHUtilities.container;
 
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;

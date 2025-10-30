@@ -59,13 +59,13 @@ public enum CoverEnergyType {
 
         @Override
         protected void placed(WirelessEnergyCover cover, EntityPlayer player, ItemStack coverItem) {
-            bmtAction(cover, (bmt, mte) -> {
-                pullEnergy(bmt, cover.maxEUPerOperation, () -> cover.energyEU = cover.maxEUPerOperation);
+            bmtAction(cover, (bmt, mte) -> pullEnergy(bmt, cover.maxEUPerOperation, () -> {
+                cover.energyEU = cover.maxEUPerOperation;
                 var euToMachineCache = min(bmt.getEUCapacity() - bmt.getStoredEU(), cover.mEUPower * 20L);
                 if (euToMachineCache <= 0) return;
                 cover.energyEU -= euToMachineCache;
                 bmt.increaseStoredEnergyUnits(euToMachineCache, true);
-            });
+            }));
         }
 
         @Override

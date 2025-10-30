@@ -15,7 +15,6 @@ import static com.xir.NHUtilities.config.Config.enableEnhanceOvenGlove;
 import static com.xir.NHUtilities.config.Config.enableEnhancedExUHealingAxe;
 import static com.xir.NHUtilities.config.Config.enableEnhancedTeleporterMKII;
 import static com.xir.NHUtilities.config.Config.enableHologramItemChannelFeature;
-import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
 import static com.xir.NHUtilities.config.Config.enableModifyEnderIoCapBankIO;
 import static com.xir.NHUtilities.config.Config.enableModifyWirelessHatchTexture;
 import static com.xir.NHUtilities.config.Config.enableWEToolWithExuHealingAxe;
@@ -211,22 +210,6 @@ public enum Mixins {
     ),
 
     SpiceOfLife_Modifications(
-
-        newMixinClass("Modify_ServerSide_GuiHandler")
-            .setClass("GuiHandler_Server_Mixin")
-            .setPackagePath(PackagePath.SpiceOfLife)
-            .setPhase(Phase.LATE)
-            .setSide(Side.SERVER)
-            .addTargetMod(TargetMod.SpiceOfLife)
-            .addCondition(enableLunchBoxPlus),
-        newMixinClass("Modify_ClientSide_GuiHandler")
-            .setClass("GuiHandler_Client_Mixin")
-            .setPackagePath(PackagePath.SpiceOfLife)
-            .setPhase(Phase.LATE)
-            .setSide(Side.CLIENT)
-            .addTargetMod(TargetMod.SpiceOfLife)
-            .addCondition(enableLunchBoxPlus)
-
     ),
 
     NewHorizonsCoreMod_Modifications(
@@ -298,6 +281,7 @@ public enum Mixins {
         return mixins;
     }
 
+    // todo 当前的side逻辑存在问题 => platform-side != logic-side
     private static boolean shouldApply(Side side) {
         return side == Side.BOTH || (side == Side.CLIENT && IS_CLIENT_SIDE) || (side == Side.SERVER && IS_SERVER_SIDE);
     }

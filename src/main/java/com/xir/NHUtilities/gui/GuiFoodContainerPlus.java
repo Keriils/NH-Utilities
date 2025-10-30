@@ -1,9 +1,11 @@
-package com.xir.NHUtilities.common.items.lunchBoxPlus;
+package com.xir.NHUtilities.gui;
 
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
+
+import com.xir.NHUtilities.container.ContainerFoodContainerPlus;
 
 import squeek.spiceoflife.gui.GuiFoodContainer;
 import squeek.spiceoflife.inventory.FoodContainerInventory;
