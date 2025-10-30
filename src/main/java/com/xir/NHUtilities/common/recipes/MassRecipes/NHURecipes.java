@@ -6,11 +6,13 @@ import static com.xir.NHUtilities.common.api.NHURecipeConstants.INGOT;
 import static com.xir.NHUtilities.config.Config.enableDebugMaintenanceHatchRecipe;
 import static com.xir.NHUtilities.config.Config.enableEggMachine;
 import static com.xir.NHUtilities.config.Config.enableEternityVial;
+import static com.xir.NHUtilities.config.Config.enableLunchBoxPlus;
 import static com.xir.NHUtilities.config.Config.enableOldRecipesOfWirelessHatch;
 import static com.xir.NHUtilities.config.Config.enableWirelessDataHatchOrComputationHatch;
 import static com.xir.NHUtilities.config.Config.enableWirelessHatchMore;
 import static com.xir.NHUtilities.utils.CommonUtil.copyAmount;
 import static goodgenerator.api.recipe.GoodGeneratorRecipeMaps.preciseAssemblerRecipes;
+import static gregtech.api.enums.Mods.SpiceOfLife;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.recipe.RecipeMaps.blastFurnaceRecipes;
 import static gregtech.api.recipe.RecipeMaps.centrifugeRecipes;
@@ -31,11 +33,14 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import com.dreammaster.item.NHItemList;
 import com.xir.NHUtilities.common.api.LazyObjectHelper;
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.common.recipes.MassRecipes.CoverEnergyHatches.WirelessCoverRecipes;
 
+import appeng.api.AEApi;
 import bartworks.system.material.WerkstoffLoader;
+import cpw.mods.fml.common.registry.GameRegistry;
 import fox.spiteful.avaritia.crafting.ExtremeCraftingManager;
 import goodgenerator.items.GGMaterial;
 import gregtech.api.enums.GTValues;
@@ -68,6 +73,84 @@ public class NHURecipes {
         }
         if (enableWirelessDataHatchOrComputationHatch) dataHatchOrComputationHatch();
         if (enableDebugMaintenanceHatchRecipe) debugMaintenance();
+        if (enableLunchBoxPlus && SpiceOfLife.isModLoaded()) lunchBoxPlusThings();
+    }
+
+    private static void lunchBoxPlusThings() {
+        GameRegistry.addShapedRecipe(
+            NHUItemList.LunchBoxPlus.get(1),
+            "IDI",
+            "DCD",
+            "IDI",
+            'I',
+            Blocks.iron_block,
+            'D',
+            Items.diamond,
+            'C',
+            Blocks.chest);
+
+        var materials = AEApi.instance()
+            .definitions()
+            .materials();
+        var blocks = AEApi.instance()
+            .definitions()
+            .blocks();
+        var parts = AEApi.instance()
+            .definitions()
+            .parts();
+
+        // noinspection OptionalGetWithoutIsPresent
+        ExtremeCraftingManager.getInstance()
+            .addRecipe(
+                NHUItemList.LunchDispatcher.get(1),
+                "SSSQCQSSS",
+                "SINNNNNIS",
+                "SNEEPEENS",
+                "QNEWDWENQ",
+                "CNPWLWPNC",
+                "QNEWMWENQ",
+                "SNEEPEENS",
+                "SINNNNNIS",
+                "SSSQCQSSS",
+                'S',
+                blocks.spatialPylon()
+                    .maybeStack(1)
+                    .get(),
+                'Q',
+                blocks.quantumRing()
+                    .maybeStack(1)
+                    .get(),
+                'C',
+                blocks.quantumLink()
+                    .maybeStack(1)
+                    .get(),
+                'I',
+                materials.singularity()
+                    .maybeStack(1)
+                    .get(),
+                'N',
+                ItemList.QuantumStar.get(1),
+                'E',
+                NHItemList.EngineeringProcessorItemAdvEmeraldCore.getIS(),
+                'P',
+                NHItemList.EngineeringProcessorSpatialPulsatingCore.getIS(),
+                'W',
+                materials.wirelessBooster()
+                    .maybeStack(1)
+                    .get(),
+                'D',
+                materials.wireless()
+                    .maybeStack(1)
+                    .get(),
+                'L',
+                parts.semiDarkMonitor()
+                    .maybeStack(1)
+                    .get(),
+                'M',
+                blocks.iOPort()
+                    .maybeStack(1)
+                    .get());
+
     }
 
     private static void dataHatchOrComputationHatch() {

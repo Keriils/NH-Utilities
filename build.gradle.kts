@@ -21,10 +21,10 @@ dependencies {
             declare("GT5-Unofficial")
             declare("NewHorizonsCoreMod")
             declare("Baubles-Expanded")
-            declare("ae2stuff")
         }
 
         declarationImplementation {
+            declare("ae2stuff")
             declare("Avaritiaddons")
             declare("Eternal-Singularity")
             declare("Universal-Singularities")
