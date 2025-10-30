@@ -57,7 +57,7 @@ public class TileLunchDispatcher extends TileEntity
 
     // constants
     // spotless:off
-    public static final int level = 32;
+    public static final int level = 5;
     protected static final UUID defaultUUid = null;
     protected static final Predicate<ItemStack> predicate_level =
         x -> x.getMaxStackSize() > 1 && x.stackSize < Math.min(x.getMaxStackSize(), level);

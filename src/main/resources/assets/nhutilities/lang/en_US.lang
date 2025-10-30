@@ -107,6 +107,15 @@ text.TimeVial.details_13=Configuration file notes
 text.TimeVial.details_14=Allows adjusting the volume of the vial sounds and whether to enable number textures, i.e., 8x or 16x patterns.
 text.TimeVial.details_15=If unsure, do not modify. enableLogInfo = true
 
+# Tooltips For Lunch Dispatcher
+text.lunchDispatcher.details_0=Works by connecting to ME network
+text.lunchDispatcher.details_1=It is recommended to store food in a separate subNetwork for performance reasons
+text.lunchDispatcher.details_2=Every 30s, foods will be distributed to the player's lunch box plus
+text.lunchDispatcher.details_3=Supplies when food count is less than 5
+text.lunchDispatcher.details_4=Remaining empty slots will be filled based on available food in the network
+text.lunchDispatcher.details_5=Supports cross-dimensional distribution as long as food is available in your AE network
+text.lunchDispatcher.details_6=Distribution logic is determined by the player's identity card inside the dispatcher
+
 # Information Helper
 infoHelper.NHUtilities.txt_0=§6====§f[§dHold
 infoHelper.NHUtilities.txt_1=§dfor Details§f]§6====

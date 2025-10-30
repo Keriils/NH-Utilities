@@ -107,6 +107,15 @@ text.TimeVial.details_13=配置文件说明
 text.TimeVial.details_14=允许调整瓶子声音大小,是否启用数字贴图 即 8x 16x的图案
 text.TimeVial.details_15=如果不清楚请不要修改 enableLogInfo = true
 
+# Tooltips For Lunch Dispatcher
+text.lunchDispatcher.details_0=接入Me网络进行工作
+text.lunchDispatcher.details_1=建议单独一个子网进行存放食物,性能考虑
+text.lunchDispatcher.details_2=每隔30s会对玩家的高级午餐盒进行发配补给
+text.lunchDispatcher.details_3=对于食物数少于5时进行补给
+text.lunchDispatcher.details_4=剩余空槽会根据ae网络内剩余食物进行分发
+text.lunchDispatcher.details_5=支持跨纬度发配 只需要你ae网络中包含食物
+text.lunchDispatcher.details_6=发配逻辑根据发配器内玩家的身份卡决定
+
 # Information Helper
 infoHelper.NHUtilities.txt_0=§6====§f[§d按下
 infoHelper.NHUtilities.txt_1=§d显示更多信息§f]§6====
