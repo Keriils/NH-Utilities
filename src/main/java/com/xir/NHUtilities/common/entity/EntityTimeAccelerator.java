@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
 import com.xir.NHUtilities.common.api.interfaces.ITileEntityTickAcceleration;
+import com.xir.NHUtilities.config.Config;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -22,7 +23,7 @@ public class EntityTimeAccelerator extends Entity {
 
     // region Fields
     private int timeRate = enableTimeAcceleratorBoost ? 8 : 4; // must be set in here for texture render init
-    public static final int ACCELERATION_TICK = 600;
+    public static final int ACCELERATION_TICK = Config.getAcceleratorDuration();
     private int remainingTime = ACCELERATION_TICK;
     private boolean isGregTechMachineMode = true;
 
