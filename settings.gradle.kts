@@ -9,10 +9,19 @@ pluginManagement {
                 includeGroupByRegex("com\\.gtnewhorizons\\..+")
             }
         }
+        exclusiveContent {
+            forRepository {
+                maven {
+                    name = "Jitpack"
+                    url = uri("https://jitpack.io")
+                }
+            }
+            filter { includeGroup("com.github.ElytraServers.elytra-conventions") }
+        }
         gradlePluginPortal()
         mavenCentral()
         mavenLocal()
     }
 }
 
-plugins { id("com.gtnewhorizons.gtnhsettingsconvention") version "1.0.42" }
+plugins { id("com.gtnewhorizons.gtnhsettingsconvention") version ("2.0.13") }

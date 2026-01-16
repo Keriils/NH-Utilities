@@ -1,88 +1,196 @@
+import cn.elytra.gradle.conventions.extension.ModpackVersionExtension
+import com.diffplug.blowdryer.Blowdryer as BlowdryerPlugin
+import com.diffplug.gradle.spotless.BaseKotlinExtension
+import com.diffplug.gradle.spotless.FormatExtension
+import com.diffplug.spotless.kotlin.KtfmtStep
+import org.gradle.kotlin.dsl.accessors.runtime.addDependencyTo
+import org.jetbrains.gradle.ext.Gradle as GradleExt
+import org.jetbrains.gradle.ext.RunConfigurationContainer
+import org.jetbrains.gradle.ext.runConfigurations
+import org.jetbrains.gradle.ext.settings
+
 plugins {
     id("com.gtnewhorizons.gtnhconvention")
-    id("online.keriils.plugins.spotless-wrapper") version "0.1.5"
-    /// Convention over Configuration!!!
-    /// 打包了 elytra-convention 的轮子拓展了依赖声明(更加轮椅化haa..)
-    /// elytra-convention url: https://github.com/ElytraServers/elytra-conventions/
-    id("online.keriils.plugins.dependency-declaration-convention") version "0.1.5"
-}
-
-wrapperSpotless {
-    alwaysApplySpotless = false
-    enforceSpotlessCheck = false
-    enforceSpotlessCheckForCIEnv = true
-}
-
-dependencies {
-    dependencyDeclarations {
-        gtnhVersion = "2.8.0"
-
-        declarationApi {
-            declare("GT5-Unofficial")
-            declare("NewHorizonsCoreMod")
-            declare("Baubles-Expanded")
-        }
-
-        declarationImplementation {
-            declare("ae2stuff")
-            declare("Avaritiaddons")
-            declare("Eternal-Singularity")
-            declare("Universal-Singularities")
-            declare("WarpTheory")
-            declare("Mobs-Info")
-            declare("Jabba") { isTransitive = false }
-            declare("ThaumicTinkerer") { isTransitive = false }
-            declare("EnderIO") { isTransitive = false }
-            declare("EnderCore") { isTransitive = false }
-            declare("BrandonsCore") { isTransitive = false }
-            declare("Draconic-Evolution") { isTransitive = false }
-            declare("Botania") { isTransitive = false }
-            declare("Avaritia") { isTransitive = false }
-            declare("SpiceOfLife") { isTransitive = false }
-            declare("AppleCore") { isTransitive = false }
-            declare("InventoryBogoSorter")
-
-            implementation(rfg.deobf("curse.maven:extra-utilities-225561:2264384"))
-            implementation("com.github.GTNewHorizons:worldedit-gtnh:v0.0.8:dev") { isTransitive = false }
-        }
-
-        declarationCompileOnly {
-            compileOnly("org.projectlombok:lombok:1.18.42")
-            annotationProcessor("org.projectlombok:lombok:1.18.42")
-        }
-
-        declarationRuntimeOnlyNonPublishable {
-            declare("ServerUtilities") { isTransitive = false }
-            declare("Angelica") { isTransitive = false }
-            declare("BlockRenderer6343") { isTransitive = false }
-            declare("Galacticraft") { isTransitive = false }
-        }
-
-        configurations.forEach { it.exclude("com.github.GTNewHorizons", "Baubles") }
-    }
+    id("com.diffplug.spotless") version "8.1.0"
+    id("com.github.ElytraServers.elytra-conventions") version "v1.1.2"
 }
 
 val isCiEnvironment = System.getenv("CI") == "true" || System.getenv("GITHUB_ACTIONS") == "true"
 
-// 为 runClient 和 runServer 配置不同的目录
-// 默认是允许的 但是我还是添加了配置 "nhu.runPathIsolation" 去调节
-listOf(tasks.runClient, tasks.runServer, tasks.runClient17, tasks.runServer17, tasks.runClient21, tasks.runServer21)
-    .forEach {
-        if (properties["nhu.runPathIsolation"] == "false" || isCiEnvironment) return@forEach
-        it.configure {
-            // spotless:off
-            workingDir =
-                // runClient[17/21] -> run/client
-                // runServer[17/21] -> run/server
-                file(
-                    it.name
-                        .replace(Regex("\\d+$"), "")
-                        .split(Regex("(?=[A-Z])"))
-                        .joinToString("/") { s -> s.lowercase() }
-                )
-            // spotless:on
+elytraModpackVersion {
+    gtnhVersion = "2.8.0"
+    withGtnhDependencies {
+        api {
+            configureGtnhDep("GT5-Unofficial")
+            configureGtnhDep("NewHorizonsCoreMod")
+            configureGtnhDep("Baubles-Expanded")
+        }
+
+        implementation {
+            configureGtnhDep("ae2stuff")
+            configureGtnhDep("Avaritiaddons")
+            configureGtnhDep("Eternal-Singularity")
+            configureGtnhDep("Universal-Singularities")
+            configureGtnhDep("WarpTheory")
+            configureGtnhDep("Mobs-Info")
+            configureGtnhDep("Jabba") { isTransitive = false }
+            configureGtnhDep("ThaumicTinkerer") { isTransitive = false }
+            configureGtnhDep("EnderIO") { isTransitive = false }
+            configureGtnhDep("EnderCore") { isTransitive = false }
+            configureGtnhDep("BrandonsCore") { isTransitive = false }
+            configureGtnhDep("Draconic-Evolution") { isTransitive = false }
+            configureGtnhDep("Botania") { isTransitive = false }
+            configureGtnhDep("Avaritia") { isTransitive = false }
+            configureGtnhDep("SpiceOfLife") { isTransitive = false }
+            configureGtnhDep("AppleCore") { isTransitive = false }
+            configureGtnhDep("InventoryBogoSorter")
+        }
+
+        runtimeOnlyNonPublishable {
+            configureGtnhDep("Angelica") { isTransitive = false }
+            configureGtnhDep("BlockRenderer6343") { isTransitive = false }
+            configureGtnhDep("Galacticraft") { isTransitive = false }
         }
     }
+
+    withCommonDependencies {
+        implementation(rfg.deobf("curse.maven:extra-utilities-225561:2264384"))
+        implementation("com.github.GTNewHorizons:worldedit-gtnh:v0.0.8:dev") { isTransitive = false }
+
+        compileOnly("org.projectlombok:lombok:1.18.42")
+        annotationProcessor("org.projectlombok:lombok:1.18.42")
+    }
+
+    configurations.forEach { it.exclude("com.github.GTNewHorizons", "Baubles") }
+
+    // Force all standard dependency versions to align with ElytraConvention versions
+    configurations.forEach {
+        it.resolutionStrategy {
+            eachDependency {
+                if (target.group == "com.github.GTNewHorizons" && elytraModpackVersion.contains(target.name)) {
+                    useVersion(elytraModpackVersion[target.name]!!)
+                }
+            }
+        }
+    }
+}
+
+idea.project.settings {
+    fun RunConfigurationContainer.fastReg(name: String, taskName: String) {
+        register<GradleExt>(name) { taskNames = listOf(taskName) }
+    }
+    runConfigurations {
+        fastReg("Apply Spotless", "spotlessApply")
+        fastReg("Apply SpotlessCheck", "spotlessCheck")
+        fastReg("Clean", "clean")
+    }
+}
+
+spotless {
+    isEnforceCheck = isCiEnvironment
+
+    java {
+        target("src/*/java/**/*.java", "src/*/scala/**/*.java")
+        formatAnnotations()
+        removeUnusedImports()
+        applyCommonFormatSteps()
+        importOrder("java", "javax", "net", "org", "com")
+        eclipse("4.19").configFile(BlowdryerPlugin.file("spotless.eclipseformat.xml"))
+    }
+
+    kotlin {
+        target("src/*/kotlin/**/*.kt")
+        leadingSpacesToTabs()
+        applyCustomKtfmtConfig()
+        applyCommonFormatSteps()
+    }
+
+    kotlinGradle {
+        target("*.gradle.kts")
+        applyCustomKtfmtConfig()
+        applyCommonFormatSteps()
+    }
+
+    json {
+        ratchetFrom = "origin/master"
+        target("src/**/mcmod.info", "src/**/*.json", "src/**/*.mcmeta")
+        prettier()
+            .config(
+                mapOf(
+                    "parser" to "json",
+                    "printWidth" to 100,
+                    "tabWidth" to 2,
+                    "objectWrap" to "collapse",
+                    "useTabs" to false,
+                    "endOfLine" to "lf",
+                )
+            )
+        endWithNewline()
+    }
+}
+
+private fun BaseKotlinExtension.applyCustomKtfmtConfig() {
+    ktfmt("0.61").googleStyle().configure {
+        it.setMaxWidth(120)
+        it.setBlockIndent(4)
+        it.setContinuationIndent(4)
+        it.setRemoveUnusedImports(true)
+        it.setTrailingCommaManagementStrategy(KtfmtStep.TrailingCommaManagementStrategy.COMPLETE)
+    }
+}
+
+private fun FormatExtension.applyCommonFormatSteps() {
+    toggleOffOn()
+    trimTrailingWhitespace()
+    endWithNewline()
+}
+
+@Suppress("UnusedReceiverParameter")
+private inline fun ModpackVersionExtension.withGtnhDependencies(block: ConfigurationContainer.() -> Unit) =
+    configurations.block()
+
+@Suppress("UnusedReceiverParameter")
+private inline fun ModpackVersionExtension.withCommonDependencies(block: DependencyHandlerScope.() -> Unit) =
+    DependencyHandlerScope.of(dependencies).block()
+
+//  其实这里应该进行一定的作用域限制?..
+private inline operator fun <T : Any> NamedDomainObjectProvider<T>.invoke(
+    block: NamedDomainObjectProvider<T>.() -> Unit
+) = block()
+
+private fun <T : Any> NamedDomainObjectProvider<T>.configureGtnhDep(
+    name: String,
+    classifier: String = "dev",
+    dependencyConfiguration: Action<ExternalModuleDependency> = Action {},
+): ExternalModuleDependency {
+    return addDependencyTo(
+        project.dependencies,
+        this.name,
+        elytraModpackVersion.gtnh(name, classifier),
+        dependencyConfiguration,
+    )
+}
+
+// 为 runClient 和 runServer 配置不同的目录
+// 默认是允许的 但是我还是添加了配置 "nhu.runPathIsolation" 去调节
+if (properties["nhu.runPathIsolation"] != "false" && !isCiEnvironment) {
+    listOf(tasks.runClient, tasks.runServer, tasks.runClient17, tasks.runServer17, tasks.runClient21, tasks.runServer21)
+        .forEach {
+            it.configure {
+                // spotless:off
+                workingDir =
+                    // runClient[17/21] -> run/client
+                    // runServer[17/21] -> run/server
+                    file(
+                        it.name
+                            .replace(Regex("\\d+$"), "")
+                            .split(Regex("(?=[A-Z])"))
+                            .joinToString("/") { s -> s.lowercase() }
+                    )
+                // spotless:on
+            }
+        }
+}
 
 // 依赖声明相关内容 放最底下.....
 /*
