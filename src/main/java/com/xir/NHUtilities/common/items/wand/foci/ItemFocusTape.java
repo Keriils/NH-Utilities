@@ -77,15 +77,17 @@ public class ItemFocusTape extends ItemFocusBasic implements IRegisterProvider {
         if (!(mTileEntity instanceof BaseMetaTileEntity mBaseMetaTileEntity)) {
             return wandstack;
         }
-        if (wandCasting != null
-            && (mBaseMetaTileEntity.getMetaTileEntity() instanceof MTEHatchMaintenance hatchMaintenance)
-            && (!hatchMaintenance.mWrench || !hatchMaintenance.mSolderingTool
-                || !hatchMaintenance.mSoftMallet
-                || !hatchMaintenance.mHardHammer
-                || !hatchMaintenance.mScrewdriver
-                || !hatchMaintenance.mCrowbar
-                || hatchMaintenance.getBaseMetaTileEntity()
-                    .isActive())) {
+        if (
+            wandCasting != null
+                && (mBaseMetaTileEntity.getMetaTileEntity() instanceof MTEHatchMaintenance hatchMaintenance)
+                && (!hatchMaintenance.mWrench || !hatchMaintenance.mSolderingTool
+                    || !hatchMaintenance.mSoftMallet
+                    || !hatchMaintenance.mHardHammer
+                    || !hatchMaintenance.mScrewdriver
+                    || !hatchMaintenance.mCrowbar
+                    || hatchMaintenance.getBaseMetaTileEntity()
+                        .isActive())
+        ) {
             if (wandCasting.consumeAllVis(wandstack, player, this.getVisCost(wandstack), true, false)) {
                 hatchMaintenance.mHardHammer = true;
                 hatchMaintenance.mCrowbar = true;

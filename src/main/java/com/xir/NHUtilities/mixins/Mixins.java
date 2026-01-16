@@ -270,11 +270,12 @@ public enum Mixins {
                 if (!mixinClass.phase.equals(Phase.LATE)) continue;
                 if (!shouldApply(mixinClass.side)) continue;
                 if (!mixinClass.classPredicate.test(mixinClass)) continue;
-                if (!loadedMods.containsAll(
-                    mixinClass.targetMods.stream()
-                        .map(TargetMod::getModId)
-                        .collect(Collectors.toSet())))
-                    continue;
+                if (
+                    !loadedMods.containsAll(
+                        mixinClass.targetMods.stream()
+                            .map(TargetMod::getModId)
+                            .collect(Collectors.toSet()))
+                ) continue;
                 mixins.add(mixinClass.getMixinClassPath());
             }
         }

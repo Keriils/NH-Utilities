@@ -25,8 +25,10 @@ public abstract class HologramCharcoalPitUtil_Mixin {
     private void nhu$charcoalPitUtil(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side,
         float hitX, float hitY, float hitZ, CallbackInfoReturnable<Boolean> cir) {
         if (world.isRemote) return;
-        if (player instanceof EntityPlayerMP entityPlayerMP
-            && world.getTileEntity(x, y, z) instanceof BaseMetaTileEntity baseMetaTileEntity) {
+        if (
+            player instanceof EntityPlayerMP entityPlayerMP
+                && world.getTileEntity(x, y, z) instanceof BaseMetaTileEntity baseMetaTileEntity
+        ) {
             if (baseMetaTileEntity.getMetaTileID() == CHARCOAL_PILE_IGNITER_CONTROLLER.ID) {
                 cir.cancel();
                 CharcoalPitExtendUtil.handle(entityPlayerMP, world, baseMetaTileEntity);

@@ -110,8 +110,9 @@ public enum CoverEnergyType {
     }
 
     protected static void bmtAction(WirelessEnergyCover cover, BiConsumer<BaseMetaTileEntity, MetaTileEntity> action) {
-        if (cover.coverTile instanceof BaseMetaTileEntity bmt
-            && bmt.getMetaTileEntity() instanceof MetaTileEntity mte) {
+        if (
+            cover.coverTile instanceof BaseMetaTileEntity bmt && bmt.getMetaTileEntity() instanceof MetaTileEntity mte
+        ) {
             action.accept(bmt, mte);
         }
     }

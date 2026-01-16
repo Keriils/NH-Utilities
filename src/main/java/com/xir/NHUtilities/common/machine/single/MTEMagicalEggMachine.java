@@ -279,12 +279,16 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
 
     private int getEggBonus() {
         Block block = getBlockFromTopSide();
-        if (block.getUnlocalizedName()
-            .contains("creeperEgg")) return 1;
+        if (
+            block.getUnlocalizedName()
+                .contains("creeperEgg")
+        ) return 1;
         if (block == Blocks.dragon_egg) return 4;
         if (block == NHUItemList.ChaosDragonEgg.getBlock()) return 16;
-        if (block.getUnlocalizedName()
-            .contains("infinityegg")) return 64;
+        if (
+            block.getUnlocalizedName()
+                .contains("infinityegg")
+        ) return 64;
         if (block == NHUItemList.AncientDragonEgg.getBlock()) return 256;
         if (OTH_MOD_IS_LOADED && block == othModel) return 3;
         return 0;

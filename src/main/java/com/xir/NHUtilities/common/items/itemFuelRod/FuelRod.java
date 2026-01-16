@@ -117,8 +117,10 @@ public class FuelRod extends RadioactiveItem implements IReactorComponent, IBoxa
     private void checkHeatAcceptor(@NotNull IReactor reactor, int x, int y,
         ArrayList<FuelRod.ItemStackCoord> heatAcceptors) {
         ItemStack thing = reactor.getItemAt(x, y);
-        if (thing != null && thing.getItem() instanceof IReactorComponent
-            && ((IReactorComponent) thing.getItem()).canStoreHeat(reactor, thing, x, y)) {
+        if (
+            thing != null && thing.getItem() instanceof IReactorComponent
+                && ((IReactorComponent) thing.getItem()).canStoreHeat(reactor, thing, x, y)
+        ) {
             heatAcceptors.add(new ItemStackCoord(thing, x, y));
         }
     }

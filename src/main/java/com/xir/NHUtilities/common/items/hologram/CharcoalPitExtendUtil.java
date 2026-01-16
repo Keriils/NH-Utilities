@@ -50,13 +50,15 @@ public final class CharcoalPitExtendUtil {
             while (!itrRecursive.isEmpty()) {
                 var pos = itrRecursive.remove(0);
                 toPlace.add(pos);
-                if (!checkAllSide(
-                    baseMetaTileEntity,
-                    pos.chunkPosX,
-                    pos.chunkPosY,
-                    pos.chunkPosZ,
-                    toPlace,
-                    itrRecursive)) {
+                if (
+                    !checkAllSide(
+                        baseMetaTileEntity,
+                        pos.chunkPosX,
+                        pos.chunkPosY,
+                        pos.chunkPosZ,
+                        toPlace,
+                        itrRecursive)
+                ) {
                     GTUtility.sendChatToPlayer(
                         playerMP,
                         "Make sure your Charcoal Pit structure is sealed and contains only air inside...");
@@ -122,10 +124,12 @@ public final class CharcoalPitExtendUtil {
         if (y + 1 < 1 && blockYPos == Blocks.air) {
             c = newPos(x, y + 1, z);
             if (!toPlace.contains(c) && !itrRecursive.contains(c)) itrRecursive.add(c);
-        } else if (!(blockYPos == Blocks.dirt || blockYPos == Blocks.grass
-            || (x == 0 && y == -1 && z == 0 && blockYPos == GregTechAPI.sBlockMachines))) {
-                return false;
-            }
+        } else if (
+            !(blockYPos == Blocks.dirt || blockYPos == Blocks.grass
+                || (x == 0 && y == -1 && z == 0 && blockYPos == GregTechAPI.sBlockMachines))
+        ) {
+            return false;
+        }
 
         var blockYNeg = baseMetaTile.getBlockOffset(x, y - 1, z);
         if (y - 1 > -6 && blockYNeg == Blocks.air) {

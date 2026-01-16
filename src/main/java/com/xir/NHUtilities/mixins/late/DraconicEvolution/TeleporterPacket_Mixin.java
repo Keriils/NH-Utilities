@@ -24,8 +24,10 @@ public class TeleporterPacket_Mixin {
             target = "Lnet/minecraft/entity/player/EntityPlayerMP;getHeldItem()Lnet/minecraft/item/ItemStack;"),
         require = 1)
     private ItemStack NHUtilities$getTeleporterMKII(EntityPlayerMP instance) {
-        if (instance.inventory.getCurrentItem() != null && instance.inventory.getCurrentItem()
-            .getItem() == ModItems.teleporterMKII) {
+        if (
+            instance.inventory.getCurrentItem() != null && instance.inventory.getCurrentItem()
+                .getItem() == ModItems.teleporterMKII
+        ) {
             return instance.inventory.getCurrentItem();
         } else {
             var playerBaublesInventory = getItemInPlayerBaublesInventory(instance, TeleporterMKII.class);

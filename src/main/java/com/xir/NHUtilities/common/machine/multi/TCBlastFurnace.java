@@ -303,8 +303,10 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
 
     @Override
     public List<? extends IFluidStore> getFluidOutputSlots(FluidStack[] toOutput) {
-        if (Arrays.stream(toOutput)
-            .anyMatch(this::isPollutionFluid)) {
+        if (
+            Arrays.stream(toOutput)
+                .anyMatch(this::isPollutionFluid)
+        ) {
             return filterValidMTEs(mPollutionOutputHatches);
         }
         return filterValidMTEs(mOutputHatches);

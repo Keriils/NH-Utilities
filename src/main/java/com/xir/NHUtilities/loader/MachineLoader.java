@@ -113,7 +113,9 @@ public class MachineLoader {
         var energyStr = trans("Hatch.wireless.energy.name");
         var dynamoStr = trans("Hatch.wireless.dynamo.name");
         for (WirelessHatchMore value : WirelessHatchMore.values()) {
-            if (value.hatchType == HatchType.WirelessEnergyHatch) value.set(
+            if (
+                value.hatchType == HatchType.WirelessEnergyHatch
+            ) value.set(
                 new MTEWirelessHatchEnergyMulti(
                     value.metaId,
                     value.toString(),

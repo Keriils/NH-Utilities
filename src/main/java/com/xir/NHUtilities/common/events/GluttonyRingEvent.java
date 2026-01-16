@@ -19,8 +19,10 @@ public class GluttonyRingEvent {
     @SubscribeEvent
     public void onGluttonyRingEating(PlayerUseItemEvent.Start event) {
         EntityPlayer entityPlayer = event.entityPlayer;
-        if (entityPlayer.getHeldItem() == null || entityPlayer.getHeldItem()
-            .getItem() == ModItems.infiniteFruit) return;
+        if (
+            entityPlayer.getHeldItem() == null || entityPlayer.getHeldItem()
+                .getItem() == ModItems.infiniteFruit
+        ) return;
         Optional<ItemStack> baublesItem = InventoryUtils
             .getItemInPlayerBaublesInventory(entityPlayer, GluttonyRing.class);
         if (baublesItem.isPresent() && (event.item.getItemUseAction() == EnumAction.eat)) {

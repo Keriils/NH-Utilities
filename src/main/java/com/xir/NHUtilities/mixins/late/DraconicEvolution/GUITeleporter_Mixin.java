@@ -81,10 +81,12 @@ public abstract class GUITeleporter_Mixin extends GuiScreen {
             this.mc.setIngameFocus();
         }
 
-        if (tick % 5 == 0 && !locations.isEmpty()
-            && getLocationSafely(selected + selectionOffset).getDimensionName()
-                .isEmpty()
-            && NHUtilities$banHand()) {
+        if (
+            tick % 5 == 0 && !locations.isEmpty()
+                && getLocationSafely(selected + selectionOffset).getDimensionName()
+                    .isEmpty()
+                && NHUtilities$banHand()
+        ) {
             if (NHUtilities$isBaubles) {
                 Optional<ItemStack> playerBaublesInventory = InventoryUtils
                     .getItemInPlayerBaublesInventory(player, TeleporterMKII.class);
