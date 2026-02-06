@@ -157,17 +157,14 @@ nhu.tcebf.machine.info_6=线圈加速和超频和EBF相同
 nhu.tcebf.machine.info_7=它在一直看着你...
 nhu.tcebf.machine.build.helper_1=正面底中
 nhu.tcebf.machine.build.helper_2=隔热机械方块
-nhu.tcebf.machine.build.helper_3.1=加热线圈
-nhu.tcebf.machine.build.helper_3.2=中间两层
+nhu.tcebf.machine.build.helper_3=相同等级线圈
 nhu.tcebf.machine.build.helper_4=任意底层机械方块
 nhu.tcebf.machine.build.helper_5=任意底层机械方块
 nhu.tcebf.machine.build.helper_6=顶层中央
 nhu.tcebf.machine.build.helper_7=任意底层机械方块
 nhu.tcebf.machine.build.helper_8=任意底层机械方块
 nhu.tcebf.machine.build.helper_9=任意底层机械方块
-nhu.tcebf.machine.build.helper_10=液态流体，任意底层机械方块
-nhu.tcebf.machine.build.helper_11=气态流体，任意顶层机械方块
-nhu.tcebf.machine.build.helper_12=污染气体输出取决于消声仓等级
+nhu.tcebf.machine.build.helper_10=任意隔热机械方块
 
 # Tooltips for Egg Machine
 nhu.eggMachine.tier.EV=初级蛋机能源吸收器
