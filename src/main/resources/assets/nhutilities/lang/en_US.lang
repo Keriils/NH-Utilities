@@ -157,17 +157,14 @@ nhu.tcebf.machine.info_6=Coil acceleration and overclocking are the same as EBF
 nhu.tcebf.machine.info_7=It's watching you all the time...
 nhu.tcebf.machine.build.helper_1=Front bottom
 nhu.tcebf.machine.build.helper_2=Heat Proof Machine Casing
-nhu.tcebf.machine.build.helper_3.1=Heating Coils
-nhu.tcebf.machine.build.helper_3.2=Two middle Layers
+nhu.tcebf.machine.build.helper_3=Heating Coils
 nhu.tcebf.machine.build.helper_4=Any bottom layer casing
 nhu.tcebf.machine.build.helper_5=Any bottom layer casing
 nhu.tcebf.machine.build.helper_6=Top middle
 nhu.tcebf.machine.build.helper_7=Any bottom layer casing
 nhu.tcebf.machine.build.helper_8=Any bottom layer casing
 nhu.tcebf.machine.build.helper_9=Any bottom layer casing
-nhu.tcebf.machine.build.helper_10=Fluid outputs, Any bottom layer casing
-nhu.tcebf.machine.build.helper_11=Pollution gases (CO2/CO/SO2), Any top layer casing
-nhu.tcebf.machine.build.helper_12=Pollution gas output amount scales with Muffler Hatch tier
+nhu.tcebf.machine.build.helper_10=Any Heat Proof Machine Casing
 
 # Tooltips For Egg Machine
 nhu.eggMachine.tier.EV=Basic Egg Energy Absorber

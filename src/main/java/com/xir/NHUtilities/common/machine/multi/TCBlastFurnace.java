@@ -22,15 +22,13 @@ import static gregtech.api.enums.Textures.BlockIcons.casingTexturePages;
 import static gregtech.api.util.GTStructureUtility.activeCoils;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
 import static gregtech.api.util.GTStructureUtility.ofCoil;
-import static gregtech.api.util.GTUtility.filterValidMTEs;
+import static gregtech.api.util.GTUtility.validMTEList;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
+import gregtech.common.misc.GTStructureChannels;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -53,13 +51,10 @@ import gregtech.api.enums.HeatingCoilLevel;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.SoundResource;
 import gregtech.api.interfaces.ITexture;
-import gregtech.api.interfaces.fluid.IFluidStore;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.logic.ProcessingLogic;
-import gregtech.api.metatileentity.implementations.MTEHatch;
 import gregtech.api.metatileentity.implementations.MTEHatchEnergy;
-import gregtech.api.metatileentity.implementations.MTEHatchMuffler;
 import gregtech.api.metatileentity.implementations.MTEHatchOutput;
 import gregtech.api.recipe.RecipeMap;
 import gregtech.api.recipe.RecipeMaps;
@@ -80,9 +75,6 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
     private double tcSpeedBonus = 0.8;
     private double tcEuModifier = 0.95;
     private int mHeatingCapacity = 0;
-    protected final ArrayList<MTEHatchOutput> mPollutionOutputHatches = new ArrayList<>();
-    protected final FluidStack[] pollutionFluidStacks = { Materials.CarbonDioxide.getGas(1000),
-        Materials.CarbonMonoxide.getGas(1000), Materials.SulfurDioxide.getGas(1000) };
     protected static final int CASING_INDEX = 11;
     protected static final String STRUCTURE_PIECE_MAIN = "main";
     private static final IStructureDefinition<TCBlastFurnace> STRUCTURE_DEFINITION = StructureDefinition
@@ -90,18 +82,18 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
         .addShape(
             STRUCTURE_PIECE_MAIN,
             transpose(
-                new String[][] { { "ttt", "tmt", "ttt" }, { "CCC", "C-C", "CCC" }, { "CCC", "C-C", "CCC" },
+                new String[][] { { "fff", "fmf", "fff" }, { "CCC", "C-C", "CCC" }, { "CCC", "C-C", "CCC" },
                     { "b~b", "bbb", "bbb" } }))
         .addElement(
-            't',
-            buildHatchAdder(TCBlastFurnace.class).atLeast(
-                OutputHatch.withAdder(TCBlastFurnace::addOutputHatchToTopList)
-                    .withCount(t -> t.mPollutionOutputHatches.size()))
+            'f',
+            buildHatchAdder(TCBlastFurnace.class).atLeast(OutputHatch)
                 .casingIndex(CASING_INDEX)
-                .dot(1)
+                .dot(3)
                 .buildAndChain(GregTechAPI.sBlockCasings1, CASING_INDEX))
         .addElement('m', Muffler.newAny(CASING_INDEX, 2))
-        .addElement('C', activeCoils(ofCoil(TCBlastFurnace::setCoilLevel, TCBlastFurnace::getCoilLevel)))
+        .addElement(
+            'C',
+            activeCoils(ofCoil(TCBlastFurnace::setCoilLevel, TCBlastFurnace::getCoilLevel)))
         .addElement(
             'b',
             buildHatchAdder(TCBlastFurnace.class)
@@ -110,17 +102,6 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
                 .dot(1)
                 .buildAndChain(GregTechAPI.sBlockCasings1, CASING_INDEX))
         .build();
-
-    public boolean addOutputHatchToTopList(IGregTechTileEntity aTileEntity, int aBaseCasingIndex) {
-        if (aTileEntity == null) return false;
-        IMetaTileEntity aMetaTileEntity = aTileEntity.getMetaTileEntity();
-        if (aMetaTileEntity == null) return false;
-        if (aMetaTileEntity instanceof MTEHatchOutput) {
-            ((MTEHatch) aMetaTileEntity).updateTexture(aBaseCasingIndex);
-            return mPollutionOutputHatches.add((MTEHatchOutput) aMetaTileEntity);
-        }
-        return false;
-    }
 
     public TCBlastFurnace(int aID, String aNameRegional) {
         super(aID, "multimachine.tcblastfurnace", aNameRegional);
@@ -131,27 +112,8 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
     }
 
     @Override
-    public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
-        this.mHeatingCapacity = 0;
-        this.tcSpeedBonus = 1.0 / 1.25;
-        this.tcEuModifier = 1.0 / 1.05;
-        setCoilLevel(HeatingCoilLevel.None);
-        mPollutionOutputHatches.clear();
-        if (!checkPiece(STRUCTURE_PIECE_MAIN, 1, 3, 0)) return false;
-        if (getCoilLevel() == HeatingCoilLevel.None) return false;
-        if (mMaintenanceHatches.size() != 1) return false;
-        this.mHeatingCapacity = (int) getCoilLevel().getHeat() + 100 * (GTUtility.getTier(getMaxInputVoltage()) - 2);
-        return true;
-    }
-
-    @Override
-    public void construct(ItemStack stackSize, boolean hintsOnly) {
-        buildPiece(STRUCTURE_PIECE_MAIN, stackSize, hintsOnly, 1, 3, 0);
-    }
-
-    @Override
-    public IStructureDefinition<TCBlastFurnace> getStructureDefinition() {
-        return STRUCTURE_DEFINITION;
+    public IMetaTileEntity newMetaEntity(IGregTechTileEntity aTileEntity) {
+        return new TCBlastFurnace(this.mName);
     }
 
     @Override
@@ -175,34 +137,25 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
                     + EnumChatFormatting.DARK_PURPLE
                     + StatCollector.translateToLocal("nhu.tcebf.machine.info_7"))
             .addPollutionAmount(getPollutionPerSecond(null))
-            .addSeparator()
             .beginStructureBlock(3, 4, 3, true)
             .addController(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_1"))
             .addCasingInfoRange(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_2"), 0, 15, false)
-            .addOtherStructurePart(
-                StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_3.1"),
-                StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_3.2"))
+            .addCasingInfoExactly(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_3"),16,true)
             .addEnergyHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_4"), 3)
             .addMaintenanceHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_5"), 3)
             .addMufflerHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_6"), 2)
-            .addInputBus(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_7"), 3)
-            .addInputHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_8"), 3)
-            .addOutputBus(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_9"), 3)
-            .addOutputHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_10"))
-            .addOutputHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_11"), 1)
-            .addStructureInfo(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_12"))
+            .addInputBus(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_7"), 1)
+            .addInputHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_8"), 1)
+            .addOutputBus(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_9"), 1)
+            .addOutputHatch(StatCollector.translateToLocal("nhu.tcebf.machine.build.helper_10"), 3)
+            .addSubChannelUsage(GTStructureChannels.HEATING_COIL)
             .toolTipFinisher(MOD_NAME);
         return tt;
     }
 
     @Override
-    public IMetaTileEntity newMetaEntity(IGregTechTileEntity aTileEntity) {
-        return new TCBlastFurnace(this.mName);
-    }
-
-    @Override
     public ITexture[] getTexture(IGregTechTileEntity baseMetaTileEntity, ForgeDirection side, ForgeDirection aFacing,
-        int colorIndex, boolean aActive, boolean redstoneLevel) {
+                                 int colorIndex, boolean aActive, boolean redstoneLevel) {
         if (side == aFacing) {
             if (aActive) return new ITexture[] { casingTexturePages[0][CASING_INDEX], TextureFactory.builder()
                 .addIcon(isNewTexture ? TC_EBF_ACTIVE : OVERLAY_FRONT_ELECTRIC_BLAST_FURNACE_ACTIVE)
@@ -227,21 +180,8 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
     }
 
     @Override
-    public void onValueUpdate(byte aValue) {
-        super.onValueUpdate(aValue);
-        boolean oIsNewTexture = isNewTexture;
-        isNewTexture = (aValue & 1) == 1;
-        if (oIsNewTexture != isNewTexture) getBaseMetaTileEntity().issueTextureUpdate();
-    }
-
-    @Override
-    public byte getUpdateData() {
-        return (byte) (isNewTexture ? 1 : 0);
-    }
-
-    @Override
     public int getPollutionPerSecond(ItemStack aStack) {
-        return GTMod.gregtechproxy.mPollutionEBFPerSecond;
+        return GTMod.proxy.mPollutionEBFPerSecond;
     }
 
     @Override
@@ -250,10 +190,8 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
     }
 
     @Override
-    protected void setProcessingLogicPower(ProcessingLogic logic) {
-        super.setProcessingLogicPower(logic);
-        logic.setSpeedBonus(tcSpeedBonus);
-        logic.setEuModifier(tcEuModifier);
+    public IStructureDefinition<TCBlastFurnace> getStructureDefinition() {
+        return STRUCTURE_DEFINITION;
     }
 
     @Override
@@ -279,57 +217,24 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
     }
 
     @Override
-    public boolean addOutput(FluidStack aLiquid) {
-        if (aLiquid == null) return false;
-        FluidStack tLiquid = aLiquid.copy();
-        ArrayList<MTEHatchOutput> tOutputHatches;
-        if (isPollutionFluid(tLiquid)) {
-            tOutputHatches = this.mPollutionOutputHatches;
-            multiplyPollutionFluidAmount(tLiquid);
-        } else {
-            tOutputHatches = this.mOutputHatches;
-        }
-        return dumpFluid(tOutputHatches, tLiquid, true) || dumpFluid(tOutputHatches, tLiquid, false);
-    }
-
-    protected boolean isPollutionFluid(@Nullable FluidStack fluidStack) {
-        if (fluidStack == null) return false;
-        for (FluidStack pollutionFluidStack : pollutionFluidStacks) {
-            if (!fluidStack.isFluidEqual(pollutionFluidStack)) continue;
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public List<? extends IFluidStore> getFluidOutputSlots(FluidStack[] toOutput) {
-        if (
-            Arrays.stream(toOutput)
-                .anyMatch(this::isPollutionFluid)
-        ) {
-            return filterValidMTEs(mPollutionOutputHatches);
-        }
-        return filterValidMTEs(mOutputHatches);
-    }
-
-    public int getPollutionReduction() {
-        int reduction = 100;
-        for (MTEHatchMuffler tHatch : filterValidMTEs(mMufflerHatches)) {
-            reduction = Math.min(tHatch.calculatePollutionReduction(100), reduction);
-        }
-        return reduction;
-    }
-
-    protected void multiplyPollutionFluidAmount(@Nonnull FluidStack fluid) {
-        fluid.amount = fluid.amount * Math.min(100 - getPollutionReduction(), 100) / 100;
+    public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
+        this.mHeatingCapacity = 0;
+        this.tcSpeedBonus = 1.0 / 1.25;
+        this.tcEuModifier = 1.0 / 1.05;
+        setCoilLevel(HeatingCoilLevel.None);
+//        mPollutionOutputHatches.clear();
+        if (!checkPiece(STRUCTURE_PIECE_MAIN, 1, 3, 0)) return false;
+        if (getCoilLevel() == HeatingCoilLevel.None) return false;
+        if (mMaintenanceHatches.size() != 1) return false;
+        this.mHeatingCapacity = (int) getCoilLevel().getHeat() + 100 * (GTUtility.getTier(getMaxInputVoltage()) - 2);
+        return true;
     }
 
     @Override
     public String[] getInfoData() {
-        int mPollutionReduction = getPollutionReduction();
         long storedEnergy = 0;
         long maxEnergy = 0;
-        for (MTEHatchEnergy tHatch : filterValidMTEs(mEnergyHatches)) {
+        for (MTEHatchEnergy tHatch : validMTEList(mEnergyHatches)) {
             storedEnergy += tHatch.getBaseMetaTileEntity()
                 .getStoredEU();
             maxEnergy += tHatch.getBaseMetaTileEntity()
@@ -357,7 +262,7 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
                 + " EU",
             StatCollector.translateToLocal("GT5U.multiblock.usage") + ": "
                 + EnumChatFormatting.RED
-                + GTUtility.formatNumbers(-mEUt)
+                + GTUtility.formatNumbers(-lEUt)
                 + EnumChatFormatting.RESET
                 + " EU/t",
             StatCollector.translateToLocal("GT5U.multiblock.mei") + ": "
@@ -388,9 +293,14 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
                 + " K",
             StatCollector.translateToLocal("GT5U.multiblock.pollution") + ": "
                 + EnumChatFormatting.GREEN
-                + mPollutionReduction
+                + getAveragePollutionPercentage()
                 + EnumChatFormatting.RESET
                 + " %" };
+    }
+
+    @Override
+    public void construct(ItemStack stackSize, boolean hintsOnly) {
+        buildPiece(STRUCTURE_PIECE_MAIN, stackSize, hintsOnly, 1, 3, 0);
     }
 
     @Override
@@ -401,7 +311,7 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
 
     @Override
     public void onScrewdriverRightClick(ForgeDirection side, EntityPlayer aPlayer, float aX, float aY, float aZ,
-        ItemStack aTool) {
+                                        ItemStack aTool) {
         if (aPlayer.isSneaking()) {
             isNewTexture = !isNewTexture;
             GTUtility.sendChatToPlayer(
@@ -461,6 +371,27 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
     protected SoundResource getActivitySoundLoop() {
         return SoundResource.GT_MACHINES_EBF_LOOP;
     }
+
+    @Override
+    public void onValueUpdate(byte aValue) {
+        super.onValueUpdate(aValue);
+        boolean oIsNewTexture = isNewTexture;
+        isNewTexture = (aValue & 1) == 1;
+        if (oIsNewTexture != isNewTexture) getBaseMetaTileEntity().issueTextureUpdate();
+    }
+
+    @Override
+    public byte getUpdateData() {
+        return (byte) (isNewTexture ? 1 : 0);
+    }
+
+    @Override
+    protected void setProcessingLogicPower(ProcessingLogic logic) {
+        super.setProcessingLogicPower(logic);
+        logic.setSpeedBonus(tcSpeedBonus);
+        logic.setEuModifier(tcEuModifier);
+    }
+
 
     @Override
     public void onPostTick(IGregTechTileEntity aBaseMetaTileEntity, long aTick) {
