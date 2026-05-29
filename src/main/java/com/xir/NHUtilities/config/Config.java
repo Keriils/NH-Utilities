@@ -128,7 +128,7 @@ public class Config {
             enableTimeVial = configuration
                 .getBoolean("enableTimeVial", CATEGORY_TIME_VIAL, enableTimeVial, "enable Time Vial");
 
-            enableEternityVial = configuration
+            enableEternityVial = enableTimeVial && configuration
                 .getBoolean("enableEternityVial", CATEGORY_TIME_VIAL, enableEternityVial, "enable Eternity Vial");
 
             enableBlockMode = configuration
