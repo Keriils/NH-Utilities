@@ -33,7 +33,7 @@ public class MetaItemBase extends ItemBase implements IMetaTypeObject {
         this.name = aUnlocalizedName;
         this.setMaxDamage(0);
         this.setHasSubtypes(true);
-        this.unlocalizedName = "item." + this.name;
+        this.unlocalizedName = "nhu.item." + this.name;
         if (CommonUtil.isClientSide()) this.iconPathName = "nhutilities:MetaResources/" + getIconFolderName() + "/";
         RegisterUtil.registerItem(this);
     }
