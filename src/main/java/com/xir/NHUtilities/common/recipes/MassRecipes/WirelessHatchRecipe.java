@@ -38,7 +38,6 @@ import goodgenerator.items.GGMaterial;
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
-import gregtech.api.enums.MaterialsUEVplus;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.TierEU;
 import gregtech.api.util.GTOreDictUnificator;
@@ -188,21 +187,21 @@ public class WirelessHatchRecipe {
             // umv
             newFluidStackArray(
                 Materials.Infinity.getMolten(16 * INGOT),
-                MaterialsUEVplus.SpaceTime.getMolten(8 * INGOT),
+                Materials.SpaceTime.getMolten(8 * INGOT),
                 WerkstoffLoader.Oganesson.getFluidOrGas(8 * ONE_UNIT),
                 LazyObjectHelper.mutated_living_solder.get(8 * ONE_UNIT)),
             // uxv
             newFluidStackArray(
-                MaterialsUEVplus.SpaceTime.getMolten(16 * INGOT),
-                MaterialsUEVplus.TranscendentMetal.getMolten(16 * INGOT),
+                Materials.SpaceTime.getMolten(16 * INGOT),
+                Materials.TranscendentMetal.getMolten(16 * INGOT),
                 GGMaterial.metastableOganesson.getMolten(16 * INGOT),
-                MaterialsUEVplus.Space.getMolten(32 * ONE_UNIT)),
+                Materials.Space.getMolten(32 * ONE_UNIT)),
             // MAX
             newFluidStackArray(
-                MaterialsUEVplus.Universium.getMolten(64 * INGOT),
+                Materials.Universium.getMolten(64 * INGOT),
                 GGMaterial.metastableOganesson.getMolten(128 * INGOT),
-                MaterialsUEVplus.ExcitedDTSC.getFluid(128 * ONE_UNIT),
-                MaterialsUEVplus.TranscendentMetal.getMolten(256 * INGOT)));
+                Materials.ExcitedDTSC.getFluid(128 * ONE_UNIT),
+                Materials.TranscendentMetal.getMolten(256 * INGOT)));
 
         var iZPM_Index = 7;
         var MAX_Index = energy_2A.size(); // value = 14
@@ -371,8 +370,8 @@ public class WirelessHatchRecipe {
             .addAll(
                 (Iterable<? extends ItemStack>) LazyObjectHelper.SuperconductorMaterials.stream()
                     .map(
-                        material -> material.equals(MaterialsUEVplus.Universium)
-                            ? GTOreDictUnificator.get(OrePrefixes.wireGt04, MaterialsUEVplus.SpaceTime, 32)
+                        material -> material.equals(Materials.Universium)
+                            ? GTOreDictUnificator.get(OrePrefixes.wireGt04, Materials.SpaceTime, 32)
                             : GTOreDictUnificator.get(OrePrefixes.wireGt02, material, 4))
                     .collect(Collectors.collectingAndThen(Collectors.toList(), ImmutableList::copyOf)))
             .build();

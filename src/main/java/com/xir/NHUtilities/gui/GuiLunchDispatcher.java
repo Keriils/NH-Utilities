@@ -1,6 +1,5 @@
 package com.xir.NHUtilities.gui;
 
-import static appeng.core.localization.GuiColors.ChestInventory;
 import static appeng.core.localization.GuiText.inventory;
 
 import net.minecraft.entity.player.InventoryPlayer;
@@ -21,7 +20,7 @@ public class GuiLunchDispatcher extends AEBaseGui {
     @Override
     public void drawFG(int offsetX, int offsetY, int mouseX, int mouseY) {
         this.fontRendererObj.drawString("Gui Lunch Dispatcher", 8, 6, 0x404040);
-        this.fontRendererObj.drawString(inventory.getLocal(), 8, this.ySize - 96 + 3, ChestInventory.getColor());
+        this.fontRendererObj.drawString(inventory.getLocal(), 8, this.ySize - 96 + 3, 0x404040);
     }
 
     public void bindNhuTexture(String file) {

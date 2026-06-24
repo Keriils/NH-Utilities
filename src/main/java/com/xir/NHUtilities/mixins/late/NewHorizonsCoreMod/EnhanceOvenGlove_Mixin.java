@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import com.dreammaster.baubles.OvenGlove;
+import com.dreammaster.item.baubles.OvenGlove;
 import com.llamalad7.mixinextras.sugar.Local;
 
 @SuppressWarnings("UnusedMixin")

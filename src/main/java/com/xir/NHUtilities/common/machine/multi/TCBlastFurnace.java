@@ -26,6 +26,8 @@ import static gregtech.api.util.GTUtility.validMTEList;
 
 import javax.annotation.Nonnull;
 
+import com.gtnewhorizon.gtnhlib.util.numberformatting.NumberFormatUtil;
+import gregtech.api.structure.error.StructureError;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -64,6 +66,8 @@ import gregtech.common.tileentities.machines.multi.MTEAbstractMultiFurnace;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.visnet.VisNetHandler;
 
+import java.util.List;
+
 public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> implements ISurvivalConstructable {
 
     private boolean isNewTexture = true;
@@ -83,7 +87,7 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
             'f',
             buildHatchAdder(TCBlastFurnace.class).atLeast(OutputHatch)
                 .casingIndex(CASING_INDEX)
-                .dot(3)
+                .hint(3)
                 .buildAndChain(GregTechAPI.sBlockCasings1, CASING_INDEX))
         .addElement('m', Muffler.newAny(CASING_INDEX, 2))
         .addElement('C', activeCoils(ofCoil(TCBlastFurnace::setCoilLevel, TCBlastFurnace::getCoilLevel)))
@@ -92,7 +96,7 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
             buildHatchAdder(TCBlastFurnace.class)
                 .atLeast(InputHatch, OutputHatch, InputBus, OutputBus, Maintenance, Energy)
                 .casingIndex(CASING_INDEX)
-                .dot(1)
+                .hint(1)
                 .buildAndChain(GregTechAPI.sBlockCasings1, CASING_INDEX))
         .build();
 
@@ -210,17 +214,16 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
     }
 
     @Override
-    public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
+    public void checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack, List<StructureError> errors) {
         this.mHeatingCapacity = 0;
         this.tcSpeedBonus = 1.0 / 1.25;
         this.tcEuModifier = 1.0 / 1.05;
         setCoilLevel(HeatingCoilLevel.None);
         // mPollutionOutputHatches.clear();
-        if (!checkPiece(STRUCTURE_PIECE_MAIN, 1, 3, 0)) return false;
-        if (getCoilLevel() == HeatingCoilLevel.None) return false;
-        if (mMaintenanceHatches.size() != 1) return false;
+        if (!checkPiece(STRUCTURE_PIECE_MAIN, 1, 3, 0, errors)) return;
+        if (getCoilLevel() == HeatingCoilLevel.None) return;
+        if (mMaintenanceHatches.size() != 1) return;
         this.mHeatingCapacity = (int) getCoilLevel().getHeat() + 100 * (GTUtility.getTier(getMaxInputVoltage()) - 2);
-        return true;
     }
 
     @Override
@@ -237,30 +240,30 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
         return new String[] {
             StatCollector.translateToLocal("GT5U.multiblock.Progress") + ": "
                 + EnumChatFormatting.GREEN
-                + GTUtility.formatNumbers(mProgresstime / 20)
+                + NumberFormatUtil.formatNumber(mProgresstime / 20)
                 + EnumChatFormatting.RESET
                 + " s / "
                 + EnumChatFormatting.YELLOW
-                + GTUtility.formatNumbers(mMaxProgresstime / 20)
+                + NumberFormatUtil.formatNumber(mMaxProgresstime / 20)
                 + EnumChatFormatting.RESET
                 + " s",
             StatCollector.translateToLocal("GT5U.multiblock.energy") + ": "
                 + EnumChatFormatting.GREEN
-                + GTUtility.formatNumbers(storedEnergy)
+                + NumberFormatUtil.formatNumber(storedEnergy)
                 + EnumChatFormatting.RESET
                 + " EU / "
                 + EnumChatFormatting.YELLOW
-                + GTUtility.formatNumbers(maxEnergy)
+                + NumberFormatUtil.formatNumber(maxEnergy)
                 + EnumChatFormatting.RESET
                 + " EU",
             StatCollector.translateToLocal("GT5U.multiblock.usage") + ": "
                 + EnumChatFormatting.RED
-                + GTUtility.formatNumbers(-lEUt)
+                + NumberFormatUtil.formatNumber(-lEUt)
                 + EnumChatFormatting.RESET
                 + " EU/t",
             StatCollector.translateToLocal("GT5U.multiblock.mei") + ": "
                 + EnumChatFormatting.YELLOW
-                + GTUtility.formatNumbers(getMaxInputVoltage())
+                + NumberFormatUtil.formatNumber(getMaxInputVoltage())
                 + EnumChatFormatting.RESET
                 + " EU/t(*2A) "
                 + StatCollector.translateToLocal("GT5U.machines.tier")
@@ -281,7 +284,7 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
                 + " %",
             StatCollector.translateToLocal("GT5U.EBF.heat") + ": "
                 + EnumChatFormatting.GREEN
-                + GTUtility.formatNumbers(mHeatingCapacity)
+                + NumberFormatUtil.formatNumber(mHeatingCapacity)
                 + EnumChatFormatting.RESET
                 + " K",
             StatCollector.translateToLocal("GT5U.multiblock.pollution") + ": "
@@ -307,12 +310,12 @@ public class TCBlastFurnace extends MTEAbstractMultiFurnace<TCBlastFurnace> impl
         ItemStack aTool) {
         if (aPlayer.isSneaking()) {
             isNewTexture = !isNewTexture;
-            GTUtility.sendChatToPlayer(
+            GTUtility.sendChatTrans(
                 aPlayer,
                 StatCollector.translateToLocal("GT5U.machines.isnewtexture") + " " + isNewTexture);
         } else {
             inputSeparation = !inputSeparation;
-            GTUtility.sendChatToPlayer(
+            GTUtility.sendChatTrans(
                 aPlayer,
                 StatCollector.translateToLocal("GT5U.machines.separatebus") + " " + inputSeparation);
         }

@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 import com.brandon3055.draconicevolution.DraconicEvolution;
 import com.brandon3055.draconicevolution.client.gui.GuiHandler;
 import com.brandon3055.draconicevolution.common.items.tools.TeleporterMKII;
-import com.brandon3055.draconicevolution.common.utills.InventoryUtils;
+import com.brandon3055.draconicevolution.common.utils.InventoryUtils;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent;

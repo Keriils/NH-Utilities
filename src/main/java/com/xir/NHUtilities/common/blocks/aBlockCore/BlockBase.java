@@ -49,7 +49,7 @@ public class BlockBase extends Block implements IRegisterProvider {
 
     @Override
     @SideOnly(Side.CLIENT)
-    protected String getTextureName() {
+    public String getTextureName() {
         return this.textureName == null ? "MISSING_ICON_BLOCK_" + getIdFromBlock(this) + "_" + this.name
             : this.textureName;
     }

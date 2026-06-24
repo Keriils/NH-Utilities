@@ -46,6 +46,7 @@ import static com.xir.NHUtilities.main.ReferencedInfo.isDevEnvironment;
 import static com.xir.NHUtilities.utils.CommonUtil.trans;
 import static gregtech.api.enums.GTValues.VN;
 
+import com.gtnewhorizon.gtnhlib.util.numberformatting.NumberFormatUtil;
 import org.jetbrains.annotations.NotNull;
 
 import com.xir.NHUtilities.common.api.enums.HatchType;
@@ -134,7 +135,7 @@ public class MachineLoader {
 
     private static @NotNull String getCN(WirelessHatchMore value, String str) {
         var isCN = trans("Lang.helper.local.lang").equals("zh_CN");
-        if (isCN) return String.format(str, GTUtility.formatNumbers(value.aAmperes), VN[value.aTier]);
-        return String.format(str, VN[value.aTier], GTUtility.formatNumbers(value.aAmperes));
+        if (isCN) return String.format(str, NumberFormatUtil.formatNumber(value.aAmperes), VN[value.aTier]);
+        return String.format(str, VN[value.aTier], NumberFormatUtil.formatNumber(value.aAmperes));
     }
 }

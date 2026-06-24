@@ -22,16 +22,16 @@ val Project.isCiEnvironment
 val elytra = elytraModpackVersion
 
 dependencies {
-    elytra.gtnhVersion = "2.8.4"
+    elytra.gtnhVersion = "2.9.0-beta-1"
 
-    api(elytra.gtnhdev("GT5-Unofficial"))
-    api(elytra.gtnhdev("NewHorizonsCoreMod"))
-    api(elytra.gtnhdev("Baubles-Expanded"))
+    implementation(elytra.gtnhdev("GT5-Unofficial"))
+    implementation(elytra.gtnhdev("NewHorizonsCoreMod"))
+    implementation(elytra.gtnhdev("Baubles-Expanded"))
 
     implementation(rfg.deobf("curse.maven:extra-utilities-225561:2264384"))
     implementation("com.github.GTNewHorizons:worldedit-gtnh:v0.0.8:dev")
 
-    implementation(elytra.gtnhdev("ae2stuff"))
+    //implementation(elytra.gtnhdev("ae2stuff"))
     implementation(elytra.gtnhdev("Hodgepodge"))
     implementation(elytra.gtnhdev("Avaritiaddons"))
     implementation(elytra.gtnhdev("Eternal-Singularity"))
@@ -56,32 +56,31 @@ dependencies {
     runtimeOnlyNonPublishable(elytra.gtnhdev("Galacticraft"))
 }
 
+// only client side
+// for dependencies AT, ensures that IDE does not show errors
+if (!isCiEnvironment) minecraft.useDependencyAccessTransformers = true
+
 configurations.configureEach {
     val gtnhGroup = "com.github.GTNewHorizons"
     exclude(gtnhGroup, "Baubles")
-    //
-    //    val blackList =
-    //        listOf(
-    //            "unimixins",
-    //            "GTNHLib",  // Todo 待考虑... 2.9.+解决
-    //            "jabel-stubs",
-    //            "lwjgl3ify",
-    //            "Hodgepodge",
-    //        )
-    //
-    //    // 强制大部分依赖与elytra-conventions插件提供的版本对齐
-    //    resolutionStrategy {
-    //        eachDependency {
-    //            when (target.name) {
-    //                in blackList -> {
-    //                    /*...*/
-    //                }
-    //
-    //                in elytraModpackVersion if target.group == gtnhGroup ->
-    // useVersion(elytraModpackVersion[target.name]!!)
-    //            }
-    //        }
-    //    }
+
+    val blackList =
+        listOf(
+            "unimixins",
+            "GTNHLib",
+            "jabel-stubs",
+            "lwjgl3ify",
+            "Hodgepodge",
+        )
+
+    // 强制大部分依赖与elytra-conventions插件提供的版本对齐
+    resolutionStrategy {
+        eachDependency {
+            if (target.name in elytraModpackVersion && target.group == gtnhGroup) {
+                useVersion(elytraModpackVersion[target.name]!!)
+            }
+        }
+    }
 }
 
 // endregion
