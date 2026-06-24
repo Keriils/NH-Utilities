@@ -57,9 +57,8 @@ dependencies {
     runtimeOnlyNonPublishable(gtnhdev("Galacticraft"))
 }
 
-// only client side
 // for dependencies AT, ensures that IDE does not show errors
-if (!isCiEnvironment) minecraft.useDependencyAccessTransformers = true
+minecraft.useDependencyAccessTransformers = true
 
 configurations.configureEach {
     val gtnhGroup = "com.github.GTNewHorizons"
