@@ -28,7 +28,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import com.gtnewhorizon.gtnhlib.util.numberformatting.NumberFormatUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDragonEgg;
 import net.minecraft.entity.player.EntityPlayer;
@@ -45,6 +44,7 @@ import net.minecraftforge.fluids.FluidStack;
 import com.brandon3055.draconicevolution.common.ModItems;
 import com.brandon3055.draconicevolution.common.entity.EntityChaosVortex;
 import com.google.common.collect.ImmutableList;
+import com.gtnewhorizon.gtnhlib.util.numberformatting.NumberFormatUtil;
 import com.gtnewhorizons.modularui.api.screen.ModularWindow;
 import com.gtnewhorizons.modularui.api.screen.UIBuildContext;
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
@@ -363,11 +363,11 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
             aPlayer,
             "Current EU Output: " + NumberFormatUtil.formatNumber(V[currentTier])
                 + String.format(
-                " (%s) (%s)",
-                GTUtility.getColoredTierNameFromTier(currentTier),
-                EnumChatFormatting.LIGHT_PURPLE + NumberFormatUtil.formatNumber(currentAmperes)
-                    + "A"
-                    + EnumChatFormatting.RESET));
+                    " (%s) (%s)",
+                    GTUtility.getColoredTierNameFromTier(currentTier),
+                    EnumChatFormatting.LIGHT_PURPLE + NumberFormatUtil.formatNumber(currentAmperes)
+                        + "A"
+                        + EnumChatFormatting.RESET));
     }
 
     @Override
@@ -391,7 +391,9 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
             String.format(
                 "Voltage: %s (%s)",
                 GTUtility.getColoredTierNameFromVoltage(voltage),
-                EnumChatFormatting.LIGHT_PURPLE + NumberFormatUtil.formatNumber(Amperes) + "A" + EnumChatFormatting.RESET));
+                EnumChatFormatting.LIGHT_PURPLE + NumberFormatUtil.formatNumber(Amperes)
+                    + "A"
+                    + EnumChatFormatting.RESET));
         currentTip.add(
             String.format(
                 "TotalBonus: %sx",

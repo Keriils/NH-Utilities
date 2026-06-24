@@ -4,7 +4,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @SuppressWarnings("UnusedMixin")
-//@Mixin(targets = "gregtech.common.covers.CoverChest$LimitingItemStackHandler") -> 2.9.+ patch
+// @Mixin(targets = "gregtech.common.covers.CoverChest$LimitingItemStackHandler") -> 2.9.+ patch
 @Mixin(targets = "gregtech.common.covers.CoverChest$LegacyLimitingItemStackHandler")
 public class CoverChestStacksize_Mixin {
 

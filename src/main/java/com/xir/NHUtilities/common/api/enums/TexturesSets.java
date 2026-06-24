@@ -26,30 +26,33 @@ public final class TexturesSets {
     public static final IIconContainer ScreenON = Textures.BlockIcons.custom("iconsets/EM_CONTROLLER_ACTIVE");
 
     // for Tc EBF Texture
-    public static final IIconContainer TC_EBF_ACTIVE = Textures.BlockIcons.custom(
-        RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_ACTIVE");
-    public static final IIconContainer TC_EBF_ACTIVE_GLOW = Textures.BlockIcons.custom(
-        RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW");
-    public static final IIconContainer TC_EBF_NOT_ACTIVE = Textures.BlockIcons.custom(
-        RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE");
-    public static final IIconContainer TC_EBF_NOT_ACTIVE_GLOW = Textures.BlockIcons.custom(
-        RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_GLOW");
+    public static final IIconContainer TC_EBF_ACTIVE = Textures.BlockIcons
+        .custom(RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_ACTIVE");
+    public static final IIconContainer TC_EBF_ACTIVE_GLOW = Textures.BlockIcons
+        .custom(RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW");
+    public static final IIconContainer TC_EBF_NOT_ACTIVE = Textures.BlockIcons
+        .custom(RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE");
+    public static final IIconContainer TC_EBF_NOT_ACTIVE_GLOW = Textures.BlockIcons
+        .custom(RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_GLOW");
 
     // region Wireless Tex
     private static final String WIRELESS_DIR = RESOURCE_PATH + "Wireless/";
-    public static final IIconContainer OVERLAY_WIRELESS_256A = Textures.BlockIcons.custom(WIRELESS_DIR + "OVERLAY_WIRELESS_256A");
-    public static final IIconContainer OVERLAY_WIRELESS_1024A = Textures.BlockIcons.custom(WIRELESS_DIR + "OVERLAY_WIRELESS_1024A");
-    public static final IIconContainer OVERLAY_WIRELESS_4096A = Textures.BlockIcons.custom(WIRELESS_DIR + "OVERLAY_WIRELESS_4096A");
-    public static final IIconContainer OVERLAY_WIRELESS_16384A = Textures.BlockIcons.custom(
-        WIRELESS_DIR + "OVERLAY_WIRELESS_16384A");
-    public static final IIconContainer OVERLAY_WIRELESS_65536A = Textures.BlockIcons.custom(
-        WIRELESS_DIR + "OVERLAY_WIRELESS_65536A");
-    public static final IIconContainer OVERLAY_WIRELESS_262144A = Textures.BlockIcons.custom(
-        WIRELESS_DIR + "OVERLAY_WIRELESS_262144A");
-    public static final IIconContainer OVERLAY_WIRELESS_1048576A = Textures.BlockIcons.custom(
-        WIRELESS_DIR + "OVERLAY_WIRELESS_1048576A");
-    public static final IIconContainer OVERLAY_WIRELESS_SPACETIME = Textures.BlockIcons.custom(
-        WIRELESS_DIR + "OVERLAY_WIRELESS_SPACETIME");
+    public static final IIconContainer OVERLAY_WIRELESS_256A = Textures.BlockIcons
+        .custom(WIRELESS_DIR + "OVERLAY_WIRELESS_256A");
+    public static final IIconContainer OVERLAY_WIRELESS_1024A = Textures.BlockIcons
+        .custom(WIRELESS_DIR + "OVERLAY_WIRELESS_1024A");
+    public static final IIconContainer OVERLAY_WIRELESS_4096A = Textures.BlockIcons
+        .custom(WIRELESS_DIR + "OVERLAY_WIRELESS_4096A");
+    public static final IIconContainer OVERLAY_WIRELESS_16384A = Textures.BlockIcons
+        .custom(WIRELESS_DIR + "OVERLAY_WIRELESS_16384A");
+    public static final IIconContainer OVERLAY_WIRELESS_65536A = Textures.BlockIcons
+        .custom(WIRELESS_DIR + "OVERLAY_WIRELESS_65536A");
+    public static final IIconContainer OVERLAY_WIRELESS_262144A = Textures.BlockIcons
+        .custom(WIRELESS_DIR + "OVERLAY_WIRELESS_262144A");
+    public static final IIconContainer OVERLAY_WIRELESS_1048576A = Textures.BlockIcons
+        .custom(WIRELESS_DIR + "OVERLAY_WIRELESS_1048576A");
+    public static final IIconContainer OVERLAY_WIRELESS_SPACETIME = Textures.BlockIcons
+        .custom(WIRELESS_DIR + "OVERLAY_WIRELESS_SPACETIME");
 
     public static final Map<Integer, ITexture> WirelessCoverTextureMap = new HashMap<>() {
 

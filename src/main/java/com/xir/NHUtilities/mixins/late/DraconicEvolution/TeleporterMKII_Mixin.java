@@ -2,7 +2,6 @@ package com.xir.NHUtilities.mixins.late.DraconicEvolution;
 
 import java.util.List;
 
-import com.brandon3055.draconicevolution.common.utils.InfoHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -14,8 +13,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import com.brandon3055.draconicevolution.common.utils.InfoHelper;
 import com.brandon3055.draconicevolution.common.items.tools.TeleporterMKII;
+import com.brandon3055.draconicevolution.common.utils.InfoHelper;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;

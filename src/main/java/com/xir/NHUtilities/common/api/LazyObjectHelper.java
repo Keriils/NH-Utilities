@@ -192,8 +192,7 @@ public final class LazyObjectHelper {
             GTOreDictUnificator.get(OrePrefixes.plate, Materials.Bedrockium, amount),
             GTOreDictUnificator.get(OrePrefixes.plate, Materials.BlackPlutonium, amount),
             GTOreDictUnificator.get(OrePrefixes.plate, Materials.SpaceTime, amount),
-            GTOreDictUnificator
-                .get(OrePrefixes.plate, Materials.MHDCSM, amount),
+            GTOreDictUnificator.get(OrePrefixes.plate, Materials.MHDCSM, amount),
             GTOreDictUnificator.get(OrePrefixes.plate, Materials.MagMatter, amount));
 
         allMaterialWireOfMachineHull = (defaultAmount, function) -> IntStream

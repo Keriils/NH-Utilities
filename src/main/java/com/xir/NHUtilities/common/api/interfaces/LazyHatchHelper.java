@@ -3,6 +3,8 @@ package com.xir.NHUtilities.common.api.interfaces;
 import static com.xir.NHUtilities.common.api.UtilHelper.HatchesBoxed.buildHatchBoxed;
 import static com.xir.NHUtilities.common.api.UtilHelper.WarpBox.newWarpBox;
 
+import net.minecraft.item.ItemStack;
+
 import com.google.common.collect.ImmutableList;
 import com.xir.NHUtilities.common.api.UtilHelper.HatchesBoxed;
 import com.xir.NHUtilities.common.api.UtilHelper.WarpBox;
@@ -16,11 +18,16 @@ import gregtech.api.enums.ItemList;
 import tectech.thing.CustomItemList;
 
 @SuppressWarnings("unused")
+@Deprecated
 public final class LazyHatchHelper {
 
+    @Deprecated
     public static final WarpBox<ImmutableList<HatchesBoxed>> allCommonHatch;
 
+    @Deprecated
     public static final WarpBox<ImmutableList<HatchesBoxed>> allWirelessHatch;
+
+    public static final ItemStack compatibleIS = NHUItemList.MetaBlock.get(1);
 
     static {
         // region Hatch init
@@ -168,7 +175,7 @@ public final class LazyHatchHelper {
                 buildHatchBoxed(    VoltageTier.UXV,        CustomItemList.eM_dynamoTunnel1_UXV.get(1),             HatchAmperes.AMP_256_A,     HatchType.LaserDynamoHatch),
 
                 // 1024A energy
-                buildHatchBoxed(    VoltageTier.IV,         CustomItemList.eM_energyTunnel2_IV.get(1),              HatchAmperes.AMP_1_024_A,   HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.IV, compatibleIS,              HatchAmperes.AMP_1_024_A,   HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.LuV,        CustomItemList.eM_energyTunnel2_LuV.get(1),             HatchAmperes.AMP_1_024_A,   HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.ZPM,        CustomItemList.eM_energyTunnel2_ZPM.get(1),             HatchAmperes.AMP_1_024_A,   HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.UV,         CustomItemList.eM_energyTunnel2_UV.get(1),              HatchAmperes.AMP_1_024_A,   HatchType.LaserEnergyHatch),
@@ -179,7 +186,7 @@ public final class LazyHatchHelper {
                 buildHatchBoxed(    VoltageTier.UXV,        CustomItemList.eM_energyTunnel2_UXV.get(1),             HatchAmperes.AMP_1_024_A,   HatchType.LaserEnergyHatch),
 
                 // 1024A dynamo
-                buildHatchBoxed(    VoltageTier.IV,         CustomItemList.eM_dynamoTunnel2_IV.get(1),              HatchAmperes.AMP_1_024_A,   HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.IV, compatibleIS,              HatchAmperes.AMP_1_024_A,   HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.LuV,        CustomItemList.eM_dynamoTunnel2_LuV.get(1),             HatchAmperes.AMP_1_024_A,   HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.ZPM,        CustomItemList.eM_dynamoTunnel2_ZPM.get(1),             HatchAmperes.AMP_1_024_A,   HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.UV,         CustomItemList.eM_dynamoTunnel2_UV.get(1),              HatchAmperes.AMP_1_024_A,   HatchType.LaserDynamoHatch),
@@ -190,8 +197,8 @@ public final class LazyHatchHelper {
                 buildHatchBoxed(    VoltageTier.UXV,        CustomItemList.eM_dynamoTunnel2_UXV.get(1),             HatchAmperes.AMP_1_024_A,   HatchType.LaserDynamoHatch),
 
                 // 4096A energy
-                buildHatchBoxed(    VoltageTier.IV,         CustomItemList.eM_energyTunnel3_IV.get(1),              HatchAmperes.AMP_4_096_A,   HatchType.LaserEnergyHatch),
-                buildHatchBoxed(    VoltageTier.LuV,        CustomItemList.eM_energyTunnel3_LuV.get(1),             HatchAmperes.AMP_4_096_A,   HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.IV, compatibleIS,              HatchAmperes.AMP_4_096_A,   HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.LuV, compatibleIS,             HatchAmperes.AMP_4_096_A,   HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.ZPM,        CustomItemList.eM_energyTunnel3_ZPM.get(1),             HatchAmperes.AMP_4_096_A,   HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.UV,         CustomItemList.eM_energyTunnel3_UV.get(1),              HatchAmperes.AMP_4_096_A,   HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.UHV,        CustomItemList.eM_energyTunnel3_UHV.get(1),             HatchAmperes.AMP_4_096_A,   HatchType.LaserEnergyHatch),
@@ -201,8 +208,8 @@ public final class LazyHatchHelper {
                 buildHatchBoxed(    VoltageTier.UXV,        CustomItemList.eM_energyTunnel3_UXV.get(1),             HatchAmperes.AMP_4_096_A,   HatchType.LaserEnergyHatch),
 
                 // 4096A dynamo
-                buildHatchBoxed(    VoltageTier.IV,         CustomItemList.eM_dynamoTunnel3_IV.get(1),              HatchAmperes.AMP_4_096_A,   HatchType.LaserDynamoHatch),
-                buildHatchBoxed(    VoltageTier.LuV,        CustomItemList.eM_dynamoTunnel3_LuV.get(1),             HatchAmperes.AMP_4_096_A,   HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.IV, compatibleIS,              HatchAmperes.AMP_4_096_A,   HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.LuV, compatibleIS,             HatchAmperes.AMP_4_096_A,   HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.ZPM,        CustomItemList.eM_dynamoTunnel3_ZPM.get(1),             HatchAmperes.AMP_4_096_A,   HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.UV,         CustomItemList.eM_dynamoTunnel3_UV.get(1),              HatchAmperes.AMP_4_096_A,   HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.UHV,        CustomItemList.eM_dynamoTunnel3_UHV.get(1),             HatchAmperes.AMP_4_096_A,   HatchType.LaserDynamoHatch),
@@ -212,9 +219,9 @@ public final class LazyHatchHelper {
                 buildHatchBoxed(    VoltageTier.UXV,        CustomItemList.eM_dynamoTunnel3_UXV.get(1),             HatchAmperes.AMP_4_096_A,   HatchType.LaserDynamoHatch),
 
                 // 16384A energy
-                buildHatchBoxed(    VoltageTier.IV,         CustomItemList.eM_energyTunnel4_IV.get(1),              HatchAmperes.AMP_16_384_A,      HatchType.LaserEnergyHatch),
-                buildHatchBoxed(    VoltageTier.LuV,        CustomItemList.eM_energyTunnel4_LuV.get(1),             HatchAmperes.AMP_16_384_A,      HatchType.LaserEnergyHatch),
-                buildHatchBoxed(    VoltageTier.ZPM,        CustomItemList.eM_energyTunnel4_ZPM.get(1),             HatchAmperes.AMP_16_384_A,      HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.IV, compatibleIS,              HatchAmperes.AMP_16_384_A,      HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.LuV, compatibleIS,             HatchAmperes.AMP_16_384_A,      HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.ZPM, compatibleIS,             HatchAmperes.AMP_16_384_A,      HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.UV,         CustomItemList.eM_energyTunnel4_UV.get(1),              HatchAmperes.AMP_16_384_A,      HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.UHV,        CustomItemList.eM_energyTunnel4_UHV.get(1),             HatchAmperes.AMP_16_384_A,      HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.UEV,        CustomItemList.eM_energyTunnel4_UEV.get(1),             HatchAmperes.AMP_16_384_A,      HatchType.LaserEnergyHatch),
@@ -223,9 +230,9 @@ public final class LazyHatchHelper {
                 buildHatchBoxed(    VoltageTier.UXV,        CustomItemList.eM_energyTunnel4_UXV.get(1),             HatchAmperes.AMP_16_384_A,      HatchType.LaserEnergyHatch),
 
                 // 16384A dynamo
-                buildHatchBoxed(    VoltageTier.IV,         CustomItemList.eM_dynamoTunnel4_IV.get(1),              HatchAmperes.AMP_16_384_A,      HatchType.LaserDynamoHatch),
-                buildHatchBoxed(    VoltageTier.LuV,        CustomItemList.eM_dynamoTunnel4_LuV.get(1),             HatchAmperes.AMP_16_384_A,      HatchType.LaserDynamoHatch),
-                buildHatchBoxed(    VoltageTier.ZPM,        CustomItemList.eM_dynamoTunnel4_ZPM.get(1),             HatchAmperes.AMP_16_384_A,      HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.IV, compatibleIS,              HatchAmperes.AMP_16_384_A,      HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.LuV, compatibleIS,             HatchAmperes.AMP_16_384_A,      HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.ZPM, compatibleIS,             HatchAmperes.AMP_16_384_A,      HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.UV,         CustomItemList.eM_dynamoTunnel4_UV.get(1),              HatchAmperes.AMP_16_384_A,      HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.UHV,        CustomItemList.eM_dynamoTunnel4_UHV.get(1),             HatchAmperes.AMP_16_384_A,      HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.UEV,        CustomItemList.eM_dynamoTunnel4_UEV.get(1),             HatchAmperes.AMP_16_384_A,      HatchType.LaserDynamoHatch),
@@ -234,10 +241,10 @@ public final class LazyHatchHelper {
                 buildHatchBoxed(    VoltageTier.UXV,        CustomItemList.eM_dynamoTunnel4_UXV.get(1),             HatchAmperes.AMP_16_384_A,      HatchType.LaserDynamoHatch),
 
                 // 65536A energy
-                buildHatchBoxed(    VoltageTier.IV,         CustomItemList.eM_energyTunnel5_IV.get(1),              HatchAmperes.AMP_65_536_A,      HatchType.LaserEnergyHatch),
-                buildHatchBoxed(    VoltageTier.LuV,        CustomItemList.eM_energyTunnel5_LuV.get(1),             HatchAmperes.AMP_65_536_A,      HatchType.LaserEnergyHatch),
-                buildHatchBoxed(    VoltageTier.ZPM,        CustomItemList.eM_energyTunnel5_ZPM.get(1),             HatchAmperes.AMP_65_536_A,      HatchType.LaserEnergyHatch),
-                buildHatchBoxed(    VoltageTier.UV,         CustomItemList.eM_energyTunnel5_UV.get(1),              HatchAmperes.AMP_65_536_A,      HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.IV, compatibleIS,              HatchAmperes.AMP_65_536_A,      HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.LuV, compatibleIS,             HatchAmperes.AMP_65_536_A,      HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.ZPM, compatibleIS,             HatchAmperes.AMP_65_536_A,      HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.UV, compatibleIS,              HatchAmperes.AMP_65_536_A,      HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.UHV,        CustomItemList.eM_energyTunnel5_UHV.get(1),             HatchAmperes.AMP_65_536_A,      HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.UEV,        CustomItemList.eM_energyTunnel5_UEV.get(1),             HatchAmperes.AMP_65_536_A,      HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.UIV,        CustomItemList.eM_energyTunnel5_UIV.get(1),             HatchAmperes.AMP_65_536_A,      HatchType.LaserEnergyHatch),
@@ -245,10 +252,10 @@ public final class LazyHatchHelper {
                 buildHatchBoxed(    VoltageTier.UXV,        CustomItemList.eM_energyTunnel5_UXV.get(1),             HatchAmperes.AMP_65_536_A,      HatchType.LaserEnergyHatch),
 
                 // 65536A dynamo
-                buildHatchBoxed(    VoltageTier.IV,         CustomItemList.eM_dynamoTunnel5_IV.get(1),              HatchAmperes.AMP_65_536_A,      HatchType.LaserDynamoHatch),
-                buildHatchBoxed(    VoltageTier.LuV,        CustomItemList.eM_dynamoTunnel5_LuV.get(1),             HatchAmperes.AMP_65_536_A,      HatchType.LaserDynamoHatch),
-                buildHatchBoxed(    VoltageTier.ZPM,        CustomItemList.eM_dynamoTunnel5_ZPM.get(1),             HatchAmperes.AMP_65_536_A,      HatchType.LaserDynamoHatch),
-                buildHatchBoxed(    VoltageTier.UV,         CustomItemList.eM_dynamoTunnel5_UV.get(1),              HatchAmperes.AMP_65_536_A,      HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.IV, compatibleIS,              HatchAmperes.AMP_65_536_A,      HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.LuV, compatibleIS,             HatchAmperes.AMP_65_536_A,      HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.ZPM, compatibleIS,             HatchAmperes.AMP_65_536_A,      HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.UV, compatibleIS,              HatchAmperes.AMP_65_536_A,      HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.UHV,        CustomItemList.eM_dynamoTunnel5_UHV.get(1),             HatchAmperes.AMP_65_536_A,      HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.UEV,        CustomItemList.eM_dynamoTunnel5_UEV.get(1),             HatchAmperes.AMP_65_536_A,      HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.UIV,        CustomItemList.eM_dynamoTunnel5_UIV.get(1),             HatchAmperes.AMP_65_536_A,      HatchType.LaserDynamoHatch),
@@ -256,45 +263,45 @@ public final class LazyHatchHelper {
                 buildHatchBoxed(    VoltageTier.UXV,        CustomItemList.eM_dynamoTunnel5_UXV.get(1),             HatchAmperes.AMP_65_536_A,      HatchType.LaserDynamoHatch),
 
                 // 262144A energy
-                buildHatchBoxed(    VoltageTier.IV,         CustomItemList.eM_energyTunnel6_IV.get(1),              HatchAmperes.AMP_262_144_A,     HatchType.LaserEnergyHatch),
-                buildHatchBoxed(    VoltageTier.LuV,        CustomItemList.eM_energyTunnel6_LuV.get(1),             HatchAmperes.AMP_262_144_A,     HatchType.LaserEnergyHatch),
-                buildHatchBoxed(    VoltageTier.ZPM,        CustomItemList.eM_energyTunnel6_ZPM.get(1),             HatchAmperes.AMP_262_144_A,     HatchType.LaserEnergyHatch),
-                buildHatchBoxed(    VoltageTier.UV,         CustomItemList.eM_energyTunnel6_UV.get(1),              HatchAmperes.AMP_262_144_A,     HatchType.LaserEnergyHatch),
-                buildHatchBoxed(    VoltageTier.UHV,        CustomItemList.eM_energyTunnel6_UHV.get(1),             HatchAmperes.AMP_262_144_A,     HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.IV, compatibleIS,              HatchAmperes.AMP_262_144_A,     HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.LuV, compatibleIS,             HatchAmperes.AMP_262_144_A,     HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.ZPM, compatibleIS,             HatchAmperes.AMP_262_144_A,     HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.UV, compatibleIS,              HatchAmperes.AMP_262_144_A,     HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.UHV, compatibleIS,             HatchAmperes.AMP_262_144_A,     HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.UEV,        CustomItemList.eM_energyTunnel6_UEV.get(1),             HatchAmperes.AMP_262_144_A,     HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.UIV,        CustomItemList.eM_energyTunnel6_UIV.get(1),             HatchAmperes.AMP_262_144_A,     HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.UMV,        CustomItemList.eM_energyTunnel6_UMV.get(1),             HatchAmperes.AMP_262_144_A,     HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.UXV,        CustomItemList.eM_energyTunnel6_UXV.get(1),             HatchAmperes.AMP_262_144_A,     HatchType.LaserEnergyHatch),
 
                 // 262144A dynamo
-                buildHatchBoxed(    VoltageTier.IV,         CustomItemList.eM_dynamoTunnel6_IV.get(1),              HatchAmperes.AMP_262_144_A,     HatchType.LaserDynamoHatch),
-                buildHatchBoxed(    VoltageTier.LuV,        CustomItemList.eM_dynamoTunnel6_LuV.get(1),             HatchAmperes.AMP_262_144_A,     HatchType.LaserDynamoHatch),
-                buildHatchBoxed(    VoltageTier.ZPM,        CustomItemList.eM_dynamoTunnel6_ZPM.get(1),             HatchAmperes.AMP_262_144_A,     HatchType.LaserDynamoHatch),
-                buildHatchBoxed(    VoltageTier.UV,         CustomItemList.eM_dynamoTunnel6_UV.get(1),              HatchAmperes.AMP_262_144_A,     HatchType.LaserDynamoHatch),
-                buildHatchBoxed(    VoltageTier.UHV,        CustomItemList.eM_dynamoTunnel6_UHV.get(1),             HatchAmperes.AMP_262_144_A,     HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.IV, compatibleIS,              HatchAmperes.AMP_262_144_A,     HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.LuV, compatibleIS,             HatchAmperes.AMP_262_144_A,     HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.ZPM, compatibleIS,             HatchAmperes.AMP_262_144_A,     HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.UV, compatibleIS,              HatchAmperes.AMP_262_144_A,     HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.UHV, compatibleIS,             HatchAmperes.AMP_262_144_A,     HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.UEV,        CustomItemList.eM_dynamoTunnel6_UEV.get(1),             HatchAmperes.AMP_262_144_A,     HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.UIV,        CustomItemList.eM_dynamoTunnel6_UIV.get(1),             HatchAmperes.AMP_262_144_A,     HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.UMV,        CustomItemList.eM_dynamoTunnel6_UMV.get(1),             HatchAmperes.AMP_262_144_A,     HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.UXV,        CustomItemList.eM_dynamoTunnel6_UXV.get(1),             HatchAmperes.AMP_262_144_A,     HatchType.LaserDynamoHatch),
 
                 // 1048576A energy
-                buildHatchBoxed(    VoltageTier.IV,         CustomItemList.eM_energyTunnel7_IV.get(1),              HatchAmperes.AMP_1_048_576_A,       HatchType.LaserEnergyHatch),
-                buildHatchBoxed(    VoltageTier.LuV,        CustomItemList.eM_energyTunnel7_LuV.get(1),             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserEnergyHatch),
-                buildHatchBoxed(    VoltageTier.ZPM,        CustomItemList.eM_energyTunnel7_ZPM.get(1),             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserEnergyHatch),
-                buildHatchBoxed(    VoltageTier.UV,         CustomItemList.eM_energyTunnel7_UV.get(1),              HatchAmperes.AMP_1_048_576_A,       HatchType.LaserEnergyHatch),
-                buildHatchBoxed(    VoltageTier.UHV,        CustomItemList.eM_energyTunnel7_UHV.get(1),             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserEnergyHatch),
-                buildHatchBoxed(    VoltageTier.UEV,        CustomItemList.eM_energyTunnel7_UEV.get(1),             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.IV, compatibleIS,              HatchAmperes.AMP_1_048_576_A,       HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.LuV, compatibleIS,             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.ZPM, compatibleIS,             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.UV, compatibleIS,              HatchAmperes.AMP_1_048_576_A,       HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.UHV, compatibleIS,             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserEnergyHatch),
+                buildHatchBoxed(    VoltageTier.UEV, compatibleIS,             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.UIV,        CustomItemList.eM_energyTunnel7_UIV.get(1),             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.UMV,        CustomItemList.eM_energyTunnel7_UMV.get(1),             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserEnergyHatch),
                 buildHatchBoxed(    VoltageTier.UXV,        CustomItemList.eM_energyTunnel7_UXV.get(1),             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserEnergyHatch),
 
                 // 1048576A dynamo
-                buildHatchBoxed(    VoltageTier.IV,         CustomItemList.eM_dynamoTunnel7_IV.get(1),              HatchAmperes.AMP_1_048_576_A,       HatchType.LaserDynamoHatch),
-                buildHatchBoxed(    VoltageTier.LuV,        CustomItemList.eM_dynamoTunnel7_LuV.get(1),             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserDynamoHatch),
-                buildHatchBoxed(    VoltageTier.ZPM,        CustomItemList.eM_dynamoTunnel7_ZPM.get(1),             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserDynamoHatch),
-                buildHatchBoxed(    VoltageTier.UV,         CustomItemList.eM_dynamoTunnel7_UV.get(1),              HatchAmperes.AMP_1_048_576_A,       HatchType.LaserDynamoHatch),
-                buildHatchBoxed(    VoltageTier.UHV,        CustomItemList.eM_dynamoTunnel7_UHV.get(1),             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserDynamoHatch),
-                buildHatchBoxed(    VoltageTier.UEV,        CustomItemList.eM_dynamoTunnel7_UEV.get(1),             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.IV, compatibleIS,              HatchAmperes.AMP_1_048_576_A,       HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.LuV, compatibleIS,             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.ZPM, compatibleIS,             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.UV, compatibleIS,              HatchAmperes.AMP_1_048_576_A,       HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.UHV, compatibleIS,             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserDynamoHatch),
+                buildHatchBoxed(    VoltageTier.UEV, compatibleIS,             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.UIV,        CustomItemList.eM_dynamoTunnel7_UIV.get(1),             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.UMV,        CustomItemList.eM_dynamoTunnel7_UMV.get(1),             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserDynamoHatch),
                 buildHatchBoxed(    VoltageTier.UXV,        CustomItemList.eM_dynamoTunnel7_UXV.get(1),             HatchAmperes.AMP_1_048_576_A,       HatchType.LaserDynamoHatch),
@@ -335,21 +342,21 @@ public final class LazyHatchHelper {
                 buildHatchBoxed(    VoltageTier.MAX,        ItemList.Wireless_Hatch_Energy_MAX.get(1),        HatchAmperes.AMP_2_A,     HatchType.WirelessEnergyHatch),
 
                 // 2A dynamoWireless
-                buildHatchBoxed(    VoltageTier.ULV,        ItemList.Wireless_Dynamo_Energy_ULV.get(1),       HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
-                buildHatchBoxed(    VoltageTier.LV,         ItemList.Wireless_Dynamo_Energy_LV.get(1),        HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
-                buildHatchBoxed(    VoltageTier.MV,         ItemList.Wireless_Dynamo_Energy_MV.get(1),        HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
-                buildHatchBoxed(    VoltageTier.HV,         ItemList.Wireless_Dynamo_Energy_HV.get(1),        HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
-                buildHatchBoxed(    VoltageTier.EV,         ItemList.Wireless_Dynamo_Energy_EV.get(1),        HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
-                buildHatchBoxed(    VoltageTier.IV,         ItemList.Wireless_Dynamo_Energy_IV.get(1),        HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
-                buildHatchBoxed(    VoltageTier.LuV,        ItemList.Wireless_Dynamo_Energy_LuV.get(1),       HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
-                buildHatchBoxed(    VoltageTier.ZPM,        ItemList.Wireless_Dynamo_Energy_ZPM.get(1),       HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
-                buildHatchBoxed(    VoltageTier.UV,         ItemList.Wireless_Dynamo_Energy_UV.get(1),        HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
-                buildHatchBoxed(    VoltageTier.UHV,        ItemList.Wireless_Dynamo_Energy_UHV.get(1),       HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
-                buildHatchBoxed(    VoltageTier.UEV,        ItemList.Wireless_Dynamo_Energy_UEV.get(1),       HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
-                buildHatchBoxed(    VoltageTier.UIV,        ItemList.Wireless_Dynamo_Energy_UIV.get(1),       HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
-                buildHatchBoxed(    VoltageTier.UMV,        ItemList.Wireless_Dynamo_Energy_UMV.get(1),       HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
-                buildHatchBoxed(    VoltageTier.UXV,        ItemList.Wireless_Dynamo_Energy_UXV.get(1),       HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
-                buildHatchBoxed(    VoltageTier.MAX,        ItemList.Wireless_Dynamo_Energy_MAX.get(1),       HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
+                buildHatchBoxed(    VoltageTier.ULV, compatibleIS,       HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
+                buildHatchBoxed(    VoltageTier.LV, compatibleIS,        HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
+                buildHatchBoxed(    VoltageTier.MV, compatibleIS,        HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
+                buildHatchBoxed(    VoltageTier.HV, compatibleIS,        HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
+                buildHatchBoxed(    VoltageTier.EV, compatibleIS,        HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
+                buildHatchBoxed(    VoltageTier.IV, compatibleIS,        HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
+                buildHatchBoxed(    VoltageTier.LuV, compatibleIS,       HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
+                buildHatchBoxed(    VoltageTier.ZPM, compatibleIS,       HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
+                buildHatchBoxed(    VoltageTier.UV, compatibleIS,        HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
+                buildHatchBoxed(    VoltageTier.UHV, compatibleIS,       HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
+                buildHatchBoxed(    VoltageTier.UEV, compatibleIS,       HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
+                buildHatchBoxed(    VoltageTier.UIV, compatibleIS,       HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
+                buildHatchBoxed(    VoltageTier.UMV, compatibleIS,       HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
+                buildHatchBoxed(    VoltageTier.UXV, compatibleIS,       HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
+                buildHatchBoxed(    VoltageTier.MAX, compatibleIS,       HatchAmperes.AMP_2_A,     HatchType.WirelessDynamoHatch),
 
                 // 4A energy
                 buildHatchBoxed(    VoltageTier.LV,         WirelessHatchMore.energyMulti_LV_4.get(1),                         HatchAmperes.AMP_4_A,     HatchType.WirelessEnergyHatch ),

@@ -19,41 +19,42 @@ val Project.isCiEnvironment
     inline get() = System.getenv("CI") == "true" || System.getenv("GITHUB_ACTIONS") == "true"
 
 // region Dependencies
-val elytra = elytraModpackVersion
+
+fun gtnhdev(name: String) = elytraModpackVersion.gtnhdev(name)
 
 dependencies {
-    elytra.gtnhVersion = "2.9.0-beta-1"
+    elytraModpackVersion.gtnhVersion = "2.9.0-beta-1"
 
-    implementation(elytra.gtnhdev("GT5-Unofficial"))
-    implementation(elytra.gtnhdev("NewHorizonsCoreMod"))
-    implementation(elytra.gtnhdev("Baubles-Expanded"))
+    implementation(gtnhdev("GT5-Unofficial"))
+    implementation(gtnhdev("NewHorizonsCoreMod"))
+    implementation(gtnhdev("Baubles-Expanded"))
 
     implementation(rfg.deobf("curse.maven:extra-utilities-225561:2264384"))
     implementation("com.github.GTNewHorizons:worldedit-gtnh:v0.0.8:dev")
 
-    //implementation(elytra.gtnhdev("ae2stuff"))
-    implementation(elytra.gtnhdev("Hodgepodge"))
-    implementation(elytra.gtnhdev("Avaritiaddons"))
-    implementation(elytra.gtnhdev("Eternal-Singularity"))
-    implementation(elytra.gtnhdev("Universal-Singularities"))
-    implementation(elytra.gtnhdev("WarpTheory"))
-    implementation(elytra.gtnhdev("Mobs-Info"))
-    implementation(elytra.gtnhdev("Jabba"))
+    // implementation(gtnhdev("ae2stuff"))
+    implementation(gtnhdev("Hodgepodge"))
+    implementation(gtnhdev("Avaritiaddons"))
+    implementation(gtnhdev("Eternal-Singularity"))
+    implementation(gtnhdev("Universal-Singularities"))
+    implementation(gtnhdev("WarpTheory"))
+    implementation(gtnhdev("Mobs-Info"))
+    implementation(gtnhdev("Jabba"))
     // Todo 与巫术相关插件问题较大 2.9.+解决
-    implementation(elytra.gtnhdev("ThaumicTinkerer")) { isTransitive = false }
-    implementation(elytra.gtnhdev("EnderIO"))
-    implementation(elytra.gtnhdev("Draconic-Evolution"))
-    implementation(elytra.gtnhdev("Botania"))
-    implementation(elytra.gtnhdev("SpiceOfLife"))
+    implementation(gtnhdev("ThaumicTinkerer")) { isTransitive = false }
+    implementation(gtnhdev("EnderIO"))
+    implementation(gtnhdev("Draconic-Evolution"))
+    implementation(gtnhdev("Botania"))
+    implementation(gtnhdev("SpiceOfLife"))
     // Todo 2.8.4左右的构思依赖的附魔和TT神秘冲突 2.9.+解决
-    implementation(elytra.gtnhdev("InventoryBogoSorter")) { isTransitive = false }
+    implementation(gtnhdev("InventoryBogoSorter")) { isTransitive = false }
 
     compileOnly("org.projectlombok:lombok:1.18.42")
     annotationProcessor("org.projectlombok:lombok:1.18.42")
 
-    // runtimeOnlyNonPublishable(elytra.gtnhdev("Angelica"))
-    runtimeOnlyNonPublishable(elytra.gtnhdev("BlockRenderer6343"))
-    runtimeOnlyNonPublishable(elytra.gtnhdev("Galacticraft"))
+    // runtimeOnlyNonPublishable(gtnhdev("Angelica"))
+    runtimeOnlyNonPublishable(gtnhdev("BlockRenderer6343"))
+    runtimeOnlyNonPublishable(gtnhdev("Galacticraft"))
 }
 
 // only client side
@@ -64,14 +65,7 @@ configurations.configureEach {
     val gtnhGroup = "com.github.GTNewHorizons"
     exclude(gtnhGroup, "Baubles")
 
-    val blackList =
-        listOf(
-            "unimixins",
-            "GTNHLib",
-            "jabel-stubs",
-            "lwjgl3ify",
-            "Hodgepodge",
-        )
+    val blackList = listOf("unimixins", "GTNHLib", "jabel-stubs", "lwjgl3ify", "Hodgepodge")
 
     // 强制大部分依赖与elytra-conventions插件提供的版本对齐
     resolutionStrategy {

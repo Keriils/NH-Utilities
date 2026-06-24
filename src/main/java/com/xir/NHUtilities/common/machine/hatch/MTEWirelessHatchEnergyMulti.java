@@ -4,8 +4,9 @@ import static com.xir.NHUtilities.common.api.enums.TexturesSets.getWirelessTex;
 import static com.xir.NHUtilities.utils.CommonUtil.trans;
 import static gregtech.api.enums.GTValues.V;
 
-import com.gtnewhorizon.gtnhlib.util.numberformatting.NumberFormatUtil;
 import net.minecraft.util.EnumChatFormatting;
+
+import com.gtnewhorizon.gtnhlib.util.numberformatting.NumberFormatUtil;
 
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;

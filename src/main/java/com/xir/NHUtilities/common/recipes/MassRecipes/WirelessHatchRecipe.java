@@ -32,6 +32,7 @@ import com.xir.NHUtilities.common.api.enums.NHUItemList;
 import com.xir.NHUtilities.common.api.enums.VoltageTier;
 import com.xir.NHUtilities.common.api.interfaces.LazyHatchHelper;
 import com.xir.NHUtilities.main.NHUtilities;
+import com.xir.NHUtilities.utils.CommonUtil;
 
 import bartworks.system.material.WerkstoffLoader;
 import goodgenerator.items.GGMaterial;
@@ -40,6 +41,8 @@ import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.TierEU;
+import gregtech.api.interfaces.IRecipeMap;
+import gregtech.api.recipe.RecipeMetadataKey;
 import gregtech.api.util.GTOreDictUnificator;
 import gregtech.api.util.GTRecipeBuilder;
 import gregtech.api.util.GTUtility;
@@ -52,7 +55,7 @@ public class WirelessHatchRecipe {
 
         loadCompRecipe();
 
-        GTRecipeBuilder.builder()
+        WirelessRecipeFilterBuilder.of()
             .itemInputsUnsafe(
                 ItemList.Energy_Module.get(1),
                 copyAmount(GTOreDictUnificator.get(OrePrefixes.lens, Materials.Sapphire, 1), 0))
@@ -207,7 +210,7 @@ public class WirelessHatchRecipe {
         var MAX_Index = energy_2A.size(); // value = 14
         for (int i = 0; i < iZPM_Index; i++) {
             // energy
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(
                     energy_2A.get(i),
                     sensor.get(i),
@@ -223,7 +226,7 @@ public class WirelessHatchRecipe {
                 .addTo(assemblerRecipes);
 
             // dynamo
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(
                     dynamo_2A.get(i),
                     emitter.get(i),
@@ -241,7 +244,7 @@ public class WirelessHatchRecipe {
 
         for (int i = iZPM_Index; i < MAX_Index; i++) {
             // energy
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(energy_2A.get(i), sensor.get(i), circuit.get(i), chips.get(i))
                 .fluidInputs(fluids.get(i))
                 .itemOutputs(wirelessEnergy_2A.get(i))
@@ -251,7 +254,7 @@ public class WirelessHatchRecipe {
                 .addTo(preciseAssemblerRecipes);
 
             // dynamo
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(dynamo_2A.get(i), emitter.get(i), circuit.get(i), chips.get(i))
                 .fluidInputs(fluids.get(i))
                 .itemOutputs(wirelessDynamo_2A.get(i))
@@ -309,7 +312,7 @@ public class WirelessHatchRecipe {
             for (int i = 0; i < iZPM_Index; i++) {
                 // energy
                 var tier = i + 1;
-                GTRecipeBuilder.builder()
+                WirelessRecipeFilterBuilder.of()
                     .itemInputsUnsafe(
                         energyAll.get(z)
                             .get(i),
@@ -331,7 +334,7 @@ public class WirelessHatchRecipe {
             for (int i = iZPM_Index; i < MAX_Index; i++) {
                 // energy
                 var tier = i + 1;
-                GTRecipeBuilder.builder()
+                WirelessRecipeFilterBuilder.of()
                     .itemInputsUnsafe(
                         energyAll.get(z)
                             .get(i),
@@ -435,7 +438,7 @@ public class WirelessHatchRecipe {
             for (int i = startIndexIVc; i < dynamoForUIVBypassIndex; i++) {
                 var realIndex = i - startIndexIVc;
 
-                GTRecipeBuilder builder = GTRecipeBuilder.builder()
+                WirelessRecipeFilterBuilder builder = WirelessRecipeFilterBuilder.of()
                     .itemInputsUnsafe(
                         emitter.get(i),
                         hatch_4A_64A.get(commonIndex)
@@ -505,7 +508,7 @@ public class WirelessHatchRecipe {
         for (int i = IV_Index; i < MAX_Index; i++) {
             var realIndex = i - IV_Index;
             // energy
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(
                     newItemStack(sensor.get(i), itemToDouble),
                     hatch_256A.get(energyIndex)
@@ -525,7 +528,7 @@ public class WirelessHatchRecipe {
             if (i >= dynamoForUIVBypassIndex) continue;
 
             // dynamo
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(
                     newItemStack(emitter.get(i), itemToDouble),
                     hatch_256A.get(dynamoIndex)
@@ -587,7 +590,7 @@ public class WirelessHatchRecipe {
         for (int i = LuV_Index; i < MAX_Index; i++) {
             var realIndex = i - LuV_Index;
             // energy
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(
                     newItemStack(sensor.get(i), itemToDouble),
                     hatch_1024A.get(energyIndex)
@@ -607,7 +610,7 @@ public class WirelessHatchRecipe {
             if (i >= dynamoForUIVBypassIndex) continue;
 
             // dynamo
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(
                     newItemStack(emitter.get(i), itemToDouble),
                     hatch_1024A.get(dynamoIndex)
@@ -669,7 +672,7 @@ public class WirelessHatchRecipe {
         for (int i = ZPM_Index; i < MAX_Index; i++) {
             var realIndex = i - ZPM_Index;
             // energy
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(
                     newItemStack(sensor.get(i), itemToDouble),
                     hatch_4096A.get(energyIndex)
@@ -689,7 +692,7 @@ public class WirelessHatchRecipe {
             if (i >= dynamoForUIVBypassIndex) continue;
 
             // dynamo
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(
                     newItemStack(emitter.get(i), itemToDouble),
                     hatch_4096A.get(dynamoIndex)
@@ -751,7 +754,7 @@ public class WirelessHatchRecipe {
         for (int i = UV_Index; i < MAX_Index; i++) {
             var realIndex = i - UV_Index;
             // energy
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(
                     newItemStack(sensor.get(i), itemToQuadruple),
                     hatch_16384A.get(energyIndex)
@@ -771,7 +774,7 @@ public class WirelessHatchRecipe {
             if (i >= dynamoForUIVBypassIndex) continue;
 
             // dynamo
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(
                     newItemStack(emitter.get(i), itemToQuadruple),
                     hatch_16384A.get(dynamoIndex)
@@ -833,7 +836,7 @@ public class WirelessHatchRecipe {
         for (int i = UHV_Index; i < MAX_Index; i++) {
             var realIndex = i - UHV_Index;
             // energy
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(
                     newItemStack(sensor.get(i), itemToQuadruple),
                     hatch_65536A.get(energyIndex)
@@ -853,7 +856,7 @@ public class WirelessHatchRecipe {
             if (i >= dynamoForUIVBypassIndex) continue;
 
             // dynamo
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(
                     newItemStack(emitter.get(i), itemToQuadruple),
                     hatch_65536A.get(dynamoIndex)
@@ -915,7 +918,7 @@ public class WirelessHatchRecipe {
         for (int i = UEV_Index; i < MAX_Index; i++) {
             var realIndex = i - UEV_Index;
             // energy
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(
                     newItemStack(sensor.get(i), itemToQuadruple),
                     hatch_262144A.get(energyIndex)
@@ -935,7 +938,7 @@ public class WirelessHatchRecipe {
             if (i >= dynamoForUIVBypassIndex) continue;
 
             // dynamo
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(
                     newItemStack(emitter.get(i), itemToQuadruple),
                     hatch_262144A.get(dynamoIndex)
@@ -997,7 +1000,7 @@ public class WirelessHatchRecipe {
         for (int i = UIV_Index; i < MAX_Index; i++) {
             var realIndex = i - UIV_Index;
             // energy
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(
                     newItemStack(sensor.get(i), itemToQuadruple),
                     hatch_1048576A.get(energyIndex)
@@ -1017,7 +1020,7 @@ public class WirelessHatchRecipe {
             if (i >= dynamoForUIVBypassIndex) continue;
 
             // dynamo
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(
                     newItemStack(emitter.get(i), itemToQuadruple),
                     hatch_1048576A.get(dynamoIndex)
@@ -1061,7 +1064,7 @@ public class WirelessHatchRecipe {
         for (int i = UMV_Index; i < MAX_Index; i++) {
             var realIndex = i - UMV_Index;
             // energy
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(
                     newItemStack(sensor.get(i), itemToUltimate),
                     hatch_4194304A.get(energyIndex)
@@ -1105,7 +1108,7 @@ public class WirelessHatchRecipe {
         for (int i = UXV_Index; i < MAX_Index; i++) {
             var realIndex = i - UXV_Index;
             // energy
-            GTRecipeBuilder.builder()
+            WirelessRecipeFilterBuilder.of()
                 .itemInputsUnsafe(
                     newItemStack(sensor.get(i), itemToUltimate),
                     hatch_16777216A.get(energyIndex)
@@ -1149,7 +1152,7 @@ public class WirelessHatchRecipe {
         // / for (int i = nMAX_Index; i < MAX_Index; i++) {
         // / var realIndex = i - nMAX_Index;
         // / // energy
-        // / GTRecipeBuilder.builder()
+        // / WirelessRecipeFilterBuilder.of()
         // / .itemInputsUnsafe(
         // / newItemStack(sensor.get(i), itemToUltimate),
         // / hatch_67108864A.get(energyIndex)
@@ -1175,7 +1178,7 @@ public class WirelessHatchRecipe {
     private static void loadCompRecipe() {
 
         // Energy Hatch LV 4A
-        GTRecipeBuilder.builder()
+        WirelessRecipeFilterBuilder.of()
             .itemInputs(
                 ItemList.Hatch_Energy_LV.get(1),
                 GTOreDictUnificator.get(OrePrefixes.wireGt04, Materials.Tin, 2),
@@ -1187,7 +1190,7 @@ public class WirelessHatchRecipe {
             .addTo(assemblerRecipes);
 
         // Energy Hatch LV 16A
-        GTRecipeBuilder.builder()
+        WirelessRecipeFilterBuilder.of()
             .itemInputs(
                 ItemList.Transformer_MV_LV.get(1),
                 NHUItemList.Hatch_EnergyMulti4_LV.get(1),
@@ -1200,7 +1203,7 @@ public class WirelessHatchRecipe {
             .addTo(assemblerRecipes);
 
         // Energy Hatch LV 64A
-        GTRecipeBuilder.builder()
+        WirelessRecipeFilterBuilder.of()
             .itemInputs(
                 ItemList.WetTransformer_MV_LV.get(1),
                 NHUItemList.Hatch_EnergyMulti16_LV.get(1),
@@ -1213,7 +1216,7 @@ public class WirelessHatchRecipe {
             .addTo(assemblerRecipes);
 
         // Energy Hatch MV 4A
-        GTRecipeBuilder.builder()
+        WirelessRecipeFilterBuilder.of()
             .itemInputs(
                 ItemList.Hatch_Energy_MV.get(1),
                 GTOreDictUnificator.get(OrePrefixes.wireGt04, Materials.AnyCopper, 2),
@@ -1225,7 +1228,7 @@ public class WirelessHatchRecipe {
             .addTo(assemblerRecipes);
 
         // Energy Hatch MV 16A
-        GTRecipeBuilder.builder()
+        WirelessRecipeFilterBuilder.of()
             .itemInputs(
                 ItemList.Transformer_HV_MV.get(1),
                 NHUItemList.Hatch_EnergyMulti4_MV.get(1),
@@ -1238,7 +1241,7 @@ public class WirelessHatchRecipe {
             .addTo(assemblerRecipes);
 
         // Energy Hatch MV 64A
-        GTRecipeBuilder.builder()
+        WirelessRecipeFilterBuilder.of()
             .itemInputs(
                 ItemList.WetTransformer_HV_MV.get(1),
                 NHUItemList.Hatch_EnergyMulti16_MV.get(1),
@@ -1251,7 +1254,7 @@ public class WirelessHatchRecipe {
             .addTo(assemblerRecipes);
 
         // Energy Hatch HV 4A
-        GTRecipeBuilder.builder()
+        WirelessRecipeFilterBuilder.of()
             .itemInputs(
                 ItemList.Hatch_Energy_HV.get(1),
                 GTOreDictUnificator.get(OrePrefixes.wireGt04, Materials.Gold, 2),
@@ -1263,7 +1266,7 @@ public class WirelessHatchRecipe {
             .addTo(assemblerRecipes);
 
         // Energy Hatch HV 16A
-        GTRecipeBuilder.builder()
+        WirelessRecipeFilterBuilder.of()
             .itemInputs(
                 ItemList.Transformer_EV_HV.get(1),
                 NHUItemList.Hatch_EnergyMulti4_HV.get(1),
@@ -1276,7 +1279,7 @@ public class WirelessHatchRecipe {
             .addTo(assemblerRecipes);
 
         // Energy Hatch HV 64A
-        GTRecipeBuilder.builder()
+        WirelessRecipeFilterBuilder.of()
             .itemInputs(
                 ItemList.WetTransformer_EV_HV.get(1),
                 NHUItemList.Hatch_EnergyMulti16_HV.get(1),
@@ -1290,4 +1293,65 @@ public class WirelessHatchRecipe {
 
     }
 
+    static class WirelessRecipeFilterBuilder {
+
+        boolean shouldAdd = true;
+
+        GTRecipeBuilder recipe = GTRecipeBuilder.builder();
+
+        static WirelessRecipeFilterBuilder of() {
+            return new WirelessRecipeFilterBuilder();
+        }
+
+        WirelessRecipeFilterBuilder itemInputs(ItemStack... inputs) {
+            recipe.itemInputs(inputs);
+            return this;
+        }
+
+        WirelessRecipeFilterBuilder itemInputsUnsafe(ItemStack... inputs) {
+            recipe.itemInputsUnsafe(inputs);
+            return this;
+        }
+
+        WirelessRecipeFilterBuilder itemOutputs(ItemStack... outputs) {
+            recipe.itemOutputs(outputs);
+            for (ItemStack output : outputs) {
+                if (CommonUtil.simpleMetaEqual(output, LazyHatchHelper.compatibleIS)) {
+                    shouldAdd = false;
+                    break;
+                }
+            }
+            return this;
+        }
+
+        WirelessRecipeFilterBuilder fluidInputs(FluidStack... fluidInputs) {
+            recipe.fluidInputs(fluidInputs);
+            return this;
+        }
+
+        WirelessRecipeFilterBuilder duration(int duration) {
+            recipe.duration(duration);
+            return this;
+        }
+
+        <T> WirelessRecipeFilterBuilder metadata(RecipeMetadataKey<T> key, T value) {
+            recipe.metadata(key, value);
+            return this;
+        }
+
+        WirelessRecipeFilterBuilder requiresCleanRoom() {
+            recipe.requiresCleanRoom();
+            return this;
+        }
+
+        WirelessRecipeFilterBuilder eut(long eut) {
+            recipe.eut(eut);
+            return this;
+        }
+
+        void addTo(IRecipeMap recipeMap) {
+            if (shouldAdd) recipe.addTo(recipeMap);
+        }
+
+    }
 }

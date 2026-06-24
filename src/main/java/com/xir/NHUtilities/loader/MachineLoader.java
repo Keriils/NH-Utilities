@@ -46,9 +46,9 @@ import static com.xir.NHUtilities.main.ReferencedInfo.isDevEnvironment;
 import static com.xir.NHUtilities.utils.CommonUtil.trans;
 import static gregtech.api.enums.GTValues.VN;
 
-import com.gtnewhorizon.gtnhlib.util.numberformatting.NumberFormatUtil;
 import org.jetbrains.annotations.NotNull;
 
+import com.gtnewhorizon.gtnhlib.util.numberformatting.NumberFormatUtil;
 import com.xir.NHUtilities.common.api.enums.HatchType;
 import com.xir.NHUtilities.common.api.enums.WirelessHatchMore;
 import com.xir.NHUtilities.common.machine.hatch.MTEWirelessHatchDynamoMulti;
@@ -59,7 +59,6 @@ import com.xir.NHUtilities.common.machine.single.MTEMagicalEggMachine;
 
 import gregtech.api.metatileentity.implementations.MTEHatchDynamo;
 import gregtech.api.metatileentity.implementations.MTEHatchEnergy;
-import gregtech.api.util.GTUtility;
 import tectech.thing.metaTileEntity.hatch.MTEHatchEnergyMulti;
 
 public class MachineLoader {
@@ -93,9 +92,6 @@ public class MachineLoader {
 
         int wirelessIdBaseSet = 25100 + 120 + wirelessHatchMetaIdOffset;
 
-        Hatch_Dynamo_MAX.set(new MTEHatchDynamo(11294, "hatch.dynamo.tier.14", trans("hatch.dynamo.tier.14"), 14));
-        Hatch_Energy_MAX.set(new MTEHatchEnergy(11304, "hatch.energy.tier.14", trans("hatch.energy.tier.14"), 14));
-
         // spotless:off
         Hatch_EnergyMulti4_LV.set(new MTEHatchEnergyMulti(      wirelessIdBaseSet + 1,      "hatch.energymulti04.tier.01",      trans("hatch.energymulti04.tier.01"),       1,      4   ));
         Hatch_EnergyMulti16_LV.set(new MTEHatchEnergyMulti(     wirelessIdBaseSet + 2,      "hatch.energymulti16.tier.01",      trans("hatch.energymulti16.tier.01"),       1,      16  ));
@@ -109,6 +105,10 @@ public class MachineLoader {
         Hatch_EnergyMulti4_MAX.set(new MTEHatchEnergyMulti(     wirelessIdBaseSet + 10,     "hatch.energymulti04.tier.14",      trans("hatch.energymulti04.tier.14"),       14,      4   ));
         Hatch_EnergyMulti16_MAX.set(new MTEHatchEnergyMulti(    wirelessIdBaseSet + 11,     "hatch.energymulti16.tier.14",      trans("hatch.energymulti16.tier.14"),       14,      16  ));
         Hatch_EnergyMulti64_MAX.set(new MTEHatchEnergyMulti(    wirelessIdBaseSet + 12,     "hatch.energymulti64.tier.14",      trans("hatch.energymulti64.tier.14"),       14,      64  ));
+
+        // MAX-TIER
+        Hatch_Dynamo_MAX.set(new MTEHatchDynamo(wirelessIdBaseSet + 13, "hatch.dynamo.tier.14", trans("hatch.dynamo.tier.14"), 14));
+        Hatch_Energy_MAX.set(new MTEHatchEnergy(wirelessIdBaseSet + 14, "hatch.energy.tier.14", trans("hatch.energy.tier.14"), 14));
         // spotless:on
 
         var energyStr = trans("Hatch.wireless.energy.name");
