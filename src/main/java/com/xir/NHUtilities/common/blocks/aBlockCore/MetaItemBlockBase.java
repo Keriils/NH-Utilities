@@ -15,17 +15,13 @@ import com.xir.NHUtilities.common.api.MTOData;
 import com.xir.NHUtilities.common.api.interfaces.MTO.IMetaObjectProvider;
 import com.xir.NHUtilities.common.api.interfaces.MTO.IMetaTypeObject;
 
-import gregtech.api.util.GTLanguageManager;
-
 @SuppressWarnings("unused")
 public class MetaItemBlockBase extends ItemBlock implements IMetaObjectProvider {
 
     @SuppressWarnings("SpellCheckingInspection")
-    public final String mNoMobsToolTip = GTLanguageManager
-        .addStringLocalization("gt.nomobspawnsonthisblock", "Mobs cannot Spawn on this Block");
+    public final String mNoMobsToolTip = "Mobs cannot Spawn on this Block";
     @SuppressWarnings("SpellCheckingInspection")
-    public final String mNoTileEntityToolTip = GTLanguageManager
-        .addStringLocalization("gt.notileentityinthisblock", "This is NOT a TileEntity!");
+    public final String mNoTileEntityToolTip = "This is NOT a TileEntity!";
 
     protected MTOData<? extends IMetaTypeObject> mtoData;
 

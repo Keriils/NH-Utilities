@@ -15,6 +15,7 @@ import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
 import static tectech.thing.casing.TTCasingsContainer.sBlockCasingsTT;
 
 import java.util.Collection;
+import java.util.List;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -31,6 +32,7 @@ import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.logic.ProcessingLogic;
 import gregtech.api.recipe.RecipeMap;
+import gregtech.api.structure.error.StructureError;
 import gregtech.api.util.MultiblockTooltipBuilder;
 import tectech.recipe.TecTechRecipeMaps;
 import tectech.thing.casing.BlockGTCasingsTT;
@@ -130,7 +132,7 @@ public class TestMachine extends NHU_MTEBase<TestMachine> {
                 buildHatchAdder(TestMachine.class)
                     .atLeast(InputHatch, OutputHatch, InputBus, OutputBus, Energy.or(ExoticEnergy))
                     .adder(TestMachine::addToMachineListWithExoticEnergy)
-                    .dot(1)
+                    .hint(1)
                     .casingIndex(BlockGTCasingsTT.textureOffset + 1)
                     .buildAndChain(ofBlock(sBlockCasingsTT, 1)))
             .addElement('B', ofBlock(sBlockCasingsTT, 2))
@@ -140,7 +142,12 @@ public class TestMachine extends NHU_MTEBase<TestMachine> {
 
     @Override
     public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
-        return checkPiece(STRUCTURE_PIECE_MAIN, horizontalOffSet, verticalOffSet, depthOffSet);
+        return false;
+    }
+
+    @Override
+    public void checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack, List<StructureError> errors) {
+        checkPiece(STRUCTURE_PIECE_MAIN, horizontalOffSet, verticalOffSet, depthOffSet, errors);
     }
 
     @Override
@@ -151,7 +158,7 @@ public class TestMachine extends NHU_MTEBase<TestMachine> {
     @Override
     public int survivalConstruct(ItemStack stackSize, int elementBudget, ISurvivalBuildEnvironment env) {
         if (mMachine) return -1;
-        return survivialBuildPiece(
+        return survivalBuildPiece(
             STRUCTURE_PIECE_MAIN,
             stackSize,
             horizontalOffSet,

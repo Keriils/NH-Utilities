@@ -1,7 +1,6 @@
 package com.xir.NHUtilities.common.api.enums;
 
 import static com.xir.NHUtilities.main.ReferencedInfo.RESOURCE_PATH;
-import static gregtech.api.enums.Textures.BlockIcons.CustomIcon;
 import static gregtech.api.enums.Textures.BlockIcons.OVERLAYS_ENERGY_ON_WIRELESS;
 import static gregtech.api.enums.Textures.BlockIcons.OVERLAYS_ENERGY_ON_WIRELESS_16A;
 import static gregtech.api.enums.Textures.BlockIcons.OVERLAYS_ENERGY_ON_WIRELESS_4A;
@@ -11,6 +10,7 @@ import static gregtech.api.enums.Textures.BlockIcons.OVERLAYS_ENERGY_ON_WIRELESS
 import java.util.HashMap;
 import java.util.Map;
 
+import gregtech.api.enums.Textures;
 import gregtech.api.interfaces.IIconContainer;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.render.TextureFactory;
@@ -22,34 +22,37 @@ public final class TexturesSets {
     public static void init() {}
 
     // for Test Machine or Common TT machine Texture
-    public static final IIconContainer ScreenOFF = new CustomIcon("iconsets/EM_CONTROLLER");
-    public static final IIconContainer ScreenON = new CustomIcon("iconsets/EM_CONTROLLER_ACTIVE");
+    public static final IIconContainer ScreenOFF = Textures.BlockIcons.custom("iconsets/EM_CONTROLLER");
+    public static final IIconContainer ScreenON = Textures.BlockIcons.custom("iconsets/EM_CONTROLLER_ACTIVE");
 
     // for Tc EBF Texture
-    public static final IIconContainer TC_EBF_ACTIVE = new CustomIcon(
-        RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_ACTIVE");
-    public static final IIconContainer TC_EBF_ACTIVE_GLOW = new CustomIcon(
-        RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW");
-    public static final IIconContainer TC_EBF_NOT_ACTIVE = new CustomIcon(
-        RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE");
-    public static final IIconContainer TC_EBF_NOT_ACTIVE_GLOW = new CustomIcon(
-        RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_GLOW");
+    public static final IIconContainer TC_EBF_ACTIVE = Textures.BlockIcons
+        .custom(RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_ACTIVE");
+    public static final IIconContainer TC_EBF_ACTIVE_GLOW = Textures.BlockIcons
+        .custom(RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_ACTIVE_GLOW");
+    public static final IIconContainer TC_EBF_NOT_ACTIVE = Textures.BlockIcons
+        .custom(RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE");
+    public static final IIconContainer TC_EBF_NOT_ACTIVE_GLOW = Textures.BlockIcons
+        .custom(RESOURCE_PATH + "TcBlastFurnace/OVERLAY_FRONT_THAUMIC_ELECTRIC_BLAST_FURNACE_GLOW");
 
     // region Wireless Tex
     private static final String WIRELESS_DIR = RESOURCE_PATH + "Wireless/";
-    public static final IIconContainer OVERLAY_WIRELESS_256A = new CustomIcon(WIRELESS_DIR + "OVERLAY_WIRELESS_256A");
-    public static final IIconContainer OVERLAY_WIRELESS_1024A = new CustomIcon(WIRELESS_DIR + "OVERLAY_WIRELESS_1024A");
-    public static final IIconContainer OVERLAY_WIRELESS_4096A = new CustomIcon(WIRELESS_DIR + "OVERLAY_WIRELESS_4096A");
-    public static final IIconContainer OVERLAY_WIRELESS_16384A = new CustomIcon(
-        WIRELESS_DIR + "OVERLAY_WIRELESS_16384A");
-    public static final IIconContainer OVERLAY_WIRELESS_65536A = new CustomIcon(
-        WIRELESS_DIR + "OVERLAY_WIRELESS_65536A");
-    public static final IIconContainer OVERLAY_WIRELESS_262144A = new CustomIcon(
-        WIRELESS_DIR + "OVERLAY_WIRELESS_262144A");
-    public static final IIconContainer OVERLAY_WIRELESS_1048576A = new CustomIcon(
-        WIRELESS_DIR + "OVERLAY_WIRELESS_1048576A");
-    public static final IIconContainer OVERLAY_WIRELESS_SPACETIME = new CustomIcon(
-        WIRELESS_DIR + "OVERLAY_WIRELESS_SPACETIME");
+    public static final IIconContainer OVERLAY_WIRELESS_256A = Textures.BlockIcons
+        .custom(WIRELESS_DIR + "OVERLAY_WIRELESS_256A");
+    public static final IIconContainer OVERLAY_WIRELESS_1024A = Textures.BlockIcons
+        .custom(WIRELESS_DIR + "OVERLAY_WIRELESS_1024A");
+    public static final IIconContainer OVERLAY_WIRELESS_4096A = Textures.BlockIcons
+        .custom(WIRELESS_DIR + "OVERLAY_WIRELESS_4096A");
+    public static final IIconContainer OVERLAY_WIRELESS_16384A = Textures.BlockIcons
+        .custom(WIRELESS_DIR + "OVERLAY_WIRELESS_16384A");
+    public static final IIconContainer OVERLAY_WIRELESS_65536A = Textures.BlockIcons
+        .custom(WIRELESS_DIR + "OVERLAY_WIRELESS_65536A");
+    public static final IIconContainer OVERLAY_WIRELESS_262144A = Textures.BlockIcons
+        .custom(WIRELESS_DIR + "OVERLAY_WIRELESS_262144A");
+    public static final IIconContainer OVERLAY_WIRELESS_1048576A = Textures.BlockIcons
+        .custom(WIRELESS_DIR + "OVERLAY_WIRELESS_1048576A");
+    public static final IIconContainer OVERLAY_WIRELESS_SPACETIME = Textures.BlockIcons
+        .custom(WIRELESS_DIR + "OVERLAY_WIRELESS_SPACETIME");
 
     public static final Map<Integer, ITexture> WirelessCoverTextureMap = new HashMap<>() {
 

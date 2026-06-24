@@ -44,6 +44,7 @@ import net.minecraftforge.fluids.FluidStack;
 import com.brandon3055.draconicevolution.common.ModItems;
 import com.brandon3055.draconicevolution.common.entity.EntityChaosVortex;
 import com.google.common.collect.ImmutableList;
+import com.gtnewhorizon.gtnhlib.util.numberformatting.NumberFormatUtil;
 import com.gtnewhorizons.modularui.api.screen.ModularWindow;
 import com.gtnewhorizons.modularui.api.screen.UIBuildContext;
 import com.xir.NHUtilities.common.api.enums.NHUItemList;
@@ -358,13 +359,13 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
             if (++currentTier > mTier) currentTier = 0;
         }
         currentAmperes = calculateAmp();
-        GTUtility.sendChatToPlayer(
+        GTUtility.sendChatTrans(
             aPlayer,
-            "Current EU Output: " + GTUtility.formatNumbers(V[currentTier])
+            "Current EU Output: " + NumberFormatUtil.formatNumber(V[currentTier])
                 + String.format(
                     " (%s) (%s)",
                     GTUtility.getColoredTierNameFromTier(currentTier),
-                    EnumChatFormatting.LIGHT_PURPLE + GTUtility.formatNumbers(currentAmperes)
+                    EnumChatFormatting.LIGHT_PURPLE + NumberFormatUtil.formatNumber(currentAmperes)
                         + "A"
                         + EnumChatFormatting.RESET));
     }
@@ -374,7 +375,7 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
         float aX, float aY, float aZ, ItemStack aTool) {
         if (mTier >= 9 && getBaseMetaTileEntity().isServerSide()) {
             isWirelessMode = !isWirelessMode;
-            GTUtility.sendChatToPlayer(aPlayer, "Wireless Mode: " + (isWirelessMode ? "On" : "Off"));
+            GTUtility.sendChatTrans(aPlayer, "Wireless Mode: " + (isWirelessMode ? "On" : "Off"));
         }
         return super.onWireCutterRightClick(side, wrenchingSide, aPlayer, aX, aY, aZ, aTool);
     }
@@ -390,7 +391,9 @@ public class MTEMagicalEggMachine extends MTEBasicGenerator {
             String.format(
                 "Voltage: %s (%s)",
                 GTUtility.getColoredTierNameFromVoltage(voltage),
-                EnumChatFormatting.LIGHT_PURPLE + GTUtility.formatNumbers(Amperes) + "A" + EnumChatFormatting.RESET));
+                EnumChatFormatting.LIGHT_PURPLE + NumberFormatUtil.formatNumber(Amperes)
+                    + "A"
+                    + EnumChatFormatting.RESET));
         currentTip.add(
             String.format(
                 "TotalBonus: %sx",

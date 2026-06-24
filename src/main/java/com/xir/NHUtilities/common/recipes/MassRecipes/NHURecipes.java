@@ -46,8 +46,6 @@ import goodgenerator.items.GGMaterial;
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
-import gregtech.api.enums.MaterialsKevlar;
-import gregtech.api.enums.MaterialsUEVplus;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.TierEU;
 import gregtech.api.recipe.metadata.CompressionTierKey;
@@ -131,9 +129,9 @@ public class NHURecipes {
                 'N',
                 ItemList.QuantumStar.get(1),
                 'E',
-                NHItemList.EngineeringProcessorItemAdvEmeraldCore.getIS(),
+                NHItemList.EngineeringProcessorItemAdvEmeraldCore.get(),
                 'P',
-                NHItemList.EngineeringProcessorSpatialPulsatingCore.getIS(),
+                NHItemList.EngineeringProcessorSpatialPulsatingCore.get(),
                 'W',
                 materials.wirelessBooster()
                     .maybeStack(1)
@@ -543,7 +541,7 @@ public class NHURecipes {
     private static void initEternityTimeVialRecipe() {
         GTRecipeBuilder.builder()
             .itemInputs(NHUItemList.TimeVial.get(0), new ItemStack(EternalSingularityItem.instance, 64))
-            .fluidInputs(MaterialsKevlar.Kevlar.getMolten(1440L))
+            .fluidInputs(Materials.Kevlar.getMolten(1440L))
             .itemOutputs(NHUItemList.EternityVial.get(1))
             .outputChances(500)
             .metadata(COIL_HEAT, 13500)
@@ -553,7 +551,7 @@ public class NHURecipes {
 
         GTRecipeBuilder.builder()
             .itemInputs(ItemList.Timepiece.get(1))
-            .fluidInputs(MaterialsUEVplus.MagnetohydrodynamicallyConstrainedStarMatter.getMolten(1145))
+            .fluidInputs(Materials.MHDCSM.getMolten(1145L))
             .itemOutputs(NHUItemList.EternityVial.get(1))
             // Require stabilized black hole
             .metadata(CompressionTierKey.INSTANCE, 2)

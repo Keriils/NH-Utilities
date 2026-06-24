@@ -17,11 +17,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import com.brandon3055.brandonscore.common.utills.Teleporter;
 import com.brandon3055.draconicevolution.client.gui.GUITeleporter;
 import com.brandon3055.draconicevolution.common.ModItems;
 import com.brandon3055.draconicevolution.common.items.tools.TeleporterMKII;
-import com.brandon3055.draconicevolution.common.utills.InventoryUtils;
+import com.brandon3055.draconicevolution.common.utils.InventoryUtils;
+import com.brandon3055.draconicevolution.common.utils.Teleporter;
 
 @Mixin(value = GUITeleporter.class)
 @SuppressWarnings("UnusedMixin")

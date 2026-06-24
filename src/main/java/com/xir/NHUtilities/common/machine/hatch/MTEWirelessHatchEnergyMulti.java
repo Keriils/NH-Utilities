@@ -3,9 +3,10 @@ package com.xir.NHUtilities.common.machine.hatch;
 import static com.xir.NHUtilities.common.api.enums.TexturesSets.getWirelessTex;
 import static com.xir.NHUtilities.utils.CommonUtil.trans;
 import static gregtech.api.enums.GTValues.V;
-import static gregtech.api.util.GTUtility.formatNumbers;
 
 import net.minecraft.util.EnumChatFormatting;
+
+import com.gtnewhorizon.gtnhlib.util.numberformatting.NumberFormatUtil;
 
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
@@ -44,7 +45,7 @@ public class MTEWirelessHatchEnergyMulti extends MTEHatchWirelessMulti {
             EnumChatFormatting.GRAY + trans("Hatch.InfoData.desc.wireless.2"), trans("nhu.logotype.gt.logo"),
             EnumChatFormatting.GRAY + trans("Hatch.InfoData.desc.wireless.3")
                 + EnumChatFormatting.YELLOW
-                + formatNumbers(Amperes * V[mTier])
+                + NumberFormatUtil.formatNumber(Amperes * V[mTier])
                 + EnumChatFormatting.RESET
                 + " EU/t" };
     }
